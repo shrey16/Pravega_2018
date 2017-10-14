@@ -172,66 +172,44 @@ if (desktopMode) {
     animationRunning = [false, false, false, false, false, false];
 
     const container = $("#iconbar ul");
-    window.onload = function() {
-        $("#sidebar").height(0);
-        $("#iconbar").height(0);
-        container.height(0);
-    }
-
-    let expandedHeight = $("#tog-button-mobile").outerHeight() * $("#iconbar ul").children().length * 1.25;
-    let duration = 0.3;
 
     const borderThickness = 0;
-    let itemHeight = 250;
 
     $("#tog-button-mobile .li-img").click(function(e) {
         if (infobarVisible) {
-            //expandedHeight = $("#iconbar").outerHeight();
             const dropdowns = $(".dropdown");
-            duration = 0;
             for (let i = 0; i < dropdowns.length; ++i) {
-                let dropdownImage = $(dropdowns[i]).find("img");
-                if (dropdownImage.attr("src") === "img/upCaret.png") {
-                    dropdownImage.attr("src", "img/downCaret.png");
-                    let navItem = $(dropdowns[i]).parent();
-                    let nextNavItem = navItem.next(".nav-item");
-                    let extraInfo = navItem.find(".extra-info");
+                const dropdownImage = $(dropdowns[i]).find("img");
+                if (dropdownImage.hasClass("inverted")) {
+                    dropdownImage.removeClass("inverted")
+                    const navItem = $(dropdowns[i]).parent();
+                    const nextNavItem = navItem.next(".nav-item");
+                    const extraInfo = navItem.find(".extra-info");
                     const nextNavItemTop = parseInt(nextNavItem.css("margin-top"));
                     extraInfo.height(0);
                     nextNavItem.css("margin-top", "0");
                 }
             }
-
-            duration = 0.3;
-            $("#sidebar").height(0);
-            TweenLite.to(container, duration, {
+            TweenLite.to($("#iconbar"), 0.3, {
                 height: 0,
                 onStart: function() {
                     $("#tog-button-mobile").find(".li-img img").attr("src", "img/hamburger.png");
-                    $("#iconbar").height(0);
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(true);
                         $.fn.fullpage.setKeyboardScrolling(true);
                     }
-                    //$("body").css("overflow-y", "auto");
-                    $("#disabler").fadeOut(100);
                 }
 
             });
-
         } else {
-            $("#sidebar").height("auto");
-            TweenLite.to(container, duration, {
-                height: expandedHeight,
+            TweenLite.to($("#iconbar"), 0.3, {
+                height: screen.height,
                 onStart: function() {
                     $("#tog-button-mobile").find(".li-img img").attr("src", "img/close.png");
-                    $("#iconbar").height(screen.height);
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(false);
                         $.fn.fullpage.setKeyboardScrolling(false);
                     }
-                    //$("body").css("overflow-y", "hidden");
-                    $("#disabler").fadeIn(100);
                 }
             });
         }
@@ -242,13 +220,19 @@ if (desktopMode) {
     $(".dropdown").click(function(e) {
         let dropdownContainer = $(this);
         if (noAnimationRunning()) {
-            let dropdownImage = $(dropdownContainer).find("img");
-            dropdownImage.attr("src", dropdownImage.attr("src") === "img/downCaret.png" ? "img/upCaret.png" : "img/downCaret.png");
-            let navItem = $(dropdownContainer).parent();
-            let nextNavItem = navItem.next(".nav-item");
-            let extraInfo = navItem.find(".extra-info");
+            const dropdownImage = dropdownContainer.find("img");
+            if (dropdownImage.hasClass("inverted")) {
+                dropdownImage.removeClass("inverted");
+            } else {
+                dropdownImage.addClass("inverted");
+            }
+            const navItem = dropdownContainer.parent();
+            const nextNavItem = navItem.next(".nav-item");
+            const extraInfo = navItem.find(".extra-info");
             const nextNavItemTop = parseInt(nextNavItem.css("margin-top"));
             const totalHeight = container.height();
+            const duration = 0.3;
+            let itemHeight = 0;
             if (extraInfo.height() === 0) {
                 extraInfo.height("auto");
                 itemHeight = extraInfo.height();
@@ -318,4 +302,3 @@ if (desktopMode) {
         }
     });
 }
-$("#disabler").height($("body").height());

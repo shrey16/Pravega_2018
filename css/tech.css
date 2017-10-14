@@ -378,17 +378,18 @@ span {
         top: 0;
         left: 0;
         bottom: 0;
-        height: auto;
+        height: 60px;
         max-height: 100%;
         width: 100%;
     }
     #iconbar {
-        height: 100%;
+        height: 0;
         max-height: 100%;
         position: fixed;
         width: 100%;
         top: 60px;
         display: block;
+        background-color: rgb(0, 0, 0);
         overflow-x: hidden;
         overflow-y: auto;
     }
@@ -400,10 +401,6 @@ span {
         padding: 0;
         overflow-x: hidden;
         overflow-y: auto;
-    }
-    #iconbar ul li,
-    .extra-info {
-        background-color: rgba(0, 0, 0, 0.4);
     }
     #iconbar ul li:hover {
         border-left: none;
@@ -429,6 +426,9 @@ span {
         height: 60px;
         align-content: center;
         align-items: center;
+    }
+    #disabler {
+        display: none;
     }
     .nav-highlight-item {
         border: none !important;
@@ -476,6 +476,14 @@ span {
         left: 0px;
         height: 60px;
         width: 80px;
+        transform: rotate(0deg);
+        -webkit-transition: all 200ms linear;
+        transition: all 200ms linear;
+    }
+    .inverted {
+        transform: rotate(180deg);
+        -webkit-transition: all 200ms linear;
+        transition: all 200ms linear;
     }
     .extra-info {
         display: block;

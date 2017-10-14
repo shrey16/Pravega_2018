@@ -77,13 +77,18 @@ $(document).ready(function() {
     if (desktopMode) {
         scroll_up.to($("#scroll_me_arrow"), 0.1, { opacity: "0" }, "scrollup")
             .to($("#home"), 0.5, { opacity: 0 })
-            .from(sidebar, 0.5, { left: "-90px" }, "scrollup")
+            .from(sidebar, 0.5, { left: "-100px" }, "scrollup")
             .to(floatingFooter, 0.5, { css: { "transform": "translateX(0) scale(0.6)" } }, "scrollup")
-            .to(black_trans, 0.5, { opacity: "0" }, "scrollup");
+            .to(black_trans, 0.5, { opacity: 0 }, "scrollup");
     } else {
         scroll_up.to($("#home"), 0.5, { opacity: "0" }, "scrollup")
             .to($("#scroll_me_arrow"), 0.1, { opacity: "0" }, "scrollup")
-            .to(black_trans, 0.5, { opacity: "0" }, "scrollup")
+            .to(black_trans, 0.5, {
+                opacity: "0",
+                onComplete: function() {
+                    $("#black_trans").css("visibility", "hidden");
+                }
+            }, "scrollup")
             .to(footer, 0.5, { bottom: "0" }, "scrollup");
     }
 
