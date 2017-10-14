@@ -49,7 +49,7 @@ $(document).mousemove(function(event) {
 
 
 let displayedInfoElement = $("#infobar div:first-child ");
-let togImage = $("#tog-button-desktop").find(".li-img").find("img");
+let togImage = $("#tog-button-desktop").find(".li-img").find(".c-hamburger");
 const totalExpandedWidth = $("#iconbar").width() + 200;
 
 let infobarRemoved = true,
@@ -65,7 +65,7 @@ function openMenuBar(onComplete) {
                 if (!desktopMode) {
                     $("#disabler").fadeIn(250);
                 }
-                togImage.attr("src", "img/close.png");
+                togImage.addClass("is-active");
                 //TweenLite.to($("#main"), 0.25, { css: { "transform": "translateX(200px)" } });
                 //TweenLite.to($(".subject"), 0.25, { css: { "transform": "translateX(200px)" } });
                 //TweenLite.to($("#fullpage"), 0.25, { css: { "width": "-=200px" } });
@@ -95,7 +95,7 @@ function closeMenuBar(onComplete, external) {
                 if (!desktopMode) {
                     $("#disabler").fadeOut(250);
                 }
-                togImage.attr("src", "img/hamburger.png");
+                togImage.removeClass("is-active");
                 //TweenLite.to($("#main"), 0.25, { css: { "transform": "translateX(0)" } });
                 //TweenLite.to($(".subject"), 0.25, { css: { "transform": "translateX(0)" } });
                 //TweenLite.to($("#fullpage"), 0.25, { css: { "width": "+=200px" } });
@@ -176,6 +176,7 @@ if (desktopMode) {
     const borderThickness = 0;
 
     $("#tog-button-mobile .li-img").click(function(e) {
+        $(this).find(".c-hamburger").toggleClass("is-active");
         if (infobarVisible) {
             const dropdowns = $(".dropdown");
             for (let i = 0; i < dropdowns.length; ++i) {
@@ -193,7 +194,6 @@ if (desktopMode) {
             TweenLite.to($("#iconbar"), 0.3, {
                 height: 0,
                 onStart: function() {
-                    $("#tog-button-mobile").find(".li-img img").attr("src", "img/hamburger.png");
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(true);
                         $.fn.fullpage.setKeyboardScrolling(true);
@@ -205,7 +205,6 @@ if (desktopMode) {
             TweenLite.to($("#iconbar"), 0.3, {
                 height: screen.height,
                 onStart: function() {
-                    $("#tog-button-mobile").find(".li-img img").attr("src", "img/close.png");
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(false);
                         $.fn.fullpage.setKeyboardScrolling(false);

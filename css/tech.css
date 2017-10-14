@@ -97,8 +97,6 @@ span {
     transform: translateY(25%);
 }
 
-
-
 .li-img img {
     width: 34px;
     height: auto;
@@ -233,8 +231,6 @@ span {
     display: inline-block;
     text-align: justify;
 }
-
-
 
 #fullpage {
     z-index: 1000;
