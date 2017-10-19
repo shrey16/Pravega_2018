@@ -1,0 +1,80 @@
+{% load static %}
+<h1>Proscenium Registration</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'registrations:proscenium' %}" method="post">
+{% csrf_token %}
+    {{ registration_form.institution }}
+    {% if registration_form.institution.errors %}
+        {% for error in registration_form.institution.errors %}
+            {{ error|escape }}
+        {% endfor %}
+    {% endif %}
+
+    {{ registration_form.contact1 }}
+    {% if registration_form.contact1.errors %}
+        {% for error in registration_form.contact1.errors %}
+            {{ error|escape }}
+        {% endfor %}
+    {% endif %}
+
+    {{ registration_form.contact2 }}
+    {% if registration_form.contact2.errors %}
+        {% for error in registration_form.contact2.errors %}
+            {{ error|escape }}
+        {% endfor %}
+    {% endif %}
+
+	{{ registration_form.email }}
+    {% if registration_form.email.errors %}
+        {% for error in registration_form.email.errors %}
+            {{ error|escape }}
+        {% endfor %}
+    {% endif %}
+
+    {{ participant_formset.management_form }}
+
+    {% for participant_form in participant_formset %}
+        <div class="participant-formset">
+            {{ participant_form.name }}
+            {% if participant_form.name.errors %}
+                {% for error in participant_form.name.errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            {% endif %}
+
+            {{ participant_form.age }}
+            {% if participant_form.age.errors %}
+                {% for error in participant_form.age.errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            {% endif %}
+
+            {{ participant_form.role }}
+            {% if participant_form.role.errors %}
+                {% for error in participant_form.role.errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    {% if participant_formset.non_form_errors %}
+        {% for error in participant_formset.non_form_errors %}
+            {{ error|escape }}
+        {% endfor %}
+    {% endif %}
+
+    <input type="submit" value="Save" class="button"/>
+</form>
+
+<!-- Include formset plugin - including jQuery dependency -->
+<script src="{% static 'jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'jquery.formset.js' %}"></script>
+<script>
+    $('.participant-formset').formset({
+        addText: 'Add participant',
+        deleteText: 'Remove Participant'
+    });
+</script>
