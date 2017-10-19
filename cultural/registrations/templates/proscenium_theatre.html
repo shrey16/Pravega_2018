@@ -1,0 +1,138 @@
+{% load static %}
+<h1>Proscenium Theatre Competition Registration</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'registrations:proscenium_theatre' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+    {% if registration_form.errors %}
+        {% for field in registration_form %}
+            {% for error in field.errors %}
+                <p> {{ errors }} </p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+    <fieldset>
+        <legend>Identification</legend>
+        {{ registration_form.institution.label_tag }}
+        {{ registration_form.institution }}
+        {% if registration_form.institution.errors %}
+            {% for error in registration_form.institution.errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %}
+
+        {{ registration_form.language.label_tag }}
+        {{ registration_form.language }}
+        {% if registration_form.language.errors %}
+            {% for error in registration_form.language.errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %}
+    </fieldset>
+
+    <fieldset>
+        <legend>Contact Information</legend>
+        {{ registration_form.contact1.label_tag }}
+        {{ registration_form.contact1 }}
+        {% if registration_form.contact1.errors %}
+            {% for error in registration_form.contact1.errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %}
+
+        {{ registration_form.contact2.label_tag }}
+        {{ registration_form.contact2 }}
+        {% if registration_form.contact2.errors %}
+            {% for error in registration_form.contact2.errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %}
+
+        {{ registration_form.email.label_tag }}
+        {{ registration_form.email }}
+        {% if registration_form.email.errors %}
+            {% for error in registration_form.email.errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %}
+    </fieldset>
+
+    <fieldset>
+        <legend>Prelims Information</legend>
+        {{ registration_form.prelims_video.label_tag }}
+        {{ registration_form.prelims_video }}
+        {% if registration_form.prelims_video.errors %}
+            {% for error in registration_form.prelims_video.errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %}
+
+        {{ registration_form.prelims_script.label_tag }}
+        {{ registration_form.prelims_script }}
+        {% if registration_form.prelims_script.errors %}
+            {% for error in registration_form.prelims_script.errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %}
+    </fieldset>
+
+    <fieldset>
+        <legend>Participant Information</legend>
+        {{ participant_formset.management_form }}
+
+        {% for participant_form in participant_formset %}
+            <div class="participant-formset">
+                {% if participant_form.errors %}
+                    {% for field in participant_form %}
+                        {% for error in field.errors %}
+                            <p> {{ errors }} </p>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+
+                {{ participant_form.name.label_tag }}
+                {{ participant_form.name }}
+                {% if participant_form.name.errors %}
+                    {% for error in participant_form.name.errors %}
+                        {{ error|escape }}
+                    {% endfor %}
+                {% endif %}
+
+                {{ participant_form.age.label_tag }}
+                {{ participant_form.age }}
+                {% if participant_form.age.errors %}
+                    {% for error in participant_form.age.errors %}
+                        {{ error|escape }}
+                    {% endfor %}
+                {% endif %}
+
+                {{ participant_form.role.label_tag }}
+                {{ participant_form.role }}
+                {% if participant_form.role.errors %}
+                    {% for error in participant_form.role.errors %}
+                        {{ error|escape }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        {% if participant_formset.non_form_errors %}
+            {% for error in participant_formset.non_form_errors %}
+                {{ error|escape }}
+            {% endfor %}
+        {% endif %}
+    </fieldset>
+    <input type="submit" value="Save" class="button"/>
+</form>
+<footer><p><a href="mailto:webmaster@pravega.org">Contact us</a> if you need any help!</p></footer>
+
+<!-- Include formset plugin - including jQuery dependency -->
+<script src="{% static 'jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'jquery.formset.js' %}"></script>
+<script>
+    $('.participant-formset').formset({
+        addText: 'Add participant',
+        deleteText: 'Remove Participant'
+    });
+</script>
