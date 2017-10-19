@@ -15,7 +15,7 @@ class ProsceniumParticipantForm(forms.Form):
     age = forms.IntegerField(min_value=1, max_value=25,
                              label="Participant's Age",
                              widget=forms.NumberInput(attrs={
-                                 'placeholder': 'Age of Participant',
+                                 'placeholder': 'Age',
                              }),
                              required=True)
     name = forms.CharField(max_length=200,
