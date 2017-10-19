@@ -52,7 +52,7 @@ def proscenium(request):
                     ProsceniumParticipant.objects.filter(
                         registration_entry=registration).delete()
                     ProsceniumParticipant.objects.bulk_create(participants)
-                return redirect("http://pravega.org/proscenium.html")
+                return redirect("http://pravega.org/pros.html")
             except IntegrityError:
                 return render(request, "proscenium.html", context.update({'error_message': "Error saving participant data. Please retry."}))
         else:

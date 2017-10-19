@@ -5,6 +5,7 @@
 
 <form action="{% url 'registrations:proscenium' %}" method="post">
 {% csrf_token %}
+    {{ registration_form.institution.label_tag }}
     {{ registration_form.institution }}
     {% if registration_form.institution.errors %}
         {% for error in registration_form.institution.errors %}
@@ -12,6 +13,7 @@
         {% endfor %}
     {% endif %}
 
+    {{ registration_form.contact1.label_tag }}
     {{ registration_form.contact1 }}
     {% if registration_form.contact1.errors %}
         {% for error in registration_form.contact1.errors %}
@@ -19,6 +21,7 @@
         {% endfor %}
     {% endif %}
 
+    {{ registration_form.contact2.label_tag }}
     {{ registration_form.contact2 }}
     {% if registration_form.contact2.errors %}
         {% for error in registration_form.contact2.errors %}
@@ -26,6 +29,7 @@
         {% endfor %}
     {% endif %}
 
+    {{ registration_form.email.label_tag }}
 	{{ registration_form.email }}
     {% if registration_form.email.errors %}
         {% for error in registration_form.email.errors %}
@@ -37,6 +41,7 @@
 
     {% for participant_form in participant_formset %}
         <div class="participant-formset">
+            {{ participant_form.name.label_tag }}
             {{ participant_form.name }}
             {% if participant_form.name.errors %}
                 {% for error in participant_form.name.errors %}
@@ -44,6 +49,7 @@
                 {% endfor %}
             {% endif %}
 
+            {{ participant_form.age.label_tag }}
             {{ participant_form.age }}
             {% if participant_form.age.errors %}
                 {% for error in participant_form.age.errors %}
@@ -51,6 +57,7 @@
                 {% endfor %}
             {% endif %}
 
+            {{ participant_form.role.label_tag }}
             {{ participant_form.role }}
             {% if participant_form.role.errors %}
                 {% for error in participant_form.role.errors %}
@@ -65,9 +72,9 @@
             {{ error|escape }}
         {% endfor %}
     {% endif %}
-
     <input type="submit" value="Save" class="button"/>
 </form>
+<footer><p><a href="mailto:webmaster@pravega.org">Contact us</a> if you need any help!</p></footer>
 
 <!-- Include formset plugin - including jQuery dependency -->
 <script src="{% static 'jquery-3.2.1.min.js' %}"></script>
