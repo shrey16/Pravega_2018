@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
-from .customfields import IntegerRangeField, PhoneNumberField
+from .customfields import PhoneNumberField
 
 
 class ProsceniumTheatreRegistration(models.Model):
