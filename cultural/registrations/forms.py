@@ -7,11 +7,11 @@ from .customfields import PhoneNumberField
 class ProsceniumTheatreParticipantForm(forms.Form):
     role = forms.ChoiceField(
         choices=ProsceniumTheatreParticipant.ROLES,
-        initial=ProsceniumTheatreParticipant.PARTICIPANT,
+        initial=ProsceniumTheatreParticipant.PERFORMER,
         label="Participant's Role",
         required=True,
         widget=forms.Select(attrs={
-            'placeholder': 'Role: Participant / Accompanist',
+            'placeholder': 'Role: Performer / Accompanist',
         }))
     age = forms.IntegerField(
         min_value=1, max_value=25,
@@ -27,6 +27,13 @@ class ProsceniumTheatreParticipantForm(forms.Form):
         widget=forms.TextInput(attrs={
                                'placeholder': 'Name of Participant',
                                }))
+    photo = forms.ImageField(
+        validators=[IMAGE_FILE_VALIDATOR],
+        max_length=100,
+        label="Photo",
+        widget=forms.ClearableFileInput(attrs={
+            'placeholder': 'Photo',
+        }))
 
 
 class ProsceniumTheatreRegistrationForm(forms.Form):
@@ -41,7 +48,7 @@ class ProsceniumTheatreRegistrationForm(forms.Form):
         initial=ProsceniumTheatreRegistration.ENGLISH,
         label="Language of the Performance",
         widget=forms.Select(attrs={
-            'placeholder': 'Role: Participant / Accompanist',
+            'placeholder': 'Language',
         }))
     prelims_video = forms.FileField(
         validators=[ProsceniumTheatreRegistration.VIDEO_FILE_VALIDATOR],
@@ -79,10 +86,10 @@ class ProsceniumTheatreRegistrationForm(forms.Form):
 
 class ProsceniumStreetPlayParticipantForm(forms.Form):
     role = forms.ChoiceField(choices=ProsceniumStreetPlayParticipant.ROLES,
-                             initial=ProsceniumStreetPlayParticipant.PARTICIPANT,
+                             initial=ProsceniumStreetPlayParticipant.PERFORMER,
                              label="Participant's Role",
                              widget=forms.Select(attrs={
-                                 'placeholder': 'Role: Participant / Accompanist',
+                                 'placeholder': 'Role: Performer / Accompanist',
                              }))
     age = forms.IntegerField(min_value=1, max_value=25,
                              label="Participant's Age",
@@ -95,7 +102,7 @@ class ProsceniumStreetPlayParticipantForm(forms.Form):
                                'placeholder': 'Name of Participant',
                            }))
     photo = forms.ImageField(
-        validators=[ProsceniumStreetPlayParticipant.IMAGE_FILE_VALIDATOR],
+        validators=[IMAGE_FILE_VALIDATOR],
         max_length=100,
         label="Photo",
         widget=forms.ClearableFileInput(attrs={
@@ -115,7 +122,7 @@ class ProsceniumStreetPlayRegistrationForm(forms.Form):
         initial=ProsceniumStreetPlayRegistration.ENGLISH,
         label="Language of the Performance",
         widget=forms.Select(attrs={
-            'placeholder': 'Role: Participant / Accompanist',
+            'placeholder': 'Language',
         }))
     contact1 = PhoneNumberField.get_field(
         as_regexField=True,
@@ -146,19 +153,20 @@ class BaseProsceniumParticipantFormSet(BaseFormSet):
         if any(self.errors):
             return
         data = set()
-        participants, accompanists = 0, 0
+        performers, accompanists = 0, 0
         if not forms:
             raise forms.ValidationError("Empty Form", code='empty_form')
         for form in self.forms:
             if form.cleaned_data:
                 form_data = tuple(form.cleaned_data.items())
                 if form_data in data:
-                    raise forms.ValidationError("Duplicate Entry", code='duplicate')
+                    raise forms.ValidationError(
+                        "Duplicate Entry", code='duplicate')
                 else:
                     data.add(form_data)
                 role = form.cleaned_data['role']
-                if role == ProsceniumTheatreParticipant.PARTICIPANT or role == ProsceniumStreetPlayParticipant.PARTICIPANT:
-                    participants = participants + 1
+                if role == ProsceniumTheatreParticipant.PERFORMER or role == ProsceniumStreetPlayParticipant.PERFORMER:
+                    performers = performers + 1
                 elif role == ProsceniumTheatreParticipant.ACCOMPANIST or role == ProsceniumStreetPlayParticipant.ACCOMPANIST:
                     accompanists = accompanists + 1
 
@@ -169,15 +177,15 @@ class BaseProsceniumParticipantFormSet(BaseFormSet):
                     raise forms.ValidationError(
                         "Please Enter an Age", code="no_age")
 
-        if participants > 10 and accompanists > 3:
+        if performers > 10 and accompanists > 3:
             raise forms.ValidationError(
-                "You can have a maximum of 10 participants and 3 accompanists", code="over_max_participants_accompanists")
-        elif participants == 0:
+                "You can have a maximum of 10 performers and 3 accompanists", code="over_max_performers_accompanists")
+        elif performers == 0:
             raise forms.ValidationError(
-                "You must have at least 1 participant", code="no_participants")
-        elif participants > 10:
+                "You must have at least 1 participant", code="no_performers")
+        elif performers > 10:
             raise forms.ValidationError(
-                "You can have a maximum of 10 participants", code="over_max_participants")
+                "You can have a maximum of 10 performers", code="over_max_performers")
         elif accompanists > 3:
             raise forms.ValidationError(
                 "You can have a maximum of 3 accompanists", code="over_max_accompanists")
@@ -248,6 +256,7 @@ class BoBRegistrationForm(forms.Form):
 
 
 class BaseBoBParticipantFormSet(BaseFormSet):
+
     def clean(self):
         if any(self.errors):
             return
@@ -259,7 +268,8 @@ class BaseBoBParticipantFormSet(BaseFormSet):
             if form.cleaned_data:
                 form_data = tuple(form.cleaned_data.items())
                 if form_data in data:
-                    raise forms.ValidationError("Duplicate Entry", code='duplicate')
+                    raise forms.ValidationError(
+                        "Duplicate Entry", code='duplicate')
                 else:
                     data.add(form_data)
                 contact = form.cleaned_data['contact']

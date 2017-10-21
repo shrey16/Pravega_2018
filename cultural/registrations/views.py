@@ -62,10 +62,11 @@ def proscenium_theatre(request):
                 name = participant_form.cleaned_data.get('name')
                 age = participant_form.cleaned_data.get('age')
                 role = participant_form.cleaned_data.get('role')
+                photo = participant_form.cleaned_data.get('photo')
 
-                if name and age and role:
+                if name and age and role and photo:
                     participants.append(ProsceniumTheatreParticipant(
-                        registration_entry=registration, name=name, age=age, role=role))
+                        registration_entry=registration, name=name, age=age, role=role, photo=photo))
 
             print(participants)
             try:
@@ -80,7 +81,6 @@ def proscenium_theatre(request):
         else:
             return render(request, "proscenium_theatre.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
-        print('loading')
         return render(request, "proscenium_theatre.html", context)
 
 

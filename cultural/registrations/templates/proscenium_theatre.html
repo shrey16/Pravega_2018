@@ -114,6 +114,14 @@
                         {{ error|escape }}
                     {% endfor %}
                 {% endif %}
+
+                {{ participant_form.photo.label_tag }}
+                {{ participant_form.photo }}
+                {% if participant_form.photo.errors %}
+                    {% for error in participant_form.photo.errors %}
+                        {{ error|escape }}
+                    {% endfor %}
+                {% endif %}
             </div>
         {% endfor %}
 

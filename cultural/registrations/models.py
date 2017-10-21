@@ -2,6 +2,9 @@ from django.db import models
 from django.core.validators import FileExtensionValidator
 from .customfields import PhoneNumberField
 
+IMAGE_FILE_VALIDATOR = FileExtensionValidator(
+    allowed_extensions=['jpg', 'png'])
+
 
 class ProsceniumTheatreRegistration(models.Model):
 
@@ -46,15 +49,23 @@ class ProsceniumTheatreRegistration(models.Model):
 
 class ProsceniumTheatreParticipant(models.Model):
     ACCOMPANIST = 'accompanist'
-    PARTICIPANT = 'participant'
-    ROLES = ((ACCOMPANIST, "Accompanist"), (PARTICIPANT, "Participant"))
+    PERFORMER = 'performer'
+    ROLES = ((ACCOMPANIST, "Accompanist"), (PERFORMER, "Performer"))
     registration_entry = models.ForeignKey(
         ProsceniumTheatreRegistration, on_delete=models.CASCADE)
     role = models.CharField(max_length=max(map(lambda x: len(x[0]), ROLES)),
                             choices=ROLES,
-                            default=PARTICIPANT)
+                            default=PERFORMER)
     age = models.IntegerField()
     name = models.CharField(max_length=200)
+
+    def upload_path(instance, filename):
+        return f"./uploads/theatre/participant_photos/{instance.registration_entry.institution} - {instance.registration_entry.language}/{instance.name} - {filename}"
+
+    photo = models.ImageField(
+        validators=[IMAGE_FILE_VALIDATOR],
+        max_length=255,
+        upload_to=upload_path)
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Age: {self.age}, Role: {self.role}"
@@ -82,16 +93,14 @@ class ProsceniumStreetPlayRegistration(models.Model):
 
 
 class ProsceniumStreetPlayParticipant(models.Model):
-    IMAGE_FILE_VALIDATOR = FileExtensionValidator(
-        allowed_extensions=['jpg', 'png'])
-    ACCOMPANIST = 'accompanist'
-    PARTICIPANT = 'participant'
-    ROLES = ((ACCOMPANIST, "Accompanist"), (PARTICIPANT, "Participant"))
+    ACCOMPANIST = 'accompanist'    
+    PERFORMER = 'performer'
+    ROLES = ((ACCOMPANIST, "Accompanist"), (PERFORMER, "Performer"))
     registration_entry = models.ForeignKey(
         ProsceniumStreetPlayRegistration, on_delete=models.CASCADE)
     role = models.CharField(max_length=max(map(lambda x: len(x[0]), ROLES)),
                             choices=ROLES,
-                            default=PARTICIPANT)
+                            default=PERFORMER)
     age = models.IntegerField()
     name = models.CharField(max_length=200)
 

@@ -31,18 +31,22 @@ try:
                     # Handles heading row or non floats
                     try:
                         s = float(s)
-                        ws.cell(column=column_index+1, row=row_index+1).value = s
+                        ws.cell(column=column_index + 1,
+                                row=row_index + 1).value = s
 
                     except ValueError:
-                        ws.cell(column=column_index+1, row=row_index+1).value = s
+                        ws.cell(column=column_index + 1,
+                                row=row_index + 1).value = s
 
                 elif column_index not in floats:
                     # Handles openpyxl 'illegal chars'
                     try:
-                        ws.cell(column=column_index+1, row=row_index+1).value = cell
+                        ws.cell(column=column_index + 1,
+                                row=row_index + 1).value = cell
 
                     except:
-                        ws.cell(column=column_index+1, row=row_index+1).value = 'illegal char'
+                        ws.cell(column=column_index + 1,
+                                row=row_index + 1).value = 'illegal char'
 
         wb.save(filename=dest_filename)
 except ImportError:
@@ -76,31 +80,24 @@ class RegistrationData:
             csv_writer.writerow(["Entry"])
             entry_data = entry['entry']
 
-            entry_without_participants_or_accompanists = {
+            entry_without_sub_entries = {
                 self.prettify(key): value
                 for key, value in entry_data.items()
-                if not (key == 'participants' or key == 'accompanists')}
+                if not isinstance(value, list)}
             csv_writer.writerow(
-                list(entry_without_participants_or_accompanists.keys()))
+                list(entry_without_sub_entries.keys()))
             csv_writer.writerow(
-                list(entry_without_participants_or_accompanists.values()))
+                list(entry_without_sub_entries.values()))
 
-            entry_with_only_participants = entry_data['participants']
-            csv_writer.writerow(["Participants"])
-            for participant in entry_with_only_participants:
-                csv_writer.writerow([self.prettify(key)
-                                     for key in participant.keys()])
-                csv_writer.writerow(
-                    list(participant.values()))
-
-            if 'accompanists' in entry_data:
-                entry_with_only_accompanists = entry_data['accompanists']
-                csv_writer.writerow(["Accompanists"])
-                for accompanist in entry_with_only_accompanists:
-                    csv_writer.writerow([self.prettify(key)
-                                         for key in accompanist.keys()])
-                    csv_writer.writerow(
-                        list(accompanist.values()))
+            entry_with_only_sub_entries = {
+                self.prettify(key): value
+                for key, value in entry_data.items()
+                if isinstance(value, list)}
+            for entry_type, entry in entry_with_only_sub_entries.items():
+                csv_writer.writerow([entry_type])
+                for sub_entry in entry:
+                    csv_writer.writerow((self.prettify(key) for key in sub_entry.keys()))
+                    csv_writer.writerow(sub_entry.values())
         final_output = output.getvalue()
         output.close()
         return final_output
@@ -128,18 +125,19 @@ class ProsceniumTheatreRegistrationData(RegistrationData):
             data.email = registration.email
             data.prelims_video = str(registration.prelims_video)
             data.prelims_script = str(registration.prelims_script)
-            data.participants = []
+            data.performers = []
             data.accompanists = []
             for participant in registration.prosceniumtheatreparticipant_set.all():
                 participant_data = {}
                 participant_data['name'] = participant.name
                 participant_data['age'] = participant.age
-                if participant.role == ProsceniumTheatreParticipant.PARTICIPANT:
-                    data.participants.append(participant_data)
+                participant_data['photo'] = str(participant.photo)
+                if participant.role == ProsceniumTheatreParticipant.PERFORMER:
+                    data.performers.append(participant_data)
                 elif participant.role == ProsceniumTheatreParticipant.ACCOMPANIST:
                     data.accompanists.append(participant_data)
-            data.participant_count = len(data.participants)
-            data.accompanist_count = len(data.accompanists)
+            data.total_performers = len(data.performers)
+            data.total_accompanists = len(data.accompanists)
             yield data
 
 
@@ -153,19 +151,19 @@ class ProsceniumStreetPlayRegistrationData(RegistrationData):
             data.contact1 = registration.contact1
             data.contact2 = registration.contact2
             data.email = registration.email
-            data.participants = []
+            data.performers = []
             data.accompanists = []
             for participant in registration.prosceniumstreetplayparticipant_set.all():
                 participant_data = {}
                 participant_data['name'] = participant.name
                 participant_data['age'] = participant.age
                 participant_data['photo'] = str(participant.photo)
-                if participant.role == ProsceniumTheatreParticipant.PARTICIPANT:
-                    data.participants.append(participant_data)
-                elif participant.role == ProsceniumTheatreParticipant.ACCOMPANIST:
+                if participant.role == ProsceniumStreetPlayParticipant.PERFORMER:
+                    data.performers.append(participant_data)
+                elif participant.role == ProsceniumStreetPlayParticipant.ACCOMPANIST:
                     data.accompanists.append(participant_data)
-            data.participant_count = len(data.participants)
-            data.accompanist_count = len(data.accompanists)
+            data.total_performers = len(data.performers)
+            data.total_accompanists = len(data.accompanists)
             yield data
 
 
