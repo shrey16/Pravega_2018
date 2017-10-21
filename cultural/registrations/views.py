@@ -5,6 +5,10 @@ from .forms import *
 from .models import *
 
 
+def root(request):
+    return redirect("registrations/")
+
+
 def index(request):
     return render(request, "index.html", {})
 
