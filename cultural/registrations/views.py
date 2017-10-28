@@ -197,7 +197,6 @@ def bob(request):
             except IntegrityError:
                 return render(request, "bob.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
         else:
-            print(registration_form.errors, participant_formset.errors)
             return render(request, "bob.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
         return render(request, "bob.html", context)
