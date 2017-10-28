@@ -23,9 +23,11 @@ p {
     font-size: 1.2em;
     font-family: 'Raleway', sans-serif;
 }
+
 .content p {
     font-weight: 600;
 }
+
 h1,
 h2,
 h3,
@@ -260,6 +262,7 @@ span {
 #main {
     left: 90px;
 }
+
 #links {
     position: absolute;
     right: 0;
@@ -309,6 +312,7 @@ span {
     margin: 1em 0 3em;
     border-radius: 10px;
 }
+
 
 /* creates triangle */
 
@@ -422,6 +426,8 @@ span {
         height: 60px;
         align-content: center;
         align-items: center;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
     }
     #disabler {
         display: none;
@@ -430,9 +436,9 @@ span {
         border: none !important;
     }
     .content p {
-    font-weight: 400;
-    font-size: 1em;
-}
+        font-weight: 400;
+        font-size: 1em;
+    }
     .li-img {
         top: -15px;
         position: relative;
@@ -444,7 +450,6 @@ span {
         margin: 0;
         padding: 15px 25px 15px 25px;
     }
-
     #tog-button-mobile .li-img {
         float: right;
         top: 0px;

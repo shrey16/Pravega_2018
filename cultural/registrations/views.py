@@ -202,7 +202,7 @@ def bob(request):
 
 def lasya(request):
     LasyaParticipantFormSet = formset_factory(
-        LasyaParticipantForm, formset=BaseLasyaParticipantFormSet, min_num=1, validate_min=True, extra=3)
+        LasyaParticipantForm, formset=BaseLasyaParticipantFormSet, min_num=5, validate_min=True, max_num=20, validate_max=True, extra=0)
     registration = LasyaRegistration()
 
     context = {

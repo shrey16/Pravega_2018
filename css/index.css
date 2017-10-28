@@ -533,6 +533,8 @@ span {
         height: 60px;
         align-content: center;
         align-items: center;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .li-img {

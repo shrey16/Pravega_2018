@@ -152,7 +152,7 @@ span {
 
 .li-text {
     text-align: center;
-    font-size: calc(1.5vh);
+    font-size: 1.5vh;
     position: relative;
     left: -95px;
     -webkit-transition: left 100ms ease-in-out;
@@ -207,9 +207,10 @@ span {
 .content {
     position: relative;
     height: 100vh;
-    width: calc(100% - 110px);
-    padding-left: 110px;
+    width: calc(100% - 100px);
+    padding-left: 100px;
     align-items: center;
+    overflow-x: hidden;
 }
 
 .content-img {
@@ -409,6 +410,10 @@ span {
     border-bottom: 1px solid gray;
 }
 
+footer {
+    left: 100px;
+    width: 100vw;
+}
 footer p {
     text-align: center;
 }
@@ -525,8 +530,16 @@ footer a {
 }
 
 
+.rules {
+    text-align: justify;
+}
 
-
+td {
+    vertical-align: top;
+}
+.rules li {
+    font-size: 1.2em;
+}
 /*progressbar connectors*/
 
 #progressbar li:after {
@@ -669,6 +682,8 @@ fieldset label {
         height: 60px;
         align-content: center;
         align-items: center;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
     }
     #disabler {
         display: none;
@@ -747,7 +762,7 @@ fieldset label {
         left: 0px;
         top: calc(30px - 1.2em);
         font-size: 1.2em;
-        width: calc(100% - 80px - 82px);
+        width: calc(100% - 162px);
     }
     .nav-desc {
         margin: 0;
@@ -829,6 +844,12 @@ fieldset label {
         width: 100vw;
         margin: auto;
         padding: 0;
+    }
+    footer {
+        width: 100vw;
+        left: 0;
+        padding: 0 0 30px 0;
+        margin: 0;
     }
     #progressbar {
         left: 0;
