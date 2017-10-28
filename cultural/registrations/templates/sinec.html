@@ -186,6 +186,7 @@
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
             <form action="{% url 'registrations:sinec' %}" method="post" enctype="multipart/form-data" id="msform">
                 <ul id="progressbar">
+                    <li>Rules</li>
                     <li>Identification</li>
                     <li>Contact
                         <br/>Details</li>
@@ -197,8 +198,11 @@
                 {% csrf_token %} {% if registration_form.errors %}
                 <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
                     <p> {{ errors }} </p>
-                    {% endfor %} {% endfor %}
-                </div> {% endif %}
+                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
+                    <p> {{ error }} </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <fieldset>
                     <h2>Rules and Regulations</h2>
                     <p>You can also download a copy of the rules for all events as a PDF <a style="color: blue;" href="{% static 'rules/rules.pdf' %}">here</a>.</p>
@@ -208,14 +212,14 @@
                     <br/>
                     <input type="button" name="next" id="continue" class="action-button" value="Continue" />
                 </fieldset>
-                <fieldset>
+                <fieldset class="real">
                     {{ registration_form.team_name.label_tag }} {{ registration_form.team_name }} {% if registration_form.team_name.errors %}
                     <div class="errors"> {% for error in registration_form.team_name.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.registered_company.label_tag }} {{ registration_form.registered_company }} {% if registration_form.registered_company.errors %}
                     <div class="errors"> {% for error in registration_form.registered_company.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
-                <fieldset>
+                <fieldset class="real">
                     {{ registration_form.contact.label_tag }} {{ registration_form.contact }} {% if registration_form.contact.errors %}
                     <div class="errors">{% for error in registration_form.contact.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.address.label_tag }} {{ registration_form.address }} {% if registration_form.address.errors %}
@@ -225,7 +229,7 @@
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
-                <fieldset>
+                <fieldset class="real">
                     {{ registration_form.project_name.label_tag }} {{ registration_form.project_name }} {% if registration_form.project_name.errors %}
                     <div class="errors"> {% for error in registration_form.project_name.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.project_field.label_tag }} {{ registration_form.project_field }} {% if registration_form.project_field.errors %}
@@ -241,7 +245,7 @@
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
-                <fieldset>
+                <fieldset class="real" id="participants">
                     {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
                     <div class="participant-formset">
                         {% if participant_form.errors %}

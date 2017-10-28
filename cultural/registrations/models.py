@@ -139,10 +139,11 @@ class BoBRegistration(models.Model):
     def upload_path(instance, filename):
         return f"./uploads/bob/audio/{instance.band_name} - {instance.city} - {filename}"
 
-    audio_sample = models.FileField(
+    audio_sample_file = models.FileField(
         validators=[AUDIO_FILE_VALIDATOR],
         max_length=255,
-        upload_to=upload_path)
+        upload_to=upload_path, blank=True)
+    audio_sample_link = models.URLField(blank=True)
 
     prelims_venue = models.CharField(max_length=max(map(lambda x: len(x[0]), PRELIMS_VENUES)),
                                      choices=PRELIMS_VENUES,

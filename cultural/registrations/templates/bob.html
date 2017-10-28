@@ -186,6 +186,7 @@
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
             <form action="{% url 'registrations:bob' %}" method="post" enctype="multipart/form-data" id="msform">
                 <ul id="progressbar">
+                    <li>Rules</li>
                     <li>Identification</li>
                     <li>Contact
                         <br/>Details</li>
@@ -197,10 +198,43 @@
                 {% csrf_token %} {% if registration_form.errors %}
                 <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
                     <p> {{ errors }} </p>
-                    {% endfor %} {% endfor %}
-                </div> {% endif %}
+                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
+                    <p> {{ error }} </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <fieldset>
                     <h2>Rules and Regulations</h2>
+                    <ol class="rules">
+                        <li>All bands are allowed to participate, regardless of age.</li>
+                        <li>There are no language or genre restrictions on the entries.</li>
+                        <li>The contest comprises of 3 stages. The rules for the different stages are:
+                            <ol style="font-size:0.8em;">
+                                <li>Registration:
+                                    <ol style="font-size:0.8em;">
+                                        <li>Bands can register online at our portal. There will be no registration fee.</li>
+                                        <li>The band will be considered only if they upload one of their tracks as a sample during registration.</li>
+                                    </ol>
+                                </li>
+                                <li>Prelims:
+                                    <ol style="font-size:0.8em;">
+                                        <li>We shall select anything between 5 to 8 bands from each city for the city prelims at the specified venue depending on the number of registrations.</li>
+                                        <li>Each band will get 20+5 minutes for their performance in the prelims, which includes sound check. However, bands will be given a total of half an hour before the prelims begin to have a preliminary master sound balancing. The bands can perform as many tracks as they want to in that time limit.</li>
+                                    </ol>
+                                </li>
+                                <li>Finals:
+                                    <ol style="font-size:0.8em;">
+                                        <li>The finals will be conducted at IISc, Bangalore during the course of Pravega 2018.</li>
+                                        <li>The bands will perform for 20+10 minutes. This includes the set up time.</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>Pravega will have the right to use any of the music tracks for future promotional purposes, with due credit given to the band.</li>
+                        <li>Any dispute arising due to any confusion regarding the contest shall be resolved at IISc by Battle of Bands, Pravega and the decision or resolution provided will be considered final.</li>
+                        <li>Pravega reserves the right to change specifics of the competition including rules and regulations, bands selected, prize amounts, etc., if necessary.
+                            <br/>All decisions by Pravega shall be final and binding.</li>
+                    </ol>
                     <p>You can also download a copy of the rules for all events as a PDF <a style="color: blue;" href="{% static 'rules/rules.pdf' %}">here</a>.</p>
                     <p>Have you read and understood the above regulations?</p>
                     <label style="padding-left:2%;">Yes</label>
@@ -208,7 +242,7 @@
                     <br/>
                     <input type="button" name="next" id="continue" class="action-button" value="Continue" />
                 </fieldset>
-                <fieldset>
+                <fieldset class="real">
                     {{ registration_form.band_name.label_tag }} {{ registration_form.band_name }} {% if registration_form.band_name.errors %}
                     <div class="errors"> {% for error in registration_form.band_name.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.city.label_tag }} {{ registration_form.city }} {% if registration_form.city.errors %}
@@ -218,7 +252,7 @@
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
-                <fieldset>
+                <fieldset class="real">
                     {{ registration_form.facebook_link.label_tag }} {{ registration_form.facebook_link }} {% if registration_form.facebook_link.errors %}
                     <div class="errors"> {% for error in registration_form.facebook_link.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.email.label_tag }} {{ registration_form.email }} {% if registration_form.email.errors %}
@@ -226,15 +260,17 @@
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
-                <fieldset>
+                <fieldset class="real">
                     {{ registration_form.prelims_venue.label_tag }} {{ registration_form.prelims_venue }} {% if registration_form.prelims_venue.errors %}
                     <div class="errors"> {% for error in registration_form.prelims_venue.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.audio_sample.label_tag }} {{ registration_form.audio_sample }} {% if registration_form.audio_sample.errors %}
-                    <div class="errors"> {% for error in registration_form.audio_sample.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    {% endif %} {{ registration_form.audio_sample_file.label_tag }} {{ registration_form.audio_sample_file }} {% if registration_form.audio_sample_file.errors %}
+                    <div class="errors"> {% for error in registration_form.audio_sample_file.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.audio_sample_link.label_tag }} {{ registration_form.audio_sample_link }} {% if registration_form.audio_sample_link.errors %}
+                    <div class="errors"> {% for error in registration_form.audio_sample_link.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
-                <fieldset id="participants">
+                <fieldset class="real" id="participants">
                     {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
                     <div class="participant-formset">
                         {% if participant_form.errors %}

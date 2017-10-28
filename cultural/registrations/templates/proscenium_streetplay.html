@@ -196,8 +196,11 @@
                 {% csrf_token %} {% if registration_form.errors %}
                 <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
                     <p> {{ errors }} </p>
-                    {% endfor %} {% endfor %}
-                </div> {% endif %}
+                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
+                    <p> {{ error }} </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <fieldset>
                     <h2>Rules and Regulations</h2>
                     <h2>General Rules</h2>

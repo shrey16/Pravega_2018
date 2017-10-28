@@ -183,7 +183,8 @@ class BoBRegistrationData(RegistrationData):
             data.facebook = registration.facebook_link
             data.email = registration.email
             data.prelims_venue = registration.prelims_venue
-            data.audio_sample = str(registration.audio_sample)
+            data.audio_sample_file = str(registration.audio_sample_file)
+            data.audio_sample_link = str(registration.audio_sample_link)
             data.participants = []
             for participant in registration.bobparticipant_set.all():
                 participant_data = {}

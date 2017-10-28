@@ -168,8 +168,10 @@ def bob(request):
             registration.email = registration_form.cleaned_data.get('email')
             registration.genre = registration_form.cleaned_data.get(
                 'genre')
-            registration.audio_sample = registration_form.cleaned_data.get(
-                'audio_sample')
+            registration.audio_sample_file = registration_form.cleaned_data.get(
+                'audio_sample_file')
+            registration.audio_sample_link = registration_form.cleaned_data.get(
+                'audio_sample_link')
             registration.facebook_link = registration_form.cleaned_data.get(
                 'facebook_link')
             try:
@@ -195,6 +197,7 @@ def bob(request):
             except IntegrityError:
                 return render(request, "bob.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
         else:
+            print(registration_form.errors, participant_formset.errors)
             return render(request, "bob.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
         return render(request, "bob.html", context)

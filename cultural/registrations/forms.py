@@ -240,12 +240,28 @@ class BoBRegistrationForm(forms.Form):
         widget=forms.TextInput(attrs={
             'placeholder': 'E-Mail ID',
         }))
-    audio_sample = forms.FileField(
+    audio_sample_file = forms.FileField(
         validators=[BoBRegistration.AUDIO_FILE_VALIDATOR],
-        label="A Sample Audio Track of Your Band",
+        label="Sample Track File",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Audio File'
-        }))
+        }),
+        required=False)
+    audio_sample_link = forms.URLField(
+        label="Link to sample track on SoundCloud, ReverbNation or YouTube",
+        widget=forms.URLInput(attrs={
+            'placeholder': 'Audio URL',
+        }),
+        required=False)
+
+    def clean(self):
+        if any(self.errors):
+            return
+        super(forms.Form, self).clean()
+        audio_sample_link = self.cleaned_data.get('audio_sample_link')
+        audio_sample_file = self.cleaned_data.get('audio_sample_file')
+        if not (audio_sample_link or audio_sample_file):
+            raise forms.ValidationError("You must either upload a sample track or provide a link to one", code='no_sample_audio')
 
 
 class BaseBoBParticipantFormSet(BaseFormSet):
