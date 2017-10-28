@@ -10,12 +10,13 @@ const required_marker = "<span style=\"color:red; font-size:2.5em;\"> *</span>";
 
 $(document).ready(function() {
     legends = $("#progressbar li");
+    legends.css('width', (100 / legends.length) + '%');
     if (desktopMode) {
         $("#progressbar").css("left", "calc(50% - " + (legends.length / 2) + " * " + legends.width() + "px");
     }
     legends.removeClass("active");
     var index = 0;
-    legends.eq(index).addClass("active");
+    legends.eq(index).addClass('active');
     var found_errors = false;
     $("fieldset").each(function(current_index) {
         $(this).find("label").each(function() {
@@ -95,10 +96,8 @@ function goForward(elem, duration) {
 function goBackward(elem, duration) {
     var current_fs = $(elem).parent();
     var previous_fs = $(elem).parent().prev();
-
     //de-activate current step on progressbar
     legends.eq($("fieldset").index(current_fs)).removeClass("active");
-
     //show the previous fieldset
     previous_fs.show();
     //hide the current fieldset with style
@@ -200,9 +199,9 @@ $("#review-button").click(function() {
     review_data.find("tr").remove();
     const legends = $("#progressbar li");
     var content = ""
-    $("fieldset").each(function(index) {
+    $(".real").each(function(index) {
         if (this.id !== "review") {
-            const legend = legends.eq(index).text();
+            const legend = legends.eq(index + 1 /* skip rules */ ).text();
             content += "<tr><td class=\"fieldset-legend\" colspan=\"2\">" + legend + "</td></tr>"
             if (this.id === "participants") {
                 $(this).find(".participant-formset").each(function(index) {
