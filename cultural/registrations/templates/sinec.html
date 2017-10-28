@@ -217,6 +217,7 @@
                     <div class="errors"> {% for error in registration_form.team_name.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.registered_company.label_tag }} {{ registration_form.registered_company }} {% if registration_form.registered_company.errors %}
                     <div class="errors"> {% for error in registration_form.registered_company.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <br/>
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
                 <fieldset class="real">
