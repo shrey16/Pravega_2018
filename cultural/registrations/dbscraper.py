@@ -21,7 +21,8 @@ try:
         wb = Workbook()
         dest_filename = xlsx_name
         ws = wb.worksheets[0]
-        ws.title = os.path.basename(os.path.splitext(xlsx_name)[0])  # chop off extension
+        ws.title = os.path.basename(os.path.splitext(xlsx_name)[
+                                    0])  # chop off extension
         if floats is None:
             floats = []
         for row_index, row in enumerate(reader):
@@ -96,7 +97,8 @@ class RegistrationData:
             for entry_type, entry in entry_with_only_sub_entries.items():
                 csv_writer.writerow([entry_type])
                 for sub_entry in entry:
-                    csv_writer.writerow((self.prettify(key) for key in sub_entry.keys()))
+                    csv_writer.writerow((self.prettify(key)
+                                         for key in sub_entry.keys()))
                     csv_writer.writerow(sub_entry.values())
         final_output = output.getvalue()
         output.close()
@@ -118,6 +120,7 @@ class ProsceniumTheatreRegistrationData(RegistrationData):
     def load_from_db(self):
         for registration in ProsceniumTheatreRegistration.objects.all():
             data = ProsceniumTheatreRegistrationData()
+            data.time = str(registration.time)
             data.institution = registration.institution
             data.language = registration.language
             data.contact1 = registration.contact1
@@ -132,9 +135,9 @@ class ProsceniumTheatreRegistrationData(RegistrationData):
                 participant_data['name'] = participant.name
                 participant_data['age'] = participant.age
                 participant_data['photo'] = str(participant.photo)
-                if participant.role == ProsceniumTheatreParticipant.PERFORMER:
+                if participant.role == ProsceniumParticipant.PERFORMER:
                     data.performers.append(participant_data)
-                elif participant.role == ProsceniumTheatreParticipant.ACCOMPANIST:
+                elif participant.role == ProsceniumParticipant.ACCOMPANIST:
                     data.accompanists.append(participant_data)
             data.total_performers = len(data.performers)
             data.total_accompanists = len(data.accompanists)
@@ -145,7 +148,8 @@ class ProsceniumStreetPlayRegistrationData(RegistrationData):
 
     def load_from_db(self):
         for registration in ProsceniumStreetPlayRegistration.objects.all():
-            data = ProsceniumTheatreRegistrationData()
+            data = ProsceniumStreetPlayRegistrationData()
+            data.time = str(registration.time)
             data.institution = registration.institution
             data.language = registration.language
             data.contact1 = registration.contact1
@@ -158,9 +162,9 @@ class ProsceniumStreetPlayRegistrationData(RegistrationData):
                 participant_data['name'] = participant.name
                 participant_data['age'] = participant.age
                 participant_data['photo'] = str(participant.photo)
-                if participant.role == ProsceniumStreetPlayParticipant.PERFORMER:
+                if participant.role == ProsceniumParticipant.PERFORMER:
                     data.performers.append(participant_data)
-                elif participant.role == ProsceniumStreetPlayParticipant.ACCOMPANIST:
+                elif participant.role == ProsceniumParticipant.ACCOMPANIST:
                     data.accompanists.append(participant_data)
             data.total_performers = len(data.performers)
             data.total_accompanists = len(data.accompanists)
@@ -171,7 +175,8 @@ class BoBRegistrationData(RegistrationData):
 
     def load_from_db(self):
         for registration in BoBRegistration.objects.all():
-            data = ProsceniumTheatreRegistrationData()
+            data = BoBRegistrationData()
+            data.time = str(registration.time)
             data.band_name = registration.band_name
             data.city = registration.city
             data.genre = registration.genre
@@ -185,6 +190,57 @@ class BoBRegistrationData(RegistrationData):
                 participant_data['name'] = participant.name
                 participant_data['contact'] = participant.contact
                 participant_data['instrument'] = participant.instrument
+                data.participants.append(participant_data)
+            data.participant_count = len(data.participants)
+            yield data
+
+
+class LasyaRegistrationData(RegistrationData):
+
+    def load_from_db(self):
+        for registration in LasyaRegistration.objects.all():
+            data = LasyaRegistrationData()
+            data.time = str(registration.time)
+            data.name = registration.name
+            data.institution = registration.institution
+            data.contact = registration.contact
+            data.email = registration.email
+            data.prelims_video = str(registration.prelims_video)
+            data.participants = []
+            for participant in registration.lasyaparticipant_set.all():
+                participant_data = {}
+                participant_data['name'] = participant.name
+                participant_data['contact'] = participant.contact
+                participant_data['email'] = participant.email
+                data.participants.append(participant_data)
+            data.participant_count = len(data.participants)
+            yield data
+
+
+class SInECRegistrationData(RegistrationData):
+
+    def load_from_db(self):
+        for registration in SInECRegistration.objects.all():
+            data = SInECRegistrationData()
+            data.time = str(registration.time)
+            data.team_name = registration.team_name
+            data.project_name = registration.project_name
+            data.project_field = registration.project_field
+            data.project_abstract = registration.project_abstract
+            data.project_patented = registration.project_patented
+            data.registered_company = registration.registered_company
+            data.privacy_preference = registration.privacy_preference
+            data.address = registration.address
+            data.email = registration.email
+            data.contact = registration.contact
+            data.project_file = str(registration.project_file)
+            data.participants = []
+            for participant in registration.sinecparticipant_set.all():
+                participant_data = {}
+                participant_data['name'] = participant.name
+                participant_data['city'] = participant.city
+                participant_data['institution'] = participant.institution
+                participant_data['student_type'] = participant.student_type
                 data.participants.append(participant_data)
             data.participant_count = len(data.participants)
             yield data

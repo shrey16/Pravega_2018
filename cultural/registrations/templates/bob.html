@@ -1,124 +1,331 @@
-{% load static %}
-<h1>Battle of Bands Registration</h1>
+<!DOCTYPE html>
+<html lang="en-us">
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Registration | Battle of Bands | Pravega 2018</title>
+    {% load static %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'css/reg.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'css/hamburger.css' %}" rel="stylesheet" type="text/css" />
+    <style>
+    body {
+        background-image: url({% static "img/physics_back.svg" %});
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    </style>
+</head>
 
-<form action="{% url 'registrations:bob' %}" method="post" enctype="multipart/form-data">
-{% csrf_token %}
-    
-    <fieldset>
-        <legend>Identification</legend>
-        {{ registration_form.band_name.label_tag }}
-        {{ registration_form.band_name }}
-        {% if registration_form.band_name.errors %}
-            {% for error in registration_form.band_name.errors %}
-                {{ error|escape }}
-            {% endfor %}
-        {% endif %}
-
-        {{ registration_form.city.label_tag }}
-        {{ registration_form.city }}
-        {% if registration_form.city.errors %}
-            {% for error in registration_form.city.errors %}
-                {{ error|escape }}
-            {% endfor %}
-        {% endif %}
-
-        {{ registration_form.genre.label_tag }}
-        {{ registration_form.genre }}
-        {% if registration_form.genre.errors %}
-            {% for error in registration_form.genre.errors %}
-                {{ error|escape }}
-            {% endfor %}
-        {% endif %}
-    </fieldset>
-
-    <fieldset>
-        <legend>Contact Information</legend>
-        {{ registration_form.facebook_link.label_tag }}
-        {{ registration_form.facebook_link }}
-        {% if registration_form.facebook_link.errors %}
-            {% for error in registration_form.facebook_link.errors %}
-                {{ error|escape }}
-            {% endfor %}
-        {% endif %}
-
-        {{ registration_form.email.label_tag }}
-        {{ registration_form.email }}
-        {% if registration_form.email.errors %}
-            {% for error in registration_form.email.errors %}
-                {{ error|escape }}
-            {% endfor %}
-        {% endif %}
-    </fieldset>
-
-    <fieldset>
-        <legend>Prelims Information</legend>
-        {{ registration_form.prelims_venue.label_tag }}
-        {{ registration_form.prelims_venue }}
-        {% if registration_form.prelims_venue.errors %}
-            {% for error in registration_form.prelims_venue.errors %}
-                {{ error|escape }}
-            {% endfor %}
-        {% endif %}
-
-        {{ registration_form.audio_sample.label_tag }}
-        {{ registration_form.audio_sample }}
-        {% if registration_form.audio_sample.errors %}
-            {% for error in registration_form.audio_sample.errors %}
-                {{ error|escape }}
-            {% endfor %}
-        {% endif %}
-    </fieldset>
-
-    <fieldset>
-        <legend>Participant Information</legend>
-        {{ participant_formset.management_form }}
-
-        {% for participant_form in participant_formset %}
-            <div class="participant-formset">
-                {{ participant_form.name.label_tag }}
-                {{ participant_form.name }}
-                {% if participant_form.name.errors %}
-                    {% for error in participant_form.name.errors %}
-                        {{ error|escape }}
-                    {% endfor %}
-                {% endif %}
-
-                {{ participant_form.contact.label_tag }}
-                {{ participant_form.contact }}
-                {% if participant_form.contact.errors %}
-                    {% for error in participant_form.contact.errors %}
-                        {{ error|escape }}
-                    {% endfor %}
-                {% endif %}
-
-                {{ participant_form.instrument.label_tag }}
-                {{ participant_form.instrument }}
-                {% if participant_form.instrument.errors %}
-                    {% for error in participant_form.instrument.errors %}
-                        {{ error|escape }}
-                    {% endfor %}
-                {% endif %}
+<body>
+    <div id="sidebar" class="clearfix">
+        <div id="tog-button-mobile">
+            <div class="li-img">
+                <button class="c-hamburger c-hamburger--htx">
+                    <span>toggle menu</span>
+                </button>
             </div>
-        {% endfor %}
-
-        {% if participant_formset.non_form_errors %}
-            {% for error in participant_formset.non_form_errors %}
-                {{ error|escape }}
-            {% endfor %}
-        {% endif %}
-    </fieldset>
-    <input type="submit" value="Save" class="button"/>
-</form>
-<footer><p><a href="mailto:webmaster@pravega.org">Contact us</a> if you need any help!</p></footer>
-
-<!-- Include formset plugin - including jQuery dependency -->
-<script src="{% static 'jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'jquery.formset.js' %}"></script>
-<script>
+            <a href="index.html">
+                    <img id="header-logo" src="{% static 'img/logo.svg' %}" />
+                    <div class="li-text nav-desc">
+                        <h3 id="title">Pravega</h3>
+                    </div>
+                </a>
+        </div>
+        <div id="iconbar">
+            <ul>
+                <li id="tog-button-desktop">
+                    <div class="li-img">
+                        <button class="c-hamburger c-hamburger--htx">
+                            <span>toggle menu</span>
+                        </button>
+                    </div>
+                    <div class="li-text nav-desc">
+                        <h3>Some text toggle</h3>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="biology.html">
+                        <div class="li-img"><img src="{% static 'img/Biology.png' %}" /></div>
+                        <div class="li-text">Biology</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Biology</h3>
+                        <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="pravega.org/chemistry.html">
+                        <div class="li-img"><img src="{% static 'img/Chemistry.png' %}" /></div>
+                        <div class="li-text">Chemistry</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Chemistry</h3>
+                        <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="pravega.org/pravega.org/maths.html">
+                        <div class="li-img"><img src="{% static 'img/math.png' %}" /></div>
+                        <div class="li-text">Mathematics</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Maths</h3>
+                        <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="pravega.org/physics.html">
+                        <div class="li-img"><img src="{% static 'img/Physics.png' %}" /></div>
+                        <div class="li-text">Physics</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Physics</h3>
+                        <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re at it.</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="pravega.org/engine.html">
+                        <div class="li-img"><img src="{% static 'img/Technical.png' %}" /></div>
+                        <div class="li-text">Engineering</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Engineering</h3>
+                        <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="pravega.org/lasya.html">
+                        <div class="li-img"><img src="{%static 'img/Lasya.png' %}" /></div>
+                        <div class="li-text">Lasya</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Lasya</h3>
+                        <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="pravega.org/bob.html">
+                        <div class="li-img"><img src="{% static 'img/BoB.png' %}" /></div>
+                        <div class="li-text">BoB</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Battle of Bands</h3>
+                        <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="pravega.org/pros.html">
+                        <div class="li-img"><img src="{% static 'img/Proscenium.png' %}" /></div>
+                        <div class="li-text">Proscenium</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Proscenium</h3>
+                        <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="infobar">
+            <div class="infobar-content">
+                <h3>Introduction</h3>
+                <p>Go on, click on one of the buttons below, to discover a host of exciting events, which you might want to check out!
+                </p>
+            </div>
+            <div class="infobar-content">
+                <a href="biology.html"><h3>Biology</h3></a>
+                <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
+            </div>
+            <div class="infobar-content">
+                <a href="chemistry.html"><h3>Chemistry</h3></a>
+                <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
+            </div>
+            <div class="infobar-content">
+                <a href="maths.html"><h3>Math</h3></a>
+                <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
+            </div>
+            <div class="infobar-content">
+                <a href="physics.html"><h3>Physics</h3></a>
+                <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re at it.</p>
+            </div>
+            <div class="infobar-content">
+                <a href="engine.html"><h3>Engineering</h3></a>
+                <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
+            </div>
+            <div class="infobar-content">
+                <a href="lasya.html"><h3>Lasya</h3></a>
+                <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.
+                </p>
+            </div>
+            <div class="infobar-content">
+                <a href="bob.html"><h3>Battle of Bands</h3></a>
+                <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
+            </div>
+            <div class="infobar-content">
+                <a href="pros.html"><h3>Proscenium</h3></a>
+                <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
+            </div>
+        </div>
+    </div>
+    <!-- SideBar gets over-->
+    <div id="disabler"></div>
+    <div id="main">
+        <div class="content">
+            <h1 id="registration-title">Battle of Bands</h1> {% if error_message %}
+            <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
+            <form action="{% url 'registrations:bob' %}" method="post" enctype="multipart/form-data" id="msform">
+                <ul id="progressbar">
+                    <li>Identification</li>
+                    <li>Contact
+                        <br/>Details</li>
+                    <li>Prelims
+                        <br/>Information</li>
+                    <li>Participant
+                        <br/>Details</li>
+                </ul>
+                {% csrf_token %} {% if registration_form.errors %}
+                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
+                    <p> {{ errors }} </p>
+                    {% endfor %} {% endfor %}
+                </div> {% endif %}
+                <fieldset>
+                    <h2>Rules and Regulations</h2>
+                    <p>Some Placeholder Rules</p>
+                    <p>Have you read and understood the above regulations?</p>
+                    <label style="padding-left:2%;">Yes</label>
+                    <input type="checkbox" name="understood" id="understood" />
+                    <br/>
+                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
+                </fieldset>
+                <fieldset>
+                    {{ registration_form.band_name.label_tag }} {{ registration_form.band_name }} {% if registration_form.band_name.errors %}
+                    <div class="errors"> {% for error in registration_form.band_name.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.city.label_tag }} {{ registration_form.city }} {% if registration_form.city.errors %}
+                    <div class="errors"> {% for error in registration_form.city.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.genre.label_tag }} {{ registration_form.genre }} {% if registration_form.genre.errors %}
+                    <div class="errors"> {% for error in registration_form.genre.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset>
+                    {{ registration_form.facebook_link.label_tag }} {{ registration_form.facebook_link }} {% if registration_form.facebook_link.errors %}
+                    <div class="errors"> {% for error in registration_form.facebook_link.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.email.label_tag }} {{ registration_form.email }} {% if registration_form.email.errors %}
+                    <div class="errors"> {% for error in registration_form.email.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset>
+                    {{ registration_form.prelims_venue.label_tag }} {{ registration_form.prelims_venue }} {% if registration_form.prelims_venue.errors %}
+                    <div class="errors"> {% for error in registration_form.prelims_venue.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.audio_sample.label_tag }} {{ registration_form.audio_sample }} {% if registration_form.audio_sample.errors %}
+                    <div class="errors"> {% for error in registration_form.audio_sample.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset id="participants">
+                    {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
+                    <div class="participant-formset">
+                        {% if participant_form.errors %}
+                        <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
+                            <p> {{ errors }} </p>
+                            {% endfor %} {% endfor %}
+                        </div>
+                        {% endif %} {{ participant_form.name.label_tag }} {{ participant_form.name }} {% if participant_form.name.errors %}
+                        <div class="errors"> {% for error in participant_form.name.errors %} {{ error|escape }} {% endfor %} </div>
+                        {% endif %} {{ participant_form.contact.label_tag }} {{ participant_form.contact }} {% if participant_form.contact.errors %}
+                        <div class="errors"> {% for error in participant_form.contact.errors %} {{ error|escape }} {% endfor %} </div>
+                        {% endif %} {{ participant_form.instrument.label_tag }} {{ participant_form.instrument }} {% if participant_form.instrument.errors %}
+                        <div class="errors"> {% for error in participant_form.instrument.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    </div>
+                    {% endfor %} {% if participant_formset.non_form_errors %}
+                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <br />
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
+                </fieldset>
+                <fieldset id="review">
+                    <h2>Please review before submitting</h2>
+                    <table>
+                        <colgroup>
+                            <col style="width: 50%" />
+                            <col style="width: 50%" />
+                        </colgroup>
+                    </table>
+                    <input type="button" name="previous" class="previous action-button" value="Edit" />
+                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
+                </fieldset>
+            </form>
+            <footer>
+                <p><a href="mailto:webmaster@pravega.org">Contact us</a> if you need any help!</p>
+            </footer>
+        </div>
+    </div>
+    <div id="floating-footer">
+        <a target="_blank" href="https://www.facebook.com/PravegaIISc/">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
+                    <h6>Facebook</h6></div>
+                <img src="{% static 'img/fb.svg' %}">
+            </div>
+        </a>
+        <a target="_blank" href="https://twitter.com/PravegaIISc">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
+                    <h6>Twitter</h6></div>
+                <img src="{% static 'img/Twitter.svg' %}">
+            </div>
+        </a>
+        <a href="contact.html">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
+                    <h6>Contact Us</h6></div>
+                <img src="{% static 'img/phone.svg' %}">
+            </div>
+        </a>
+        <a href="index.html">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
+                    <h6>Home</h6></div>
+                <img src="{% static 'img/home.svg' %}">
+            </div>
+        </a>
+    </div>
+    <div id="footer">
+        <div id="social">
+            <a target="_blank" href="https://www.facebook.com/PravegaIISc/"><img src="{% static 'img/fb.svg' %}" style=""></a>
+            <a target="_blank" href="https://twitter.com/PravegaIISc"><img src="{% static 'img/Twitter.svg' %}"></a>
+        </div>
+        <ul id="links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+    <!-- Include formset plugin - including jQuery dependency -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/TweenLite.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/menu.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script src="{% static 'js/reg.js' %}" type="text/javascript"></script>
+    <script>
     $('.participant-formset').formset({
         addText: 'Add participant',
-        deleteText: 'Remove Participant'
+        deleteText: 'Remove Participant',
+        addAnimationDuration: 100,
+        removeAnimationDuration: 100
     });
-</script>
+    </script>
+</body>
+
+</html>

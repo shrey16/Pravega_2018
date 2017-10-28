@@ -9,7 +9,7 @@ class ProsceniumTheatreParticipantInline(admin.TabularInline):
 
 class ProsceniumTheatreRegistrationAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['institution', 'language']}),
+        (None, {'fields': ['institution', 'language', 'time']}),
         ('Contact Information', {'fields': ['email', 'contact1', 'contact2']})
     ]
     inlines = [ProsceniumTheatreParticipantInline]
@@ -22,7 +22,7 @@ class ProsceniumStreetPlayParticipantInline(admin.TabularInline):
 
 class ProsceniumStreetPlayRegistrationAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['institution', 'language']}),
+        (None, {'fields': ['institution', 'language', 'time']}),
         ('Contact Information', {'fields': ['email', 'contact1', 'contact2']})
     ]
     inlines = [ProsceniumStreetPlayParticipantInline]
@@ -35,11 +35,37 @@ class BoBParticipantInline(admin.TabularInline):
 
 class BoBRegistrationAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['band_name', 'city', 'genre', 'prelims_venue']}),
+        (None, {'fields': ['band_name', 'city', 'genre', 'prelims_venue', 'time']}),
         ('Contact Information', {'fields': ['email', 'facebook_link']})
     ]
     inlines = [BoBParticipantInline]
 
+
+class LasyaParticipantInline(admin.TabularInline):
+    model = LasyaParticipant
+    extra = 0
+
+
+class LasyaRegistrationAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields': ['name', 'institution', 'time']}),
+        ('Contact Information', {'fields': ['email', 'contact']})
+    ]
+    inlines = [LasyaParticipantInline]
+
+
+class SInECParticipantInline(admin.TabularInline):
+    model = SInECParticipant
+    extra = 0
+
+
+class SInECRegistrationAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields': ['team_name', 'time']}),
+        ('Project Information', {'fields': ['project_name', 'project_field']}),
+        ('Contact Information', {'fields': ['email', 'contact']})
+    ]
+    inlines = [SInECParticipantInline]
 
 admin.site.register(ProsceniumTheatreRegistration,
                     ProsceniumTheatreRegistrationAdmin)
@@ -47,3 +73,5 @@ admin.site.register(ProsceniumStreetPlayRegistration,
                     ProsceniumStreetPlayRegistrationAdmin)
 admin.site.register(BoBRegistration,
                     BoBRegistrationAdmin)
+admin.site.register(LasyaRegistration, LasyaRegistrationAdmin)
+admin.site.register(SInECRegistration, SInECRegistrationAdmin)
