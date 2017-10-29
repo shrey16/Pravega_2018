@@ -177,7 +177,7 @@ if (desktopMode) {
 
     $("#tog-button-mobile .li-img").click(function(e) {
         $(this).find(".c-hamburger").toggleClass("is-active");
-        $("man").toggleClass("noscroll");
+        $("body").toggleClass("noscroll");
         if (infobarVisible) {
             const dropdowns = $(".dropdown");
             for (let i = 0; i < dropdowns.length; ++i) {
