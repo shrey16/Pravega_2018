@@ -177,7 +177,6 @@ if (desktopMode) {
 
     $("#tog-button-mobile .li-img").click(function(e) {
         $(this).find(".c-hamburger").toggleClass("is-active");
-        $("body").toggleClass("noScroll");
         if (infobarVisible) {
             const dropdowns = $(".dropdown");
             for (let i = 0; i < dropdowns.length; ++i) {
@@ -195,6 +194,7 @@ if (desktopMode) {
             TweenLite.to($("#iconbar"), 0.3, {
                 height: 0,
                 onStart: function() {
+                    $('#main').css('display', 'block');
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(true);
                         $.fn.fullpage.setKeyboardScrolling(true);
@@ -206,6 +206,7 @@ if (desktopMode) {
             TweenLite.to($("#iconbar"), 0.3, {
                 height: screen.height,
                 onStart: function() {
+                    $('#main').css('display', 'none');
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(false);
                         $.fn.fullpage.setKeyboardScrolling(false);
