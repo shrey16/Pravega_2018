@@ -24,6 +24,7 @@
         position: absolute;
         margin: auto;
         left: 15vw;
+        top: calc(50vh - 240px)!important;
     }
 
     </style>
@@ -249,12 +250,6 @@
     <script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/TweenLite.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/menu.js' %}" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var entry = $(".content .nav-link");
-            $(".content").css("top", (($("#main").height() / 2) - (entry.length * 2 *entry.height())));
-        })
-    </script>
 </body>
 
 </html>
