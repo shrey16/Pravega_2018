@@ -213,7 +213,7 @@ span {
     right: 0;
     width: 100%;
     height: 4vh;
-    background: rgb(92, 1, 159);
+    background: rgb(51, 50, 51);
     display: flex;
     color: white;
     display: none;
@@ -579,7 +579,7 @@ a:hover {
     }
     #main {
         top: 60px;
-        margin-top: 15px;
+        margin-top: 1px;
     }
     #title {
         margin: 0;
@@ -601,6 +601,9 @@ a:hover {
     .details {
         width: 90%;
         height: auto;
+    }
+    #fullpage {
+        margin-top: 175px;
     }
     #main .center .details,
     #main .left .details,

@@ -47,6 +47,7 @@ span {
     overflow: hidden;
     position: fixed;
 }
+
 .nav-link {
     width: 60vw;
     color: white;
@@ -318,6 +319,7 @@ span {
 
 
 
+
 /* creates triangle */
 
 .triangle-isosceles:after {
@@ -377,6 +379,7 @@ span {
 
 
 
+
 /*Classes related to the form*/
 
 #msform {
@@ -418,12 +421,15 @@ footer {
     left: 100px;
     width: 100vw;
 }
+
 footer p {
     text-align: center;
 }
+
 footer a {
     color: blue;
 }
+
 
 /*Hide all except first fieldset*/
 
@@ -434,6 +440,7 @@ footer a {
 #registration-title {
     width: 100%;
 }
+
 
 
 /*inputs*/
@@ -455,6 +462,7 @@ footer a {
 #msform input[type=checkbox] {
     width: 5%;
 }
+
 
 
 
@@ -483,6 +491,7 @@ footer a {
 
 
 
+
 /*headings*/
 
 .fs-title {
@@ -498,6 +507,7 @@ footer a {
     color: #666;
     margin-bottom: 20px;
 }
+
 
 
 
@@ -541,9 +551,12 @@ footer a {
 td {
     vertical-align: top;
 }
+
 .rules li {
     font-size: 1.2em;
 }
+
+
 /*progressbar connectors*/
 
 #progressbar li:after {
@@ -562,6 +575,7 @@ td {
     /*connector not needed before the first step*/
     content: none;
 }
+
 
 
 
@@ -845,10 +859,33 @@ fieldset label {
         font-size: 1.75em;
         padding-top: 15px;
     }
+    .nav-link {
+        position: relative;
+        width: 80%;
+        left: 5%;
+    }
     #msform {
         width: 100vw;
         margin: auto;
         padding: 0;
+    }
+    #main {
+        position: absolute;
+        top: 60px;
+        bottom: 50px;
+        left: 0;
+        height: calc(100vh - 60px);
+        width: 100%;
+    }
+    .rules li {
+        text-align: left;
+    }
+    div.content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        width: 100%;
     }
     footer {
         width: 100vw;
