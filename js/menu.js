@@ -197,6 +197,8 @@ if (desktopMode) {
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(true);
                         $.fn.fullpage.setKeyboardScrolling(true);
+                    } else {
+                        $(document.body).css('overflow-y', 'auto');
                     }
                 }
 
@@ -208,6 +210,8 @@ if (desktopMode) {
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(false);
                         $.fn.fullpage.setKeyboardScrolling(false);
+                    } else {
+                        $(document.body).css('overflow-y', 'hidden');
                     }
                 }
             });
