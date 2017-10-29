@@ -39,6 +39,10 @@ span {
     line-height: 14px;
 }
 
+.noscroll {
+    overflow: hidden;
+    position: fixed;
+}
 #sidebar {
     position: fixed;
     top: 0;

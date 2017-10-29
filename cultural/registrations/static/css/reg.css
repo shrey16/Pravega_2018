@@ -43,6 +43,10 @@ span {
     line-height: 14px;
 }
 
+.noscroll {
+    overflow: hidden;
+    position: fixed;
+}
 .nav-link {
     width: 60vw;
     color: white;

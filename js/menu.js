@@ -177,6 +177,7 @@ if (desktopMode) {
 
     $("#tog-button-mobile .li-img").click(function(e) {
         $(this).find(".c-hamburger").toggleClass("is-active");
+        $("body").toggleClass("noScroll");
         if (infobarVisible) {
             const dropdowns = $(".dropdown");
             for (let i = 0; i < dropdowns.length; ++i) {
@@ -197,8 +198,6 @@ if (desktopMode) {
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(true);
                         $.fn.fullpage.setKeyboardScrolling(true);
-                    } else {
-                        $(document.body).css('overflow-y', 'auto');
                     }
                 }
 
@@ -210,8 +209,6 @@ if (desktopMode) {
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(false);
                         $.fn.fullpage.setKeyboardScrolling(false);
-                    } else {
-                        $(document.body).css('overflow-y', 'hidden');
                     }
                 }
             });
