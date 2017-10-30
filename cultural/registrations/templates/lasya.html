@@ -288,6 +288,7 @@
                     <div class="errors">{% for error in registration_form.name.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.institution.label_tag }} {{ registration_form.institution }} {% if registration_form.institution.errors %}
                     <div class="errors">{% for error in registration_form.institution.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
                 <fieldset class="real">

@@ -205,6 +205,42 @@
                 {% endif %}
                 <fieldset>
                     <h2>Rules and Regulations</h2>
+                    <ol class="rules">
+                        <li>All team members must be students enrolled in an academic institution.</li>
+                        <li>Each team can have a maximum of 4 members.</li>
+                        <li>Ideas submitted must be original.</li>
+                        <li>The contest comprises of 3 stages.
+                            <ol style="list-style-type: none; font-size: 0.8em;">
+                                <li>Round 1: Preliminaries
+                                    <ol style="font-size: 0.8em;">
+                                        <li>Teams register online at our portal. There is no registration fee.</li>
+                                        <li>Teams must submit a description of their innovation by the first deadline. Additional files such as videos, presentations, websites URLs etc can be uploaded to support their description.</li>
+                                        <li>Teams need to Submit a short video of the working prototype within the second deadline.</li>
+                                        <li>The team will be considered selected for the next round based on their idea description and prototype video.</li>
+                                        <li>Ideas can be from any field or interdisciplinary including science, mathematics, engineering, economics, social sciences, etc.</li>
+                                    </ol>
+                                </li>
+                                <li>Round 2: Semi-finals
+                                    <ol style="font-size: 0.8em;">
+                                        <li>15 to 20 teams shall be selected from across the country. Selection will be done by IISc and IIM professors.</li>
+                                        <li>Teams selected to Round 2 will be notified and will participate in workshops and/or related events that will help them enhance pitching methods, business strategies and help develop business models.</li>
+                                        <li>Teams will make and send new presentations using the skills they have acquired. Proof of concept must also be submitted. These presentations will be used for selection into the next round.</li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    Round 3: Finals
+                                    <ol style="font-size: 0.8em;">
+                                        <li>Eight teams will be selected for the final round, which will be conducted at IISc, Bangalore during the course of Pravega 2018. Exact date and timings will be notified to the finalists.</li>
+                                        <li>The teams will present their model to a panel of judges and invitees consisting of corporate professionals, investors, IISc and IIM professors.</li>
+                                        <li>Winning teams will be announced the same day. Winning teams get cash prizes worth up to Rs. 1 lakh.</li>
+                                        <li>All finalists get the opportunity to interact with corporates, investors and leading science professionals. Teams may also be offered internships in leading companies based on their interaction with the companies.</li>
+                                        <li>Pravega will respect the privacy preferences chosen by the team.</li>
+                                        <li>Any dispute arising due to any confusion regarding the contest shall be resolved at IISc by a Pravega committee. Pravega and the decision or resolution provided will be considered final. Pravega reserves the right to change specifics of the competition without prior notice. All decisions by Pravega shall be final and binding.</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
                     <p>You can also download a copy of the rules for all events as a PDF <a style="color: blue;" href="{% static 'rules/rules.pdf' %}">here</a>.</p>
                     <p>Have you read and understood the above regulations?</p>
                     <label style="padding-left:2%;">Yes</label>
@@ -218,6 +254,7 @@
                     {% endif %} {{ registration_form.registered_company.label_tag }} {{ registration_form.registered_company }} {% if registration_form.registered_company.errors %}
                     <div class="errors"> {% for error in registration_form.registered_company.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
                     <br/>
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
                 <fieldset class="real">
