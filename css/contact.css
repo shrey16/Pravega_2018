@@ -382,6 +382,7 @@ a:hover {
 
 .contact {
     margin-top: 1vh;
+    height: auto;
 }
 .contact.left {
     margin-top: 0;
@@ -608,7 +609,6 @@ a:hover {
     }
     .header {
         padding-top: 20px;
-        left: 50px;
     }
     #main .center .details,
     #main .left .details,
