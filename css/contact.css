@@ -383,10 +383,14 @@ a:hover {
 .contact {
     margin-top: 1vh;
 }
-
-.contact h1 {
-    width: calc(100vw - 80px);
-    margin-left: 50px;
+.contact.left {
+    margin-top: 0;
+}
+.header {
+    position: relative;
+    left: 75px;
+    width: calc(100vw - 100px);
+    text-align: center;
     text-transform: uppercase;
     font-style: normal;
     color: black;
@@ -406,23 +410,20 @@ a:hover {
     padding-bottom: 150px;
 }
 
+.details {
+    color: white;
+    text-align: center;    
+}
 #main .center .details {
     margin-left: 42vw;
-    color: white;
-    text-align: center;
 }
-
 #main .left .details {
     margin-left: 20%;
-    color: white;
-    text-align: center;
     float: left;
 }
 
 #main .right .details {
     margin-left: 65%;
-    color: white;
-    text-align: center;
 }
 
 @media only screen and (max-width: 900px) {
@@ -604,6 +605,10 @@ a:hover {
     }
     #fullpage {
         margin-top: 175px;
+    }
+    .header {
+        padding-top: 20px;
+        left: 50px;
     }
     #main .center .details,
     #main .left .details,
