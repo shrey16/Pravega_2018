@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from .customfields import PhoneNumberField
@@ -9,6 +10,8 @@ SCRIPT_FILE_VALIDATOR = FileExtensionValidator(
 VIDEO_FILE_VALIDATOR = FileExtensionValidator(
     allowed_extensions=['mp4', '3gp', 'mkv'])
 
+def get_uploads_directory():
+    return os.path.expanduser("~/Pravega_2018/uploads/")
 
 class ProsceniumRegistration:
     ENGLISH = 'English'
@@ -37,7 +40,7 @@ class ProsceniumTheatreRegistration(models.Model):
                                 default=ProsceniumRegistration.ENGLISH)
 
     def upload_video_path(instance, filename):
-        return f"./uploads/theatre_prelims/videos/{instance.institution} - {instance.language} - {filename}"
+        return os.path.join(get_uploads_directory(), f"theatre/videos/{instance.institution} - {instance.language} - {filename}")
 
     prelims_video = models.FileField(
         validators=[VIDEO_FILE_VALIDATOR],
@@ -45,7 +48,7 @@ class ProsceniumTheatreRegistration(models.Model):
         upload_to=upload_video_path)
 
     def upload_script_path(instance, filename):
-        return f"./uploads/theatre_prelims/scripts/{instance.institution} - {instance.language} - {filename}"
+        return os.path.join(get_uploads_directory(), f"theatre/scripts/{instance.institution} - {instance.language} - {filename}")
 
     prelims_script = models.FileField(
         validators=[SCRIPT_FILE_VALIDATOR],
@@ -66,7 +69,7 @@ class ProsceniumTheatreParticipant(models.Model):
     name = models.CharField(max_length=200)
 
     def upload_path(instance, filename):
-        return f"./uploads/theatre/participant_photos/{instance.registration_entry.institution} - {instance.registration_entry.language}/{instance.name} - {filename}"
+        return os.path.join(get_uploads_directory(), f"theatre/participant_photos/{instance.registration_entry.institution} - {instance.registration_entry.language}/{instance.name} - {filename}")
 
     photo = models.ImageField(
         validators=[IMAGE_FILE_VALIDATOR],
@@ -104,7 +107,7 @@ class ProsceniumStreetPlayParticipant(models.Model):
     name = models.CharField(max_length=200)
 
     def upload_path(instance, filename):
-        return f"./uploads/street_play/participant_photos/{instance.registration_entry.institution} - {instance.registration_entry.language}/{instance.name} - {filename}"
+        return os.path.join(get_uploads_directory(), f"street_play/participant_photos/{instance.registration_entry.institution} - {instance.registration_entry.language}/{instance.name} - {filename}")
 
     photo = models.ImageField(
         validators=[IMAGE_FILE_VALIDATOR],
@@ -175,7 +178,7 @@ class LasyaRegistration(models.Model):
     contact = PhoneNumberField.get_field()
 
     def upload_video_path(instance, filename):
-        return f"./uploads/lasya_prelims/videos/{instance.name} - {instance.institution} - {filename}"
+        return os.path.join(get_uploads_directory(), f"lasya_prelims/videos/{instance.name} - {instance.institution} - {filename}")
 
     prelims_video = models.FileField(
         validators=[VIDEO_FILE_VALIDATOR],
@@ -222,7 +225,7 @@ class SInECRegistration(models.Model):
                                           default=PRIVATE)
 
     def upload_video_path(instance, filename):
-        return f"./uploads/sinec/project_files/{instance.team_name} - {instance.project_name} - {filename}"
+        return os.path.join(get_uploads_directory(), f"sinec/project_files/{instance.team_name} - {instance.project_name} - {filename}")
 
     project_file = models.FileField(
         max_length=255,
