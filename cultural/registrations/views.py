@@ -325,7 +325,7 @@ def sinec(request):
                     SInECParticipant.objects.filter(
                         registration_entry=registration).delete()
                     SInECParticipant.objects.bulk_create(participants)
-                return render(request, "success.html", {'event_name': 'SInEC'})
+                return render(request, "success.html", {'event_name': 'Pravega Innovation Conclave'})
             except IntegrityError:
                 return render(request, "sinec.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
         else:
