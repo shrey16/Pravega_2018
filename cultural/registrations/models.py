@@ -11,7 +11,7 @@ VIDEO_FILE_VALIDATOR = FileExtensionValidator(
     allowed_extensions=['mp4', '3gp', 'mkv'])
 
 def get_uploads_directory():
-    return os.path.expanduser("~/Pravega_2018/uploads/")
+    return os.path.expanduser("~/Pravega_2018/cultural/uploads/")
 
 class ProsceniumRegistration:
     ENGLISH = 'English'
@@ -140,7 +140,7 @@ class BoBRegistration(models.Model):
     facebook_link = models.URLField(blank=True)
 
     def upload_path(instance, filename):
-        return f"./uploads/bob/audio/{instance.band_name} - {instance.city} - {filename}"
+        return os.path.join(get_uploads_directory(), f"bob/audio/{instance.band_name} - {instance.city} - {filename}")
 
     audio_sample_file = models.FileField(
         validators=[AUDIO_FILE_VALIDATOR],
