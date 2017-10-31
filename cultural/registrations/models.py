@@ -11,7 +11,7 @@ VIDEO_FILE_VALIDATOR = FileExtensionValidator(
     allowed_extensions=['mp4', '3gp', 'mkv'])
 
 def get_uploads_directory():
-    return os.path.expanduser("~/Pravega_2018/cultural/uploads/")
+    return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
 
 class ProsceniumRegistration:
     ENGLISH = 'English'
