@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^bob$', views.bob, name='bob'),
     url(r'^lasya$', views.lasya, name='lasya'),
-    url(r'^sinec$', views.sinec, name='sinec'),
+    url(r'^pis$', views.pis, name='pis'),
     url(r'^proscenium/streetplay$', views.proscenium_streetplay, name='proscenium_streetplay'),
     url(r'^proscenium/theatre$', views.proscenium_theatre, name='proscenium_theatre'),
 ]

@@ -307,7 +307,7 @@ def sinec(request):
             try:
                 registration.save()
             except IntegrityError:
-                return render(request, "sinec.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+                return render(request, "pis.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
 
             participants = []
             for participant_form in participant_formset:
@@ -325,10 +325,10 @@ def sinec(request):
                     SInECParticipant.objects.filter(
                         registration_entry=registration).delete()
                     SInECParticipant.objects.bulk_create(participants)
-                return render(request, "success.html", {'event_name': 'Pravega Innovation Conclave'})
+                return render(request, "success.html", {'event_name': 'Pravega Innovation Summit'})
             except IntegrityError:
-                return render(request, "sinec.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
+                return render(request, "pis.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
         else:
-            return render(request, "sinec.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+            return render(request, "pis.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
-        return render(request, "sinec.html", context)
+        return render(request, "pis.html", context)
