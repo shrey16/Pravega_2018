@@ -89,7 +89,8 @@ $(document).ready(function() {
                     $("#black_trans").css("visibility", "hidden");
                 }
             }, "scrollup")
-            .to(footer, 0.5, { bottom: "0" }, "scrollup");
+            .to(footer, 0.5, { bottom: "0" }, "scrollup")
+            .to($(".notification"), 0.5, {opacity: 1}, "scrollup");
     }
 
     scroll_up.pause();

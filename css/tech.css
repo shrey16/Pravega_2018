@@ -374,6 +374,30 @@ span {
     text-align: center;
 }
 
+.notification {
+    display: block;
+    position: fixed;
+    right: 50px;
+    top: 50px;
+    z-index: 10000000;
+    width: 20%;
+    height: auto;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 40px 20px 20px;
+    border-radius: 15px;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.notification-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transform: scale(0.5);
+    transform-origin: 100% 0;
+}
+
 @media only screen and (max-width: 900px),
 (max-height: 500px) {
 
@@ -576,5 +600,14 @@ span {
     #social {
         left: 5px;
         transform: translateX(0);
+    }
+    .notification {
+        bottom: 37px;
+        width: 100%;
+        right: 0;
+        top: auto;
+        box-sizing: border-box;
+        border-radius: 0;
+        opacity: 0;
     }
 }

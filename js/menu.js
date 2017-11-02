@@ -1,3 +1,7 @@
+$(".notification-close").click(function() {
+    $(this).parent().fadeOut(200);
+})
+
 let width = $(window).innerWidth(),
     height = $(window).innerHeight();
 

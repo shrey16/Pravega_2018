@@ -43,6 +43,7 @@ span {
     overflow: hidden;
     position: fixed;
 }
+
 #sidebar {
     position: fixed;
     top: 0;
@@ -422,6 +423,8 @@ span {
 
 
 
+
+
 /* creates triangle */
 
 .triangle-isosceles:after {
@@ -476,6 +479,30 @@ span {
     transform: translateY(-50%);
     font-size: 1.25em;
     text-align: center;
+}
+
+.notification {
+    display: block;
+    position: fixed;
+    right: 50px;
+    top: 50px;
+    z-index: 10000000;
+    width: 20%;
+    height: auto;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 40px 20px 20px;
+    border-radius: 15px;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.notification-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transform: scale(0.5);
+    transform-origin: 100% 0;
 }
 
 @media only screen and (max-width: 900px) {
@@ -636,7 +663,7 @@ span {
         width: 50px;
     }
     #year {
-        font-size: 1.9em;
+        font-size: 1.3em;
         width: 244px;
     }
     #main {
@@ -667,8 +694,8 @@ span {
         margin-top: 80px;
         margin-left: 0;
     }
-    #buttongroup {
-        width: 100%;
+    #scroll_me_arrow {
+        top:  65vh;
     }
     .content-text-section {
         padding: 20px;
@@ -682,5 +709,14 @@ span {
     #social {
         left: 5px;
         transform: translateX(0);
+    }
+    .notification {
+        bottom: 37px;
+        width: 100%;
+        right: 0;
+        top: auto;
+        box-sizing: border-box;
+        border-radius: 0;
+        opacity: 0;
     }
 }
