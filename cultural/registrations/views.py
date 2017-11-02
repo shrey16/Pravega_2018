@@ -260,7 +260,7 @@ def lasya(request):
         return render(request, "lasya.html", context)
 
 
-def sinec(request):
+def pis(request):
     SInECParticipantFormSet = formset_factory(
         SInECParticipantForm, formset=BaseSInECParticipantFormSet, min_num=1, validate_min=True, extra=3)
     registration = SInECRegistration()
