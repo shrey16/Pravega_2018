@@ -185,10 +185,12 @@ function getFileName(path) {
 function getFormReport(fieldset) {
     var content = "";
     fieldset.find("label").each(function() {
-        var text = "<tr><td class=\"field-label\">" + trimColon(getTextWithoutSpan($(this))) + ":  </td>";
         const input = $(this).next();
         const data = input.val();
-        text += "<td>  " + ((input.prop("type") === "file") ? getFileName(data) : data) + "</td></tr>";
+        const marked = (input.prop('required') && (data == null || data.trim() == ""));
+        const color = marked ? ' style=\"color: red;\"' : '';
+        var text = "<tr><td class=\"field-label\"" + color + ">" + trimColon(getTextWithoutSpan($(this))) + ":  </td>";
+        text += "<td" + color + ">  " + ((input.prop("type") === "file") ? getFileName(data) : data) + "</td></tr>";
         content += text;
     });
     return content;

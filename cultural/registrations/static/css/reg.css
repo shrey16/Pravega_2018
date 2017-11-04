@@ -321,6 +321,7 @@ span {
 
 
 
+
 /* creates triangle */
 
 .triangle-isosceles:after {
@@ -381,6 +382,7 @@ span {
 
 
 
+
 /*Classes related to the form*/
 
 #msform {
@@ -432,6 +434,7 @@ footer a {
 }
 
 
+
 /*Hide all except first fieldset*/
 
 #msform fieldset:not(:first-of-type) {
@@ -441,6 +444,7 @@ footer a {
 #registration-title {
     width: 100%;
 }
+
 
 
 
@@ -463,6 +467,7 @@ footer a {
 #msform input[type=checkbox] {
     width: 5%;
 }
+
 
 
 
@@ -493,6 +498,7 @@ footer a {
 
 
 
+
 /*headings*/
 
 .fs-title {
@@ -508,6 +514,7 @@ footer a {
     color: #666;
     margin-bottom: 20px;
 }
+
 
 
 
@@ -558,6 +565,7 @@ td {
 }
 
 
+
 /*progressbar connectors*/
 
 #progressbar li:after {
@@ -576,6 +584,7 @@ td {
     /*connector not needed before the first step*/
     content: none;
 }
+
 
 
 
@@ -639,6 +648,10 @@ td {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.deep {
+    font-size: 0.85em;
 }
 
 fieldset label {
@@ -879,6 +892,9 @@ fieldset label {
     }
     .rules li {
         text-align: left;
+    }
+    .deep {
+        margin-left: -40px!important;
     }
     div.content {
         position: absolute;
