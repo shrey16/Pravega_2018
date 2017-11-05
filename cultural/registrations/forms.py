@@ -53,13 +53,15 @@ class ProsceniumTheatreRegistrationForm(forms.Form):
         label="Video for Prelims",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Prelims Video',
-        }))
+        }),
+        required=False)
     prelims_script = forms.FileField(
         validators=[SCRIPT_FILE_VALIDATOR],
         label="Script for Prelims",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Prelims Script',
-        }))
+        }),
+        required=False)
     contact1 = PhoneNumberField.get_field(
         as_regexField=True,
         max_length=15,
@@ -79,6 +81,26 @@ class ProsceniumTheatreRegistrationForm(forms.Form):
         label="E-Mail ID",
         widget=forms.TextInput(attrs={
             'placeholder': 'E-Mail ID',
+        }))
+
+
+class ProsceniumTheatreVideoSubmissionForm(forms.Form):
+    index = forms.IntegerField(
+        label="Registration ID",
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Registration ID'
+        }))
+    prelims_video = forms.FileField(
+        validators=[VIDEO_FILE_VALIDATOR],
+        label="Video for Prelims",
+        widget=forms.ClearableFileInput(attrs={
+            'placeholder': 'Prelims Video',
+        }))
+    prelims_script = forms.FileField(
+        validators=[SCRIPT_FILE_VALIDATOR],
+        label="Script for Prelims",
+        widget=forms.ClearableFileInput(attrs={
+            'placeholder': 'Prelims Script',
         }))
 
 
@@ -261,7 +283,8 @@ class BoBRegistrationForm(forms.Form):
         audio_sample_link = self.cleaned_data.get('audio_sample_link')
         audio_sample_file = self.cleaned_data.get('audio_sample_file')
         if not (audio_sample_link or audio_sample_file):
-            raise forms.ValidationError("You must either upload a sample track or provide a link to one", code='no_sample_audio')
+            raise forms.ValidationError(
+                "You must either upload a sample track or provide a link to one", code='no_sample_audio')
 
 
 class BaseBoBParticipantFormSet(BaseFormSet):

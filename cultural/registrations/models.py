@@ -11,7 +11,8 @@ VIDEO_FILE_VALIDATOR = FileExtensionValidator(
     allowed_extensions=['mp4', '3gp', 'mkv'])
 
 def get_uploads_directory():
-    return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
+    #return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
+    return "./uploads/"
 
 class ProsceniumRegistration:
     ENGLISH = 'English'
@@ -45,7 +46,8 @@ class ProsceniumTheatreRegistration(models.Model):
     prelims_video = models.FileField(
         validators=[VIDEO_FILE_VALIDATOR],
         max_length=255,
-        upload_to=upload_video_path)
+        upload_to=upload_video_path,
+        blank=True)
 
     def upload_script_path(instance, filename):
         return os.path.join(get_uploads_directory(), f"theatre/scripts/{instance.institution} - {instance.language} - {filename}")
@@ -53,7 +55,8 @@ class ProsceniumTheatreRegistration(models.Model):
     prelims_script = models.FileField(
         validators=[SCRIPT_FILE_VALIDATOR],
         max_length=255,
-        upload_to=upload_script_path)
+        upload_to=upload_script_path,
+        blank=True)
 
     def __str__(self):
         return f"Institution: {self.institution}, Language: {self.language}, 1st Contact No.: {self.contact1}, 2nd Contact No.: {self.contact2}, E-Mail ID: {self.email}"

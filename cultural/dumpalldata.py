@@ -19,4 +19,4 @@ save_as_xlsx(dbs.ProsceniumStreetPlayRegistrationData(),
              './registration_data/proscenium_streetplay.xlsx')
 save_as_xlsx(dbs.BoBRegistrationData(), './registration_data/bob.xlsx')
 save_as_xlsx(dbs.LasyaRegistrationData(), './registration_data/lasya.xlsx')
-save_as_xlsx(dbs.SInECRegistrationData(), './registration_data/sinec.xlsx')
+save_as_xlsx(dbs.SInECRegistrationData(), './registration_data/pis.xlsx')

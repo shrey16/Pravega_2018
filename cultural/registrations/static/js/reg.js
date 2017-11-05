@@ -199,7 +199,6 @@ function getFormReport(fieldset) {
 $("#review-button").click(function() {
     const review_data = $("#review table");
     review_data.find("tr").remove();
-    const legends = $("#progressbar li");
     var content = ""
     $(".real").each(function(index) {
         if (this.id !== "review") {

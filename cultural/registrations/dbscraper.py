@@ -121,6 +121,7 @@ class ProsceniumTheatreRegistrationData(RegistrationData):
         for registration in ProsceniumTheatreRegistration.objects.all():
             data = ProsceniumTheatreRegistrationData()
             data.time = str(registration.time)
+            data.id = registration.id
             data.institution = registration.institution
             data.language = registration.language
             data.contact1 = registration.contact1
@@ -150,6 +151,7 @@ class ProsceniumStreetPlayRegistrationData(RegistrationData):
         for registration in ProsceniumStreetPlayRegistration.objects.all():
             data = ProsceniumStreetPlayRegistrationData()
             data.time = str(registration.time)
+            data.id = registration.id
             data.institution = registration.institution
             data.language = registration.language
             data.contact1 = registration.contact1
@@ -177,6 +179,7 @@ class BoBRegistrationData(RegistrationData):
         for registration in BoBRegistration.objects.all():
             data = BoBRegistrationData()
             data.time = str(registration.time)
+            data.id = registration.id
             data.band_name = registration.band_name
             data.city = registration.city
             data.genre = registration.genre
@@ -202,6 +205,7 @@ class LasyaRegistrationData(RegistrationData):
         for registration in LasyaRegistration.objects.all():
             data = LasyaRegistrationData()
             data.time = str(registration.time)
+            data.id = registration.id
             data.name = registration.name
             data.institution = registration.institution
             data.contact = registration.contact
@@ -224,6 +228,7 @@ class SInECRegistrationData(RegistrationData):
         for registration in SInECRegistration.objects.all():
             data = SInECRegistrationData()
             data.time = str(registration.time)
+            data.id = registration.id
             data.team_name = registration.team_name
             data.project_name = registration.project_name
             data.project_field = registration.project_field

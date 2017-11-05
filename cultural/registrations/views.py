@@ -1,12 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.db import IntegrityError, transaction
+from django.core.exceptions import ObjectDoesNotExist
 from django.forms.formsets import formset_factory
 from .forms import *
 from .models import *
-
-
-def root(request):
-    return redirect("registrations/")
 
 
 def index(request):
@@ -69,13 +66,44 @@ def proscenium_theatre(request):
                         registration_entry=registration).delete()
                     ProsceniumTheatreParticipant.objects.bulk_create(
                         participants)
-                return render(request, "success.html", {'event_name': 'Proscenium'})
+                return render(request, "success.html", {'event_name': 'Proscenium', 'id': registration.id})
             except IntegrityError:
                 return render(request, "proscenium_theatre.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
         else:
             return render(request, "proscenium_theatre.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
         return render(request, "proscenium_theatre.html", context)
+
+
+def proscenium_theatre_video(request):
+    context = {'registration_form': ProsceniumTheatreVideoSubmissionForm()}
+    if request.method == 'POST':
+        registration_form = ProsceniumTheatreVideoSubmissionForm(
+            request.POST, request.FILES)
+        context = {'registration_form': registration_form}
+        if registration_form.is_valid():
+            index = registration_form.cleaned_data.get('index')
+            try:
+                registration = ProsceniumTheatreRegistration.objects.get(
+                    pk=index)
+                if registration.prelims_video and registration.prelims_script:
+                    return render(request, "proscenium_video_submission.html", {**context, **{'error_message': "Video and Script have already been submitted. Re-submission is not allowed."}})
+                else:
+                    registration.prelims_video = registration_form.cleaned_data.get(
+                        'prelims_video')
+                    registration.prelims_script = registration_form.cleaned_data.get(
+                        'prelims_script')
+            except ObjectDoesNotExist:
+                return render(request, "proscenium_video_submission.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
+            try:
+                registration.save()
+                return render(request, "success.html", {'event_name': 'Proscenium Video Prelims', 'id': registration.id})
+            except IntegrityError:
+                return render(request, "proscenium_video_submission.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+        else:
+            return render(request, "proscenium_video_submission.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+    else:
+        return render(request, "proscenium_video_submission.html", context)
 
 
 def proscenium_streetplay(request):
@@ -128,7 +156,7 @@ def proscenium_streetplay(request):
                         registration_entry=registration).delete()
                     ProsceniumStreetPlayParticipant.objects.bulk_create(
                         participants)
-                return render(request, "success.html", {'event_name': 'Footprints'})
+                return render(request, "success.html", {'event_name': 'Footprints', 'id': registration.id})
             except IntegrityError:
                 return render(request, "proscenium_streetplay.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
         else:
@@ -193,7 +221,7 @@ def bob(request):
                     BoBParticipant.objects.filter(
                         registration_entry=registration).delete()
                     BoBParticipant.objects.bulk_create(participants)
-                return render(request, "success.html", {'event_name': 'Battle of Bands'})
+                return render(request, "success.html", {'event_name': 'Battle of Bands', 'id': registration.id})
             except IntegrityError:
                 return render(request, "bob.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
         else:
@@ -251,7 +279,7 @@ def lasya(request):
                     LasyaParticipant.objects.filter(
                         registration_entry=registration).delete()
                     LasyaParticipant.objects.bulk_create(participants)
-                return render(request, "success.html", {'event_name': 'Lasya'})
+                return render(request, "success.html", {'event_name': 'Lasya', 'id': registration.id})
             except IntegrityError:
                 return render(request, "lasya.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
         else:
@@ -325,7 +353,7 @@ def pis(request):
                     SInECParticipant.objects.filter(
                         registration_entry=registration).delete()
                     SInECParticipant.objects.bulk_create(participants)
-                return render(request, "success.html", {'event_name': 'Pravega Innovation Summit'})
+                return render(request, "success.html", {'event_name': 'Pravega Innovation Summit', 'id': registration.id})
             except IntegrityError:
                 return render(request, "pis.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
         else:
