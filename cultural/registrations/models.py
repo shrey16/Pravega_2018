@@ -1,6 +1,7 @@
 import os
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.utils.timezone import now
 from .customfields import PhoneNumberField
 
 IMAGE_FILE_VALIDATOR = FileExtensionValidator(
@@ -10,9 +11,11 @@ SCRIPT_FILE_VALIDATOR = FileExtensionValidator(
 VIDEO_FILE_VALIDATOR = FileExtensionValidator(
     allowed_extensions=['mp4', '3gp', 'mkv'])
 
+
 def get_uploads_directory():
     return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
-    #return "./uploads/"
+    # return "./uploads/"
+
 
 class ProsceniumRegistration:
     ENGLISH = 'English'
@@ -31,7 +34,7 @@ class ProsceniumTheatreRegistration(models.Model):
 
     class Meta:
         unique_together = (("institution", "language"),)
-    time = models.DateTimeField(auto_now_add=True)
+    time = models.DateTimeField(default=now)
     institution = models.CharField(max_length=200)
     contact1 = PhoneNumberField.get_field()
     contact2 = PhoneNumberField.get_field(blank=True)
@@ -87,7 +90,7 @@ class ProsceniumStreetPlayRegistration(models.Model):
 
     class Meta:
         unique_together = (("institution", "language"),)
-    time = models.DateTimeField(auto_now_add=True)
+    time = models.DateTimeField(default=now)
     institution = models.CharField(max_length=200)
     contact1 = PhoneNumberField.get_field()
     contact2 = PhoneNumberField.get_field(blank=True)
@@ -135,7 +138,7 @@ class BoBRegistration(models.Model):
     MUMBAI = "Mumbai"
     PRELIMS_VENUES = ((BANGALORE, BANGALORE), (KOLKATA, KOLKATA),
                       (CHENNAI, CHENNAI), (DELHI, DELHI), (MUMBAI, MUMBAI))
-    time = models.DateTimeField(auto_now_add=True)
+    time = models.DateTimeField(default=now)
     band_name = models.CharField(max_length=200)
     genre = models.CharField(max_length=100, blank=True)
     email = models.EmailField()
@@ -174,7 +177,7 @@ class LasyaRegistration(models.Model):
 
     class Meta:
         unique_together = (("name", "institution"),)
-    time = models.DateTimeField(auto_now_add=True)
+    time = models.DateTimeField(default=)
     name = models.CharField(max_length=200, unique=True)
     institution = models.CharField(max_length=200, blank=True)
     email = models.EmailField()
@@ -207,7 +210,7 @@ class SInECRegistration(models.Model):
 
     class Meta:
         unique_together = (("team_name", "project_name"),)
-    time = models.DateTimeField(auto_now_add=True)
+    time = models.DateTimeField(default=now)
     team_name = models.CharField(max_length=200)
     project_name = models.CharField(max_length=200)
     email = models.EmailField()
