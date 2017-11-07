@@ -284,7 +284,9 @@
                     <input type="button" name="next" id="continue" class="action-button" value="Continue" />
                 </fieldset>
                 <fieldset class="real">
-                    {{ registration_form.name.label_tag }} {{ registration_form.name }} {% if registration_form.name.errors %}
+                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
+                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.name.label_tag }} {{ registration_form.name }} {% if registration_form.name.errors %}
                     <div class="errors">{% for error in registration_form.name.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.institution.label_tag }} {{ registration_form.institution }} {% if registration_form.institution.errors %}
                     <div class="errors">{% for error in registration_form.institution.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}

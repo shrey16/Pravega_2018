@@ -231,7 +231,9 @@
                     <input type="button" name="next" id="continue" class="action-button" value="Continue" />
                 </fieldset>
                 <fieldset class="real">
-                    {{ registration_form.institution.label_tag }} {{ registration_form.institution }} {% if registration_form.institution.errors %}
+                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
+                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.institution.label_tag }} {{ registration_form.institution }} {% if registration_form.institution.errors %}
                     <div class="errors">{% for error in registration_form.institution.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.language.label_tag }} {{ registration_form.language }} {% if registration_form.language.errors %}
                     <div class="errors">{% for error in registration_form.language.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}

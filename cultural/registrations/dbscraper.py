@@ -122,6 +122,7 @@ class ProsceniumTheatreRegistrationData(RegistrationData):
             data = ProsceniumTheatreRegistrationData()
             data.time = str(registration.time)
             data.id = registration.id
+            data.referral_code = registration.referral_code
             data.institution = registration.institution
             data.language = registration.language
             data.contact1 = registration.contact1
@@ -152,6 +153,7 @@ class ProsceniumStreetPlayRegistrationData(RegistrationData):
             data = ProsceniumStreetPlayRegistrationData()
             data.time = str(registration.time)
             data.id = registration.id
+            data.referral_code = registration.referral_code
             data.institution = registration.institution
             data.language = registration.language
             data.contact1 = registration.contact1
@@ -180,6 +182,7 @@ class BoBRegistrationData(RegistrationData):
             data = BoBRegistrationData()
             data.time = str(registration.time)
             data.id = registration.id
+            data.referral_code = registration.referral_code
             data.band_name = registration.band_name
             data.city = registration.city
             data.genre = registration.genre
@@ -206,6 +209,7 @@ class LasyaRegistrationData(RegistrationData):
             data = LasyaRegistrationData()
             data.time = str(registration.time)
             data.id = registration.id
+            data.referral_code = registration.referral_code
             data.name = registration.name
             data.institution = registration.institution
             data.contact = registration.contact
@@ -229,6 +233,7 @@ class SInECRegistrationData(RegistrationData):
             data = SInECRegistrationData()
             data.time = str(registration.time)
             data.id = registration.id
+            data.referral_code = registration.referral_code
             data.team_name = registration.team_name
             data.project_name = registration.project_name
             data.project_field = registration.project_field

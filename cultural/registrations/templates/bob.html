@@ -243,7 +243,9 @@
                     <input type="button" name="next" id="continue" class="action-button" value="Continue" />
                 </fieldset>
                 <fieldset class="real">
-                    {{ registration_form.band_name.label_tag }} {{ registration_form.band_name }} {% if registration_form.band_name.errors %}
+                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
+                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.band_name.label_tag }} {{ registration_form.band_name }} {% if registration_form.band_name.errors %}
                     <div class="errors"> {% for error in registration_form.band_name.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.city.label_tag }} {{ registration_form.city }} {% if registration_form.city.errors %}
                     <div class="errors"> {% for error in registration_form.city.errors %} {{ error|escape }} {% endfor %} </div>

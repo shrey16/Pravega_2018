@@ -32,6 +32,8 @@ def proscenium_theatre(request):
         }
 
         if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
             registration.institution = registration_form.cleaned_data.get(
                 'institution')
             registration.contact1 = registration_form.cleaned_data.get(
@@ -127,6 +129,8 @@ def proscenium_streetplay(request):
         }
 
         if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
             registration.institution = registration_form.cleaned_data.get(
                 'institution')
             registration.contact1 = registration_form.cleaned_data.get(
@@ -187,6 +191,8 @@ def bob(request):
         }
 
         if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
             registration.band_name = registration_form.cleaned_data.get(
                 'band_name')
             registration.city = registration_form.cleaned_data.get(
@@ -252,6 +258,8 @@ def lasya(request):
         }
 
         if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
             registration.name = registration_form.cleaned_data.get('name')
             registration.email = registration_form.cleaned_data.get('email')
             registration.contact = registration_form.cleaned_data.get(
@@ -310,6 +318,8 @@ def pis(request):
         }
 
         if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
             registration.team_name = registration_form.cleaned_data.get(
                 'team_name')
             registration.project_name = registration_form.cleaned_data.get(

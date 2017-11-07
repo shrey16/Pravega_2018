@@ -34,7 +34,12 @@ class ProsceniumTheatreParticipantForm(forms.Form):
 
 
 class ProsceniumTheatreRegistrationForm(forms.Form):
-
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
     institution = forms.CharField(
         max_length=200,
         label="Name of the Institution",
@@ -134,6 +139,12 @@ class ProsceniumStreetPlayParticipantForm(forms.Form):
 
 
 class ProsceniumStreetPlayRegistrationForm(forms.Form):
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
     institution = forms.CharField(
         max_length=200,
         label="Name of the Institution",
@@ -225,6 +236,12 @@ class BoBParticipantForm(forms.Form):
 
 
 class BoBRegistrationForm(forms.Form):
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
     band_name = forms.CharField(
         max_length=200,
         label="Name of the Band",
@@ -332,6 +349,12 @@ class LasyaParticipantForm(forms.Form):
 
 
 class LasyaRegistrationForm(forms.Form):
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
     name = forms.CharField(
         max_length=200,
         label="Your Team Name",
@@ -412,6 +435,12 @@ class SInECParticipantForm(forms.Form):
 
 
 class SInECRegistrationForm(forms.Form):
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
     team_name = forms.CharField(
         max_length=200,
         label="Your Team's Name",
