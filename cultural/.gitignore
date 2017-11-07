@@ -9,3 +9,5 @@
 !.elasticbeanstalk/*.global.yml
 
 uploads/
+
+registrations/migrations/
