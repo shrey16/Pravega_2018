@@ -177,7 +177,7 @@ class LasyaRegistration(models.Model):
 
     class Meta:
         unique_together = (("name", "institution"),)
-    time = models.DateTimeField(default=)
+    time = models.DateTimeField(default=now)
     name = models.CharField(max_length=200, unique=True)
     institution = models.CharField(max_length=200, blank=True)
     email = models.EmailField()
