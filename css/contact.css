@@ -633,6 +633,8 @@ a:hover {
     }
     .header {
         padding-top: 20px;
+        left: 0;
+        width: 100vw;
     }
     #main .center .details,
     #main .left .details,
