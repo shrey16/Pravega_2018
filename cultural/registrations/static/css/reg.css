@@ -779,9 +779,10 @@ fieldset label {
         align-items: center;
     }
     .content>h1 {
+        width: 100%;
+        text-align: center;
+        left: 0;
         display: block;
-        margin-left: 50vw;
-        transform: translateX(-50%)
     }
     .content-text {
         width: 80%;

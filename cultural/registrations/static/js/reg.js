@@ -145,6 +145,8 @@ $("#continue").click(function() {
             return false;
         }
         goForward(this, 300);
+    } else {
+        $(this).parent().prepend("<" + field_error_element + " id=\"understood-error\" class=\"field-error\">Acknowledgement of the rules is required</" + field_error_element + ">");
     }
 })
 $(".next").click(function() {

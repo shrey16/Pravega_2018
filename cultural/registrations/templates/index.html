@@ -27,6 +27,18 @@
         left: 15vw;
         top: calc(50vh - 240px)!important;
     }
+
+    @media only screen and (max-width: 900px),
+    (max-height: 500px) {
+        .content {
+            top: 0!important;
+            padding-bottom: 50px!important;
+            overflow-y: auto;
+        }
+        body {
+            overflow-y: auto;
+        }
+    }
     </style>
 </head>
 

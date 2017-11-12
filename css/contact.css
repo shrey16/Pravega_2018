@@ -583,6 +583,9 @@ a:hover {
         font-size: 1.2em;
         width: calc(100% - 80px - 82px);
     }
+    #content-header {
+    	left:  0px;
+    }
     .nav-desc {
         margin: 0;
         position: absolute;
