@@ -279,7 +279,7 @@
                     <div class="errors"> {% for error in registration_form.project_abstract.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.project_patented.label_tag }} {{ registration_form.project_patented }} {% if registration_form.project_patented.errors %}
                     <div class="errors"> {% for error in registration_form.project_patented.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.project_file.label_tag }} {{ registration_form.project_file }} {% if registration_form.project_file.errors %}
+                    {% endif %} <br/> {{ registration_form.project_file.label_tag }} {{ registration_form.project_file }} {% if registration_form.project_file.errors %}
                     <div class="errors"> {% for error in registration_form.project_file.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.privacy_preference.label_tag }} {{ registration_form.privacy_preference }} {% if registration_form.privacy_preference.errors %}
                     <div class="errors"> {% for error in registration_form.privacy_preference.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}

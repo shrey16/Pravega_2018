@@ -475,7 +475,7 @@ class SInECRegistrationForm(forms.Form):
         initial=SInECRegistration.PRIVATE,
         label="Privacy Preference",
         widget=forms.Select(attrs={
-            'placeholder': 'Type of Student: UG/Masters/Ph.D./Post-Doc',
+            'placeholder': 'Preference',
         }))
     address = forms.CharField(
         max_length=400,
@@ -497,6 +497,7 @@ class SInECRegistrationForm(forms.Form):
         }))
     project_file = forms.FileField(
         label="Project Files (Multiple Files can be Uploaded as a ZIP archive)",
+        required=False,
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Project File',
         }))

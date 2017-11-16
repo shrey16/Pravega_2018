@@ -240,7 +240,8 @@ class SInECRegistration(models.Model):
 
     project_file = models.FileField(
         max_length=255,
-        upload_to=upload_video_path)
+        upload_to=upload_video_path,
+        blank=True)
 
     def __str__(self):
         return f"Team Name: {self.team_name}, Project Name: {self.project_name}, E-Mail ID: {self.email}, Contact No.: {self.contact}"
