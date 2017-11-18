@@ -9,8 +9,7 @@ class PhoneNumberField():
 
     def get_field(as_regexField=False, *args, **kwargs):
         if as_regexField:
-            return forms.RegexField(regex=PhoneNumberField.phone_regex, help_text=PhoneNumberField.message,
-                                    error_messages={'invalid', 'Please enter a phone number in 10 digits or +91<10 digits> format'}, *args, **kwargs)
+            return forms.RegexField(regex=PhoneNumberField.phone_regex, help_text=PhoneNumberField.message, *args, **kwargs)
         else:
             return models.CharField(validators=[RegexValidator(regex=PhoneNumberField.phone_regex,
                                                                message=PhoneNumberField.message)], max_length=15, blank=True)
