@@ -307,7 +307,7 @@
                     <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
                     <br />
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
+                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
                 </fieldset>
                 <fieldset id="review">
                     <h2>Please review before submitting</h2>

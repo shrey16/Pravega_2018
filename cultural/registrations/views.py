@@ -266,6 +266,8 @@ def lasya(request):
                 'contact')
             registration.prelims_video = registration_form.cleaned_data.get(
                 'prelims_video')
+            registration.prelims_video_link = registration_form.cleaned_data.get(
+                'prelims_video_link')
             registration.institution = registration_form.cleaned_data.get(
                 'institution')
             try:
@@ -294,6 +296,35 @@ def lasya(request):
             return render(request, "lasya.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
         return render(request, "lasya.html", context)
+
+
+def lasya_video(request):
+    context = {'registration_form': LasyaVideoSubmissionForm()}
+    if request.method == 'POST':
+        registration_form = LasyaVideoSubmissionForm(
+            request.POST, request.FILES)
+        context = {'registration_form': registration_form}
+        if registration_form.is_valid():
+            index = registration_form.cleaned_data.get('index')
+            try:
+                registration = LasyaRegistration.objects.get(
+                    pk=index)
+                if registration.prelims_video and registration.prelims_script:
+                    return render(request, "lasya_video_submission.html", {**context, **{'error_message': "Video has already been submitted. Re-submission is not allowed."}})
+                else:
+                    registration.prelims_video = registration_form.cleaned_data.get(
+                        'prelims_video')
+            except ObjectDoesNotExist:
+                return render(request, "lasya_video_submission.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
+            try:
+                registration.save()
+                return render(request, "success.html", {'event_name': 'Lasya Video Prelims', 'id': registration.id})
+            except IntegrityError:
+                return render(request, "lasya_video_submission.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+        else:
+            return render(request, "lasya_video_submission.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+    else:
+        return render(request, "lasya_video_submission.html", context)
 
 
 def pis(request):

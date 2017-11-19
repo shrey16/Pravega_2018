@@ -13,8 +13,8 @@ VIDEO_FILE_VALIDATOR = FileExtensionValidator(
 
 
 def get_uploads_directory():
-    return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
-    # return "./uploads/"
+    # return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
+    return "./uploads/"
 
 
 class ProsceniumRegistration:
@@ -193,7 +193,10 @@ class LasyaRegistration(models.Model):
     prelims_video = models.FileField(
         validators=[VIDEO_FILE_VALIDATOR],
         max_length=255,
+        blank=True,
         upload_to=upload_video_path)
+
+    prelims_video_link = models.URLField(blank=True)
 
     def __str__(self):
         return f"Team Name: {self.name}, Institution: {self.institution}, E-Mail ID: {self.email}, Contact No.: {self.contact}"

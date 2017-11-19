@@ -52,7 +52,7 @@ class LasyaRegistrationAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ['name', 'institution', 'time', 'referral_code']}),
         ('Contact Information', {'fields': ['email', 'contact']}),
-        ('Prelims Information', {'fields': ['prelims_video']})
+        ('Prelims Information', {'fields': ['prelims_video', 'prelims_video_link']})
     ]
     inlines = [LasyaParticipantInline]
 

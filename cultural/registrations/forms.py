@@ -373,7 +373,14 @@ class LasyaRegistrationForm(forms.Form):
         label="Video for Prelims",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Prelims Video',
-        }))
+        }),
+        required=False)
+    prelims_video_link = forms.URLField(
+        label="Link to Facebook Page of the Band",
+        widget=forms.URLInput(attrs={
+            'placeholder': 'Facebook Page URL',
+        }),
+        required=False)
     contact = PhoneNumberField.get_field(
         as_regexField=True,
         max_length=15,
@@ -385,6 +392,20 @@ class LasyaRegistrationForm(forms.Form):
         label="Team's E-Mail ID",
         widget=forms.TextInput(attrs={
             'placeholder': "Team's E-Mail ID",
+        }))
+
+
+class LasyaVideoSubmissionForm(forms.Form):
+    index = forms.IntegerField(
+        label="Registration ID",
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Registration ID'
+        }))
+    prelims_video = forms.FileField(
+        validators=[VIDEO_FILE_VALIDATOR],
+        label="Video for Prelims",
+        widget=forms.ClearableFileInput(attrs={
+            'placeholder': 'Prelims Video',
         }))
 
 
