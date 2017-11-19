@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Registration | Lasya | Pravega 2018</title>
     {% load static %}
-    <meta name="description" content="Registration for Lasya">
+    <meta name="description" content="Video Submission for Lasya Prelims">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
     <link href="{% static 'css/reg.css' %}" type="text/css" rel="stylesheet" />
@@ -183,18 +183,13 @@
     <div id="disabler"></div>
     <div id="main">
         <div class="content">
-            <h1>Lasya</h1> {% if error_message %}
+            <h1>Lasya Prelims Video</h1> {% if error_message %}
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
-            <form action="{% url 'registrations:lasya' %}" method="post" enctype="multipart/form-data" id="msform">
+            <form action="{% url 'registrations:lasya_video' %}" method="post" enctype="multipart/form-data" id="msform">
                 <ul id="progressbar">
                     <li>Rules</li>
-                    <li>Identification</li>
-                    <li>Contact
-                        <br/>Details</li>
                     <li>Prelims
                         <br/>Information</li>
-                    <li>Participant
-                        <br/>Details</li>
                 </ul>
                 {% csrf_token %} {% if registration_form.errors %}
                 <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
@@ -205,7 +200,6 @@
                 </div>
                 {% endif %}
                 <fieldset>
-                    <p style="font-weight: bold;">Are you looking for where to submit the prelims video if you've already registered? It's <a style="color: green;" href="http://pravega.org/registrations/lasya/video">here</a>.</p>
                     <h2>Rules and Regulations</h2>
                     <h2>For prelims:</h2>
                     <p style="font-weight: bold;">Any failure to abide by these rules
@@ -289,49 +283,10 @@
                     <input type="button" name="next" id="continue" class="action-button" value="Continue" />
                 </fieldset>
                 <fieldset class="real">
-                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
-                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.name.label_tag }} {{ registration_form.name }} {% if registration_form.name.errors %}
-                    <div class="errors">{% for error in registration_form.name.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.institution.label_tag }} {{ registration_form.institution }} {% if registration_form.institution.errors %}
-                    <div class="errors">{% for error in registration_form.institution.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real">
-                    {{ registration_form.contact.label_tag }} {{ registration_form.contact }} {% if registration_form.contact.errors %}
-                    <div class="errors">{% for error in registration_form.contact.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.email.label_tag }} {{ registration_form.email }} {% if registration_form.email.errors %}
-                    <div class="errors">{% for error in registration_form.email.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real">
-                    {{ registration_form.prelims_video.label_tag }} {{ registration_form.prelims_video }} {% if registration_form.prelims_video.errors %}
-                    <div class="errors">{% for error in registration_form.prelims_video.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.prelims_video_link.label_tag }} {{ registration_form.prelims_video_link }} {% if registration_form.prelims_video_link.errors %}
-                    <div class="errors">{% for error in registration_form.prelims_video_link.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real" id="participants">
-                    {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
-                    <div class="participant-formset">
-                        {% if participant_form.errors %}
-                        <div class="errors">{% for field in participant_form %} {% for error in field.errors %}
-                            <p> {{ errors }} </p>
-                            {% endfor %} {% endfor %}
-                        </div>
-                        {% endif %} {{ participant_form.name.label_tag }} {{ participant_form.name }} {% if participant_form.name.errors %}
-                        <div class="errors">{% for error in participant_form.name.errors %} {{ error|escape }} {% endfor %} </div>
-                        {% endif %} {{ participant_form.contact.label_tag }} {{ participant_form.contact }} {% if participant_form.contact.errors %}
-                        <div class="errors">{% for error in participant_form.contact.errors %} {{ error|escape }} {% endfor %} </div>
-                        {% endif %} {{ participant_form.email.label_tag }} {{ participant_form.email }} {% if participant_form.email.errors %}
-                        <div class="errors">{% for error in participant_form.email.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    </div>
-                    {% endfor %} {% if participant_formset.non_form_errors %}
-                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <br />
+                    {{ registration_form.index.label_tag }} {{ registration_form.index }} {% if registration_form.index.errors %}
+                    <div class="errors">{% for error in registration_form.index.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.prelims_video.label_tag }} {{ registration_form.prelims_video }} {% if registration_form.prelims_video.errors %}
+                    <div class="errors">{% for error in registration_form.prelims_video.errors %} {{ error|escape }} {% endfor %} </div> {% endif %}
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
                 </fieldset>
@@ -431,3 +386,5 @@
     ga('send', 'pageview');
     </script>
 </body>
+
+</html>
