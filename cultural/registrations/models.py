@@ -13,8 +13,8 @@ VIDEO_FILE_VALIDATOR = FileExtensionValidator(
 
 
 def get_uploads_directory():
-    # return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
-    return "./uploads/"
+    return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
+    # return "./uploads/"
 
 
 class ProsceniumRegistration:
