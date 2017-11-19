@@ -25,7 +25,6 @@ $(document).ready(function() {
             }
         })
         if (!(found_errors) && $(this).find(".errors").length > 0) {
-            console.log($(this));
             index = current_index;
             found_errors = true;
         }
@@ -140,7 +139,7 @@ function getTextWithoutSpan(element) {
 }
 
 $("#continue").click(function() {
-    if (document.getElementById("understood").checked) {
+    if (document.getElementById("id_understood").checked) {
         if (animating) {
             return false;
         }
@@ -188,7 +187,10 @@ function getFormReport(fieldset) {
     var content = "";
     fieldset.find("label").each(function() {
         const input = $(this).next();
-        const data = input.val();
+        var data = input.val();
+        if (input.is("input:checkbox")) {
+        	data = input.is(":checked") ? 'Yes' : 'No';
+        }
         const marked = (input.prop('required') && (data == null || data.trim() == ""));
         const color = marked ? ' style=\"color: red;\"' : '';
         var text = "<tr><td class=\"field-label\"" + color + ">" + trimColon(getTextWithoutSpan($(this))) + ":  </td>";

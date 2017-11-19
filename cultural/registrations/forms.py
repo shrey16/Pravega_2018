@@ -34,6 +34,7 @@ class ProsceniumTheatreParticipantForm(forms.Form):
 
 
 class ProsceniumTheatreRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
     referral_code = forms.CharField(
         max_length=50,
         label="Referral Code",
@@ -90,6 +91,7 @@ class ProsceniumTheatreRegistrationForm(forms.Form):
 
 
 class ProsceniumTheatreVideoSubmissionForm(forms.Form):
+    understood = forms.BooleanField()
     index = forms.IntegerField(
         label="Registration ID",
         widget=forms.NumberInput(attrs={
@@ -139,6 +141,7 @@ class ProsceniumStreetPlayParticipantForm(forms.Form):
 
 
 class ProsceniumStreetPlayRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
     referral_code = forms.CharField(
         max_length=50,
         label="Referral Code",
@@ -236,6 +239,7 @@ class BoBParticipantForm(forms.Form):
 
 
 class BoBRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
     referral_code = forms.CharField(
         max_length=50,
         label="Referral Code",
@@ -349,6 +353,7 @@ class LasyaParticipantForm(forms.Form):
 
 
 class LasyaRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
     referral_code = forms.CharField(
         max_length=50,
         label="Referral Code",
@@ -396,6 +401,7 @@ class LasyaRegistrationForm(forms.Form):
 
 
 class LasyaVideoSubmissionForm(forms.Form):
+    understood = forms.BooleanField()
     index = forms.IntegerField(
         label="Registration ID",
         widget=forms.NumberInput(attrs={
@@ -456,6 +462,7 @@ class SInECParticipantForm(forms.Form):
 
 
 class SInECRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
     referral_code = forms.CharField(
         max_length=50,
         label="Referral Code",
