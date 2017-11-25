@@ -11,3 +11,5 @@
 uploads/
 
 registrations/migrations/
+
+cultural/settings.py
