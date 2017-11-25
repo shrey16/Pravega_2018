@@ -36,9 +36,14 @@
 
     @media only screen and (max-width: 900px),
     (max-height: 500px) {
-        #workshop-logos {
-        	
-        }
+    	.card {
+    		position: absolute;
+    		width: 99.5vw;
+    		padding: 30px 0 55px 0;
+    	}
+    	#workshop-logos {
+    		padding: 0;
+    	}
         .workshop-logo {
             width: 100px;
             height: 100px;
@@ -48,10 +53,6 @@
         }
         #workshop-logos td {
             padding: 1px;
-        }
-        .card {
-        	 width: 90%; 
-        	 left: 0;
         }
     }
     </style>
@@ -329,8 +330,8 @@
         </div>
         <!-- SideBar gets over-->
         <div id="disabler"></div>
-        <div id="main" style="padding: 50px 0 55px 0;">
-            <div class="card" style="padding-top: 30px;">
+        <div id="main" style="padding: 50px 0 55px 0; position: relative; width: 100vw; height: 100vh;">
+            <div class="card">
                 <h2>More Details Coming Soon!</h2>
                 <div id="workshop-logos">
                     <table style="width: 100%;">
