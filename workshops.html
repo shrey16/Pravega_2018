@@ -19,6 +19,41 @@
         background-repeat: no-repeat;
         background-position: center center;
     }
+
+    .workshop-logo {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    #workshop-logos {
+        padding-top: 30px;
+        width: 100%;
+    }
+
+    #workshop-logos td {
+        border: none;
+    }
+
+    @media only screen and (max-width: 900px),
+    (max-height: 500px) {
+        #workshop-logos {
+        	
+        }
+        .workshop-logo {
+            width: 100px;
+            height: 100px;
+        }
+        td h3 {
+            vertical-align: top;
+        }
+        #workshop-logos td {
+            padding: 1px;
+        }
+        .card {
+        	 width: 90%; 
+        	 left: 0;
+        }
+    }
     </style>
 </head>
 
@@ -294,9 +329,70 @@
         </div>
         <!-- SideBar gets over-->
         <div id="disabler"></div>
-        <div id="main" style="padding-bottom: 55px;">
+        <div id="main" style="padding: 50px 0 55px 0;">
             <div class="card" style="padding-top: 30px;">
-                <h2>Coming Soon!</h2>
+                <h2>More Details Coming Soon!</h2>
+                <div id="workshop-logos">
+                    <table style="width: 100%;">
+                        <colgroup>
+                            <col style="width: 33.33%" />
+                            <col style="width: 33.33%" />
+                            <col style="width: 33.33%" />
+                        </colgroup>
+                        <tr>
+                            <td><img class="workshop-logo" src="img/workshop-logos/AI.svg" /></td>
+                            <td><img class="workshop-logo" src="img/workshop-logos/Android-App.svg" /></td>
+                            <td><img class="workshop-logo" src="img/workshop-logos/Android-Controlled-Robotics.svg" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>AI</h3></td>
+                            <td>
+                                <h3>Android Apps</h3></td>
+                            <td>
+                                <h3>Android Controlled Robotics</h3></td>
+                        </tr>
+                        <tr>
+                            <td><img class="workshop-logo" src="img/workshop-logos/Augumented-Reality.svg" /></td>
+                            <td><img class="workshop-logo" src="img/workshop-logos/AutoCAD.svg" /></td>
+                            <td><img class="workshop-logo" src="img/workshop-logos/Automobile.svg" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>Augumented Reality</h3></td>
+                            <td>
+                                <h3>AutoCAD</h3></td>
+                            <td>
+                                <h3>Automobile</h3></td>
+                        </tr>
+                        <tr>
+                            <td><img class="workshop-logo" src="img/workshop-logos/Big-Data.svg" /></td>
+                            <td><img class="workshop-logo" src="img/workshop-logos/Embedded-Systems.svg" /></td>
+                            <td><img class="workshop-logo" src="img/workshop-logos/EthiHack.svg" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>Big Data</h3></td>
+                            <td>
+                                <h3>Embedded Systems</h3></td>
+                            <td>
+                                <h3>EthiHack</h3></td>
+                        </tr>
+                        <tr>
+                            <td><img class="workshop-logo" src="img/workshop-logos/IoT.svg" /></td>
+                            <td><img class="workshop-logo" src="img/workshop-logos/quadcopter.svg" /></td>
+                            <td><img class="workshop-logo" src="img/workshop-logos/Sixth-Sense-Robotics.svg" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>IoT</h3></td>
+                            <td>
+                                <h3>Quadcopter</h3></td>
+                            <td>
+                                <h3>Sixth Sense Robotics</h3></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <div id="floating-footer">
