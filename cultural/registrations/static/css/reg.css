@@ -200,6 +200,61 @@ span {
     display: none;
 }
 
+.expand-menu {
+    margin-left: -20px;
+    margin-right: -20px;
+    width: 300px;
+}
+
+.expand-menu-img {
+    width: 50px;
+    height: auto;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.expand-menu-img.active {
+    border-style: solid;
+    border-width: thin;
+    border-color: aqua;
+}
+
+.expand-menu-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 0px;
+    overflow-y: hidden;
+    opacity: 0;
+    transition: height 0.2s ease-in, opacity 0.3s ease-in;
+}
+
+.expand-menu-text.active {
+    height: auto;
+    opacity: 1;
+    transition: height 0.2s ease-in, opacity 0.3s ease-in;
+}
+
+.expand-img-highlight {
+    border: solid thin #DF9EF3 !important;
+}
+
+.nav-highlight-item {
+    border-left: solid 7px #DF9EF3 !important;
+}
+
+.mobile {
+    display: none!important;
+}
+.nav-footer {
+    position: relative;
+    /* top: calc(100vh - (5 + 3) * 9.8vh); */
+}
+
+.nav-footer .li-img img {
+    border-radius: 50%;
+    border: 1px solid white;
+    width: 40px;
+}
 #disabler {
     position: absolute;
     float: left;
@@ -215,7 +270,6 @@ span {
 
 .content {
     position: relative;
-    height: 100vh;
     width: calc(100% - 100px);
     padding-left: 100px;
     align-items: center;
@@ -769,13 +823,10 @@ fieldset label {
         font-size: 2em;
     }
     .content {
-        display: block;
         position: relative;
-        top: 20px;
-        height: calc(94vh - 6px);
-        width: 100vw;
-        padding-left: 0px;
-        padding-top: 30px;
+        width: 100%;
+        padding-left: 0;
+        left: 0;
         align-items: center;
     }
     .content>h1 {
@@ -834,7 +885,6 @@ fieldset label {
         position: absolute;
         top: 60px;
         left: 0;
-        height: calc(100vh - 60px);
         width: 100%;
     }
     .rules li {
@@ -842,13 +892,6 @@ fieldset label {
     }
     .deep {
         margin-left: -40px!important;
-    }
-    div.content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 0;
-        width: 100%;
     }
     footer {
         width: 100vw;
@@ -866,5 +909,11 @@ fieldset label {
     }
     #msform fieldset {
         margin-left: 6%;
+    }
+    .mobile {
+        display: block!important;
+    }
+    .desktop {
+        display: none!important;
     }
 }

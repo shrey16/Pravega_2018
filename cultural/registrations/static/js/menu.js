@@ -1,3 +1,7 @@
+$(".notification-close").click(function() {
+    $(this).parent().fadeOut(200);
+})
+
 let width = $(window).innerWidth(),
     height = $(window).innerHeight();
 
@@ -21,9 +25,9 @@ function descEnterAnimation(element, previousElement, onStart, onComplete) {
             opacity: 1
         }).delay(0.3).eventCallback("onStart", function() {
             if (previousElement !== undefined) {
-                previousElement.css("display", "none");
+                $(previousElement).fadeOut(0);
             }
-            element.css("display", "block");
+            $(element).fadeIn(0);
             if (onStart !== undefined) {
                 onStart();
             }
@@ -35,37 +39,43 @@ function descExitAnimation(element, onStart, onComplete) {
     if (noAnimationRunning()) {
         TweenLite.to(element, 0.3, {
             opacity: 0,
-            onStart: execIfPresent(onStart),
-            onComplete: execIfPresent(onComplete)
+            onStart: onStart,
+            onComplete: onComplete
         });
     }
 }
 
-let currentMousePos = { x: 0, y: 0 };
+var currentMousePos = { x: 0, y: 0 };
 $(document).mousemove(function(event) {
     currentMousePos.x = event.pageX;
     currentMousePos.y = event.pageY;
 });
 
 
-let displayedInfoElement = $("#infobar div:first-child ");
-let togImage = $("#tog-button-desktop").find(".li-img").find(".c-hamburger");
-const totalExpandedWidth = $("#iconbar").width() + 200;
+const navItems = $(".nav-item").not(".mobile");
+const navDescs = $(".infobar-content");
+var displayedInfoElement = navItems.eq(0);
+var togImage = $("#tog-button-desktop").find(".li-img").find(".c-hamburger");
+const openWidth = 300;
+const totalExpandedWidth = $("#iconbar").width() + openWidth;
 
 let infobarRemoved = true,
+    infobarOpener = undefined,
     infobarVisible = false;
 
 function openMenuBar(onComplete) {
     $(".li-text").addClass("vis");
-    if (noAnimationRunning()) {
+    if (noAnimationRunning() && infobarRemoved) {
         TweenLite.to($("#infobar"), 0.25, {
-            width: 200,
+            width: openWidth,
             onStart: function() {
                 //animationRunning[0] = true;
                 if (!desktopMode) {
                     $("#disabler").fadeIn(250);
                 }
                 togImage.addClass("is-active");
+                $(".infobar-content").fadeOut(0);
+                infobarRemoved = false;
                 //TweenLite.to($("#main"), 0.25, { css: { "transform": "translateX(200px)" } });
                 //TweenLite.to($(".subject"), 0.25, { css: { "transform": "translateX(200px)" } });
                 //TweenLite.to($("#fullpage"), 0.25, { css: { "width": "-=200px" } });
@@ -74,7 +84,6 @@ function openMenuBar(onComplete) {
                 if (onComplete !== undefined) {
                     onComplete();
                 }
-                infobarRemoved = false;
                 //animationRunning[0] = false;
             }
         });
@@ -85,7 +94,7 @@ function openMenuBar(onComplete) {
 let previouslyExternal = false;
 
 function closeMenuBar(onComplete, external) {
-    if (noAnimationRunning()) {
+    if (noAnimationRunning() && !infobarRemoved) {
         descExitAnimation(displayedInfoElement);
         TweenLite.to($("#infobar"), 0.25, {
             width: 0,
@@ -96,6 +105,7 @@ function closeMenuBar(onComplete, external) {
                     $("#disabler").fadeOut(250);
                 }
                 togImage.removeClass("is-active");
+                $(".infobar-content").fadeOut(0);
                 //TweenLite.to($("#main"), 0.25, { css: { "transform": "translateX(0)" } });
                 //TweenLite.to($(".subject"), 0.25, { css: { "transform": "translateX(0)" } });
                 //TweenLite.to($("#fullpage"), 0.25, { css: { "width": "+=200px" } });
@@ -130,16 +140,17 @@ $(window).on('resize touchmove', function(event) {
 
 if (desktopMode) {
     // Desktop Menu Controller
-    $("#iconbar ").hover(function(e) {
+    $("#iconbar").hover(function(e) {
         if (infobarRemoved) {
             $(".li-text ").toggleClass("vis");
         };
     });
 
-    $("#tog-button-desktop").click(function(e) {
+    $("#tog-button-desktop, .nav-item.desktop").not(".nav-footer").click(function(e) {
         if (infobarRemoved) {
+            infobarOpener = this.innerHTML;
             openMenuBar();
-        } else {
+        } else if (infobarOpener === this.innerHTML || this.id === 'tog-button-desktop') {
             closeMenuBar();
         }
     });
@@ -148,16 +159,13 @@ if (desktopMode) {
             closeMenuBar();
         }
     });
-    let sidebarItems = new Array,
-        sidebarDescs = new Array;
-
-    const exitIndexOffset = 3,
-        enterIndexOffset = 9 + exitIndexOffset;
-    for (let j = 1; j <= 9; ++j) {
-        const i = j - 1;
-        sidebarItems[i] = $("#iconbar ul li:nth-child(" + j + ")");
-        sidebarDescs[i] = $("#infobar div:nth-child(" + j + ")");
+    const sidebarItems = [],
+        sidebarDescs = [];
+    for (let i = 0; i < navItems.length; ++i) {
+        sidebarItems[i] = navItems.eq(i);
+        sidebarDescs[i] = navDescs.eq(i);
         sidebarItems[i].hover(function() {
+            console.log(this)
             if (displayedInfoElement !== sidebarDescs[i]) {
                 if (!infobarRemoved) {
                     descExitAnimation(displayedInfoElement);
@@ -302,3 +310,16 @@ if (desktopMode) {
         }
     });
 }
+$(".expand-menu-img").hover(function() {
+    var rqdiv = $(this).parent().children(".expand-menu-text").eq($(this).parent().children("img").index(this));
+    var rqindex = $(this).parent().children("img").index(this);
+    $(this).parent().children(".expand-menu-text").each(function(index) {
+        if (index !== rqindex) {
+            $(this).removeClass("active");
+            $(this).parent().children("img").eq($(this).parent().children(".expand-menu-text").index(this)).removeClass("active");
+        } else {
+            $(this).addClass("active");
+            $(this).parent().children("img").eq($(this).parent().children(".expand-menu-text").index(this)).addClass("active");
+        }
+    });
+});

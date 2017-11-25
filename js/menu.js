@@ -25,9 +25,9 @@ function descEnterAnimation(element, previousElement, onStart, onComplete) {
             opacity: 1
         }).delay(0.3).eventCallback("onStart", function() {
             if (previousElement !== undefined) {
-                previousElement.css("display", "none");
+                $(previousElement).fadeOut(0);
             }
-            element.css("display", "block");
+            $(element).fadeIn(0);
             if (onStart !== undefined) {
                 onStart();
             }
@@ -39,8 +39,8 @@ function descExitAnimation(element, onStart, onComplete) {
     if (noAnimationRunning()) {
         TweenLite.to(element, 0.3, {
             opacity: 0,
-            onStart: execIfPresent(onStart),
-            onComplete: execIfPresent(onComplete)
+            onStart: onStart,
+            onComplete: onComplete
         });
     }
 }
@@ -60,11 +60,12 @@ const openWidth = 300;
 const totalExpandedWidth = $("#iconbar").width() + openWidth;
 
 let infobarRemoved = true,
+    infobarOpener = undefined,
     infobarVisible = false;
 
 function openMenuBar(onComplete) {
     $(".li-text").addClass("vis");
-    if (noAnimationRunning()) {
+    if (noAnimationRunning() && infobarRemoved) {
         TweenLite.to($("#infobar"), 0.25, {
             width: openWidth,
             onStart: function() {
@@ -73,6 +74,8 @@ function openMenuBar(onComplete) {
                     $("#disabler").fadeIn(250);
                 }
                 togImage.addClass("is-active");
+                $(".infobar-content").fadeOut(0);
+                infobarRemoved = false;
                 //TweenLite.to($("#main"), 0.25, { css: { "transform": "translateX(200px)" } });
                 //TweenLite.to($(".subject"), 0.25, { css: { "transform": "translateX(200px)" } });
                 //TweenLite.to($("#fullpage"), 0.25, { css: { "width": "-=200px" } });
@@ -81,7 +84,6 @@ function openMenuBar(onComplete) {
                 if (onComplete !== undefined) {
                     onComplete();
                 }
-                infobarRemoved = false;
                 //animationRunning[0] = false;
             }
         });
@@ -92,7 +94,7 @@ function openMenuBar(onComplete) {
 let previouslyExternal = false;
 
 function closeMenuBar(onComplete, external) {
-    if (noAnimationRunning()) {
+    if (noAnimationRunning() && !infobarRemoved) {
         descExitAnimation(displayedInfoElement);
         TweenLite.to($("#infobar"), 0.25, {
             width: 0,
@@ -103,6 +105,7 @@ function closeMenuBar(onComplete, external) {
                     $("#disabler").fadeOut(250);
                 }
                 togImage.removeClass("is-active");
+                $(".infobar-content").fadeOut(0);
                 //TweenLite.to($("#main"), 0.25, { css: { "transform": "translateX(0)" } });
                 //TweenLite.to($(".subject"), 0.25, { css: { "transform": "translateX(0)" } });
                 //TweenLite.to($("#fullpage"), 0.25, { css: { "width": "+=200px" } });
@@ -137,16 +140,17 @@ $(window).on('resize touchmove', function(event) {
 
 if (desktopMode) {
     // Desktop Menu Controller
-    $("#iconbar ").hover(function(e) {
+    $("#iconbar").hover(function(e) {
         if (infobarRemoved) {
             $(".li-text ").toggleClass("vis");
         };
     });
 
-    $("#tog-button-desktop").click(function(e) {
+    $("#tog-button-desktop, .nav-item.desktop").not(".nav-footer").click(function(e) {
         if (infobarRemoved) {
+            infobarOpener = this.innerHTML;
             openMenuBar();
-        } else {
+        } else if (infobarOpener === this.innerHTML || this.id === 'tog-button-desktop') {
             closeMenuBar();
         }
     });
@@ -161,6 +165,7 @@ if (desktopMode) {
         sidebarItems[i] = navItems.eq(i);
         sidebarDescs[i] = navDescs.eq(i);
         sidebarItems[i].hover(function() {
+            console.log(this)
             if (displayedInfoElement !== sidebarDescs[i]) {
                 if (!infobarRemoved) {
                     descExitAnimation(displayedInfoElement);

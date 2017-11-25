@@ -183,6 +183,55 @@ span {
     display: none;
 }
 
+.expand-menu {
+    margin-left: -20px;
+    margin-right: -20px;
+    width: 300px;
+}
+
+.expand-menu-img {
+    width: 50px;
+    height: auto;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.expand-menu-img.active {
+    border-style: solid;
+    border-width: thin;
+    border-color: aqua;
+}
+
+.expand-menu-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 0px;
+    overflow-y: hidden;
+    opacity: 0;
+    transition: height 0.2s ease-in, opacity 0.3s ease-in;
+}
+
+.expand-menu-text.active {
+    height: auto;
+    opacity: 1;
+    transition: height 0.2s ease-in, opacity 0.3s ease-in;
+}
+
+.expand-img-highlight {
+    border: solid thin #DF9EF3 !important;
+}
+
+.nav-footer {
+    position: relative;
+    /* top: calc(100vh - (5 + 3) * 9.8vh); */
+}
+
+.nav-footer .li-img img {
+    border-radius: 50%;
+    border: 1px solid white;
+    width: 40px;
+}
+
 #main {
     position: absolute;
     left: 0;
@@ -253,7 +302,9 @@ span {
     margin: 0.5vh 5px;
     width: auto;
 }
-
+.nav-highlight-item {
+    border-left: solid 7px #DF9EF3 !important;
+}
 .content-wrapper {
     position: relative;
     height: 100%;
@@ -346,7 +397,9 @@ span {
     font-size: 1.25em;
     text-align: center;
 }
-
+.mobile {
+    display: none!important;
+}
 #main a,
 a:hover {
     text-decoration: none;
@@ -669,6 +722,12 @@ a:hover {
         top: auto;
         box-sizing: border-box;
         border-radius: 0;
-        opacity: 0;
+        opacity: 1;
+    }
+    .mobile {
+        display: block!important;
+    }
+    .desktop {
+        display: none!important;
     }
 }
