@@ -137,7 +137,7 @@ span {
 #tog-button-desktop {
     display: block;
     width: 85px;
-    height: 9.8vh;
+    height: auto;
 }
 
 #tog-button-mobile {
