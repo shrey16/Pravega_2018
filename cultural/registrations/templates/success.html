@@ -19,12 +19,6 @@
         background-attachment: fixed;
         overflow: hidden;
     }
-
-    .content {
-        position: relative;
-        top: 48vh;
-        left: 15vw;
-    }
     </style>
 </head>
 
@@ -300,8 +294,10 @@
     <div id="disabler"></div>
     <div id="main">
         <div class="content">
-            <p class="nav-link">Registration for {{ event_name }} completed successfully!</p>
-            <p class="nav-link" style="height: 40px; padding-bottom: 40px;">Your Registration ID is {{ id }} for {{ event_name }}. <br/>Please keep note of this for further interaction with us about registrations.</p>
+            <div class="reglinks">
+                <p class="nav-link">Registration for {{ event_name }} completed successfully!</p>
+                <p class="nav-link" style="height: 40px; padding-bottom: 40px;">Your Registration ID is {{ id }} for {{ event_name }}. <br/>Please keep note of this for further interaction with us about registrations.</p>
+            </div>
         </div>
     </div>
     <div id="floating-footer">
