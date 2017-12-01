@@ -103,7 +103,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/biology.html">
-                        <div class="li-img"><img src="img/Biology.png" /></div>
+                        <div class="li-img"><img src="{% static 'img/Biology.png' %}" /></div>
                         <div class="li-text">Biology</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -180,7 +180,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/pros.html">
-                        <div class="li-img"><img src="{% static 'img/Proscenium.png'}" /></div>
+                        <div class="li-img"><img src="{% static 'img/Proscenium.png' %}" /></div>
                         <div class="li-text">Proscenium</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -345,11 +345,10 @@
                         </li>
                         <li>Pravega will have the right to use any of the music tracks for future promotional purposes, with due credit given to the band.</li>
                         <li>Any dispute arising due to any confusion regarding the contest shall be resolved at IISc by Battle of Bands, Pravega and the decision or resolution provided will be considered final.</li>
+                        <li>Participants will <b>NOT</b> be provided accomodation by Pravega.</li>
                         <li>Pravega reserves the right to change specifics of the competition including rules and regulations, bands selected, prize amounts, etc., if necessary.
-                            <br/>All decisions by Pravega shall be final and binding.</li>
+                        <br/>All decisions by Pravega shall be final and binding.</li>
                     </ol>
-                    <p>You can also download a copy of the rules for all events as a PDF <a style="color: blue;" href="{% static 'rules/rules.pdf' %}">here</a>.</p>
-                    <p>Have you read and understood the above regulations?</p>                    
                     <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label>
                     {{ registration_form.understood }}
                     <br/>

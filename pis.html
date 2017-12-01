@@ -8,7 +8,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="css/hamburger.css" rel="stylesheet" type="text/css" />
-    <link href="css/tech.css" type="text/css" rel="stylesheet" />
+    <link href="css/pis.css" type="text/css" rel="stylesheet" />
+    <link href="css/menu.css" type="text/css" rel="stylesheet" />
     <link href="css/javascript.fullPage.css" type="text/css" rel="stylesheet" />
     <style>
     body {
@@ -24,456 +25,368 @@
 
 <body>
     <div class="black-trans"></div>
-    <div class="content-wrapper">
-        <!--SideBar-->
-        <div id="sidebar" class="clearfix">
-            <div id="tog-button-mobile">
-                <div class="li-img">
-                    <button class="c-hamburger c-hamburger--htx">
-                        <span>toggle menu</span>
-                    </button>
+    <!--SideBar-->
+    <div id="sidebar" class="clearfix">
+        <div id="tog-button-mobile">
+            <div class="li-img">
+                <button class="c-hamburger c-hamburger--htx">
+                    <span>toggle menu</span>
+                </button>
+            </div>
+            <a href="index.html">
+                <img id="header-logo" src="img/logo.svg" />
+                <div class="li-text nav-desc">
+                    <h3 id="title">Pravega</h3>
                 </div>
-                <a href="index.html">
-                    <img id="header-logo" src="img/logo.svg" />
+            </a>
+        </div>
+        <div id="iconbar">
+            <ul>
+                <li id="tog-button-desktop" class="nav-item desktop">
+                    <div class="li-img">
+                        <button class="c-hamburger c-hamburger--htx">
+                            <span>toggle menu</span>
+                        </button>
+                    </div>
                     <div class="li-text nav-desc">
-                        <h3 id="title">Pravega</h3>
+                        <h3>Some text toggle</h3>
                     </div>
-                </a>
+                </li>
+                <li class="nav-item desktop nav-footer">
+                    <a href="index.html">
+                        <div class="li-img"><img src="img/home.svg"></div>
+                        <div class="li-text">Main Page</div>
+                    </a>
+                    <div class="extra-info">
+                        <h3>Main Page</h3>
+                        <p>Lost? Tired of reading this? Get back to the main page!</p>
+                    </div>
+                </li>
+                <li class="nav-item desktop">
+                    <a href="#">
+                        <div class="li-img"><img src="img/Science.png" /></div>
+                        <div class="li-text">Science</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                    </div>
+                </li>
+                <li class="nav-item desktop">
+                    <a href="#">
+                        <div class="li-img"><img src="img/Cultural.png" /></div>
+                        <div class="li-text">Cultural</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                    </div>
+                </li>
+                <li class="nav-item nav-highlight-item">
+                    <a href="pis.html">
+                        <div class="li-img"><img src="img/PIS.png" /></div>
+                        <div class="li-text" style="left: 0;">PIS</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Pravega Innovation Summit</h3>
+                        <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="workshops.html">
+                        <div class="li-img"><img src="img/Workshops.png" /></div>
+                        <div class="li-text">Workshops</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Workshops</h3>
+                        <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the end of the day, you would have learned something new.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="biology.html">
+                        <div class="li-img"><img src="img/Biology.png" /></div>
+                        <div class="li-text">Biology</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Biology</h3>
+                        <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="chemistry.html">
+                        <div class="li-img"><img src="img/Chemistry.png" /></div>
+                        <div class="li-text">Chemistry</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Chemistry</h3>
+                        <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="maths.html">
+                        <div class="li-img"><img src="img/math.png" /></div>
+                        <div class="li-text">Mathematics</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Maths</h3>
+                        <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="physics.html">
+                        <div class="li-img"><img src="img/Physics.png" /></div>
+                        <div class="li-text">Physics</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Physics</h3>
+                        <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re at it.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="engine.html">
+                        <div class="li-img"><img src="img/Technical.png" /></div>
+                        <div class="li-text">Engineering</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Engineering</h3>
+                        <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="lasya.html">
+                        <div class="li-img"><img src="img/Lasya.png" /></div>
+                        <div class="li-text">Lasya</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Lasya</h3>
+                        <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="bob.html">
+                        <div class="li-img"><img src="img/BoB.png" /></div>
+                        <div class="li-text">BoB</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Battle of Bands</h3>
+                        <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="pros.html">
+                        <div class="li-img"><img src="img/Proscenium.png" /></div>
+                        <div class="li-text">Proscenium</div>
+                    </a>
+                    <div class="dropdown"><img src="img/downCaret.png"></div>
+                    <div class="extra-info">
+                        <h3>Proscenium</h3>
+                        <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
+                    </div>
+                </li>
+                <li class="nav-item desktop nav-footer">
+                    <a target="_blank" href="http://pravega.org/registrations/">
+                        <div class="li-img"><img src="img/register.png"></div>
+                        <div class="li-text">Registrations</div>
+                    </a>
+                    <div class="extra-info">
+                        <h3>Registrations</h3>
+                        <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
+                    </div>
+                </li>
+                <li class="nav-item desktop nav-footer">
+                    <a target="_blank" href="contact.html">
+                        <div class="li-img"><img src="img/phone.svg"></div>
+                        <div class="li-text">Contact Us</div>
+                    </a>
+                    <div class="extra-info">
+                        <h3>Contact Us</h3>
+                        <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="infobar">
+            <div class="infobar-content">
+                <h2>Introduction</h2>
+                <p>Go on, click on one of the buttons below, to discover a host of exciting events, which you might want to check out!
+                </p>
             </div>
-            <div id="iconbar">
-                <ul>
-                    <li id="tog-button-desktop" class="nav-item desktop">
-                        <div class="li-img">
-                            <button class="c-hamburger c-hamburger--htx">
-                                <span>toggle menu</span>
-                            </button>
-                        </div>
-                        <div class="li-text nav-desc">
-                            <h3>Some text toggle</h3>
-                        </div>
-                    </li>
-                    <li class="nav-item desktop nav-footer">
-                        <a href="index.html">
-                            <div class="li-img"><img src="img/home.svg"></div>
-                            <div class="li-text">Main Page</div>
-                        </a>
-                        <div class="extra-info">
-                            <h3>Main Page</h3>
-                            <p>Lost? Tired of reading this? Get back to the main page!</p>
-                        </div>
-                    </li>
-                    <li class="nav-item desktop">
-                        <a href="#">
-                            <div class="li-img"><img src="img/Science.png" /></div>
-                            <div class="li-text">Science</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                        </div>
-                    </li>
-                    <li class="nav-item desktop">
-                        <a href="#">
-                            <div class="li-img"><img src="img/Cultural.png" /></div>
-                            <div class="li-text">Cultural</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                        </div>
-                    </li>
-                    <li class="nav-item nav-highlight-item">
-                        <a href="pis.html">
-                            <div class="li-img"><img src="img/PIS.png" /></div>
-                            <div class="li-text" style="left: 0;">PIS</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Pravega Innovation Summit</h3>
-                            <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="workshops.html">
-                            <div class="li-img"><img src="img/Workshops.png" /></div>
-                            <div class="li-text">Workshops</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Workshops</h3>
-                            <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the end of the day, you would have learned something new.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="biology.html">
-                            <div class="li-img"><img src="img/Biology.png" /></div>
-                            <div class="li-text">Biology</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Biology</h3>
-                            <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="chemistry.html">
-                            <div class="li-img"><img src="img/Chemistry.png" /></div>
-                            <div class="li-text">Chemistry</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Chemistry</h3>
-                            <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="maths.html">
-                            <div class="li-img"><img src="img/math.png" /></div>
-                            <div class="li-text">Mathematics</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Maths</h3>
-                            <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="physics.html">
-                            <div class="li-img"><img src="img/Physics.png" /></div>
-                            <div class="li-text">Physics</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Physics</h3>
-                            <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re at it.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="engine.html">
-                            <div class="li-img"><img src="img/Technical.png" /></div>
-                            <div class="li-text">Engineering</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Engineering</h3>
-                            <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="lasya.html">
-                            <div class="li-img"><img src="img/Lasya.png" /></div>
-                            <div class="li-text">Lasya</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Lasya</h3>
-                            <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="bob.html">
-                            <div class="li-img"><img src="img/BoB.png" /></div>
-                            <div class="li-text">BoB</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Battle of Bands</h3>
-                            <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="pros.html">
-                            <div class="li-img"><img src="img/Proscenium.png" /></div>
-                            <div class="li-text">Proscenium</div>
-                        </a>
-                        <div class="dropdown"><img src="img/downCaret.png"></div>
-                        <div class="extra-info">
-                            <h3>Proscenium</h3>
-                            <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
-                        </div>
-                    </li>
-                    <li class="nav-item desktop nav-footer">
-                        <a target="_blank" href="http://pravega.org/registrations/">
-                            <div class="li-img"><img src="img/register.png"></div>
-                            <div class="li-text">Registrations</div>
-                        </a>
-                        <div class="extra-info">
-                            <h3>Registrations</h3>
-                            <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item desktop nav-footer">
-                        <a target="_blank" href="contact.html">
-                            <div class="li-img"><img src="img/phone.svg"></div>
-                            <div class="li-text">Contact Us</div>
-                        </a>
-                        <div class="extra-info">
-                            <h3>Contact Us</h3>
-                            <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
-                        </div>
-                    </li>
-                </ul>
+            <div class="infobar-content">
+                <a href="index.html"><h2>Home</h2></a>
+                <p>Lost? Tired of reading this? Get back to the main page!</p>
             </div>
-            <div id="infobar">
-                <div class="infobar-content">
-                    <h2>Introduction</h2>
-                    <p>Go on, click on one of the buttons below, to discover a host of exciting events, which you might want to check out!
-                    </p>
-                </div>
-                <div class="infobar-content">
-                    <a href="index.html"><h2>Home</h2></a>
-                    <p>Lost? Tired of reading this? Get back to the main page!</p>
-                </div>
-                <div class="infobar-content">
-                    <a href="#"><h2>Science</h2></a>
-                    <div class="expand-menu">
-                        <img class="expand-menu-img active" onclick="window.location.href='biology.html'" src="img/Biology.png" />
-                        <img class="expand-menu-img" onclick="window.location.href='maths.html'" src="img/math.png" />
-                        <img class="expand-menu-img" onclick="window.location.href='physics.html'" src="img/Physics.png" />
-                        <img class="expand-menu-img" onclick="window.location.href='chemistry.html'" src="img/Chemistry.png" />
-                        <img class="expand-menu-img" onclick="window.location.href='engine.html'" src="img/Technical.png" />
-                        <div class="expand-menu-text active">
-                            <a href="biology.html"><h4>Biology</h4></a>
-                            <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="maths.html"><h4>Mathematics</h4></a>
-                            <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="physics.html"><h4>Physics</h4></a>
-                            <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re at it.</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="chemistry.html"><h4>Chemistry</h4></a>
-                            <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="engine.html"><h4>Engineering</h4></a>
-                            <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
-                        </div>
+            <div class="infobar-content">
+                <a href="#"><h2>Science</h2></a>
+                <div class="expand-menu">
+                    <img class="expand-menu-img active" onclick="window.location.href='biology.html'" src="img/Biology.png" />
+                    <img class="expand-menu-img" onclick="window.location.href='maths.html'" src="img/math.png" />
+                    <img class="expand-menu-img" onclick="window.location.href='physics.html'" src="img/Physics.png" />
+                    <img class="expand-menu-img" onclick="window.location.href='chemistry.html'" src="img/Chemistry.png" />
+                    <img class="expand-menu-img" onclick="window.location.href='engine.html'" src="img/Technical.png" />
+                    <div class="expand-menu-text active">
+                        <a href="biology.html"><h4>Biology</h4></a>
+                        <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="maths.html"><h4>Mathematics</h4></a>
+                        <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="physics.html"><h4>Physics</h4></a>
+                        <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re at it.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="chemistry.html"><h4>Chemistry</h4></a>
+                        <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="engine.html"><h4>Engineering</h4></a>
+                        <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
                     </div>
                 </div>
-                <div class="infobar-content">
-                    <a href="#"><h2>Cultural</h2></a>
-                    <div class="expand-menu">
-                        <img class="expand-menu-img active" onclick="window.location.href='lasya.html'" src="img/Lasya.png" />
-                        <img class="expand-menu-img" onclick="window.location.href='bob.html'" src="img/BoB.png" />
-                        <img class="expand-menu-img" onclick="window.location.href='pros.html'" src="img/Proscenium.png" />
-                        <div class="expand-menu-text active">
-                            <a href="lasya.html"><h4>Lasya</h4></a>
-                            <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.
-                            </p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="bob.html"><h4>Battle of Bands</h4></a>
-                            <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="pros.html"><h4>Proscenium</h4></a>
-                            <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
-                        </div>
+            </div>
+            <div class="infobar-content">
+                <a href="#"><h2>Cultural</h2></a>
+                <div class="expand-menu">
+                    <img class="expand-menu-img active" onclick="window.location.href='lasya.html'" src="img/Lasya.png" />
+                    <img class="expand-menu-img" onclick="window.location.href='bob.html'" src="img/BoB.png" />
+                    <img class="expand-menu-img" onclick="window.location.href='pros.html'" src="img/Proscenium.png" />
+                    <div class="expand-menu-text active">
+                        <a href="lasya.html"><h4>Lasya</h4></a>
+                        <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.
+                        </p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="bob.html"><h4>Battle of Bands</h4></a>
+                        <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="pros.html"><h4>Proscenium</h4></a>
+                        <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
                     </div>
                 </div>
-                <div class="infobar-content">
-                    <a href="pis.html"><h2>Pravega Innovation Summit</h2></a>
-                    <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
-                </div>
-                <div class="infobar-content">
-                    <a href="#"><h2>Workshops</h2></a>
-                    <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the end of the day, you would have learned something new.
-                    </p>
-                </div>
-                <div class="infobar-content">
-                    <a target="_blank" href="http://pravega.org/registrations/"><h2>Registrations</h2></a>
-                    <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
-                </div>
-                <div class="infobar-content">
-                    <a target="_blank" href="contact.html"><h2>Contact Us</h2></a>
-                    <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
-                </div>
+            </div>
+            <div class="infobar-content">
+                <a href="pis.html"><h2>Pravega Innovation Summit</h2></a>
+                <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
+            </div>
+            <div class="infobar-content">
+                <a href="#"><h2>Workshops</h2></a>
+                <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the end of the day, you would have learned something new.
+                </p>
+            </div>
+            <div class="infobar-content">
+                <a target="_blank" href="http://pravega.org/registrations/"><h2>Registrations</h2></a>
+                <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
+            </div>
+            <div class="infobar-content">
+                <a target="_blank" href="contact.html"><h2>Contact Us</h2></a>
+                <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
             </div>
         </div>
-        <!-- SideBar gets over-->
-        <div id="disabler"></div>
-        <div id="main" style="padding: 50px 0 55px 0;">
-            <div id="about" class="card">
-                <h2>About</h2>
-                <img src="img/pis-about.svg" style="float: left; padding-right: 15px; width: 9em; height: auto;" class="desktop" alt="About"/>
-                <p style="text-align: justify;">Pravega Innovation Summit is the flagship event of Pravega 2018, IISc. It is an initiative to bring the pillars of scientific growth and innovation, i.e., researchers, students and investors, together, and hence provide a platform for networking and exchange of ideas, to foster collaboration. PIS also aims to promote and provide support to the budding innovations and start-ups of young students from all over India. If you have the next big idea and need expert advice and support, you’ve come to the right place.</p>
-            </div>
-            <div id="schedule" class="card">
-                <h2>Schedule</h2>
-                <img src="img/pis-schedule.svg" style="float: left; margin-left: 17em; width: 22em; height: auto;" class="desktop" alt="Schedule"/>
-                <table style="margin: 0 auto;">
-                    <colgroup>
-                        <col style="width: 50%" />
-                        <col style="width: 50%" />
-                    </colgroup>
-                    <thead>
-                        <th>Time</th>
-                        <th>Event</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>9:00AM - 11:00AM</td>
-                            <td>Symposium</td>
-                        </tr>
-                        <tr>
-                            <td>11:00AM - 11:30AM</td>
-                            <td>Snacks</td>
-                        </tr>
-                        <tr>
-                            <td>11:30AM - 1:30PM</td>
-                            <td><a href="#sinec" style="color: black;">SInEC</a></td>
-                        </tr>
-                        <tr>
-                            <td>1:30PM - 2:30PM</td>
-                            <td>Lunch</td>
-                        </tr>
-                        <tr>
-                            <td>2:30PM - 4:00PM</td>
-                            <td><a href="#ric" style="color: black;">RIC</a></td>
-                        </tr>
-                        <tr>
-                            <td>4:00PM - 4:30PM</td>
-                            <td>Snacks</td>
-                        </tr>
-                        <tr>
-                            <td>4:30PM - 5:00PM</td>
-                            <td>Results</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div id="event-details" class="card">
-                <h2>Event Details</h2>
-                <p style="text-align: justify;">PIS is divided into two main parts:</p>
-                <ol style="list-style-type: default;">
-                    <li>
-                        <div id="sinec" class="inner-card">
-                            <h3 style="text-align: left; font-weight: normal;">Student Innovation and Entrepreneurship Conclave (SInEC)</h3>
-                            <p style="text-align: justify;">A platform for students to present their ideas to the masses, it is aimed at helping support the next revolutionary innovation in its grassroots stage.</p>
-                            <h3 style="text-align: left; font-weight: normal;">Structure:</h3>
-                            <ol>
-                                <li>
-                                    <h4 style="text-align: left; font-weight: normal;">ROUND 1</h4>
-                                    <ol style="list-style-type: default;">
-                                        <li>
-                                            <p>For this round, participants need to register in the main Pravega website (www.pravega.org) and submit an abstract of their idea or innovation on or before 30th November 2017. Late registrations will not be entertained.</p>
-                                        </li>
-                                        <li>
-                                            <p>For the second part of this round, participants need to submit a short video of the working prototype or some other proof of concept to demonstrate the feasibility of their idea or innovation. The deadline for the above is 25th December 2017. Late submissions will not be entertained.</p>
-                                        </li>
-                                    </ol>
-                                </li>
-                                <li>
-                                    <h4 style="text-align: left; font-weight: normal;">ROUND 2</h4>
-                                    <p style="text-align: justify;">This round will take place on one of the days of Pravega, which will be intimated later. After screening the participants of Round 1, all selected participants will be given individual stalls to present their ideas and prototypes to the masses, and they will be judged on the same by a panel of judges and invitees.</p>
-                                </li>
-                                <li>
-                                    <h4 style="text-align: left; font-weight: normal;">ROUND 3</h4>
-                                    <p>This round will take place on the same day of Pravega as Round 2. The selected participants will be given 8-10 minutes to present their business plan in front of the judges and invitees.</p>
-                                </li>
-                            </ol>
-                            <h3 style="text-align: left; font-weight: normal;">Prize: ₹1,00,000 (1 Lakh Rupees).</h3>
-                            <ol style="list-style-type: none;">
-                                <li>
-                                    <p>Points from Round 2 and Round 3 will be added to select the winner and runner-up.</p>
-                                </li>
-                            </ol>
-                            <h3 style="text-align: left; font-weight: normal;">Judges and Mentors: IISc and IIM Faculty</h3>
-                        </div>
-                    </li>
-                    <li>
-                        <div id="ric" class="inner-card">
-                            <h3 style="text-align: left; font-weight: normal;">Research Innovation Covention (RIC)</h3>
-                            <p>A platform for faculty of IISc and other registered researchers from other institutes to present their innovations and pitch new research ideas in front of potential investors.</p>
-                            <h3 style="text-align: left; font-weight: normal;">Structure:</h3>
-                            <ol style="list-style-type: none;">
-                                <li>
-                                    <p>Participants will demonstrate prototypes or proofs of concept to invitees after pitching their potential research ideas.</p>
-                                </li>
-                            </ol>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-            <div id="incentives" class="card">
-                <h2>Incentives</h2>
-                <table class="desktop" style="margin: 0 auto;">
-                    <colgroup>
-                        <col style="width: 50%" />
-                        <col style="width: 50%" />
-                    </colgroup>
-                    <tr style="text-align: justify">
-                        <td>
-                            <h3 style="font-weight: normal;">For Corporations:</h3>
-                            <ul>
-                                <li>
-                                    <p>Opportunity to showcase their brand.</p>
-                                </li>
-                                <li>
-                                    <p>Opportunity to invest in promising research projects.</p>
-                                </li>
-                                <li>
-                                    <p>Networking with the faculty of IISc, as well as with Professors and Researchers of other institutes.</p>
-                                </li>
-                                <li>
-                                    <p>To get an experience of the best screened innovations from all over the country.</p>
-                                </li>
-                            </ul>
-                        </td>
-                        <td>
-                            <h3 style="font-weight: normal;">For Faculty and Researchers:</h3>
-                            <ul>
-                                <li>
-                                    <p>Opportunity to present their innovations in front of renowned corporations and investors.</p>
-                                </li>
-                                <li>
-                                    <p>Opportunity to get private funding for their research ideas.</p>
-                                </li>
-                                <li>
-                                    <p>Networking opportunities with other innovators and researchers.</p>
-                                </li>
-                                <li>
-                                    <p>Opportunity to get potential bright interns.</p>
-                                </li>
-                            </ul>
-                        </td>
+    </div>
+    <!-- SideBar gets over-->
+    <div id="disabler"></div>
+    <div id="main">
+        <div id="about" class="card">
+            <h2>Pravega Innovation Summit</h2>
+            <img src="img/pis-about.svg" style="float: left; padding-right: 15px; width: 9em; height: auto;" class="desktop" alt="About"/>
+            <p> This is the flagship event of Pravega 2018, IISc which is an initiative to bring the pillars of scientific growth and innovation i.e. researchers, students, corporate, investors together and provide a platform for networking, exchange of ideas and foster collaboration. PrIS also aims to promote and provide support to the budding innovations and start-ups of young students from all over india.</p>
+        </div>
+        <div id="schedule" class="card">
+            <h2>Schedule</h2>
+            <table style="margin: 0 auto;">
+                <colgroup>
+                    <col style="width: 50%" />
+                    <col style="width: 50%" />
+                </colgroup>
+                <thead>
+                    <th>Time</th>
+                    <th>Event</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:00AM - 11:00AM</td>
+                        <td>Symposium</td>
                     </tr>
-                    <tr style="text-align: justify">
-                        <td>
-                            <h3 style="font-weight: normal;">For Investors:</h3>
-                            <ul>
-                                <li>
-                                    <p>Networking opportunity with renowned corporations and reputed researchers and faculty members.</p>
-                                </li>
-                                <li>
-                                    <p>To get an experience of the best innovations from students all over the country.</p>
-                                </li>
-                                <li>
-                                    <p>Opportunity to potentially invest in promising student start-ups and research projects.</p>
-                                </li>
-                            </ul>
-                        </td>
-                        <td>
-                            <h3 style="font-weight: normal;">For Students:</h3>
-                            <ul>
-                                <li>
-                                    <p>Opportunity to showcase their innovations in front of renowned corporations, reputed faculty members and researchers and reputed investors.</p>
-                                </li>
-                                <li>
-                                    <p>Opportunity for potential investment in their idea or innovation.</p>
-                                </li>
-                                <li>
-                                    <p>Opportunity for potential internship in renowned institutions and corporations.</p>
-                                </li>
-                            </ul>
-                        </td>
+                    <tr>
+                        <td>11:00AM - 11:30AM</td>
+                        <td>Snacks</td>
                     </tr>
-                </table>
-                <ul class="mobile" style="text-align: justify">
-                    <li>
-                        <h3 style="font-weight: normal;">For Corporations:</h3>
+                    <tr>
+                        <td>11:30AM - 1:30PM</td>
+                        <td><a href="#sinec" style="color: black;">SInEC</a></td>
+                    </tr>
+                    <tr>
+                        <td>1:30PM - 2:30PM</td>
+                        <td>Lunch</td>
+                    </tr>
+                    <tr>
+                        <td>2:30PM - 4:00PM</td>
+                        <td><a href="#ric" style="color: black;">RIC</a></td>
+                    </tr>
+                    <tr>
+                        <td>4:00PM - 4:30PM</td>
+                        <td>Snacks</td>
+                    </tr>
+                    <tr>
+                        <td>4:30PM - 5:00PM</td>
+                        <td>Results</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="event-details" class="card">
+            <h2>Event Details</h2>
+            <p>PIS is divided into two main parts:</p>
+                    <div id="sinec" class="inner-card">
+                        <h3>Student Innovation and Entrepreneurship Conclave (SInEC)</h3>
+                        <p>A platform for students to present their ideas to the masses, it is aimed at helping support the next revolutionary innovation in its grassroots stage.</p>
+                        <h3>Structure</h3>
+                        <ol>
+                            <li>
+                                <h4>Prelims</h4>
+                                <ol>
+                                    <li>
+                                        <p>For this round, participants need to register in the main Pravega website (www.pravega.org) and submit an abstract of their idea or innovation on or before 15th December, 2017.</p>
+                                    </li>
+                                    <li>
+                                        <p>For the second part of this round, participants need to submit a short video of the working prototype or some other proof of concept to demonstrate the feasibility of their idea or innovation. The deadline for the above is 30th December 2017.
+                                        </p>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <h4>Finale</h4>
+                                <p>All selected teams from previous round will be called to Pravega, IISc on 19th Jan, 2017 to present their ideas to the judges and the general public. Each team will be given 10-15 min to pitch their idea, demonstrate prototype and present B-Plan to all the invitees. Points given by the panel of judges will be added to select the winner and runner up.</p>
+                            </li>
+                        </ol>
+                        <h3>Prizes worth ₹1,00,000</h3>
+                        <h3>Judges and Mentors: IISc and IIM Faculty</h3>
+                    </div>
+                    <div id="ric" class="inner-card">
+                        <h3>Research Innovation Covention (RIC)</h3>
+                        <p>A platform for faculty of IISc and other registered researchers from other institutes to present their innovations and pitch new research ideas in front of potential investors.</p>
+                        <p>Participants will demonstrate prototypes or proofs of concept to invitees after pitching their potential research ideas.</p>
+            </div>
+        </div>
+        <div id="incentives" class="card">
+            <h2>Incentives</h2>
+            <table class="desktop" style="margin: 0 auto;">
+                <colgroup>
+                    <col style="width: 50%" />
+                    <col style="width: 50%" />
+                </colgroup>
+                <tr>
+                    <td>
+                        <h3>For Corporations:</h3>
                         <ul>
                             <li>
                                 <p>Opportunity to showcase their brand.</p>
@@ -485,12 +398,12 @@
                                 <p>Networking with the faculty of IISc, as well as with Professors and Researchers of other institutes.</p>
                             </li>
                             <li>
-                                <p>To get an experience of the best screened innovations from all over the country.</p>
+                                <p>To get an experience of the best screened innovations from all over the country, and provide internship opportunities.</p>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <h3 style="font-weight: normal;">For Faculty and Researchers:</h3>
+                    </td>
+                    <td>
+                        <h3>For Faculty and Researchers:</h3>
                         <ul>
                             <li>
                                 <p>Opportunity to present their innovations in front of renowned corporations and investors.</p>
@@ -505,9 +418,11 @@
                                 <p>Opportunity to get potential bright interns.</p>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <h3 style="font-weight: normal;">For Investors:</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>For Investors:</h3>
                         <ul>
                             <li>
                                 <p>Networking opportunity with renowned corporations and reputed researchers and faculty members.</p>
@@ -519,9 +434,9 @@
                                 <p>Opportunity to potentially invest in promising student start-ups and research projects.</p>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <h3 style="font-weight: normal;">For Students:</h3>
+                    </td>
+                    <td>
+                        <h3>For Students:</h3>
                         <ul>
                             <li>
                                 <p>Opportunity to showcase their innovations in front of renowned corporations, reputed faculty members and researchers and reputed investors.</p>
@@ -533,41 +448,109 @@
                                 <p>Opportunity for potential internship in renowned institutions and corporations.</p>
                             </li>
                         </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div id="floating-footer">
-            <a target="_blank" href="https://www.facebook.com/PravegaIISc/">
-                <div class="fab-icon">
-                    <div class="fab-desc triangle-isosceles">
-                        <h6>Facebook</h6></div>
-                    <img src="img/fb.svg">
-                </div>
-            </a>
-            <a target="_blank" href="https://twitter.com/PravegaIISc">
-                <div class="fab-icon">
-                    <div class="fab-desc triangle-isosceles">
-                        <h6>Twitter</h6></div>
-                    <img src="img/Twitter.svg">
-                </div>
-            </a>
-        </div>
-        <div id="footer">
-            <div id="social">
-                <a target="_blank" href="https://www.facebook.com/PravegaIISc/"><img src="img/fb.svg" style=""></a>
-                <a target="_blank" href="https://twitter.com/PravegaIISc"><img src="img/Twitter.svg"></a>
-            </div>
-            <ul id="links">
-                <li><a target="_blank" href="http://pravega.org/registrations/">Registrations</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="index.html">Home</a></li>
+                    </td>
+                </tr>
+            </table>
+            <ul class="mobile">
+                <li>
+                    <h3>For Corporations:</h3>
+                    <ul>
+                        <li>
+                            <p>Opportunity to showcase their brand.</p>
+                        </li>
+                        <li>
+                            <p>Opportunity to invest in promising research projects.</p>
+                        </li>
+                        <li>
+                            <p>Networking with the faculty of IISc, as well as with Professors and Researchers of other institutes.</p>
+                        </li>
+                        <li>
+                            <p>To get an experience of the best screened innovations from all over the country.</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>For Faculty and Researchers:</h3>
+                    <ul>
+                        <li>
+                            <p>Opportunity to present their innovations in front of renowned corporations and investors.</p>
+                        </li>
+                        <li>
+                            <p>Opportunity to get private funding for their research ideas.</p>
+                        </li>
+                        <li>
+                            <p>Networking opportunities with other innovators and researchers.</p>
+                        </li>
+                        <li>
+                            <p>Opportunity to get potential bright interns.</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>For Investors:</h3>
+                    <ul>
+                        <li>
+                            <p>Networking opportunity with renowned corporations and reputed researchers and faculty members.</p>
+                        </li>
+                        <li>
+                            <p>To get an experience of the best innovations from students all over the country.</p>
+                        </li>
+                        <li>
+                            <p>Opportunity to potentially invest in promising student start-ups and research projects.</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>For Students:</h3>
+                    <ul>
+                        <li>
+                            <p>Opportunity to showcase their innovations in front of renowned corporations, reputed faculty members and researchers and reputed investors.</p>
+                        </li>
+                        <li>
+                            <p>Opportunity for potential investment in their idea or innovation.</p>
+                        </li>
+                        <li>
+                            <p>Opportunity for potential internship in renowned institutions and corporations.</p>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
-        <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
-        <script src="js/TweenLite.min.js" type="text/javascript"></script>
-        <script src="js/menu.js" type="text/javascript"></script>
-        <script type="text/javascript">
+        <div class="card">
+            <h2>Click <a target="_blank" href="docs/PIS_Pravega18.pdf">here</a> to download and view the rules.</h2>
+        </div>
+    </div>
+    <div id="floating-footer">
+        <a target="_blank" href="https://www.facebook.com/PravegaIISc/">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
+                    <h6>Facebook</h6></div>
+                <img src="img/fb.svg">
+            </div>
+        </a>
+        <a target="_blank" href="https://twitter.com/PravegaIISc">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
+                    <h6>Twitter</h6></div>
+                <img src="img/Twitter.svg">
+            </div>
+        </a>
+    </div>
+    <div id="footer">
+        <div id="social">
+            <a target="_blank" href="https://www.facebook.com/PravegaIISc/"><img src="img/fb.svg" style=""></a>
+            <a target="_blank" href="https://twitter.com/PravegaIISc"><img src="img/Twitter.svg"></a>
+        </div>
+        <ul id="links">
+            <li><a target="_blank" href="http://pravega.org/registrations/">Registrations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </div>
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="js/TweenLite.min.js" type="text/javascript"></script>
+    <script src="js/menu.js" type="text/javascript"></script>
+    <script type="text/javascript">
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function() {
@@ -582,5 +565,5 @@
 
         ga('create', 'UA-87281359-1', 'auto');
         ga('send', 'pageview');
-        </script>
+    </script>
 </body>

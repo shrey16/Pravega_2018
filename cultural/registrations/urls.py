@@ -16,4 +16,5 @@ urlpatterns = [
         name='proscenium_theatre'),
     url(r'^proscenium/video$', views.proscenium_theatre_video,
         name='proscenium_theatre_video'),
+    url(r'^openmic$', views.openmic, name='openmic'),
 ]

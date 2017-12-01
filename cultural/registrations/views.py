@@ -401,3 +401,66 @@ def pis(request):
             return render(request, "pis.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
         return render(request, "pis.html", context)
+
+
+def openmic(request):
+    OpenMicParticipantFormSet = formset_factory(
+        OpenMicParticipantForm, formset=BaseOpenMicParticipantFormSet, min_num=1, validate_min=True, extra=0)
+    registration = OpenMicRegistration()
+
+    context = {
+        'registration_form': OpenMicRegistrationForm(),
+        'participant_formset': OpenMicParticipantFormSet(),
+    }
+
+    if request.method == 'POST':
+        participant_formset = OpenMicParticipantFormSet(
+            request.POST, request.FILES)
+        participant_count = len(list(filter(lambda form: form.is_valid(
+        ), participant_formset.forms))) if participant_formset.is_valid() else 0
+        registration_form = OpenMicRegistrationForm(
+            request.POST, request.FILES, participant_count=participant_count)
+
+        context = {
+            'registration_form': registration_form,
+            'participant_formset': participant_formset,
+        }
+
+        if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
+            registration.name = registration_form.cleaned_data.get(
+                'name')
+            registration.email = registration_form.cleaned_data.get('email')
+            registration.event = registration_form.cleaned_data.get(
+                'event')
+            registration.expected_performance_duration_mins = registration_form.cleaned_data.get(
+                'expected_performance_duration_mins')
+            registration.instrument_requirement = registration_form.cleaned_data.get(
+                'instrument_requirement')
+            registration.reason_for_gt_3_members = registration_form.cleaned_data.get(
+                'reason_for_gt_3_members')
+            try:
+                registration.save()
+            except IntegrityError:
+                return render(request, "openmic.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+
+            participants = []
+            for participant_form in participant_formset:
+                name = participant_form.cleaned_data.get('name')
+                if name:
+                    participants.append(OpenMicParticipant(
+                        registration_entry=registration, name=name))
+
+            try:
+                with transaction.atomic():
+                    OpenMicParticipant.objects.filter(
+                        registration_entry=registration).delete()
+                    OpenMicParticipant.objects.bulk_create(participants)
+                return render(request, "success.html", {'event_name': 'Open Mic', 'id': registration.id})
+            except IntegrityError:
+                return render(request, "openmic.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
+        else:
+            return render(request, "openmic.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+    else:
+        return render(request, "openmic.html", context)

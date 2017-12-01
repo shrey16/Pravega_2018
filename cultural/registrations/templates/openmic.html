@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Registration | Proscenium | Pravega 2018</title>
+    <title>Registration | Open Mic | Pravega 2018</title>
     {% load static %}
-    <meta name="description" content="Video Submission for Proscenium Prelims">
+    <meta name="description" content="Registration for Open Mic">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
     <link href="{% static 'css/reg.css' %}" type="text/css" rel="stylesheet" />
@@ -22,6 +22,8 @@
 </head>
 
 <body>
+    </div>
+    </div>
     <!--SideBar-->
     <div id="sidebar" class="clearfix">
         <div id="tog-button-mobile">
@@ -293,13 +295,16 @@
     <div id="disabler"></div>
     <div id="main">
         <div class="content">
-            <h1>Proscenium Prelims Video</h1> {% if error_message %}
+            <h1 id="registration-title">Open Mic</h1> {% if error_message %}
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
-            <form action="{% url 'registrations:proscenium_theatre_video' %}" method="post" enctype="multipart/form-data" id="msform">
+            <form action="{% url 'registrations:openmic' %}" method="post" enctype="multipart/form-data" id="msform">
                 <ul id="progressbar">
                     <li>Rules</li>
-                    <li>Prelims
+                    <li>Identification</li>
+                    <li>Addtional
                         <br/>Information</li>
+                    <li>Participant
+                        <br/>Details</li>
                 </ul>
                 {% csrf_token %} {% if registration_form.errors %}
                 <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
@@ -311,43 +316,17 @@
                 {% endif %}
                 <fieldset>
                     <h2>Rules and Regulations</h2>
-                    <h2>General Rules</h2>
                     <ol class="rules">
-                        <li>
-                            A debatable statement is to be presented a priori which should be duly argued for through the performance. If somebody wants to argue against the statement, then the statement should be presented in negative.
-                        </li>
-                        <li>
-                            For the performance, English, Hindi and Kannada shall be considered as intelligible language of communication.
-                        </li>
-                        <li>
-                            It’s not necessary that all the members of a participating team be from the same institution, but one person must not participate in two different teams. Also, no further inclusion of people in a team shall be allowed following the submission for video-prelims.
-                        </li>
-                        <li>
-                            Dramatic societies of different languages (mentioned above) but from same institution are allowed to participate in the event.
-                        </li>
-                        <li>
-                            Participants must be below 25 years of age.
-                        </li>
+                        <li>Maximum of 4 participants per team.</li>
+                        <li>Performances should broadly belong to the three categories. Namely: comedy, music, spoken word.</li>
+                        <li>The maximum time allotted for each performance is 5 minutes. Additional time of 1 minute will be provided preceded by a warning.</li>
+                        <li>You should bring your own instruments. They must be acoustic.</li>
+                        <li>Ensure that your instrument is tuned before coming up on stage. If you’re having trouble, don’t be afraid to approach us. We want you to sound as good as you can. Help us help you.</li>
+                        <li>Performances can be in any language. </li>
+                        <li>Be courteous towards fellow performers. We’re all here to support each other and the artform.</li>
+                        <li>You’re free to express yourself as long as it is tastefully done. The event coordinators have final discretion should any dispute arise. Basically, be cool.</li>
+                        <li>All decisions made by the Open Mic team and Pravega will be taken as final.</li>
                     </ol>
-                    <h2>Rules for Video Prelims Auditions</h2>
-                    <ol class="rules">
-                        <li>
-                            Maximum video length limit is 15 minutes; a maximum of 5 minutes extra time may be considered.
-                        </li>
-                        <li>
-                            Video and audio quality should be as clear as possible. Unintelligible audio may lead to disqualification. Video quality should not be below 720p. No zooming or editing of the video will be allowed. All movements and expressions should be clearly visible in the video.
-                        </li>
-                        <li>
-                            A discussion about the act/script of the act should be uploaded along with the video in writing. If the script is adapted, then the source of adaptation must be mentioned. The discussion should also make note of all elements (viz. poetry, songs etc.) that may have been used in the performance and are not original.
-                        </li>
-                        <li>
-                            Plagiarism in script is strictly prohibited and if detected, will lead to immediate disqualification. Judges’ discretion in such matters shall be final.
-                        </li>
-                    </ol>
-                    <p style="font-weight: bold;">Prelims Video and Script may not be re-submitted after they have already been submitted.</p>
-                    <br/>
-                    <p>You can also download a copy of the rules for all events as a PDF <a style="color: blue;" href="{% static 'rules/rules.pdf' %}">here</a>.</p>
-                    <br/>
                     <p>Have you read and understood the above regulations?</p>
                     <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label>
                     {{ registration_form.understood }}
@@ -355,12 +334,41 @@
                     <input type="button" name="next" id="continue" class="action-button" value="Continue" />
                 </fieldset>
                 <fieldset class="real">
-                    {{ registration_form.index.label_tag }} {{ registration_form.index }} {% if registration_form.index.errors %}
-                    <div class="errors">{% for error in registration_form.index.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.prelims_video.label_tag }} {{ registration_form.prelims_video }} {% if registration_form.prelims_video.errors %}
-                    <div class="errors">{% for error in registration_form.prelims_video.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.prelims_script.label_tag }} {{ registration_form.prelims_script }} {% if registration_form.prelims_script.errors %}
-                    <div class="errors">{% for error in registration_form.prelims_script.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
+                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.name.label_tag }} {{ registration_form.name }} {% if registration_form.name.errors %}
+                    <div class="errors"> {% for error in registration_form.name.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.email.label_tag }} {{ registration_form.email }} {% if registration_form.email.errors %}
+                    <div class="errors"> {% for error in registration_form.email.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.event.label_tag }} {{ registration_form.event }} {% if registration_form.event.errors %}
+                    <div class="errors"> {% for error in registration_form.event.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.expected_performance_duration_mins.label_tag }} {{ registration_form.expected_performance_duration_mins }} {% if registration_form.expected_performance_duration_mins.errors %}
+                    <div class="errors"> {% for error in registration_form.expected_performance_duration_mins.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.instrument_requirement.label_tag }} {{ registration_form.instrument_requirement }} {% if registration_form.instrument_requirement.errors %}
+                    <div class="errors"> {% for error in registration_form.instrument_requirement.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.reason_for_gt_3_members.label_tag }} {{ registration_form.reason_for_gt_3_members }} {% if registration_form.reason_for_gt_3_members.errors %}
+                    <div class="errors"> {% for error in registration_form.reason_for_gt_3_members.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real" id="participants">
+                    {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
+                    <div class="participant-formset">
+                        {% if participant_form.errors %}
+                        <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
+                            <p> {{ errors }} </p>
+                            {% endfor %} {% endfor %}
+                        </div>
+                        {% endif %} {{ participant_form.name.label_tag }} {{ participant_form.name }} {% if participant_form.name.errors %}
+                        <div class="errors"> {% for error in participant_form.name.errors %} {{ error|escape }} {% endfor %} </div>{% endif %} 
+                    </div>
+                    {% endfor %} {% if participant_formset.non_form_errors %}
+                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <br />
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
                 </fieldset>
@@ -394,6 +402,13 @@
                 <div class="fab-desc triangle-isosceles">
                     <h6>Twitter</h6></div>
                 <img src="{% static 'img/Twitter.svg' %}">
+            </div>
+        </a>
+        <a target="_blank" href="http://pravega.org/registrations/">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
+                    <h6>Registrations</h6></div>
+                <img src="{% static 'img/register.png' %}">
             </div>
         </a>
     </div>

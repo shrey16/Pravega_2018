@@ -212,7 +212,7 @@ if (desktopMode) {
             });
         } else {
             TweenLite.to($("#iconbar"), 0.3, {
-                height: screen.height,
+                height: screen.height - 60,
                 onStart: function() {
                     if ($.fn !== undefined && $.fn.fullpage !== undefined) {
                         $.fn.fullpage.setAllowScrolling(false);

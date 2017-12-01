@@ -72,7 +72,7 @@ class ProsceniumTheatreParticipant(models.Model):
     role = models.CharField(max_length=max(map(lambda x: len(x[0]), ProsceniumParticipant.ROLES)),
                             choices=ProsceniumParticipant.ROLES,
                             default=ProsceniumParticipant.PERFORMER)
-    age = models.IntegerField()
+    age = models.PositiveSmallIntegerField()
     name = models.CharField(max_length=200)
 
     def upload_path(instance, filename):
@@ -111,7 +111,7 @@ class ProsceniumStreetPlayParticipant(models.Model):
     role = models.CharField(max_length=max(map(lambda x: len(x[0]), ProsceniumParticipant.ROLES)),
                             choices=ProsceniumParticipant.ROLES,
                             default=ProsceniumParticipant.PERFORMER)
-    age = models.IntegerField()
+    age = models.PositiveSmallIntegerField()
     name = models.CharField(max_length=200)
 
     def upload_path(instance, filename):
@@ -162,7 +162,7 @@ class BoBRegistration(models.Model):
                                      default=BANGALORE)
 
     def __str__(self):
-        return f"Band Name: {self.band_name}, City: {self.city} Genre: {self.genre}, Prelims Venue: {self.prelims_venue}, E-Mail ID: {self.email}"
+        return f"Band Name: {self.band_name}, City: {self.city}, Genre: {self.genre}, Prelims Venue: {self.prelims_venue}, E-Mail ID: {self.email}"
 
 
 class BoBParticipant(models.Model):
@@ -270,3 +270,30 @@ class SInECParticipant(models.Model):
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Type: {self.student_type}, Institution: {self.institution}, City: {self.city}"
+
+
+class OpenMicRegistration(models.Model):
+
+    class Meta:
+        unique_together = (("email", "name", "event"),)
+
+    time = models.DateTimeField(default=now)
+    referral_code = models.CharField(max_length=50, blank=True)
+    name = models.CharField(max_length=200)
+    event = models.CharField(max_length=100, blank=True)
+    email = models.EmailField()
+    expected_performance_duration_mins = models.PositiveSmallIntegerField()
+    instrument_requirement = models.CharField(max_length=200, blank=True)
+    reason_for_gt_3_members = models.CharField(max_length=400, blank=True)
+
+    def __str__(self):
+        return f"Name: {self.name}, Event: {self.event}, E-Mail ID: {self.email}, Expected Performance Duration: {self.expected_performance_duration_mins} minutes"
+
+
+class OpenMicParticipant(models.Model):
+    registration_entry = models.ForeignKey(
+        OpenMicRegistration, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Registration Entry: {self.registration_entry}, Name: {self.name}"

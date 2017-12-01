@@ -101,7 +101,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/biology.html">
-                        <div class="li-img"><img src="img/Biology.png" /></div>
+                        <div class="li-img"><img src="{% static 'img/Biology.png' %}" /></div>
                         <div class="li-text">Biology</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -178,7 +178,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/pros.html">
-                        <div class="li-img"><img src="{% static 'img/Proscenium.png'}" /></div>
+                        <div class="li-img"><img src="{% static 'img/Proscenium.png' %}" /></div>
                         <div class="li-text">Proscenium</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -332,8 +332,6 @@
                             Participants must be below 25 years of age.
                         </li>
                     </ol>
-                    <br/>
-                    <p>You can also download a copy of the rules for all events as a PDF <a style="color: blue;" href="{% static 'rules/rules.pdf' %}">here</a>.</p>
                     <br/>
                     <p>Have you read and understood the above regulations?</p>
                     <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label>

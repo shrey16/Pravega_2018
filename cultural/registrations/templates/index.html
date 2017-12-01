@@ -19,23 +19,10 @@
         background-attachment: fixed;
     }
 
-    .content {
-        width: 60vw;
-        position: absolute;
-        margin: auto;
-        left: 15vw;
-        top: 0;
-        padding-top: 50px!important;
-        padding-bottom: 50px!important;
-        overflow-y: auto;
-    }
-
     @media only screen and (max-width: 900px),
     (max-height: 500px) {
         .content {
-            left: 0;
             width: 100%;
-            padding-top: 10px!important;
         }
     }
     </style>
@@ -121,7 +108,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/biology.html">
-                        <div class="li-img"><img src="img/Biology.png" /></div>
+                        <div class="li-img"><img src="{% static 'img/Biology.png' %}" /></div>
                         <div class="li-text">Biology</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -198,7 +185,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/pros.html">
-                        <div class="li-img"><img src="{% static 'img/Proscenium.png'}" /></div>
+                        <div class="li-img"><img src="{% static 'img/Proscenium.png' %}" /></div>
                         <div class="li-text">Proscenium</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -313,14 +300,16 @@
     <div id="disabler"></div>
     <div id="main">
         <div class="content">
-            <a target="_blank" href="https://www.thecollegefever.com/events/pravega-18" class="nav-link" style="font-size: 1.3em;">General Registrations and Workshops</a>
-            <a href="http://pravega.org/registrations/pis" class="nav-link" style="font-size: 1.3em;">Pravega Innovation Summit</a>
-            <a href="http://pravega.org/registrations/footprints" class="nav-link" style="font-size: 1.3em;">Footprints</a>
-            <a href="http://pravega.org/registrations/proscenium/theatre" class="nav-link" style="font-size: 1.3em;">Proscenium</a>
-            <a href="http://pravega.org/registrations/proscenium/video" class="nav-link" style="font-size: 1.3em;">Prelims Video Submission for Proscenium (Already Registered)</a>
-            <a href="http://pravega.org/registrations/bob" class="nav-link" style="font-size: 1.3em;">Battle of Bands</a>
-            <a href="http://pravega.org/registrations/lasya" class="nav-link" style="font-size: 1.3em;">Lasya</a>
-            <a href="http://pravega.org/registrations/lasya/video" class="nav-link" style="font-size: 1.3em;">Prelims Video Submission for Lasya (Already Registered)</a>
+            <div class="reglinks">
+                <a target="_blank" href="https://www.thecollegefever.com/events/pravega-18" class="nav-link" style="font-size: 1.3em;">General Registrations and Workshops</a>
+                <a href="http://pravega.org/registrations/pis" class="nav-link" style="font-size: 1.3em;">Pravega Innovation Summit</a>
+                <a href="http://pravega.org/registrations/footprints" class="nav-link" style="font-size: 1.3em;">Footprints</a>
+                <a href="http://pravega.org/registrations/proscenium/theatre" class="nav-link" style="font-size: 1.3em;">Proscenium</a>
+                <a href="http://pravega.org/registrations/proscenium/video" class="nav-link" style="font-size: 1.3em;">Prelims Video Submission for Proscenium (Already Registered)</a>
+                <a href="http://pravega.org/registrations/bob" class="nav-link" style="font-size: 1.3em;">Battle of Bands</a>
+                <a href="http://pravega.org/registrations/lasya" class="nav-link" style="font-size: 1.3em;">Lasya</a>
+                <a href="http://pravega.org/registrations/lasya/video" class="nav-link" style="font-size: 1.3em;">Prelims Video Submission for Lasya (Already Registered)</a>
+            </div>
         </div>
     </div>
     <div id="floating-footer">

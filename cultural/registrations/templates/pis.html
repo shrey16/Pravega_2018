@@ -101,7 +101,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/biology.html">
-                        <div class="li-img"><img src="img/Biology.png" /></div>
+                        <div class="li-img"><img src="{% static 'img/Biology.png' %}" /></div>
                         <div class="li-text">Biology</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -178,7 +178,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/pros.html">
-                        <div class="li-img"><img src="{% static 'img/Proscenium.png'}" /></div>
+                        <div class="li-img"><img src="{% static 'img/Proscenium.png' %}" /></div>
                         <div class="li-text">Proscenium</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -187,7 +187,7 @@
                         <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
                     </div>
                 </li>
-                <li class="nav-item desktop nav-footer nav-highlight-item">
+                <li class="nav-item desktop nav-highlight-item">
                     <a target="_blank" href="http://pravega.org/registrations/">
                         <div class="li-img"><img src="{% static 'img/register.png' %}"></div>
                         <div class="li-text" style="left: 0;">Registrations</div>
@@ -197,7 +197,7 @@
                         <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
                     </div>
                 </li>
-                <li class="nav-item desktop nav-footer">
+                <li class="nav-item desktop">
                     <a target="_blank" href="http://pravega.org/contact.html">
                         <div class="li-img"><img src="{% static 'img/phone.svg' %}"></div>
                         <div class="li-text">Contact Us</div>
@@ -320,40 +320,38 @@
                         <li>All team members must be students enrolled in an academic institution.</li>
                         <li>Each team can have a maximum of 4 members.</li>
                         <li>Ideas submitted must be original.</li>
-                        <li>The contest comprises of 3 stages.
+                        <li>Prelims:
                             <ol style="list-style-type: none; font-size: 0.8em;">
-                                <li>Round 1: Preliminaries
+                                <li>Round 1
                                     <ol class="deep">
                                         <li>Teams register online at our portal. There is no registration fee.</li>
-                                        <li>Teams must submit a description of their innovation by the first deadline. Additional files such as videos, presentations, websites URLs etc can be uploaded to support their description.</li>
-                                        <li>Teams need to Submit a short video of the working prototype within the second deadline.</li>
-                                        <li>The team will be considered selected for the next round based on their idea description and prototype video.</li>
-                                        <li>Ideas can be from any field or interdisciplinary including science, mathematics, engineering, economics, social sciences, etc.</li>
+                                        <li>Teams must submit a description or abstract of their innovation by the first deadline. Additional files such as videos, presentations, websites URLs etc can be uploaded to support their description.</li>
+                                        <li>Ideas can be from any field or interdisciplinary including science, mathematics, engineering, economics, social sciences, etc</li>
+                                        <li><b>Deadline: 10th Dec (has been extended)</b></li>
                                     </ol>
                                 </li>
-                                <li>Round 2: Semi-finals
+                                <li>Round 2
                                     <ol class="deep">
-                                        <li>15 to 20 teams shall be selected from across the country. Selection will be done by IISc and IIM professors.</li>
-                                        <li>Teams selected to Round 2 will be notified and will participate in workshops and/or related events that will help them enhance pitching methods, business strategies and help develop business models.</li>
-                                        <li>Teams will make and send new presentations using the skills they have acquired. Proof of concept must also be submitted. These presentations will be used for selection into the next round.</li>
+                                        <li>Teams need to submit a short video of the working prototype or some proof of concept which supports the feasibility of the idea/innovation.</li>
+                                        <li>The file(s) should be uploaded in Google Drive and the link with view access should be uploaded In the portal.</li>
+                                        <li>Deadline: 30th Dec</li>
                                     </ol>
                                 </li>
-                                <li>
-                                    Round 3: Finals
-                                    <ol class="deep">
-                                        <li>Eight teams will be selected for the final round, which will be conducted at IISc, Bangalore during the course of Pravega 2018. Exact date and timings will be notified to the finalists.</li>
-                                        <li>The teams will present their model to a panel of judges and invitees consisting of corporate professionals, investors, IISc and IIM professors.</li>
-                                        <li>Winning teams will be announced the same day. Winning teams get cash prizes worth up to Rs. 1 lakh.</li>
-                                        <li>All finalists get the opportunity to interact with corporates, investors and leading science professionals. Teams may also be offered internships in leading companies based on their interaction with the companies.</li>
-                                        <li>Pravega will respect the privacy preferences chosen by the team.</li>
-                                        <li>Any dispute arising due to any confusion regarding the contest shall be resolved at IISc by a Pravega committee. Pravega and the decision or resolution provided will be considered final. Pravega reserves the right to change specifics of the competition without prior notice. All decisions by Pravega shall be final and binding.</li>
-                                    </ol>
-                                </li>
+                                <li>Any workshop or online mentoring session organised by Pravega for this event is mandatory to attend by the Finalists.</li>
+                                <li>This workshop or mentoring will be conducted by skilled and experienced professor(s) of IISc or IIM, which will be free of cost for the finalists.</li>
                             </ol>
                         </li>
+                        <li>Finals
+                            <ol class="deep">
+                                <li>Eight teams will be selected for the final round, which will be conducted at IISc, Bangalore during Pravega 2018. Exact date and timings will be notified to the finalists.</li>
+                                <li>All the selected teams will be given 10-15min to pitch their idea, demonstrate prototype and present B-plan in front of all the invitees.</li>
+                                <li>Winning teams based on the assessment by judging panel will be announced the same day. Winning teams get cash prizes worth up to Rs. 1 lakh.</li>
+                            </ol>
+                        </li>
+                        <li>All finalists gets the opportunity to interact with corporates, investors and leading science professionals. Teams may also be offered internships in leading companies based on their interaction with the companies.</li>
+                        <li>Pravega will respect the privacy preferences chosen by the team.</li>
+                        <li>Any dispute arising due to any confusion regarding the contest shall be resolved at IISc by a Pravega committee. Pravega and the decision or resolution provided will be considered final. Pravega reserves the right to change specifics of the competition without prior notice. All decisions by Pravega shall be final and binding.</li>
                     </ol>
-                    <p>You can also download a copy of the rules for all events as a PDF <a style="color: blue;" href="{% static 'rules/rules.pdf' %}">here</a>.</p>
-                    <p>Have you read and understood the above regulations?</p>
                     <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label>
                     {{ registration_form.understood }}
                     <br/>

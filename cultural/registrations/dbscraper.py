@@ -255,3 +255,26 @@ class SInECRegistrationData(RegistrationData):
                 data.participants.append(participant_data)
             data.participant_count = len(data.participants)
             yield data
+
+
+class OpenMicRegistrationData(RegistrationData):
+
+    def load_from_db(self):
+        for registration in OpenMicRegistration.objects.all():
+            data = OpenMicRegistrationData()
+            data.time = str(registration.time)
+            data.id = registration.id
+            data.referral_code = registration.referral_code
+            data.name = registration.name
+            data.email = registration.email
+            data.event = registration.event
+            data.expected_performance_duration_mins = registration.expected_performance_duration_mins
+            data.instrument_requirement = registration.instrument_requirement
+            data.reason_for_gt_3_members = registration.reason_for_gt_3_members
+            data.participants = []
+            for participant in registration.openmicparticipant_set.all():
+                participant_data = {}
+                participant_data['name'] = participant.name
+                data.participants.append(participant_data)
+        data.participant_count = len(data.participants)
+        yield data

@@ -554,3 +554,90 @@ class BaseSInECParticipantFormSet(BaseFormSet):
                         "Possible Duplicate Entry", code='duplicate')
                 else:
                     data.add(form_data)
+
+
+class OpenMicParticipantForm(forms.Form):
+    name = forms.CharField(max_length=200,
+                           label="Participant's Name",
+                           widget=forms.TextInput(attrs={
+                               'placeholder': 'Name',
+                           }))
+
+
+class OpenMicRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
+    name = forms.CharField(
+        max_length=200,
+        label="Your Full Name",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Name',
+        }))
+    event = forms.CharField(
+        max_length=200,
+        label="Type of Event",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Music/Comedy/Spoken Word/Other',
+        }))
+    expected_performance_duration_mins = forms.IntegerField(
+        label="Expected Performance Duration in Minutes",
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Performance Duration (1 - 5 minutes)',
+        }),
+        min_value=1,
+        max_value=5)
+    email = forms.EmailField(
+        label="E-Mail ID",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'E-Mail ID',
+        }))
+    instrument_requirement = forms.CharField(
+        max_length=200,
+        label="Instruments Required (If Any)",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Required Instruments'
+        }),
+        required=False)
+    reason_for_gt_3_members = forms.CharField(
+        max_length=400,
+        label="Reason for having more than 3 participants",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Reason'
+        }),
+        required=False)
+
+    def __init__(self, *args, **kwargs):
+        self.participant_count = kwargs.pop('participant_count', 0)
+        super(OpenMicRegistrationForm, self).__init__(*args, **kwargs)
+
+    def clean_reason_for_gt_3_members(self):
+        data = self.cleaned_data['reason_for_gt_3_members']
+        if 0 < self.participant_count <= 3 and data:
+            raise forms.ValidationError("Reason is not required for less than or equal to 3 participants")
+        elif self.participant_count > 3 and not data:
+            raise forms.ValidationError("Reason is required for more than 3 participants")
+        return data
+
+
+
+class BaseOpenMicParticipantFormSet(BaseFormSet):
+
+    def clean(self):
+        if any(self.errors):
+            return
+        data = set()
+        if not forms:
+            raise forms.ValidationError("Empty Form", code='empty_form')
+        for form in self.forms:
+            if form.cleaned_data:
+                form_data = tuple(map(str, form.cleaned_data.items()))
+                if form_data in data:
+                    raise forms.ValidationError(
+                        "Possible Duplicate Entry", code='duplicate')
+                else:
+                    data.add(form_data)

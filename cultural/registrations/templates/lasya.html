@@ -101,7 +101,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/biology.html">
-                        <div class="li-img"><img src="img/Biology.png" /></div>
+                        <div class="li-img"><img src="{% static 'img/Biology.png' %}" /></div>
                         <div class="li-text">Biology</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -178,7 +178,7 @@
                 </li>
                 <li class="nav-item mobile">
                     <a href="http://pravega.org/pros.html">
-                        <div class="li-img"><img src="{% static 'img/Proscenium.png'}" /></div>
+                        <div class="li-img"><img src="{% static 'img/Proscenium.png' %}" /></div>
                         <div class="li-text">Proscenium</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
@@ -315,7 +315,7 @@
                 </div>
                 {% endif %}
                 <fieldset>
-                    <p style="font-weight: bold;">Are you looking for where to submit the prelims video if you've already registered? It's <a style="color: green;" href="http://pravega.org/registrations/lasya/video">here</a>.</p>
+                    <p style="font-weight: bold;">Click <a style="color: green;" href="http://pravega.org/registrations/lasya/video">here</a> to submit prelim video. (You will need your registration ID)</p>
                     <h2>Rules and Regulations</h2>
                     <h2>For prelims:</h2>
                     <p style="font-weight: bold;">Any failure to abide by these rules
@@ -389,8 +389,7 @@
                     </table>
                     <br/>
                     <p style="font-weight: bold;">Prelims Video may not be re-submitted after they have already been submitted.</p>
-                    <br/>
-                    <p>You can also download a copy of the rules for all events as a PDF <a style="color: blue;" href="{% static 'rules/rules.pdf' %}">here</a>.</p>
+                    <p>Accomodation for artists will <b>NOT</b> be provided by Pravega.</p>
                     <br/>
                     <p>Have you read and understood the above regulations?</p>
                     <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label>

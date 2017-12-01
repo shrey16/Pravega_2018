@@ -1,0 +1,71 @@
+.card {
+    position: relative;
+    text-align: center;
+    background-color: rgba(200, 200, 200, 0.65);
+    width: 80vw;
+    margin: 25px auto 0;
+    border-radius: 20px;
+    border: 1px solid white;
+    padding: 2% 5%;
+}
+.card p {
+    text-align: left;
+}
+.card h3, h4 {
+    text-align: left;
+}
+.card a {
+    color: #000;
+    text-decoration: underline;
+}
+.inner-card h3 {
+    text-align: center;
+}
+.inner-card {
+    left: 0;
+    margin-top: 25px;
+    border-radius: 20px;
+    border: 1px solid white;
+    padding: 0 5%;
+}
+table {
+    border-radius: 5px;
+    border-width: 1px;
+    text-align: center;
+}
+table, th, td {
+    border-spacing: 0;
+}
+tr td:first-child, thead th:first-child {
+	border-right: 1px solid black;
+}
+thead th {
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid black;
+}
+th, td {
+    padding: 10px;
+}
+.mobile {
+    display: none;
+}
+@media only screen and (max-width: 900px) {
+    .card ol, ul {
+        padding-left: 10px;
+    }
+    .mobile {
+        display: block;
+    }
+    .card {
+        width: auto;
+    }
+    .card p {
+        font-size: 1em;
+        line-height: 1.4;
+        font-family: 'Raleway', sans-serif;
+    }
+    .card h3, h4 {
+        font-weight: 400;
+    }
+}
