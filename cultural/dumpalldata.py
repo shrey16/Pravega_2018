@@ -20,3 +20,4 @@ save_as_xlsx(dbs.ProsceniumStreetPlayRegistrationData(),
 save_as_xlsx(dbs.BoBRegistrationData(), './registration_data/bob.xlsx')
 save_as_xlsx(dbs.LasyaRegistrationData(), './registration_data/lasya.xlsx')
 save_as_xlsx(dbs.SInECRegistrationData(), './registration_data/pis.xlsx')
+save_as_xlsx(dbs.OpenMicRegistrationData(), './registration_data/openmic.xlsx')
