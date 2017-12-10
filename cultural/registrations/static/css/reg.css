@@ -435,8 +435,7 @@ span {
 }
 
 footer {
-    left: 100px;
-    width: 100vw;
+    padding-left: 100px;
 }
 
 footer p {
