@@ -309,7 +309,7 @@ def lasya_video(request):
             try:
                 registration = LasyaRegistration.objects.get(
                     pk=index)
-                if registration.prelims_video and registration.prelims_script:
+                if registration.prelims_video:
                     return render(request, "lasya_video_submission.html", {**context, **{'error_message': "Video has already been submitted. Re-submission is not allowed."}})
                 else:
                     registration.prelims_video = registration_form.cleaned_data.get(
