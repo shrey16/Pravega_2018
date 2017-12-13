@@ -512,6 +512,9 @@ span {
         -webkit-transition: all 200ms linear;
         transition: all 200ms linear;
     }
+    .nav-highlight-item {
+        border-left: none !important;
+    }
     .inverted {
         transform: rotate(180deg);
         -webkit-transition: all 200ms linear;

@@ -133,7 +133,7 @@ if (desktopMode) {
             $.fn.fullpage.setAllowScrolling(scroll);
             $.fn.fullpage.setKeyboardScrolling(scroll);
         }
-        $("body").css("overflow", scroll ? "auto" : "hidden");
+        $("#main").css("overflow", scroll ? "auto" : "hidden");
     }
 
     function enableScrolling() {
