@@ -382,6 +382,14 @@ span {
     font-size: 1.2em;
 }
 
+.notification a {
+    text-decoration: underline;
+}
+
+.notification a:hover {
+    color: #c6c6f7;
+}
+
 .notification-close {
     position: absolute;
     top: 10px;
