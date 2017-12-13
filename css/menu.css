@@ -62,7 +62,7 @@ span {
 #iconbar {
     height: 100vh;
     width: auto;
-    display: inline-block;
+    display: block;
     float: left;
     z-index: 5000;
     overflow-x: hidden;
@@ -165,6 +165,7 @@ span {
     opacity: 0;
     padding: 10px 20px;
     -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .infobar-content p {
