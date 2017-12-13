@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Raleway');
-
 html,
 body {
     margin: 0;
@@ -199,6 +198,7 @@ span {
 .dropdown {
     display: none;
 }
+
 .nav-highlight-item {
     border-left: solid 7px #DF9EF3 !important;
 }
@@ -236,14 +236,17 @@ span {
     opacity: 1;
     transition: height 0.2s ease-in, opacity 0.3s ease-in;
 }
+
 .expand-img-highlight {
     border: solid thin #DF9EF3 !important;
 }
+
 .desktop .li-img img {
     border-radius: 50%;
     border: 1px solid white;
     width: 34px;
 }
+
 .content {
     position: relative;
     height: 100%;
@@ -415,7 +418,6 @@ span {
     box-sizing: border-box;
     width: 88%;
     margin: 0 10%;
-
     /*stacking fieldsets above each other*/
     position: relative;
 }
@@ -627,7 +629,6 @@ fieldset label {
 
 @media only screen and (max-width: 900px),
 (max-height: 500px) {
-
     .reglinks {
         top: 0;
         transform: translateY(0);
@@ -706,7 +707,6 @@ fieldset label {
         margin: 0;
         padding: 15px 25px 15px 25px;
     }
-
     #tog-button-mobile .li-img {
         float: right;
         top: 0px;
@@ -755,6 +755,9 @@ fieldset label {
     .extra-info h3 {
         margin-top: 5px;
     }
+    .extra-info p {
+        margin: 0 0 5% 0;
+    }
     .li-text {
         margin-top: 0px;
         position: relative;
@@ -771,8 +774,6 @@ fieldset label {
         align-items: center;
         vertical-align: middle;
         display: inline;
-        width: calc(100% - 80px - 82px);
-        height: 60px;
         left: 82px;
     }
     .nav-desc h3 {

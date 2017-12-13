@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Raleway');
-
 #footer {
     bottom: -4vh;
 }
@@ -205,7 +204,7 @@
         margin-left: 0;
     }
     #scroll_me_arrow {
-        top:  65vh;
+        top: 65vh;
     }
     .content-text-section {
         padding: 20px;

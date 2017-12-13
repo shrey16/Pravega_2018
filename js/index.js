@@ -49,6 +49,8 @@ $(document).ready(function() {
         window.onmousewheel = document.onmousewheel = document.onkeydown = null;
     }
 
+    mobileMenuBottomClearance = 60;
+
     var pra = document.getElementById("pra"),
         v = document.getElementById("v-logo"),
         ega = document.getElementById("ega"),
@@ -90,7 +92,7 @@ $(document).ready(function() {
                 }
             }, "scrollup")
             .to(footer, 0.5, { bottom: "0" }, "scrollup")
-            .to($(".notification"), 0.5, {opacity: 1}, "scrollup");
+            .to($(".notification"), 0.5, { opacity: 1 }, "scrollup");
     }
 
     scroll_up.pause();
@@ -99,9 +101,10 @@ $(document).ready(function() {
 
     window.onscroll = function(e) {
         currYOffset = window.pageYOffset;
-        if (!infobarVisible) {
+        if (infobarRemoved) {
             if (currYOffset > originalYOffset) {
                 scroll_up.play();
+                mobileMenuBottomClearance = 80;
             } else {
                 if (!window.matchMedia("(max-width: 900px), (max-height: 500px)").matches) {
                     closeMenuBar(function() {
@@ -111,6 +114,7 @@ $(document).ready(function() {
                 } else {
                     scroll_up.reverse();
                 }
+                mobileMenuBottomClearance = 60;
             }
             enable_scroll();
         }
@@ -121,7 +125,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         $("body, html").animate({
-            scrollTop: height / 2
+            scrollTop: window.innerHeight / 2
         }, 200);
     });
 });

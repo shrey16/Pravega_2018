@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Raleway');
-
 html,
 body {
     margin: 0;
@@ -176,6 +175,7 @@ span {
 .dropdown {
     display: none;
 }
+
 .nav-highlight-item {
     border-left: solid 7px #DF9EF3 !important;
 }
@@ -223,7 +223,6 @@ span {
     border: 1px solid white;
     width: 34px;
 }
-
 
 #footer {
     position: fixed;
@@ -399,7 +398,6 @@ span {
 }
 
 @media only screen and (max-width: 900px) {
-    
     #header-logo {
         padding: 10px 20px 10px 20px;
         width: 40px;
@@ -415,7 +413,6 @@ span {
         margin: 0;
         padding-top: 60px;
     }
-    
     #sidebar {
         position: fixed;
         top: 0;
@@ -475,7 +472,6 @@ span {
         -webkit-tap-highlight-color: transparent;
         padding: 0;
     }
-
     .li-img {
         top: -15px;
         position: relative;
@@ -487,7 +483,6 @@ span {
         margin: 0;
         padding: 15px 25px 15px 25px;
     }
-
     #tog-button-mobile .li-img {
         float: right;
         top: 0px;
@@ -507,7 +502,7 @@ span {
     }
     .dropdown {
         position: relative;
-        display: inline-block;
+        display: block;
         float: left;
         left: 0px;
         height: 60px;
@@ -533,6 +528,9 @@ span {
     .extra-info h3 {
         display: none;
     }
+    .extra-info p {
+        margin: 0 0 5% 0;
+    }
     .li-text {
         margin-top: 0px;
         position: relative;
@@ -549,8 +547,6 @@ span {
         align-items: center;
         vertical-align: middle;
         display: inline;
-        width: calc(100% - 80px - 82px);
-        height: 60px;
         left: 82px;
     }
     .nav-desc h3 {
@@ -592,4 +588,4 @@ span {
     #iconbar ul li.mobile {
         display: block;
     }
-}    
+}
