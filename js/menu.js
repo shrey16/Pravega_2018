@@ -188,7 +188,9 @@ if (desktopMode) {
     });
 
     $(window).on("resize touchmove scroll", function(e) {
-        iconbar.height(viewportHeight() - mobileMenuClearance);
+        if (!infobarRemoved) {
+            iconbar.height(viewportHeight() - mobileMenuClearance);
+        }
     });
 
     $(".dropdown").click(function(e) {
