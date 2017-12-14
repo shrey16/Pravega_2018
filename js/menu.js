@@ -183,7 +183,9 @@ if (desktopMode) {
     });
 
     $(window).scroll(function() {
-        iconbar.height($(window).outerHeight());
+        if (!infobarRemoved) {
+            iconbar.height($(window).outerHeight());
+        }
     });
 
     $(".dropdown").click(function(e) {
