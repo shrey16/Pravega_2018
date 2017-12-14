@@ -705,8 +705,10 @@ fieldset label {
         height: 60px;
     }
     .li-img img {
-        margin: 0;
-        padding: 15px 25px 15px 25px;
+        width: 35px;
+        height: 35px;
+        margin: 5px 15px;
+        padding: 10px;
     }
     #tog-button-mobile .li-img {
         float: right;
@@ -738,6 +740,13 @@ fieldset label {
         transform: rotate(0deg);
         -webkit-transition: all 200ms linear;
         transition: all 200ms linear;
+    }
+    .nav-highlight-item {
+        border-left: none !important;
+    }
+    .nav-highlight-item .li-img img {
+        border-radius: 50%;
+        border: solid 2px #DF9EF3 !important;
     }
     .inverted {
         transform: rotate(180deg);
