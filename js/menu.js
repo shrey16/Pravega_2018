@@ -3,7 +3,8 @@ $(".notification-close").click(function() {
 })
 
 const desktopMode = !window.matchMedia("(max-width: 900px), (max-height: 500px)").matches;
-var mobileMenuBottomClearance = 80;
+const footerClearance = $("#footer").height();
+var mobileMenuClearance = 60 + footerClearance;
 
 function descEnterAnimation(element, previousElement) {
     if (!animationRunning) {
@@ -149,12 +150,14 @@ if (desktopMode) {
     const iconbar = $("#iconbar");
 
     const borderThickness = 0;
-
+    $(document).ready(function() {
+        $(".nav-item").not(".mobile").not(":hidden").eq(0).css("padding-top", 15);
+    })
     $("#tog-button-mobile .li-img").click(function(e) {
         $(this).find(".c-hamburger").toggleClass("is-active");
         if (infobarRemoved) {
             TweenLite.to(iconbar, 0.3, {
-                height: screen.height - mobileMenuBottomClearance,
+                height: $(window).height() - mobileMenuClearance,
                 onComplete: disableScrolling
             });
         } else {

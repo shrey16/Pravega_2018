@@ -104,7 +104,7 @@ $(document).ready(function() {
         if (infobarRemoved) {
             if (currYOffset > originalYOffset) {
                 scroll_up.play();
-                mobileMenuBottomClearance = 80;
+                mobileMenuBottomClearance = 60 + footerClearance;
             } else {
                 if (!window.matchMedia("(max-width: 900px), (max-height: 500px)").matches) {
                     closeMenuBar(function() {
