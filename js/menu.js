@@ -157,7 +157,7 @@ if (desktopMode) {
         $(this).find(".c-hamburger").toggleClass("is-active");
         if (infobarRemoved) {
             TweenLite.to(iconbar, 0.3, {
-                height: screen.height - mobileMenuClearance,
+                height: $(window).outerHeight() - mobileMenuClearance,
                 onComplete: disableScrolling
             });
         } else {
@@ -180,6 +180,20 @@ if (desktopMode) {
             });
         }
         infobarRemoved = !infobarRemoved;
+    });
+
+    var originalMobileYOffset = 0,
+        currMobileYOffset;
+
+    $(window).scroll(function(e) {
+        currMobileYOffset = window.pageYOffset;
+        if (!infobarRemoved) {
+            if (currMobileYOffset > originalMobileYOffset) {
+                iconbar.height($(window).outerHeight() - mobileMenuClearance);
+            } else {
+                iconbar.height(screen.height - mobileMenuClearance);
+            }
+        }
     });
 
     $(".dropdown").click(function(e) {

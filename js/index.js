@@ -99,7 +99,7 @@ $(document).ready(function() {
     var originalYOffset = 0,
         currYOffset;
 
-    window.onscroll = function(e) {
+    $(window).scroll(function(e) {
         currYOffset = window.pageYOffset;
         if (infobarRemoved) {
             if (currYOffset > originalYOffset) {
@@ -118,7 +118,7 @@ $(document).ready(function() {
             }
             enable_scroll();
         }
-    }
+    });
 
     $("#scroll_me_arrow").on("click", function(e) {
 
