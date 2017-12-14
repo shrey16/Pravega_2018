@@ -49,7 +49,7 @@ $(document).ready(function() {
         window.onmousewheel = document.onmousewheel = document.onkeydown = null;
     }
 
-    mobileMenuBottomClearance = 60;
+    mobileMenuClearance = 60;
 
     var pra = document.getElementById("pra"),
         v = document.getElementById("v-logo"),
@@ -104,7 +104,7 @@ $(document).ready(function() {
         if (infobarRemoved) {
             if (currYOffset > originalYOffset) {
                 scroll_up.play();
-                mobileMenuBottomClearance = 60 + footerClearance;
+                mobileMenuClearance = 60 + footerClearance;
             } else {
                 if (!window.matchMedia("(max-width: 900px), (max-height: 500px)").matches) {
                     closeMenuBar(function() {
@@ -114,7 +114,7 @@ $(document).ready(function() {
                 } else {
                     scroll_up.reverse();
                 }
-                mobileMenuBottomClearance = 60;
+                mobileMenuClearance = 60;
             }
             enable_scroll();
         }
