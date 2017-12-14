@@ -152,7 +152,7 @@ if (desktopMode) {
     const borderThickness = 0;
 
     function viewportHeight() {
-        Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     }
 
     $(document).ready(function() {
