@@ -150,6 +150,11 @@ if (desktopMode) {
     const container = iconbar.find("ul");
 
     const borderThickness = 0;
+
+    function viewportHeight() {
+        Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    }
+
     $(document).ready(function() {
         $(".nav-item").not(".mobile").not(":hidden").eq(0).css("padding-top", 15);
     })
@@ -157,7 +162,7 @@ if (desktopMode) {
         $(this).find(".c-hamburger").toggleClass("is-active");
         if (infobarRemoved) {
             TweenLite.to(iconbar, 0.3, {
-                height: $(window).outerHeight() - mobileMenuClearance,
+                height: viewportHeight() - mobileMenuClearance,
                 onComplete: disableScrolling
             });
         } else {
@@ -182,18 +187,8 @@ if (desktopMode) {
         infobarRemoved = !infobarRemoved;
     });
 
-    var originalMobileYOffset = 0,
-        currMobileYOffset;
-
-    $(window).scroll(function(e) {
-        currMobileYOffset = window.pageYOffset;
-        if (!infobarRemoved) {
-            if (currMobileYOffset > originalMobileYOffset) {
-                iconbar.height($(window).outerHeight() - mobileMenuClearance);
-            } else {
-                iconbar.height(screen.height - mobileMenuClearance);
-            }
-        }
+    $(window).on("resize touchmove scroll", function(e) {
+        iconbar.height(viewportHeight() - mobileMenuClearance);
     });
 
     $(".dropdown").click(function(e) {
