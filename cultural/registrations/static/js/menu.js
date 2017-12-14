@@ -1,7 +1,3 @@
-$(".notification-close").click(function() {
-    $(this).parent().fadeOut(200);
-})
-
 const desktopMode = !window.matchMedia("(max-width: 900px), (max-height: 500px)").matches;
 const footerClearance = $("#footer").height();
 var mobileMenuClearance = 60 + footerClearance;
