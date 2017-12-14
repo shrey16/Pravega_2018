@@ -130,7 +130,7 @@ if (desktopMode) {
             $.fn.fullpage.setAllowScrolling(scroll);
             $.fn.fullpage.setKeyboardScrolling(scroll);
         }
-        $("#main").css("overflow", scroll ? "auto" : "hidden");
+        $("body").css("overflow", scroll ? "auto" : "hidden");
     }
 
     function enableScrolling() {
@@ -141,9 +141,9 @@ if (desktopMode) {
         setScrolling(false);
     }
     // Mobile Menu Controller
-    const container = $("#iconbar ul");
     const dropdowns = $(".dropdown");
     const iconbar = $("#iconbar");
+    const container = iconbar.find("ul");
 
     const borderThickness = 0;
     $(document).ready(function() {
