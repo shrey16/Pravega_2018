@@ -146,6 +146,11 @@ if (desktopMode) {
     const container = iconbar.find("ul");
 
     const borderThickness = 0;
+
+    function viewportHeight() {
+        return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    }
+
     $(document).ready(function() {
         $(".nav-item").not(".mobile").not(":hidden").eq(0).css("padding-top", 15);
     })
@@ -153,7 +158,7 @@ if (desktopMode) {
         $(this).find(".c-hamburger").toggleClass("is-active");
         if (infobarRemoved) {
             TweenLite.to(iconbar, 0.3, {
-                height: screen.height - mobileMenuClearance,
+                height: viewportHeight() - mobileMenuClearance,
                 onComplete: disableScrolling
             });
         } else {
@@ -176,6 +181,12 @@ if (desktopMode) {
             });
         }
         infobarRemoved = !infobarRemoved;
+    });
+
+    $(window).on("resize touchmove scroll", function(e) {
+        if (!infobarRemoved) {
+            iconbar.height(viewportHeight() - mobileMenuClearance);
+        }
     });
 
     $(".dropdown").click(function(e) {
