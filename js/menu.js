@@ -182,6 +182,10 @@ if (desktopMode) {
         infobarRemoved = !infobarRemoved;
     });
 
+    $(window).scroll(function() {
+        iconbar.height($(window).outerHeight());
+    });
+
     $(".dropdown").click(function(e) {
         let dropdownContainer = $(this);
         if (!animationRunning) {
