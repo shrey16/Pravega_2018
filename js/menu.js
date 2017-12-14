@@ -157,7 +157,7 @@ if (desktopMode) {
         $(this).find(".c-hamburger").toggleClass("is-active");
         if (infobarRemoved) {
             TweenLite.to(iconbar, 0.3, {
-                height: $(window).height() - mobileMenuClearance,
+                height: $(window).outerHeight() - mobileMenuClearance,
                 onComplete: disableScrolling
             });
         } else {
