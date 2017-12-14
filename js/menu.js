@@ -184,7 +184,7 @@ if (desktopMode) {
 
     $(window).scroll(function() {
         if (!infobarRemoved) {
-            iconbar.height($(window).outerHeight());
+            iconbar.height($(window).outerHeight() - mobileMenuClearance);
         }
     });
 

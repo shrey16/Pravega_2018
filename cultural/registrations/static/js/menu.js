@@ -178,6 +178,12 @@ if (desktopMode) {
         infobarRemoved = !infobarRemoved;
     });
 
+    $(window).scroll(function() {
+        if (!infobarRemoved) {
+            iconbar.height($(window).outerHeight() - mobileMenuClearance);
+        }
+    });
+
     $(".dropdown").click(function(e) {
         let dropdownContainer = $(this);
         if (!animationRunning) {
