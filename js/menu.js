@@ -157,7 +157,7 @@ if (desktopMode) {
         $(this).find(".c-hamburger").toggleClass("is-active");
         if (infobarRemoved) {
             TweenLite.to(iconbar, 0.3, {
-                height: $(window).outerHeight() - mobileMenuClearance,
+                height: screen.height - mobileMenuClearance,
                 onComplete: disableScrolling
             });
         } else {
@@ -180,12 +180,6 @@ if (desktopMode) {
             });
         }
         infobarRemoved = !infobarRemoved;
-    });
-
-    $(window).scroll(function() {
-        if (!infobarRemoved) {
-            iconbar.height($(window).outerHeight() - mobileMenuClearance);
-        }
     });
 
     $(".dropdown").click(function(e) {
