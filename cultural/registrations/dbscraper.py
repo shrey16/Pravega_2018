@@ -245,6 +245,7 @@ class SInECRegistrationData(RegistrationData):
             data.email = registration.email
             data.contact = registration.contact
             data.project_file = str(registration.project_file)
+            data.project_video = str(registration.project_video)
             data.participants = []
             for participant in registration.sinecparticipant_set.all():
                 participant_data = {}
