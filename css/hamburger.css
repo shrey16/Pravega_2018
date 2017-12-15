@@ -8,7 +8,6 @@
     height: 60px;
     font-size: 0;
     text-indent: -9999px;
-    appearance: none;
     box-shadow: none;
     border-radius: none;
     border: none;
@@ -90,11 +89,10 @@
     transition-delay: 0s, 0.3s;
 }
 
-
 @media only screen and (max-width: 900px),
 (max-height: 500px) {
     .c-hamburger span {
-    left: 16px;
-    right: 24px;
-}
+        left: 16px;
+        right: 24px;
+    }
 }
