@@ -11,9 +11,6 @@ const required_marker = "<span style=\"color:red; font-size:2.5em;\"> *</span>";
 $(document).ready(function() {
     legends = $("#progressbar li");
     legends.css('width', (100 / legends.length) + '%');
-    if (desktopMode) {
-        $("#progressbar").css("left", "calc(50% - " + (legends.length / 2) + " * " + legends.width() + "px");
-    }
     legends.removeClass("active");
     var index = 0;
     legends.eq(index).addClass('active');
@@ -85,10 +82,10 @@ function goForward(elem, duration) {
         },
         duration: duration,
         complete: function() {
-            current_fs.hide();
-            animating = false;
-        }
-        //this comes from the custom easing plugin
+                current_fs.hide();
+                animating = false;
+            }
+            //this comes from the custom easing plugin
     });
 }
 
@@ -121,10 +118,10 @@ function goBackward(elem, duration) {
         },
         duration: duration,
         complete: function() {
-            current_fs.hide();
-            animating = false;
-        }
-        //this comes from the custom easing plugin
+                current_fs.hide();
+                animating = false;
+            }
+            //this comes from the custom easing plugin
     });
 }
 
@@ -189,7 +186,7 @@ function getFormReport(fieldset) {
         const input = $(this).next();
         var data = input.val();
         if (input.is("input:checkbox")) {
-        	data = input.is(":checked") ? 'Yes' : 'No';
+            data = input.is(":checked") ? 'Yes' : 'No';
         }
         const marked = (input.prop('required') && (data == null || data.trim() == ""));
         const color = marked ? ' style=\"color: red;\"' : '';
