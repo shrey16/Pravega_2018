@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Raleway');
-
 #main a,
 a:hover {
     text-decoration: none;
@@ -15,13 +14,13 @@ a:hover {
     font-size: 2.5em;
     text-align: center;
     margin: 0;
-    padding: 26.8px 0;
+    padding: 27px 0;
 }
 
 #content-header h2 {
     text-align: center;
     margin: 0;
-    padding: 19.91px 0;
+    padding: 20px 0;
 }
 
 .details {
@@ -37,9 +36,11 @@ a:hover {
     margin-top: 1vh;
     height: auto;
 }
+
 .contact.left {
     margin-top: 0;
 }
+
 .header {
     position: relative;
     text-align: center;
@@ -53,9 +54,11 @@ a:hover {
     height: 200px;
     border-radius: 50%;
 }
+
 .details a h3 {
     font-size: 1em;
 }
+
 #fullpage {
     padding-bottom: 25px;
 }
@@ -66,9 +69,11 @@ a:hover {
     margin-bottom: 10px;
     margin-top: 0;
 }
+
 #main .center .details {
     margin: 10px auto;
 }
+
 #main .left .details {
     margin-left: 25%;
     transform: translateX(-50%);
@@ -81,7 +86,6 @@ a:hover {
 }
 
 @media only screen and (max-width: 900px) {
-    
     .details {
         width: 90%;
         height: auto;
@@ -103,7 +107,7 @@ a:hover {
     .content-text-section {
         padding: 20px;
     }
-    #content-header{
+    #content-header {
         padding: 0 10px;
     }
 }

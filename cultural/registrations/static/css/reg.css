@@ -55,7 +55,7 @@ span {
     height: auto;
     color: white;
     display: block;
-    padding: 20px 20px 20px 20px;
+    padding: 20px;
     margin: 10px auto;
     border-radius: 5px;
     border: 1px solid black;
@@ -253,21 +253,6 @@ span {
     display: block;
 }
 
-.content-img {
-    height: 50%;
-    margin: auto;
-    display: inline-block;
-}
-
-.content-text {
-    padding-left: 20px;
-    padding-right: 100px;
-    width: calc(60% - 80px);
-    line-height: 100%;
-    display: inline-block;
-    text-align: justify;
-}
-
 #fullpage {
     z-index: 1000;
 }
@@ -381,7 +366,7 @@ span {
     background-color: black;
     align-content: center;
     vertical-align: middle;
-    margin: 0 0 0.8vh 0;
+    margin: 0 0 0.8vh;
     visibility: hidden;
     border-radius: 1vh;
     border: 1px solid black;
@@ -426,11 +411,11 @@ span {
     border-radius: 5px;
     border: 2px solid black;
     background-color: black;
-    margin: 10px 0 10px 0;
+    margin: 10px 0;
 }
 
 .participant-formset {
-    padding: 10px 0 10px 0;
+    padding: 10px 0;
     border-bottom: 1px solid gray;
 }
 
@@ -573,8 +558,7 @@ td {
     background-color: red;
     color: white;
     height: 30px;
-    padding-top: 12px;
-    padding-left: 10px;
+    padding: 12px 10px 0 0;
     border-radius: 10px;
     border-color: brown;
     border-style: solid;
@@ -601,7 +585,7 @@ td {
     color: red;
     height: auto;
     width: 100%;
-    padding: 10px 0 10px 0;
+    padding: 10px 0;
     margin: auto;
     text-align: center;
 }
@@ -680,8 +664,6 @@ fieldset label {
         clear: both;
         width: 100%;
         height: 60px;
-        align-content: center;
-        align-items: center;
         outline: none;
         -webkit-tap-highlight-color: transparent;
         padding: 0;
@@ -720,7 +702,6 @@ fieldset label {
     .dropdown img {
         display: block;
         height: 15px;
-        width: auto;
         margin: 10px auto;
     }
     .dropdown {
@@ -759,7 +740,7 @@ fieldset label {
         margin-top: 5px;
     }
     .extra-info p {
-        margin: 0 0 5% 0;
+        margin: 0 0 5%;
     }
     .li-text {
         margin-top: 0px;
@@ -780,11 +761,11 @@ fieldset label {
         left: 82px;
     }
     .nav-desc h3 {
-        margin: 5px 0 0 0;
+        margin: 5px 0 0;
         text-align: center;
     }
     #header-logo {
-        padding: 10px 20px 10px 20px;
+        padding: 10px 20px;
         width: 40px;
         height: 40px;
         float: left;
@@ -801,32 +782,11 @@ fieldset label {
         left: 0;
         align-items: center;
     }
-    .content>h1 {
+    .content h1 {
         width: 100%;
         text-align: center;
         left: 0;
         display: block;
-    }
-    .content-text {
-        width: 80%;
-        height: auto;
-        text-align: left;
-        padding-left: 40px;
-        padding-right: 80px;
-    }
-    .content-text h1 {
-        font-size: 1.25em;
-    }
-    .content-img {
-        display: none;
-    }
-    .subject {
-        position: fixed;
-        display: block;
-        font-size: 1.75em;
-        top: 70px;
-        margin-left: auto;
-        margin-right: auto;
     }
     #floating-footer {
         display: none;
@@ -861,12 +821,12 @@ fieldset label {
         text-align: left;
     }
     .deep {
-        margin-left: -40px!important;
+        padding-left: 25px;
     }
     footer {
         width: 100vw;
         left: 0;
-        padding: 0 0 90px 0;
+        padding: 0 0 90px;
         margin: 0;
     }
     #progressbar {
@@ -878,7 +838,8 @@ fieldset label {
         vertical-align: bottom;
     }
     #msform fieldset {
-        margin-left: 6%;
+        margin: 0 2%;
+        padding: 5px 5px;
     }
     .mobile {
         display: block!important;
