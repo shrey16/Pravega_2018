@@ -13,8 +13,8 @@ VIDEO_FILE_VALIDATOR = FileExtensionValidator(
 
 
 def get_uploads_directory():
-    return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
-    # return "./uploads/"
+    #return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
+    return "./uploads/"
 
 
 class ProsceniumRegistration:
@@ -238,10 +238,18 @@ class SInECRegistration(models.Model):
                                           choices=PRIVACY_PREFERENCES,
                                           default=PRIVATE)
 
-    def upload_video_path(instance, filename):
+    def upload_path(instance, filename):
         return os.path.join(get_uploads_directory(), f"sinec/project_files/{instance.team_name} - {instance.project_name} - {filename}")
 
+    def upload_video_path(instance, filename):
+        return os.path.join(get_uploads_directory(), f"sinec/project_files/video/{instance.team_name} - {instance.project_name} - {filename}")
+
     project_file = models.FileField(
+        max_length=255,
+        upload_to=upload_path,
+        blank=True)
+    
+    project_video = models.FileField(
         max_length=255,
         upload_to=upload_video_path,
         blank=True)

@@ -556,6 +556,21 @@ class BaseSInECParticipantFormSet(BaseFormSet):
                     data.add(form_data)
 
 
+class PisVideoSubmissionForm(forms.Form):
+    understood = forms.BooleanField()
+    index = forms.IntegerField(
+        label="Registration ID",
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Registration ID'
+        }))
+    project_video = forms.FileField(
+        validators=[VIDEO_FILE_VALIDATOR],
+        label="Video for Project",
+        widget=forms.ClearableFileInput(attrs={
+            'placeholder': 'Project Video',
+        }))
+
+
 class OpenMicParticipantForm(forms.Form):
     name = forms.CharField(max_length=200,
                            label="Participant's Name",

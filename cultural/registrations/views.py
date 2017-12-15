@@ -403,6 +403,34 @@ def pis(request):
         return render(request, "pis.html", context)
 
 
+def pis_video(request):
+    context = {'registration_form': PisVideoSubmissionForm()}
+    if request.method == 'POST':
+        registration_form = PisVideoSubmissionForm(
+            request.POST, request.FILES)
+        context = {'registration_form': registration_form}
+        if registration_form.is_valid():
+            index = registration_form.cleaned_data.get('index')
+            try:
+                registration = SInECRegistration.objects.get(
+                    pk=index)
+                if registration.project_video:
+                    return render(request, "pis_video.html", {**context, **{'error_message': "Video has already been submitted. Re-submission is not allowed."}})
+                else:
+                    registration.project_video = registration_form.cleaned_data.get(
+                        'project_video')
+            except ObjectDoesNotExist:
+                return render(request, "pis_video.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
+            try:
+                registration.save()
+                return render(request, "success.html", {'event_name': 'PIS Project Video Submission', 'id': registration.id})
+            except IntegrityError:
+                return render(request, "pis_video.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+        else:
+            return render(request, "pis_video.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+    else:
+        return render(request, "pis_video.html", context)
+
 def openmic(request):
     OpenMicParticipantFormSet = formset_factory(
         OpenMicParticipantForm, formset=BaseOpenMicParticipantFormSet, min_num=1, validate_min=True, extra=0)

@@ -73,7 +73,7 @@ class SInECRegistrationAdmin(admin.ModelAdmin):
         (None, {'fields': ['team_name', 'time', 'referral_code']}),
         ('Contact Information', {'fields': ['email', 'contact', 'address']}),
         ('Project Information', {'fields': ['project_name', 'project_field', 'registered_company',
-                                            'project_abstract', 'project_patented', 'project_file', 'privacy_preference']})
+                                            'project_abstract', 'project_patented', 'project_file', 'project_video', 'privacy_preference']})
     ]
     inlines = [SInECParticipantInline]
 

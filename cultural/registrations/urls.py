@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^lasya/video$', views.lasya_video,
         name='lasya_video'),
     url(r'^pis$', views.pis, name='pis'),
+    url(r'^pis/video$', views.pis_video,
+        name='pis_video'),
     url(r'^footprints$', views.proscenium_streetplay,
         name='proscenium_streetplay'),
     url(r'^proscenium/theatre$', views.proscenium_theatre,
