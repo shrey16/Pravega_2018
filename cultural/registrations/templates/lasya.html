@@ -534,6 +534,8 @@
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script src="{% static 'js/reg.js' %}" type="text/javascript"></script>
     <script>
+        minParticipants = 5;
+        maxParticipants = 20;
         $('.participant-formset').formset({
             addText: 'Add participant',
             deleteText: 'Remove Participant',

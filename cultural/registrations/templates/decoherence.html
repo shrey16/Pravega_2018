@@ -425,14 +425,6 @@
                 <img src="{% static 'img/Twitter.svg' %}">
             </div>
         </a>
-        <a target="_blank" href="http://pravega.org/registrations/">
-            <div class="fab-icon">
-                <div class="fab-desc triangle-isosceles">
-                    <h6>Registrations</h6>
-                </div>
-                <img src="{% static 'img/register.png' %}">
-            </div>
-        </a>
     </div>
     <div id="footer">
         <div id="social">
@@ -452,6 +444,7 @@
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script src="{% static 'js/reg.js' %}" type="text/javascript"></script>
     <script>
+        maxParticipants = 2;
         $('.participant-formset').formset({
             addText: 'Add participant',
             deleteText: 'Remove Participant',

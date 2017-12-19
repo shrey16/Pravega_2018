@@ -207,13 +207,13 @@ class BaseProsceniumParticipantFormSet(BaseFormSet):
                 elif role == ProsceniumParticipant.ACCOMPANIST:
                     accompanists = accompanists + 1
 
-        if (performers + accompanists) > 10:
+        if len(data) > MAX_PARTCIPANTS or (performers + accompanists) > MAX_PARTCIPANTS:
             raise forms.ValidationError(
                 "You can have a maximum of 7 performers and 3 accompanists", code="over_max_performers_accompanists")
         elif performers == 0:
             raise forms.ValidationError(
                 "You must have at least 1 participant", code="no_performers")
-        elif accompanists > 3:
+        elif accompanists > MAX_ACCOMPANISTS:
             raise forms.ValidationError(
                 "You can have a maximum of 3 accompanists", code="over_max_accompanists")
 
@@ -326,8 +326,8 @@ class BaseBoBParticipantFormSet(BaseFormSet):
                 else:
                     data.add(form_data)
                 if form.cleaned_data['name'] and form.cleaned_data['contact']:
-                    contacts = contacts + 1
-        if contacts < 3:
+                    contacts += 1
+        if len(data) < 3 or contacts < 3:
             raise forms.ValidationError(
                 "There must be at least 3 participants with a contact no.", code="below_min_contacts")
 
@@ -381,9 +381,9 @@ class LasyaRegistrationForm(forms.Form):
         }),
         required=False)
     prelims_video_link = forms.URLField(
-        label="Link to Facebook Page of the Band",
+        label="Link to Prelims Video",
         widget=forms.URLInput(attrs={
-            'placeholder': 'Facebook Page URL',
+            'placeholder': 'Prelims Video URL',
         }),
         required=False)
     contact = PhoneNumberField.get_field(
@@ -431,6 +431,13 @@ class BaseLasyaParticipantFormSet(BaseFormSet):
                         "Possible Duplicate Entry", code='duplicate')
                 else:
                     data.add(form_data)
+        participants = len(data)
+        if participants > 20:
+            raise forms.ValidationError(
+                "A maximum of 20 particpants are allowed", code='gt_max_particpants')
+        elif participants < 5:
+            raise forms.ValidationError(
+                "A minimum of 5 particpants are required", code='lt_min_particpants')
 
 
 class SInECParticipantForm(forms.Form):
@@ -630,7 +637,7 @@ class BaseDecoherenceParticipantFormSet(BaseFormSet):
                 else:
                     data.add(form_data)
         if len(data) not in [1, 2]:
-            raise forms.ValidationError("A maximum of 2 particpants are allowed", code='gt_2_particpants')
+            raise forms.ValidationError("A maximum of 2 particpants are allowed", code='gt_max_particpants')
 
         
 class OpenMicParticipantForm(forms.Form):

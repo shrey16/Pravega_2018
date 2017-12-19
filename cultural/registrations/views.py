@@ -12,7 +12,7 @@ def index(request):
 
 def proscenium_theatre(request):
     ProsceniumTheatreParticipantFormSet = formset_factory(
-        ProsceniumTheatreParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=10, validate_max=True, extra=3)
+        ProsceniumTheatreParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=10, extra=3)
     registration = ProsceniumTheatreRegistration()
 
     context = {
@@ -110,7 +110,7 @@ def proscenium_theatre_video(request):
 
 def proscenium_streetplay(request):
     ProsceniumStreetPlayParticipantFormSet = formset_factory(
-        ProsceniumStreetPlayParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=10, validate_max=True, extra=3)
+        ProsceniumStreetPlayParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=10, extra=3)
     registration = ProsceniumStreetPlayRegistration()
 
     context = {
@@ -171,7 +171,7 @@ def proscenium_streetplay(request):
 
 def bob(request):
     BoBParticipantFormSet = formset_factory(
-        BoBParticipantForm, formset=BaseBoBParticipantFormSet, min_num=3, validate_min=True, extra=0)
+        BoBParticipantForm, formset=BaseBoBParticipantFormSet, min_num=3, extra=0)
     registration = BoBRegistration()
 
     context = {
@@ -238,7 +238,7 @@ def bob(request):
 
 def lasya(request):
     LasyaParticipantFormSet = formset_factory(
-        LasyaParticipantForm, formset=BaseLasyaParticipantFormSet, min_num=5, validate_min=True, max_num=20, validate_max=True, extra=0)
+        LasyaParticipantForm, formset=BaseLasyaParticipantFormSet, min_num=5, max_num=20, extra=0)
     registration = LasyaRegistration()
 
     context = {

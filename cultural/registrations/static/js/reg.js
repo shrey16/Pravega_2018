@@ -4,6 +4,8 @@ var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 var legends;
+var maxParticipants = 0,
+    minParticipants = 1;
 
 const field_error_element = "h2";
 const required_marker = "<span style=\"color:red; font-size:2.5em;\"> *</span>";
@@ -39,10 +41,18 @@ $(document).ready(function() {
 //
 // It's not all bad as even though it runs a lot, it's short.
 window.setInterval(function() {
-    if ($(".participant-formset").length <= 1) {
-        $(".delete-row").hide();
+    const particpants = $(".participant-formset").length;
+    const deleteParticipantButtons = $(".delete-row");
+    const addParticipantButtons = $(".add-row");
+    if (minParticipants >= 0 && particpants <= minParticipants) {
+        deleteParticipantButtons.hide();
     } else {
-        $(".delete-row").show();
+        deleteParticipantButtons.show();
+    }
+    if (maxParticipants > 0 && particpants >= maxParticipants) {
+        addParticipantButtons.hide();
+    } else {
+        addParticipantButtons.show();
     }
 }, 20);
 
@@ -83,6 +93,7 @@ function goForward(elem, duration) {
         duration: duration,
         complete: function() {
                 current_fs.hide();
+                $("#msform").height(next_fs.height() + 100);
                 animating = false;
             }
             //this comes from the custom easing plugin
@@ -119,6 +130,7 @@ function goBackward(elem, duration) {
         duration: duration,
         complete: function() {
                 current_fs.hide();
+                $("#msform").height(previous_fs.height() + 100);
                 animating = false;
             }
             //this comes from the custom easing plugin
