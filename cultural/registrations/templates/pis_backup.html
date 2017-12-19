@@ -330,9 +330,142 @@
             <h1>Pravega Innovation Summit</h1> {% if error_message %}
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
             <form action="{% url 'registrations:pis' %}" method="post" enctype="multipart/form-data" id="msform">
+                <ul id="progressbar">
+                    <li>Rules</li>
+                    <li>Identification</li>
+                    <li>Contact
+                        <br/>Details</li>
+                    <li>Project
+                        <br/>Information</li>
+                    <li>Participant
+                        <br/>Details</li>
+                </ul>
+                {% csrf_token %} {% if registration_form.errors %}
+                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
+                    <p> {{ errors }} </p>
+                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
+                    <p> {{ error }} </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <fieldset>
-                    <h2>Registrations have closed.</h2>
                     <p style="font-weight: bold;">Click <a style="color: green;" href="http://pravega.org/registrations/pis/video">here</a> to submit project video. <br/> (You will need your registration ID)</p>
+                    <h2>Rules and Regulations</h2>
+                    <ol class="rules">
+                        <li>All team members must be students enrolled in an academic institution.</li>
+                        <li>Each team can have a maximum of 4 members.</li>
+                        <li>Ideas submitted must be original.</li>
+                        <li>Prelims:
+                            <ol class="deep" style="list-style-type: none; font-size: 0.8em;">
+                                <li>Round 1
+                                    <ol class="deep">
+                                        <li>Teams register online at our portal. There is no registration fee.</li>
+                                        <li>Teams must submit a description or abstract of their innovation by the first deadline. Additional files such as videos, presentations, websites URLs etc can be uploaded to support their description.</li>
+                                        <li>Ideas can be from any field or interdisciplinary including science, mathematics, engineering, economics, social sciences, etc</li>
+                                        <li><b>Deadline: 15th Dec (has been extended)</b></li>
+                                    </ol>
+                                </li>
+                                <li>Round 2
+                                    <ol class="deep">
+                                        <li>Teams need to submit a short video of the working prototype or some proof of concept which supports the feasibility of the idea/innovation.</li>
+                                        <li>The file(s) should be uploaded in Google Drive and the link with view access should be uploaded In the portal.</li>
+                                        <li>Deadline: 30th Dec</li>
+                                    </ol>
+                                </li>
+                                <li>Any workshop or online mentoring session organised by Pravega for this event is mandatory to attend by the Finalists.</li>
+                                <li>This workshop or mentoring will be conducted by skilled and experienced professor(s) of IISc or IIM, which will be free of cost for the finalists.</li>
+                            </ol>
+                        </li>
+                        <li>Finals
+                            <ol class="deep">
+                                <li>Eight teams will be selected for the final round, which will be conducted at IISc, Bangalore during Pravega 2018. Exact date and timings will be notified to the finalists.</li>
+                                <li>All the selected teams will be given 10-15min to pitch their idea, demonstrate prototype and present B-plan in front of all the invitees.</li>
+                                <li>Winning teams based on the assessment by judging panel will be announced the same day. Winning teams get cash prizes worth up to Rs. 1 lakh.</li>
+                            </ol>
+                        </li>
+                        <li>All finalists gets the opportunity to interact with corporates, investors and leading science professionals. Teams may also be offered internships in leading companies based on their interaction with the companies.</li>
+                        <li>Pravega will respect the privacy preferences chosen by the team.</li>
+                        <li>Any dispute arising due to any confusion regarding the contest shall be resolved at IISc by a Pravega committee. Pravega and the decision or resolution provided will be considered final. Pravega reserves the right to change specifics
+                            of the competition without prior notice. All decisions by Pravega shall be final and binding.</li>
+                    </ol>
+                    <br/>
+                    <p style="font-weight: bold;">Project video may not be re-submitted after it has already been submitted.</p>
+                    <br/>
+                    <p>Have you read and understood the above regulations?</p>
+                    <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label> {{ registration_form.understood }}
+                    <br/>
+                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
+                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.team_name.label_tag }} {{ registration_form.team_name }} {% if registration_form.team_name.errors %}
+                    <div class="errors"> {% for error in registration_form.team_name.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.registered_company.label_tag }} {{ registration_form.registered_company }} {% if registration_form.registered_company.errors %}
+                    <div class="errors"> {% for error in registration_form.registered_company.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <br/>
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.contact.label_tag }} {{ registration_form.contact }} {% if registration_form.contact.errors %}
+                    <div class="errors">{% for error in registration_form.contact.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.address.label_tag }} {{ registration_form.address }} {% if registration_form.address.errors %}
+                    <div class="errors">{% for error in registration_form.address.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.email.label_tag }} {{ registration_form.email }} {% if registration_form.email.errors %}
+                    <div class="errors"> {% for error in registration_form.email.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.project_name.label_tag }} {{ registration_form.project_name }} {% if registration_form.project_name.errors %}
+                    <div class="errors"> {% for error in registration_form.project_name.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.project_field.label_tag }} {{ registration_form.project_field }} {% if registration_form.project_field.errors %}
+                    <div class="errors"> {% for error in registration_form.project_field.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.project_abstract.label_tag }} {{ registration_form.project_abstract }} {% if registration_form.project_abstract.errors %}
+                    <div class="errors"> {% for error in registration_form.project_abstract.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.project_patented.label_tag }} {{ registration_form.project_patented }} {% if registration_form.project_patented.errors %}
+                    <div class="errors"> {% for error in registration_form.project_patented.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} <br/> {{ registration_form.project_file.label_tag }} {{ registration_form.project_file }} {% if registration_form.project_file.errors %}
+                    <div class="errors"> {% for error in registration_form.project_file.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.privacy_preference.label_tag }} {{ registration_form.privacy_preference }} {% if registration_form.privacy_preference.errors %}
+                    <div class="errors"> {% for error in registration_form.privacy_preference.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real" id="participants">
+                    {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
+                    <div class="participant-formset">
+                        {% if participant_form.errors %}
+                        <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
+                            <p> {{ errors }} </p>
+                            {% endfor %} {% endfor %}
+                        </div>
+                        {% endif %} {{ participant_form.name.label_tag }} {{ participant_form.name }} {% if participant_form.name.errors %}
+                        <div class="errors"> {% for error in participant_form.name.errors %} {{ error|escape }} {% endfor %} </div>
+                        {% endif %} {{ participant_form.city.label_tag }} {{ participant_form.city }} {% if participant_form.city.errors %}
+                        <div class="errors"> {% for error in participant_form.city.errors %} {{ error|escape }} {% endfor %} </div>
+                        {% endif %} {{ participant_form.institution.label_tag }} {{ participant_form.institution }} {% if participant_form.institution.errors %}
+                        <div class="errors"> {% for error in participant_form.institution.errors %} {{ error|escape }} {% endfor %} </div>
+                        {% endif %} {{ participant_form.student_type.label_tag }} {{ participant_form.student_type }} {% if participant_form.student_type.errors %}
+                        <div class="errors"> {% for error in participant_form.student_type.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    </div>
+                    {% endfor %} {% if participant_formset.non_form_errors %}
+                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <br />
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
+                </fieldset>
+                <fieldset id="review">
+                    <h2>Please review before submitting</h2>
+                    <table>
+                        <colgroup>
+                            <col style="width: 50%" />
+                            <col style="width: 50%" />
+                        </colgroup>
+                    </table>
+                    <input type="button" name="previous" class="previous action-button" value="Edit" />
+                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
                 </fieldset>
             </form>
             <footer>
