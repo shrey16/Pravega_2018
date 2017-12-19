@@ -492,3 +492,58 @@ def openmic(request):
             return render(request, "openmic.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
         return render(request, "openmic.html", context)
+
+
+def decoherence(request):
+    DecoherenceParticipantFormSet = formset_factory(
+        DecoherenceParticipantForm, formset=BaseDecoherenceParticipantFormSet, min_num=1, max_num=2, validate_min=True, extra=1)
+    registration = DecoherenceRegistration()
+
+    context = {
+        'registration_form': DecoherenceRegistrationForm(),
+        'participant_formset': DecoherenceParticipantFormSet(),
+    }
+
+    if request.method == 'POST':
+        participant_formset = DecoherenceParticipantFormSet(
+            request.POST, request.FILES)
+        registration_form = DecoherenceRegistrationForm(
+            request.POST, request.FILES)
+
+        context = {
+            'registration_form': registration_form,
+            'participant_formset': participant_formset,
+        }
+
+        if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
+            registration.team_name = registration_form.cleaned_data.get(
+                'team_name')            
+            try:
+                registration.save()
+            except IntegrityError:
+                return render(request, "decoherence.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+
+            participants = []
+            for participant_form in participant_formset:
+                name = participant_form.cleaned_data.get('name')
+                contact = participant_form.cleaned_data.get('contact')
+                email = participant_form.cleaned_data.get('email')
+                institution = participant_form.cleaned_data.get('institution')
+                if name and contact and email and institution:
+                    participants.append(DecoherenceParticipant(
+                        registration_entry=registration, name=name, contact=contact, email=email, institution=institution))
+
+            try:
+                with transaction.atomic():
+                    DecoherenceParticipant.objects.filter(
+                        registration_entry=registration).delete()
+                    DecoherenceParticipant.objects.bulk_create(participants)
+                return render(request, "success.html", {'event_name': 'Decoherence', 'id': registration.id})
+            except IntegrityError:
+                return render(request, "decoherence.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
+        else:
+            return render(request, "decoherence.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+    else:
+        return render(request, "decoherence.html", context)

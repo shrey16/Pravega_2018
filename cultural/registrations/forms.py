@@ -70,14 +70,14 @@ class ProsceniumTheatreRegistrationForm(forms.Form):
         required=False)
     contact1 = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="1st Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': '1st Mobile No.',
         }))
     contact2 = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="2nd Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': '2nd Mobile No.',
@@ -163,14 +163,14 @@ class ProsceniumStreetPlayRegistrationForm(forms.Form):
         }))
     contact1 = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="1st Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': '1st Mobile No.',
         }))
     contact2 = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="2nd Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': '2nd Mobile No.',
@@ -226,7 +226,7 @@ class BoBParticipantForm(forms.Form):
                                  }))
     contact = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': 'Mobile No.',
@@ -513,7 +513,7 @@ class SInECRegistrationForm(forms.Form):
         }))
     contact = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="Team's Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': "Team's Mobile No.",
@@ -571,6 +571,68 @@ class PisVideoSubmissionForm(forms.Form):
         }))
 
 
+class DecoherenceParticipantForm(forms.Form):
+    email = forms.EmailField(
+        label="E-Mail ID",
+        widget=forms.TextInput(attrs={
+            'placeholder': "E-Mail ID",
+        }))
+    contact = PhoneNumberField.get_field(
+        as_regexField=True,
+        max_length=13,
+        label="Contact No.",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Mobile No.',
+        }))
+    name = forms.CharField(max_length=200,
+                           label="Participant's Name",
+                           widget=forms.TextInput(attrs={
+                               'placeholder': 'Name',
+                           }))
+    institution = forms.CharField(
+        max_length=200,
+        label="Name of the Particpant's School/College",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Name',
+        }))
+
+
+class DecoherenceRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
+    team_name = forms.CharField(
+        max_length=200,
+        label="Your Team Name",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Team Name',
+        }))
+
+
+class BaseDecoherenceParticipantFormSet(BaseFormSet):
+
+    def clean(self):
+        if any(self.errors):
+            return
+        data = set()
+        if not forms:
+            raise forms.ValidationError("Empty Form", code='empty_form')
+        for form in self.forms:
+            if form.cleaned_data:
+                form_data = tuple(map(str, form.cleaned_data.items()))
+                if form_data in data:
+                    raise forms.ValidationError(
+                        "Possible Duplicate Entry", code='duplicate')
+                else:
+                    data.add(form_data)
+        if len(data) not in [1, 2]:
+            raise forms.ValidationError("A maximum of 2 particpants are allowed", code='gt_2_particpants')
+
+        
 class OpenMicParticipantForm(forms.Form):
     name = forms.CharField(max_length=200,
                            label="Participant's Name",
@@ -637,7 +699,6 @@ class OpenMicRegistrationForm(forms.Form):
         elif self.participant_count > 3 and not data:
             raise forms.ValidationError("Reason is required for more than 3 participants")
         return data
-
 
 
 class BaseOpenMicParticipantFormSet(BaseFormSet):

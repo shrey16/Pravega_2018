@@ -279,3 +279,24 @@ class OpenMicRegistrationData(RegistrationData):
                 data.participants.append(participant_data)
         data.participant_count = len(data.participants)
         yield data
+
+
+class DecoherenceRegistrationData(RegistrationData):
+
+    def load_from_db(self):
+        for registration in DecoherenceRegistration.objects.all():
+            data = DecoherenceRegistrationData()
+            data.time = str(registration.time)
+            data.id = registration.id
+            data.referral_code = registration.referral_code
+            data.team_name = registration.team_name
+            data.participants = []
+            for participant in registration.decoherenceparticipant_set.all():
+                participant_data = {}
+                participant_data['name'] = participant.name
+                participant_data['institution'] = participant.institution
+                participant_data['contact'] = participant.contact
+                participant_data['email'] = participant.email
+                data.participants.append(participant_data)
+        data.participant_count = len(data.participants)
+        yield data

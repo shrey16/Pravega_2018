@@ -280,6 +280,26 @@ class SInECParticipant(models.Model):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Type: {self.student_type}, Institution: {self.institution}, City: {self.city}"
 
 
+class DecoherenceRegistration(models.Model):
+    time = models.DateTimeField(default=now)
+    referral_code = models.CharField(max_length=50, blank=True)
+    team_name = models.CharField(max_length=200, unique=True)
+
+    def __str__(self):
+        return f"Team Name: {self.team_name}"
+
+
+class DecoherenceParticipant(models.Model):
+    registration_entry = models.ForeignKey(
+        DecoherenceRegistration, on_delete=models.CASCADE)
+    contact = PhoneNumberField.get_field()
+    email = models.EmailField()
+    name = models.CharField(max_length=200)
+    institution = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Contact: {self.contact}, E-Mail ID: {self.email}"
+
 class OpenMicRegistration(models.Model):
 
     class Meta:

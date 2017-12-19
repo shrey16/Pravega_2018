@@ -78,6 +78,17 @@ class SInECRegistrationAdmin(admin.ModelAdmin):
     inlines = [SInECParticipantInline]
 
 
+class DecoherenceParticipantInline(admin.TabularInline):
+    model = DecoherenceParticipant
+    extra = 0
+
+
+class DecoherenceRegistrationAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields': ['team_name', 'time', 'referral_code']})
+    ]
+    inlines = [DecoherenceParticipantInline]
+
 class OpenMicParticipantInline(admin.TabularInline):
     model = OpenMicParticipant
     extra = 0
@@ -110,3 +121,4 @@ admin.site.register(BoBRegistration,
 admin.site.register(LasyaRegistration, LasyaRegistrationAdmin)
 admin.site.register(SInECRegistration, SInECRegistrationAdmin)
 admin.site.register(OpenMicRegistration, OpenMicRegistrationAdmin)
+admin.site.register(DecoherenceRegistration, DecoherenceRegistrationAdmin)
