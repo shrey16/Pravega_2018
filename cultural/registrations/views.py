@@ -59,7 +59,7 @@ def proscenium_theatre(request):
                 role = participant_form.cleaned_data.get('role')
                 photo = participant_form.cleaned_data.get('photo')
 
-                if name and age and role and photo:
+                if name and age and role:
                     participants.append(ProsceniumTheatreParticipant(
                         registration_entry=registration, name=name, age=age, role=role, photo=photo))
             try:
@@ -151,7 +151,7 @@ def proscenium_streetplay(request):
                 age = participant_form.cleaned_data.get('age')
                 role = participant_form.cleaned_data.get('role')
                 photo = participant_form.cleaned_data.get('photo')
-                if name and age and role and photo:
+                if name and age and role:
                     participants.append(ProsceniumStreetPlayParticipant(
                         registration_entry=registration, name=name, age=age, role=role, photo=photo))
             try:

@@ -81,7 +81,8 @@ class ProsceniumTheatreParticipant(models.Model):
     photo = models.ImageField(
         validators=[IMAGE_FILE_VALIDATOR],
         max_length=255,
-        upload_to=upload_path)
+        upload_to=upload_path,
+        blank=True)
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Age: {self.age}, Role: {self.role}"
@@ -120,7 +121,8 @@ class ProsceniumStreetPlayParticipant(models.Model):
     photo = models.ImageField(
         validators=[IMAGE_FILE_VALIDATOR],
         max_length=255,
-        upload_to=upload_path)
+        upload_to=upload_path,
+        blank=True)
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Age: {self.age}, Role: {self.role}"

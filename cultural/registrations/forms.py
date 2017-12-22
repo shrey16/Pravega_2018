@@ -30,7 +30,7 @@ class ProsceniumTheatreParticipantForm(forms.Form):
         label="Photo",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Photo',
-        }))
+        }), required=False)
 
 
 class ProsceniumTheatreRegistrationForm(forms.Form):
@@ -137,7 +137,7 @@ class ProsceniumStreetPlayParticipantForm(forms.Form):
         label="Photo",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Photo',
-        }))
+        }), required=False)
 
 
 class ProsceniumStreetPlayRegistrationForm(forms.Form):
@@ -184,7 +184,8 @@ class ProsceniumStreetPlayRegistrationForm(forms.Form):
 
 
 class BaseProsceniumParticipantFormSet(BaseFormSet):
-    MAX_PARTCIPANTS, MAX_ACCOMPANISTS = 10, 3
+    MAX_PERFORMERS, MAX_ACCOMPANISTS = 10, 3
+    MAX_PARTICIPANTS = MAX_PERFORMERS + MAX_ACCOMPANISTS
 
     def clean(self):
         if any(self.errors):
@@ -203,19 +204,19 @@ class BaseProsceniumParticipantFormSet(BaseFormSet):
                     data.add(form_data)
                 role = form.cleaned_data['role']
                 if role == ProsceniumParticipant.PERFORMER:
-                    performers = performers + 1
+                    performers += 1
                 elif role == ProsceniumParticipant.ACCOMPANIST:
-                    accompanists = accompanists + 1
-
-        if len(data) > MAX_PARTCIPANTS or (performers + accompanists) > MAX_PARTCIPANTS:
+                    accompanists += 1
+        MAX_PARTICIPANTS, MAX_PERFORMERS, MAX_ACCOMPANISTS = BaseProsceniumParticipantFormSet.MAX_PARTICIPANTS, BaseProsceniumParticipantFormSet.MAX_PERFORMERS, BaseProsceniumParticipantFormSet.MAX_ACCOMPANISTS
+        if len(data) > MAX_PARTICIPANTS or (performers + accompanists) > MAX_PARTICIPANTS:
             raise forms.ValidationError(
-                "You can have a maximum of 7 performers and 3 accompanists", code="over_max_performers_accompanists")
+                f"You can have a maximum of {MAX_PERFORMERS} performers and {MAX_ACCOMPANISTS} accompanists", code="over_max_performers_accompanists")
         elif performers == 0:
             raise forms.ValidationError(
                 "You must have at least 1 participant", code="no_performers")
         elif accompanists > MAX_ACCOMPANISTS:
             raise forms.ValidationError(
-                "You can have a maximum of 3 accompanists", code="over_max_accompanists")
+                f"You can have a maximum of {MAX_ACCOMPANISTS} accompanists", code="over_max_accompanists")
 
 
 class BoBParticipantForm(forms.Form):
@@ -388,7 +389,7 @@ class LasyaRegistrationForm(forms.Form):
         required=False)
     contact = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="Team's Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': "Team's Mobile No.",
