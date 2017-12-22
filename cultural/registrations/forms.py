@@ -13,7 +13,7 @@ class ProsceniumTheatreParticipantForm(forms.Form):
             'placeholder': 'Role: Performer / Accompanist',
         }))
     age = forms.IntegerField(
-        min_value=1, max_value=25,
+        min_value=1, max_value=125,
         label="Participant's Age",
         widget=forms.NumberInput(attrs={
             'placeholder': 'Age',
@@ -120,7 +120,7 @@ class ProsceniumStreetPlayParticipantForm(forms.Form):
             'placeholder': 'Role: Performer / Accompanist',
         }))
     age = forms.IntegerField(
-        min_value=1, max_value=25,
+        min_value=1, max_value=125,
         label="Participant's Age",
         widget=forms.NumberInput(attrs={
             'placeholder': 'Age',
