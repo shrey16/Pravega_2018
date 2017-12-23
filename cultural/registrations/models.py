@@ -327,3 +327,24 @@ class OpenMicParticipant(models.Model):
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}"
+
+
+class HackathonRegistration(models.Model):
+    time = models.DateTimeField(default=now)
+    referral_code = models.CharField(max_length=50, blank=True)
+    team_name = models.CharField(max_length=200, unique=True)
+    contact = PhoneNumberField.get_field()
+    email = models.EmailField()
+    abstract = models.TextField()
+
+    def __str__(self):
+        return f"Team Name: {self.team_name}, Contact: {self.contact}, E-Mail ID: {self.email}"
+
+
+class HackathonParticipant(models.Model):
+    registration_entry = models.ForeignKey(
+        HackathonRegistration, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Registration Entry: {self.registration_entry}, Name: {self.name}"

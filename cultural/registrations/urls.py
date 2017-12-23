@@ -20,4 +20,5 @@ urlpatterns = [
         name='proscenium_theatre_video'),
     url(r'^openmic$', views.openmic, name='openmic'),
     url(r'^decoherence$', views.decoherence, name='decoherence'),
+    url(r'^hackathon$', views.hackathon, name='hackathon'),
 ]

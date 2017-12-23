@@ -1,5 +1,4 @@
 "use strict";
-//jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
@@ -57,8 +56,10 @@ window.setInterval(function() {
 }, 20);
 
 function goForward(elem, duration) {
-    var current_fs = $(elem).parent();
-    var next_fs = $(elem).parent().next();
+    const current_fs = $(elem).parent();
+    const next_fs = $(elem).parent().next();
+    const currentWidth = current_fs.width();
+
     if ($(elem).is('fieldset')) {
         current_fs = $(elem);
         next_fs = $(elem).next();
@@ -94,6 +95,7 @@ function goForward(elem, duration) {
         complete: function() {
                 current_fs.hide();
                 $("#msform").height(next_fs.height() + 100);
+                next_fs.width(currentWidth);
                 animating = false;
             }
             //this comes from the custom easing plugin
@@ -101,8 +103,9 @@ function goForward(elem, duration) {
 }
 
 function goBackward(elem, duration) {
-    var current_fs = $(elem).parent();
-    var previous_fs = $(elem).parent().prev();
+    const current_fs = $(elem).parent();
+    const previous_fs = $(elem).parent().prev();
+    const currentWidth = current_fs.width();
     //de-activate current step on progressbar
     legends.eq($("fieldset").index(current_fs)).removeClass("active");
     //show the previous fieldset
@@ -131,6 +134,7 @@ function goBackward(elem, duration) {
         complete: function() {
                 current_fs.hide();
                 $("#msform").height(previous_fs.height() + 100);
+                previous_fs.width(currentWidth);
                 animating = false;
             }
             //this comes from the custom easing plugin

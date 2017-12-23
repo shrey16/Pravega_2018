@@ -725,3 +725,73 @@ class BaseOpenMicParticipantFormSet(BaseFormSet):
                         "Possible Duplicate Entry", code='duplicate')
                 else:
                     data.add(form_data)
+
+
+class HackathonParticipantForm(forms.Form):
+    name = forms.CharField(max_length=200,
+                           label="Participant's Name",
+                           widget=forms.TextInput(attrs={
+                               'placeholder': 'Name',
+                           }))
+
+
+class HackathonRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
+    team_name = forms.CharField(
+        max_length=200,
+        label="Team Name",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Name',
+        }))
+    email = forms.EmailField(
+        label="Team E-Mail ID",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'E-Mail ID',
+        }))
+    contact = PhoneNumberField.get_field(
+        as_regexField=True,
+        max_length=13,
+        label="Team Contact No.",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Mobile No.',
+        }))
+    abstract = forms.CharField(
+        label="Abstract (<5000 words)",
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Abstract',
+        }))
+    
+    def clean_abstract(self):
+        data = self.cleaned_data['abstract']
+        words = len(data.split())
+        if words > 5000:
+            raise forms.ValidationError(
+                f"Abstract must be less than 5000 words, was {words} words")
+        return data
+
+
+class BaseHackathonParticipantFormSet(BaseFormSet):
+
+    def clean(self):
+        if any(self.errors):
+            return
+        data = set()
+        if not forms:
+            raise forms.ValidationError("Empty Form", code='empty_form')
+        for form in self.forms:
+            if form.cleaned_data:
+                form_data = tuple(map(str, form.cleaned_data.items()))
+                if form_data in data:
+                    raise forms.ValidationError(
+                        "Possible Duplicate Entry", code='duplicate')
+                else:
+                    data.add(form_data)
+        if len(data) > 4:
+            raise forms.ValidationError(
+                "A maximum of 4 particpants are allowed", code='gt_max_particpants')

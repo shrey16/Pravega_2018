@@ -112,6 +112,20 @@ class OpenMicRegistrationAdmin(admin.ModelAdmin):
                     'fields'][:-1]
         return unfiltered
 
+
+class HackathonParticipantInline(admin.TabularInline):
+    model = HackathonParticipant
+    extra = 0
+
+
+class HackathonRegistrationAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields': ['team_name', 'time', 'referral_code']}),
+        ('Contact Information', {'fields': ['email', 'contact']}),
+        ('Abstract', {'fields': ['abstract']}),
+    ]
+    inlines = [HackathonParticipantInline]
+
 admin.site.register(ProsceniumTheatreRegistration,
                     ProsceniumTheatreRegistrationAdmin)
 admin.site.register(ProsceniumStreetPlayRegistration,
@@ -122,3 +136,4 @@ admin.site.register(LasyaRegistration, LasyaRegistrationAdmin)
 admin.site.register(SInECRegistration, SInECRegistrationAdmin)
 admin.site.register(OpenMicRegistration, OpenMicRegistrationAdmin)
 admin.site.register(DecoherenceRegistration, DecoherenceRegistrationAdmin)
+admin.site.register(HackathonRegistration, HackathonRegistrationAdmin)

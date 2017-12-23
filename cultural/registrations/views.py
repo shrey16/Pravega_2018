@@ -494,6 +494,64 @@ def openmic(request):
         return render(request, "openmic.html", context)
 
 
+def hackathon(request):
+    HackathonParticipantFormSet = formset_factory(
+        OpenMicParticipantForm, formset=BaseHackathonParticipantFormSet, min_num=1, validate_min=True, max_num=4, extra=1)
+    registration = HackathonRegistration()
+
+    context = {
+        'registration_form': HackathonRegistrationForm(),
+        'participant_formset': HackathonParticipantFormSet(),
+    }
+
+    if request.method == 'POST':
+        participant_formset = HackathonParticipantFormSet(
+            request.POST, request.FILES)
+        registration_form = HackathonRegistrationForm(
+            request.POST, request.FILES)
+
+        context = {
+            'registration_form': registration_form,
+            'participant_formset': participant_formset,
+        }
+
+        if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
+            registration.team_name = registration_form.cleaned_data.get(
+                'team_name')
+            registration.email = registration_form.cleaned_data.get('email')
+            registration.abstract = registration_form.cleaned_data.get(
+                'abstract')
+            registration.contact = registration_form.cleaned_data.get(
+                'contact')
+
+            try:
+                registration.save()
+            except IntegrityError:
+                return render(request, "hackathon.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+
+            participants = []
+            for participant_form in participant_formset:
+                name = participant_form.cleaned_data.get('name')
+                if name:
+                    participants.append(HackathonParticipant(
+                        registration_entry=registration, name=name))
+
+            try:
+                with transaction.atomic():
+                    HackathonParticipant.objects.filter(
+                        registration_entry=registration).delete()
+                    HackathonParticipant.objects.bulk_create(participants)
+                return render(request, "success.html", {'event_name': 'Hackathon', 'id': registration.id})
+            except IntegrityError:
+                return render(request, "hackathon.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
+        else:
+            return render(request, "hackathon.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+    else:
+        return render(request, "hackathon.html", context)
+
+
 def decoherence(request):
     DecoherenceParticipantFormSet = formset_factory(
         DecoherenceParticipantForm, formset=BaseDecoherenceParticipantFormSet, min_num=1, max_num=2, validate_min=True, extra=1)
