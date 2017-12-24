@@ -96,7 +96,7 @@ class ProsceniumTheatreParticipant(models.Model):
     
     def admin_photo(instance):
         if instance.photo:
-            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 150px; height:100px\"/>")
+            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 100px; height:150px\"/>")
         else:
             return mark_safe("<p>No Photo</p>")
 
