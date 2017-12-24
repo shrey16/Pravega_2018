@@ -94,7 +94,7 @@ class ProsceniumTheatreParticipant(models.Model):
         upload_to=upload_path,
         blank=True)
     
-    def admin_photo(instance):
+    def photo_preview(instance):
         if instance.photo:
             return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 100px; height:150px\"/>")
         else:
@@ -139,6 +139,12 @@ class ProsceniumStreetPlayParticipant(models.Model):
         max_length=255,
         upload_to=upload_path,
         blank=True)
+    
+    def photo_preview(instance):
+        if instance.photo:
+            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 100px; height:150px\"/>")
+        else:
+            return mark_safe("<p>No Photo</p>")
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Age: {self.age}, Role: {self.role}"
