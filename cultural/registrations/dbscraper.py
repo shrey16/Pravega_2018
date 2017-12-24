@@ -300,3 +300,23 @@ class DecoherenceRegistrationData(RegistrationData):
                 data.participants.append(participant_data)
         data.participant_count = len(data.participants)
         yield data
+
+class HackathonRegistrationData(RegistrationData):
+
+    def load_from_db(self):
+        for registration in HackathonRegistration.objects.all():
+            data = HackathonRegistrationData()
+            data.time = str(registration.time)
+            data.id = registration.id
+            data.referral_code = registration.referral_code
+            data.team_name = registration.team_name
+            data.contact = registration.contact
+            data.email = registration.email
+            data.abstract = registration.abstract
+            data.participants = []
+            for participant in registration.Hackathonparticipant_set.all():
+                participant_data = {}
+                participant_data['name'] = participant.name
+                data.participants.append(participant_data)
+        data.participant_count = len(data.participants)
+        yield data
