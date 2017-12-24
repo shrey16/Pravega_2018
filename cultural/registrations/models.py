@@ -1,4 +1,5 @@
 import os
+import re
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.utils.timezone import now
@@ -20,6 +21,11 @@ def get_uploads_directory():
     else:
         return "./uploads/"
 
+def resolve_uploads_url(url):
+    if settings.MEDIA_ROOT in url:
+        return re.sub("/media.*?Pravega_2018", "", url)
+    else:
+        return url
 
 class ProsceniumRegistration:
     ENGLISH = 'English'
@@ -90,7 +96,7 @@ class ProsceniumTheatreParticipant(models.Model):
     
     def admin_photo(instance):
         if instance.photo:
-            return mark_safe(f"<img src={instance.photo.url}>")
+            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 150px; height:100px\"/>")
         else:
             return mark_safe("<p>No Photo</p>")
 

@@ -4,6 +4,7 @@ from .models import *
 
 class ProsceniumTheatreParticipantInline(admin.TabularInline):
     model = ProsceniumTheatreParticipant
+    readonly_fields = ('admin_photo',)
     extra = 0
 
 
