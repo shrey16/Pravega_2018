@@ -96,7 +96,7 @@ class ProsceniumTheatreParticipant(models.Model):
     
     def photo_preview(instance):
         if instance.photo:
-            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 100px; height:150px\"/>")
+            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 90px; height:120px\"/>")
         else:
             return mark_safe("<p>No Photo</p>")
 
@@ -142,7 +142,7 @@ class ProsceniumStreetPlayParticipant(models.Model):
     
     def photo_preview(instance):
         if instance.photo:
-            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 100px; height:150px\"/>")
+            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 90px; height:120px\"/>")
         else:
             return mark_safe("<p>No Photo</p>")
 
