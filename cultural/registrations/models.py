@@ -2,6 +2,8 @@ import os
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.utils.timezone import now
+from django.utils.safestring import mark_safe
+from django.conf import settings
 from .customfields import PhoneNumberField
 
 IMAGE_FILE_VALIDATOR = FileExtensionValidator(
@@ -13,8 +15,10 @@ VIDEO_FILE_VALIDATOR = FileExtensionValidator(
 
 
 def get_uploads_directory():
-    #return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
-    return "./uploads/"
+    if settings.MEDIA_ROOT:
+        return settings.MEDIA_ROOT
+    else:
+        return "./uploads/"
 
 
 class ProsceniumRegistration:
@@ -83,6 +87,12 @@ class ProsceniumTheatreParticipant(models.Model):
         max_length=255,
         upload_to=upload_path,
         blank=True)
+    
+    def admin_photo(instance):
+        if instance.photo:
+            return mark_safe(f"<img src={instance.photo.url}>")
+        else:
+            return mark_safe("<p>No Photo</p>")
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Age: {self.age}, Role: {self.role}"
