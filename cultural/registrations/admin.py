@@ -14,7 +14,7 @@ class ProsceniumTheatreRegistrationAdmin(admin.ModelAdmin):
                            'language', 'time', 'referral_code']}),
         ('Contact Information', {'fields': ['email', 'contact1', 'contact2']}),
         ('Prelims Information', {'fields': [
-         'prelims_video', 'prelims_script']})
+         ('prelims_video', 'download_prelims_video'), ('prelims_script', 'download_prelims_script')]})
     ]
     inlines = [ProsceniumTheatreParticipantInline]
 
@@ -45,7 +45,7 @@ class BoBRegistrationAdmin(admin.ModelAdmin):
                            'genre', 'time', 'referral_code']}),
         ('Contact Information', {'fields': ['email', 'facebook_link']}),
         ('Prelims Information', {'fields': [
-         'prelims_venue', 'audio_sample_file', 'audio_sample_link']})
+         'prelims_venue', ('audio_sample_file', 'download_audio_sample_file'), 'audio_sample_link']})
     ]
     inlines = [BoBParticipantInline]
 
@@ -60,7 +60,7 @@ class LasyaRegistrationAdmin(admin.ModelAdmin):
         (None, {'fields': ['name', 'institution', 'time', 'referral_code']}),
         ('Contact Information', {'fields': ['email', 'contact']}),
         ('Prelims Information', {'fields': [
-         'prelims_video', 'prelims_video_link']})
+         ('prelims_video', 'download_prelims_video'), 'prelims_video_link']})
     ]
     inlines = [LasyaParticipantInline]
 
@@ -75,7 +75,9 @@ class SInECRegistrationAdmin(admin.ModelAdmin):
         (None, {'fields': ['team_name', 'time', 'referral_code']}),
         ('Contact Information', {'fields': ['email', 'contact', 'address']}),
         ('Project Information', {'fields': ['project_name', 'project_field', 'registered_company',
-                                            'project_abstract', 'project_patented', 'project_file', 'project_video', 'privacy_preference']})
+                                            'project_abstract', 'project_patented',
+                                            ('project_file', 'download_project_file'),
+                                            ('project_video', 'download_project_video'), 'privacy_preference']})
     ]
     inlines = [SInECParticipantInline]
 

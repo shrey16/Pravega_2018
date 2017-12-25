@@ -14,6 +14,8 @@ SCRIPT_FILE_VALIDATOR = FileExtensionValidator(
 VIDEO_FILE_VALIDATOR = FileExtensionValidator(
     allowed_extensions=['mp4', '3gp', 'mkv'])
 
+THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT = 90, 120
+
 
 def get_uploads_directory():
     if settings.MEDIA_ROOT:
@@ -26,6 +28,18 @@ def resolve_uploads_url(url):
         return re.sub("/media.*?Pravega_2018", "", url)
     else:
         return url
+
+def image_preview(instance):
+        if instance.photo:
+            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width:{THUMBNAIL_WIDTH}px; height:{THUMBNAIL_HEIGHT}px\"/>")
+        else:
+            return mark_safe("<p>No Photo</p>")
+
+def file_download_link(file):
+    if file:
+        return mark_safe(f"<a href={resolve_uploads_url(file.url)} target=\"_blank\">Download</a>")
+    else:
+        return mark_safe("<p>Nothing to Download</p>")
 
 class ProsceniumRegistration:
     ENGLISH = 'English'
@@ -62,6 +76,9 @@ class ProsceniumTheatreRegistration(models.Model):
         max_length=255,
         upload_to=upload_video_path,
         blank=True)
+    
+    def download_prelims_video(instance):
+        return file_download_link(instance.prelims_video)
 
     def upload_script_path(instance, filename):
         return os.path.join(get_uploads_directory(), f"theatre/scripts/{instance.institution} - {instance.language} - {filename}")
@@ -71,6 +88,9 @@ class ProsceniumTheatreRegistration(models.Model):
         max_length=255,
         upload_to=upload_script_path,
         blank=True)
+
+    def download_prelims_script(instance):
+        return file_download_link(instance.prelims_script)
 
     def __str__(self):
         return f"Institution: {self.institution}, Language: {self.language}, 1st Contact No.: {self.contact1}, 2nd Contact No.: {self.contact2}, E-Mail ID: {self.email}"
@@ -93,12 +113,8 @@ class ProsceniumTheatreParticipant(models.Model):
         max_length=255,
         upload_to=upload_path,
         blank=True)
-    
-    def photo_preview(instance):
-        if instance.photo:
-            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 90px; height:120px\"/>")
-        else:
-            return mark_safe("<p>No Photo</p>")
+
+    photo_preview = image_preview
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Age: {self.age}, Role: {self.role}"
@@ -139,12 +155,8 @@ class ProsceniumStreetPlayParticipant(models.Model):
         max_length=255,
         upload_to=upload_path,
         blank=True)
-    
-    def photo_preview(instance):
-        if instance.photo:
-            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width: 90px; height:120px\"/>")
-        else:
-            return mark_safe("<p>No Photo</p>")
+
+    photo_preview = image_preview
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Age: {self.age}, Role: {self.role}"
@@ -179,6 +191,10 @@ class BoBRegistration(models.Model):
         validators=[AUDIO_FILE_VALIDATOR],
         max_length=255,
         upload_to=upload_path, blank=True)
+
+    def download_audio_sample_file(instance):
+        return file_download_link(instance.audio_sample_file)
+    
     audio_sample_link = models.URLField(blank=True)
 
     prelims_venue = models.CharField(max_length=max(map(lambda x: len(x[0]), PRELIMS_VENUES)),
@@ -219,6 +235,9 @@ class LasyaRegistration(models.Model):
         max_length=255,
         blank=True,
         upload_to=upload_video_path)
+    
+    def download_prelims_video(instance):
+        return file_download_link(instance.prelims_video)
 
     prelims_video_link = models.URLField(blank=True)
 
@@ -272,11 +291,17 @@ class SInECRegistration(models.Model):
         max_length=255,
         upload_to=upload_path,
         blank=True)
-    
+
+    def download_project_file(instance):
+        return file_download_link(instance.project_file)
+
     project_video = models.FileField(
         max_length=255,
         upload_to=upload_video_path,
         blank=True)
+
+    def download_project_video(instance):
+        return file_download_link(instance.project_video)
 
     def __str__(self):
         return f"Team Name: {self.team_name}, Project Name: {self.project_name}, E-Mail ID: {self.email}, Contact No.: {self.contact}"
