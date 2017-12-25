@@ -26,6 +26,8 @@ def get_uploads_directory():
 def resolve_uploads_url(url):
     if settings.MEDIA_ROOT in url:
         return re.sub("/media.*?Pravega_2018", "", url)
+    elif "/media/uploads/" in url:
+        return re.sub("/media", "/cultural/uploads", url)
     else:
         return url
 
