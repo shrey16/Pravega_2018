@@ -9,6 +9,7 @@ class ProsceniumTheatreParticipantInline(admin.TabularInline):
 
 
 class ProsceniumTheatreRegistrationAdmin(admin.ModelAdmin):
+    readonly_fields = ('download_prelims_script', 'download_prelims_video')
     fieldsets = [
         (None, {'fields': ['institution',
                            'language', 'time', 'referral_code']}),
@@ -40,6 +41,7 @@ class BoBParticipantInline(admin.TabularInline):
 
 
 class BoBRegistrationAdmin(admin.ModelAdmin):
+    readonly_fields = ('download_audio_sample_file',)
     fieldsets = [
         (None, {'fields': ['band_name', 'city',
                            'genre', 'time', 'referral_code']}),
@@ -56,6 +58,7 @@ class LasyaParticipantInline(admin.TabularInline):
 
 
 class LasyaRegistrationAdmin(admin.ModelAdmin):
+    readonly_fields = ('download_prelims_video',)
     fieldsets = [
         (None, {'fields': ['name', 'institution', 'time', 'referral_code']}),
         ('Contact Information', {'fields': ['email', 'contact']}),
@@ -71,6 +74,7 @@ class SInECParticipantInline(admin.TabularInline):
 
 
 class SInECRegistrationAdmin(admin.ModelAdmin):
+    readonly_fields = ('download_project_file', 'download_project_video')
     fieldsets = [
         (None, {'fields': ['team_name', 'time', 'referral_code']}),
         ('Contact Information', {'fields': ['email', 'contact', 'address']}),
