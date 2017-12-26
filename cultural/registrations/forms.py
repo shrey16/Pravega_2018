@@ -182,7 +182,6 @@ class ProsceniumStreetPlayRegistrationForm(forms.Form):
             'placeholder': 'E-Mail ID',
         }))
 
-
 class BaseProsceniumParticipantFormSet(BaseFormSet):
     MAX_PERFORMERS, MAX_ACCOMPANISTS = 10, 3
     MAX_PARTICIPANTS = MAX_PERFORMERS + MAX_ACCOMPANISTS
@@ -213,11 +212,51 @@ class BaseProsceniumParticipantFormSet(BaseFormSet):
                 f"You can have a maximum of {MAX_PERFORMERS} performers and {MAX_ACCOMPANISTS} accompanists", code="over_max_performers_accompanists")
         elif performers == 0:
             raise forms.ValidationError(
-                "You must have at least 1 participant", code="no_performers")
+                "You must have at least 1 performer", code="no_performers")
+        elif performers > MAX_PERFORMERS:
+            raise forms.ValidationError(
+                f"You can have a maximum of {MAX_PERFORMERS} performers", code="over_max_performers")
         elif accompanists > MAX_ACCOMPANISTS:
             raise forms.ValidationError(
                 f"You can have a maximum of {MAX_ACCOMPANISTS} accompanists", code="over_max_accompanists")
 
+class BaseProsceniumStreetPlayParticipantFormSet(BaseFormSet):
+    MAX_PERFORMERS, MAX_ACCOMPANISTS = 15, 5
+    MAX_PARTICIPANTS = MAX_PERFORMERS + MAX_ACCOMPANISTS
+
+    def clean(self):
+        if any(self.errors):
+            return
+        data = set()
+        performers, accompanists = 0, 0
+        if not forms:
+            raise forms.ValidationError("Empty Form", code='empty_form')
+        for form in self.forms:
+            if form.cleaned_data:
+                form_data = tuple(map(str, form.cleaned_data.items()))
+                if form_data in data:
+                    raise forms.ValidationError(
+                        "Possible Duplicate Entry", code='duplicate')
+                else:
+                    data.add(form_data)
+                role = form.cleaned_data['role']
+                if role == ProsceniumParticipant.PERFORMER:
+                    performers += 1
+                elif role == ProsceniumParticipant.ACCOMPANIST:
+                    accompanists += 1
+        MAX_PARTICIPANTS, MAX_PERFORMERS, MAX_ACCOMPANISTS = BaseProsceniumStreetPlayParticipantFormSet.MAX_PARTICIPANTS, BaseProsceniumStreetPlayParticipantFormSet.MAX_PERFORMERS, BaseProsceniumStreetPlayParticipantFormSet.MAX_ACCOMPANISTS
+        if len(data) > MAX_PARTICIPANTS or (performers + accompanists) > MAX_PARTICIPANTS:
+            raise forms.ValidationError(
+                f"You can have a maximum of {MAX_PERFORMERS} performers and {MAX_ACCOMPANISTS} accompanists", code="over_max_performers_accompanists")
+        elif performers == 0:
+            raise forms.ValidationError(
+                "You must have at least 1 performer", code="no_performers")
+        elif performers > MAX_PERFORMERS:
+            raise forms.ValidationError(
+                f"You can have a maximum of {MAX_PERFORMERS} performers", code="over_max_performers")
+        elif accompanists > MAX_ACCOMPANISTS:
+            raise forms.ValidationError(
+                f"You can have a maximum of {MAX_ACCOMPANISTS} accompanists", code="over_max_accompanists")
 
 class BoBParticipantForm(forms.Form):
     instrument = forms.CharField(max_length=200,

@@ -1,5 +1,4 @@
 "use strict";
-var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 var legends;
@@ -27,7 +26,7 @@ $(document).ready(function() {
             found_errors = true;
         }
     });
-    for (let i = 0; i < index; ++i) {
+    for (var i = 0; i < index; ++i) {
         goForward($("fieldset").get(i), 0);
     }
     $(".delete-row").hide();
@@ -56,8 +55,8 @@ window.setInterval(function() {
 }, 20);
 
 function goForward(elem, duration) {
-    const current_fs = $(elem).parent();
-    const next_fs = $(elem).parent().next();
+    var current_fs = $(elem).parent();
+    var next_fs = $(elem).parent().next();
     const currentWidth = current_fs.width();
 
     if ($(elem).is('fieldset')) {
@@ -166,7 +165,7 @@ $(".next").click(function() {
         return false;
     }
     var allowNext = true;
-    current_fs = $(this).parent();
+    const current_fs = $(this).parent();
     current_fs.find("input").each(function(index) {
         const error_id = $(this).prop("id") + "-error";
         if ($(this).prop("required") && $(this).prop("value") === "") {

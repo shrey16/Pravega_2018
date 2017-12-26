@@ -12,7 +12,7 @@ def index(request):
 
 def proscenium_theatre(request):
     ProsceniumTheatreParticipantFormSet = formset_factory(
-        ProsceniumTheatreParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=10, extra=3)
+        ProsceniumTheatreParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=13, extra=3)
     registration = ProsceniumTheatreRegistration()
 
     context = {
@@ -110,7 +110,7 @@ def proscenium_theatre_video(request):
 
 def proscenium_streetplay(request):
     ProsceniumStreetPlayParticipantFormSet = formset_factory(
-        ProsceniumStreetPlayParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=10, extra=3)
+        ProsceniumStreetPlayParticipantForm, formset=BaseProsceniumStreetPlayParticipantFormSet, min_num=1, validate_min=True, max_num=20, extra=3)
     registration = ProsceniumStreetPlayRegistration()
 
     context = {

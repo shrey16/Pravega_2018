@@ -365,6 +365,12 @@
                         <li>
                             There is no age restriction for participants.
                         </li>
+                        <li>
+                            There can be a maximum of 15 performers and 5 accompanists, with at least 1 performer among the participants.
+                        </li>
+                        <li>
+                            Accomodation will <b>NOT</b> be provided by Pravega for participants.
+                        </li>
                     </ol>
                     <br/>
                     <p>Have you read and understood the above regulations?</p>
@@ -393,7 +399,9 @@
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
                 <fieldset class="real" id="participants">
-                    {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
+                    {% if participant_formset.non_form_errors %}
+                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
                     <div class="participant-formset">
                         {% if participant_form.errors %}
                         <div class="errors">{% for field in participant_form %} {% for error in field.errors %}
@@ -409,8 +417,7 @@
                         {% endif %} {{ participant_form.role.label_tag }} {{ participant_form.role }} {% if participant_form.role.errors %}
                         <div class="errors">{% for error in participant_form.role.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
                     </div>
-                    {% endfor %} {% if participant_formset.non_form_errors %}
-                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    {% endfor %}
                     <br />
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
@@ -468,7 +475,7 @@
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script src="{% static 'js/reg.js' %}" type="text/javascript"></script>
     <script>
-        maxParticipants = 10;
+        maxParticipants = 20;
         $('.participant-formset').formset({
             addText: 'Add participant',
             deleteText: 'Remove Participant',

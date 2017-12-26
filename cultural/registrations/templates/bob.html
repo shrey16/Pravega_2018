@@ -421,7 +421,9 @@
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
                 <fieldset class="real" id="participants">
-                    {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
+                    {% if participant_formset.non_form_errors %}
+                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
                     <div class="participant-formset">
                         {% if participant_form.errors %}
                         <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
@@ -435,8 +437,7 @@
                         {% endif %} {{ participant_form.instrument.label_tag }} {{ participant_form.instrument }} {% if participant_form.instrument.errors %}
                         <div class="errors"> {% for error in participant_form.instrument.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
                     </div>
-                    {% endfor %} {% if participant_formset.non_form_errors %}
-                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    {% endfor %}
                     <br />
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
