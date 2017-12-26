@@ -607,6 +607,9 @@ fieldset label {
 
 @media only screen and (max-width: 900px),
 (max-height: 500px) {
+    *:focus {
+        outline: none;
+    }
     .reglinks {
         top: 0;
         transform: translateY(0);

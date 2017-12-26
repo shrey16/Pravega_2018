@@ -399,6 +399,9 @@ span {
 }
 
 @media only screen and (max-width: 900px) {
+    *:focus {
+        outline: none;
+    }
     #header-logo {
         padding: 10px 20px 10px 20px;
         width: 40px;
