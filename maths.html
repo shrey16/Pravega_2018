@@ -351,7 +351,7 @@ master of the Tricks of Trade." />
         <div id="disabler"></div>
         <div id="main">
             <div id="fullpage">
-                <div class="section">
+                <div class="section" id="daedalian-auction">
                     <div class="content" style="vertical-align: middle;">
                         <img src="img/auction.svg" class="content-img">
                         <div class="content-text">
@@ -361,7 +361,7 @@ master of the Tricks of Trade." />
                         </div>
                     </div>
                 </div>
-                <div class="section">
+                <div class="section" id="tricks-of-trade">
                     <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
                         <img src="img/stocks.svg" class="content-img">
                         <div class="content-text">
@@ -410,9 +410,9 @@ master of the Tricks of Trade." />
     <script type="text/javascript">
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                anchors: ['firstpage', 'secondpage'],
+                anchors: ['daedalian-auction', 'tricks-of-trade'],
                 navigation: true,
-                navigationTooltips: ['First', 'Second']
+                navigationTooltips: ['Daedalian Auction', 'Tricks of Trade']
             });
         });
         (function(i, s, o, g, r, a, m) {

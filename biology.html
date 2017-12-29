@@ -349,7 +349,7 @@
         <div id="disabler"></div>
         <div id="main">
             <div id="fullpage">
-                <div class="section">
+                <div class="section" id="pecosa">
                     <div class="content" style="vertical-align: middle;">
                         <img src="img/pippete.svg" class="content-img">
                         <div class="content-text">
@@ -361,7 +361,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="section">
+                <div class="section" id="whodunit">
                     <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
                         <img src="img/magnifier.svg" class="content-img">
                         <div class="content-text">
@@ -414,7 +414,6 @@
             $('#fullpage').fullpage({
                 anchors: ['pecosa', 'whodunit'],
                 navigation: true,
-                allowNavigation: false,
                 navigationTooltips: ['PECOSA', 'Whodunit']
             });
         });

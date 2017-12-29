@@ -351,7 +351,7 @@ Decoherence." />
         <div id="disabler"></div>
         <div id="main">
             <div id="fullpage">
-                <div class="section">
+                <div class="section" id="decoherence">
                     <div class="content">
                         <img src="img/atom.svg" class="content-img">
                         <div class="content-text">
@@ -362,7 +362,7 @@ Decoherence." />
                         </div>
                     </div>
                 </div>
-                <div class="section">
+                <div class="section" id="vacuum-cannon">
                     <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
                         <img src="img/vacuum.svg" class="content-img">
                         <div class="content-text">
@@ -411,9 +411,9 @@ Decoherence." />
     <script type="text/javascript">
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                anchors: ['firstpage', 'secondpage'],
+                anchors: ['decoherence', 'vacuum-cannon'],
                 navigation: true,
-                allowNavigation: false,
+                navigationTooltips: ['Dechorence', 'Vacuum Cannon']
             });
         });
         (function(i, s, o, g, r, a, m) {
