@@ -10,7 +10,7 @@
     <link href="css/hamburger.css" rel="stylesheet" type="text/css" />
     <link href="css/tech.css" type="text/css" rel="stylesheet" />
     <link href="css/menu.css" type="text/css" rel="stylesheet" />
-    <link href="css/javascript.fullPage.css" rel="stylesheet" />
+    <link href="css/jquery.fullpage.min.css" rel="stylesheet" />
     <style>
         body {
             box-sizing: border-box;
@@ -349,80 +349,79 @@
         <div id="disabler"></div>
         <div id="main">
             <div id="fullpage">
-                <div class="section" id="details">
-                    <div class="content " style="vertical-align: middle; ">
-                        <img src="img/Hackathon.png " class="content-img ">
-                        <div class="content-text right ">
+                <div class="section">
+                    <div class="content" style="vertical-align: middle;">
+                        <img src="img/Hackathon.png" class="content-img">
+                        <div class="content-text right">
                             <h1>Hackathon</h1>
                             <p>Pick through reams of comments and other reviews to figure out how to make computers understand sentiment. Get on with making those machines learn!</p>
-                            <p><a href="docs/Hackathon_Details.pdf ">Rulebook</a></p>
+                            <p><a href="docs/Hackathon_Details.pdf">Rulebook</a></p>
                         </div>
                     </div>
                 </div>
-                <div class="section " id="format ">
-                    <div class="content " style="vertical-align: middle;flex-direction: row-reverse; ">
-                        <img src="img/programmer.svg " class="content-img ">
-                        <div class="content-text right ">
+                <div class="section">
+                    <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
+                        <img src="img/programmer.svg" class="content-img">
+                        <div class="content-text right">
                             <h1>What happens?</h1>
                             <p>The abstracts you submit will be evaluated by our team, and the teams with the best proposals will joins us at IISc for the finals during Pravega!</p>
                         </div>
                     </div>
                 </div>
-                <div class="section " id="registration ">
-                    <div class="content " style="vertical-align: middle; ">
-                        <img src="img/note_hack.svg " class="content-img ">
+                <div class="section">
+                    <div class="content" style="vertical-align: middle;">
+                        <img src="img/note_hack.svg" class="content-img">
                         <div class="content-text ">
                             <h1>How do I register?</h1>
-                            <p>Click <a href="http://pravega.org/registrations/ ">here</a> to head over to the registrations page and be a part of making a conscientious SkyNet!</p>
+                            <p>Click <a href="http://pravega.org/registrations/">here</a> to head over to the registrations page and be a part of making a conscientious SkyNet!</p>
                         </div>
                     </div>
                 </div>
-                <div class="section " id="prizes ">
-                    <div class="content " style="vertical-align: middle;flex-direction: row-reverse; ">
-                        <img src="img/prize.svg " class="content-img ">
-                        <div class="content-text ">
+                <div class="section">
+                    <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
+                        <img src="img/prize.svg" class="content-img">
+                        <div class="content-text">
                             <h1>What do I get?</h1>
-                            <p>For those who distinguish themselves, there's not only the prize money, but the bragging rights and international recognition that comes with it. Get cracking!</p>
-                            <p>First gets ₹70,000 and second gets ₹30,000!</p>>
+                            <p>For those who distinguish themselves, there's not only the prize money, but the bragging rights and international recognition that comes with it. Get cracking!<br/> First gets ₹70,000 and second gets ₹30,000!</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="floating-footer ">
-        <a target="_blank " href="https://www.facebook.com/PravegaIISc/ ">
-            <div class="fab-icon ">
-                <div class="fab-desc triangle-isosceles ">
+    <div id="floating-footer">
+        <a target="_blank" href="https://www.facebook.com/PravegaIISc/">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
                     <h6>Facebook</h6>
                 </div>
-                <img src="img/fb.svg ">
+                <img src="img/fb.svg">
             </div>
         </a>
-        <a target="_blank " href="https://twitter.com/PravegaIISc ">
-            <div class="fab-icon ">
-                <div class="fab-desc triangle-isosceles ">
+        <a target="_blank" href="https://twitter.com/PravegaIISc">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
                     <h6>Twitter</h6>
                 </div>
-                <img src="img/Twitter.svg ">
+                <img src="img/Twitter.svg">
             </div>
         </a>
     </div>
-    <div id="footer ">
-        <div id="social ">
-            <a target="_blank " href="https://www.facebook.com/PravegaIISc/ "><img src="img/fb.svg "></a>
-            <a target="_blank " href="https://twitter.com/PravegaIISc "><img src="img/Twitter.svg "></a>
+    <div id="footer">
+        <div id="social">
+            <a target="_blank" href="https://www.facebook.com/PravegaIISc/"><img src="img/fb.svg"></a>
+            <a target="_blank" href="https://twitter.com/PravegaIISc"><img src="img/Twitter.svg"></a>
         </div>
-        <ul id="links ">
-            <li><a target="_blank " href="http://pravega.org/registrations/ ">Registrations</a></li>
-            <li><a href="contact.html ">Contact</a></li>
-            <li><a href="index.html ">Home</a></li>
+        <ul id="links">
+            <li><a target="_blank" href="http://pravega.org/registrations/">Registrations</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
         </ul>
     </div>
-    <script src="js/jquery-3.2.1.min.js " type="text/javascript "></script>
-    <script src="js/TweenLite.min.js " type="text/javascript "></script>
-    <script src="js/menu.js " type="text/javascript "></script>
-    <script src="js/jquery.fullPage.min.js " type="text/javascript "></script>
+    <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="js/TweenLite.min.js" type="text/javascript"></script>
+    <script src="js/menu.js" type="text/javascript"></script>
+    <script src="js/jquery.fullPage.min.js" type="text/javascript"></script>
     <script type="text/javascript ">
         $(document).ready(function() {
             $('#fullpage').fullpage({
