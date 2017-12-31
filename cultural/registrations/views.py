@@ -419,6 +419,11 @@ def pis_video(request):
                 else:
                     registration.project_video = registration_form.cleaned_data.get(
                         'project_video')
+                if registration.project_video_link:
+                    return render(request, "pis_video.html", {**context, **{'error_message': "Link to Video has already been submitted. Re-submission is not allowed."}})
+                else:
+                    registration.project_video_link = registration_form.cleaned_data.get(
+                        'project_video_link')
             except ObjectDoesNotExist:
                 return render(request, "pis_video.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
             try:

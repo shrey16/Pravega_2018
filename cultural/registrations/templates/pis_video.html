@@ -412,7 +412,9 @@
                     {{ registration_form.index.label_tag }} {{ registration_form.index }} {% if registration_form.index.errors %}
                     <div class="errors">{% for error in registration_form.index.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.project_video.label_tag }} {{ registration_form.project_video }} {% if registration_form.project_video.errors %}
-                    <div class="errors">{% for error in registration_form.project_video.errors %} {{ error|escape }} {% endfor %} </div> {% endif %}
+                    <div class="errors">{% for error in registration_form.project_video.errors %} {{ error|escape }} {% endfor %} </div> 
+                    {% endif %} {{ registration_form.project_video_link.label_tag }} {{ registration_form.project_video_link }} {% if registration_form.project_video_link.errors %}
+                    <div class="errors">{% for error in registration_form.project_video_link.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
                 </fieldset>

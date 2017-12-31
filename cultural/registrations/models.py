@@ -302,6 +302,8 @@ class SInECRegistration(models.Model):
         upload_to=upload_video_path,
         blank=True)
 
+    project_video_link = models.URLField(blank=True)
+
     def download_project_video(instance):
         return file_download_link(instance.project_video)
 

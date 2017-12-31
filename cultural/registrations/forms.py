@@ -615,7 +615,20 @@ class PisVideoSubmissionForm(forms.Form):
         label="Video for Project",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Project Video',
-        }))
+        }), required=False)
+    project_video_link = forms.URLField(
+        label="Link to Video for Project",
+        widget=forms.ClearableFileInput(attrs={
+            'placeholder': 'Project Video Link',
+        }), required=False)
+
+    def clean_project_video_link(self):
+        data = self.cleaned_data['project_video_link']
+        if(any(self.errors)):
+            return data
+        if not any((data, self.cleaned_data['project_video'])):
+            raise forms.ValidationError(
+                "A project video must be uploaded or a link to the video must be provided (e.g. via Google Drive sharing)", code='no_video')
 
 
 class DecoherenceParticipantForm(forms.Form):
