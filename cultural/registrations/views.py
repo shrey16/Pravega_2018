@@ -429,8 +429,8 @@ def pis_video(request):
             try:
                 registration.save()
                 return render(request, "success.html", {'event_name': 'PIS Project Video Submission', 'id': registration.id})
-            except IntegrityError:
-                return render(request, "pis_video.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+            except IntegrityError as e:
+                return render(request, "pis_video.html", {**context, **{'error_message': f"Possible Duplicate Registration. Please retry. {e}"}})
         else:
             return render(request, "pis_video.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
