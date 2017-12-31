@@ -180,6 +180,9 @@ span {
 .nav-highlight-item {
     border-left: solid 7px #DF9EF3 !important;
 }
+.nav-highlight-item .li-text {
+     left: 0;
+}
 
 .expand-menu {
     margin-left: -20px;
