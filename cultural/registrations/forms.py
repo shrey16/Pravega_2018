@@ -618,7 +618,7 @@ class PisVideoSubmissionForm(forms.Form):
         }), required=False)
     project_video_link = forms.URLField(
         label="Link to Video for Project",
-        widget=forms.ClearableFileInput(attrs={
+        widget=forms.URLInput(attrs={
             'placeholder': 'Project Video Link',
         }), required=False)
 
