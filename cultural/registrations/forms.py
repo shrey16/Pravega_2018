@@ -629,6 +629,7 @@ class PisVideoSubmissionForm(forms.Form):
         if not any((data, self.cleaned_data['project_video'])):
             raise forms.ValidationError(
                 "A project video must be uploaded or a link to the video must be provided (e.g. via Google Drive sharing)", code='no_video')
+        return data
 
 
 class DecoherenceParticipantForm(forms.Form):
