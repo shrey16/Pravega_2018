@@ -8,7 +8,17 @@ h1 {
     display: block;
     font-weight: 600;
 }
-
+.content table {
+    margin: 0 auto;
+    border-spacing: 0;
+}
+.content tr, .content td {
+    padding: 10px;
+    text-align: center;
+}
+.content tr td:first-child {
+    border-right: 1px solid black;
+}
 .content a {
     color: #000;
     text-decoration: underline;
