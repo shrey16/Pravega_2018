@@ -67,9 +67,6 @@ h1 {
     display: inline-block;
     text-align: justify;
 }
-.content .content-text p a {
-    text-align: center;
-}
 .content .content-text h4 span {
     display: none;
 }
