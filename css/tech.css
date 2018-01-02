@@ -67,7 +67,9 @@ h1 {
     display: inline-block;
     text-align: justify;
 }
-
+.content .content-text h4 span {
+    display: none;
+}
 #fullpage {
     z-index: 1000;
 }
@@ -105,5 +107,17 @@ h1 {
     }
     #main {
         padding: 0;
+    }
+    .content table img {
+        width: 60px;
+    }
+    .content .content-text h4 span {
+        display: inline;
+    }
+    .content .content-text p sub {
+        display: none;
+    }
+    .content .content-text table td img {
+        display: none;
     }
 }
