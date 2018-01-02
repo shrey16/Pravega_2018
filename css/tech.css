@@ -108,16 +108,13 @@ h1 {
     #main {
         padding: 0;
     }
-    .content table img {
-        width: 60px;
-    }
     .content .content-text h4 span {
         display: inline;
     }
     .content .content-text p sub {
         display: none;
     }
-    .content .content-text table td img {
+    .content table img {
         display: none;
     }
 }
