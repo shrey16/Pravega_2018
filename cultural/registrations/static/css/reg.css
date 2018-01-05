@@ -201,7 +201,9 @@ span {
 .nav-highlight-item {
     border-left: solid 7px #DF9EF3 !important;
 }
-
+.nav-highlight-item .li-text {
+    left: 0;
+}
 .expand-menu {
     margin-left: -20px;
     margin-right: -20px;
@@ -607,6 +609,9 @@ fieldset label {
 
 @media only screen and (max-width: 900px),
 (max-height: 500px) {
+    *:focus {
+        outline: none;
+    }
     .reglinks {
         top: 0;
         transform: translateY(0);

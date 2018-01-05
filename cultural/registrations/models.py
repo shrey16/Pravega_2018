@@ -1,7 +1,10 @@
 import os
+import re
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.utils.timezone import now
+from django.utils.safestring import mark_safe
+from django.conf import settings
 from .customfields import PhoneNumberField
 
 IMAGE_FILE_VALIDATOR = FileExtensionValidator(
@@ -11,11 +14,34 @@ SCRIPT_FILE_VALIDATOR = FileExtensionValidator(
 VIDEO_FILE_VALIDATOR = FileExtensionValidator(
     allowed_extensions=['mp4', '3gp', 'mkv'])
 
+THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT = 90, 120
+
 
 def get_uploads_directory():
-    #return os.path.expanduser("/home/ubuntu/Pravega_2018/cultural/uploads/")
-    return "./uploads/"
+    if settings.MEDIA_ROOT:
+        return settings.MEDIA_ROOT
+    else:
+        return "./uploads/"
 
+def resolve_uploads_url(url):
+    if settings.MEDIA_ROOT in url:
+        return re.sub("/media.*?Pravega_2018", "", url)
+    elif "/media/uploads/" in url:
+        return re.sub("/media", "/cultural/uploads", url)
+    else:
+        return url
+
+def image_preview(instance):
+        if instance.photo:
+            return mark_safe(f"<img src={resolve_uploads_url(instance.photo.url)} style=\"width:{THUMBNAIL_WIDTH}px; height:{THUMBNAIL_HEIGHT}px\"/>")
+        else:
+            return mark_safe("<p>No Photo</p>")
+
+def file_download_link(file):
+    if file:
+        return mark_safe(f"<a href={resolve_uploads_url(file.url)} target=\"_blank\">Download</a>")
+    else:
+        return mark_safe("<p>Nothing to Download</p>")
 
 class ProsceniumRegistration:
     ENGLISH = 'English'
@@ -52,6 +78,9 @@ class ProsceniumTheatreRegistration(models.Model):
         max_length=255,
         upload_to=upload_video_path,
         blank=True)
+    
+    def download_prelims_video(instance):
+        return file_download_link(instance.prelims_video)
 
     def upload_script_path(instance, filename):
         return os.path.join(get_uploads_directory(), f"theatre/scripts/{instance.institution} - {instance.language} - {filename}")
@@ -61,6 +90,9 @@ class ProsceniumTheatreRegistration(models.Model):
         max_length=255,
         upload_to=upload_script_path,
         blank=True)
+
+    def download_prelims_script(instance):
+        return file_download_link(instance.prelims_script)
 
     def __str__(self):
         return f"Institution: {self.institution}, Language: {self.language}, 1st Contact No.: {self.contact1}, 2nd Contact No.: {self.contact2}, E-Mail ID: {self.email}"
@@ -81,7 +113,10 @@ class ProsceniumTheatreParticipant(models.Model):
     photo = models.ImageField(
         validators=[IMAGE_FILE_VALIDATOR],
         max_length=255,
-        upload_to=upload_path)
+        upload_to=upload_path,
+        blank=True)
+
+    photo_preview = image_preview
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Age: {self.age}, Role: {self.role}"
@@ -120,7 +155,10 @@ class ProsceniumStreetPlayParticipant(models.Model):
     photo = models.ImageField(
         validators=[IMAGE_FILE_VALIDATOR],
         max_length=255,
-        upload_to=upload_path)
+        upload_to=upload_path,
+        blank=True)
+
+    photo_preview = image_preview
 
     def __str__(self):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Age: {self.age}, Role: {self.role}"
@@ -155,6 +193,10 @@ class BoBRegistration(models.Model):
         validators=[AUDIO_FILE_VALIDATOR],
         max_length=255,
         upload_to=upload_path, blank=True)
+
+    def download_audio_sample_file(instance):
+        return file_download_link(instance.audio_sample_file)
+    
     audio_sample_link = models.URLField(blank=True)
 
     prelims_venue = models.CharField(max_length=max(map(lambda x: len(x[0]), PRELIMS_VENUES)),
@@ -195,6 +237,9 @@ class LasyaRegistration(models.Model):
         max_length=255,
         blank=True,
         upload_to=upload_video_path)
+    
+    def download_prelims_video(instance):
+        return file_download_link(instance.prelims_video)
 
     prelims_video_link = models.URLField(blank=True)
 
@@ -248,11 +293,19 @@ class SInECRegistration(models.Model):
         max_length=255,
         upload_to=upload_path,
         blank=True)
-    
+
+    def download_project_file(instance):
+        return file_download_link(instance.project_file)
+
     project_video = models.FileField(
         max_length=255,
         upload_to=upload_video_path,
         blank=True)
+
+    project_video_link = models.URLField(blank=True)
+
+    def download_project_video(instance):
+        return file_download_link(instance.project_video)
 
     def __str__(self):
         return f"Team Name: {self.team_name}, Project Name: {self.project_name}, E-Mail ID: {self.email}, Contact No.: {self.contact}"
@@ -280,6 +333,26 @@ class SInECParticipant(models.Model):
         return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Type: {self.student_type}, Institution: {self.institution}, City: {self.city}"
 
 
+class DecoherenceRegistration(models.Model):
+    time = models.DateTimeField(default=now)
+    referral_code = models.CharField(max_length=50, blank=True)
+    team_name = models.CharField(max_length=200, unique=True)
+
+    def __str__(self):
+        return f"Team Name: {self.team_name}"
+
+
+class DecoherenceParticipant(models.Model):
+    registration_entry = models.ForeignKey(
+        DecoherenceRegistration, on_delete=models.CASCADE)
+    contact = PhoneNumberField.get_field()
+    email = models.EmailField()
+    name = models.CharField(max_length=200)
+    institution = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Registration Entry: {self.registration_entry}, Name: {self.name}, Contact: {self.contact}, E-Mail ID: {self.email}"
+
 class OpenMicRegistration(models.Model):
 
     class Meta:
@@ -301,6 +374,27 @@ class OpenMicRegistration(models.Model):
 class OpenMicParticipant(models.Model):
     registration_entry = models.ForeignKey(
         OpenMicRegistration, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"Registration Entry: {self.registration_entry}, Name: {self.name}"
+
+
+class HackathonRegistration(models.Model):
+    time = models.DateTimeField(default=now)
+    referral_code = models.CharField(max_length=50, blank=True)
+    team_name = models.CharField(max_length=200, unique=True)
+    contact = PhoneNumberField.get_field()
+    email = models.EmailField()
+    abstract = models.TextField()
+
+    def __str__(self):
+        return f"Team Name: {self.team_name}, Contact: {self.contact}, E-Mail ID: {self.email}"
+
+
+class HackathonParticipant(models.Model):
+    registration_entry = models.ForeignKey(
+        HackathonRegistration, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
 
     def __str__(self):

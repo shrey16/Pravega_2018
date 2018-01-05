@@ -12,7 +12,7 @@ Decoherence." />
     <link href="css/hamburger.css" rel="stylesheet" type="text/css" />
     <link href="css/tech.css" type="text/css" rel="stylesheet" />
     <link href="css/menu.css" type="text/css" rel="stylesheet" />
-    <link href="css/javascript.fullPage.css" type="text/css" rel="stylesheet" />
+    <link href="css/fullPage.css" type="text/css" rel="stylesheet" />
     <style>
         body {
             box-sizing: border-box;
@@ -68,7 +68,7 @@ Decoherence." />
                     <li class="nav-item desktop nav-highlight-item">
                         <a href="#">
                             <div class="li-img"><img src="img/Science.png" /></div>
-                            <div class="li-text" style="left: 0;">Science</div>
+                            <div class="li-text">Science</div>
                         </a>
                         <div class="dropdown"><img src="img/downCaret.png"></div>
                         <div class="extra-info">
@@ -92,6 +92,21 @@ Decoherence." />
                         <div class="extra-info">
                             <h3>Pravega Innovation Summit</h3>
                             <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="hackathon.html">
+                            <div class="li-img">
+                                <img src="img/Hackathon.png" />
+                            </div>
+                            <div class="li-text">Hackathon</div>
+                        </a>
+                        <div class="dropdown">
+                            <img src="img/downCaret.png">
+                        </div>
+                        <div class="extra-info">
+                            <h3>Hackathon</h3>
+                            <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -159,7 +174,7 @@ Decoherence." />
                         <div class="dropdown"><img src="img/downCaret.png"></div>
                         <div class="extra-info">
                             <h3>Engineering</h3>
-                            <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
+                            <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
                         </div>
                     </li>
                     <li class="nav-item mobile">
@@ -268,7 +283,7 @@ Decoherence." />
                             <a href="engine.html">
                                 <h4>Engineering</h4>
                             </a>
-                            <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
+                            <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
                         </div>
                     </div>
                 </div>
@@ -308,10 +323,17 @@ Decoherence." />
                     <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
                 </div>
                 <div class="infobar-content">
-                    <a href="#">
+                    <a href="hackathon.html">
+                        <h2>Hackathon</h2>
+                    </a>
+                    <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
+                </div>
+                <div class="infobar-content">
+                    <a href="workshops.html">
                         <h2>Workshops</h2>
                     </a>
-                    <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
+                    <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn
+                        something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
                         end of the day, you would have learned something new.
                     </p>
                 </div>
@@ -338,8 +360,8 @@ Decoherence." />
                         <img src="img/atom.svg" class="content-img">
                         <div class="content-text">
                             <h1>Decoherence </h1>
-                            <p>Be a part of the biggest physics competition at the Undergraduate level. Display your skills and battle it out against the best the country has to offer. From pondering on research problems to working with State-of-the-art
-                                equipment, this competition has something for every physics aficionado.</p>
+                            <p>Be a part of the biggest physics competition at the Undergraduate level. Display your skills and battle it out against the best the country has to offer. Get a chance to apply your knowledge of physics to real research problems
+                                because nature is not as simple as our schooling might lead us to believe.</p>
                             <p style="text-align: center;"><a href="docs/Decoherence_Pravega18.pdf">Rulebook</a></p>
                         </div>
                     </div>
@@ -393,9 +415,9 @@ Decoherence." />
     <script type="text/javascript">
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                anchors: ['firstpage', 'secondpage'],
+                anchors: ['decoherence', 'vacuum-cannon'],
                 navigation: true,
-                allowNavigation: false,
+                navigationTooltips: ['Dechorence', 'Vacuum Cannon']
             });
         });
         (function(i, s, o, g, r, a, m) {

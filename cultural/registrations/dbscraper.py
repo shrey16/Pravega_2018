@@ -246,6 +246,7 @@ class SInECRegistrationData(RegistrationData):
             data.contact = registration.contact
             data.project_file = str(registration.project_file)
             data.project_video = str(registration.project_video)
+            data.project_video_link = str(registration.project_video_link)
             data.participants = []
             for participant in registration.sinecparticipant_set.all():
                 participant_data = {}
@@ -274,6 +275,47 @@ class OpenMicRegistrationData(RegistrationData):
             data.reason_for_gt_3_members = registration.reason_for_gt_3_members
             data.participants = []
             for participant in registration.openmicparticipant_set.all():
+                participant_data = {}
+                participant_data['name'] = participant.name
+                data.participants.append(participant_data)
+        data.participant_count = len(data.participants)
+        yield data
+
+
+class DecoherenceRegistrationData(RegistrationData):
+
+    def load_from_db(self):
+        for registration in DecoherenceRegistration.objects.all():
+            data = DecoherenceRegistrationData()
+            data.time = str(registration.time)
+            data.id = registration.id
+            data.referral_code = registration.referral_code
+            data.team_name = registration.team_name
+            data.participants = []
+            for participant in registration.decoherenceparticipant_set.all():
+                participant_data = {}
+                participant_data['name'] = participant.name
+                participant_data['institution'] = participant.institution
+                participant_data['contact'] = participant.contact
+                participant_data['email'] = participant.email
+                data.participants.append(participant_data)
+        data.participant_count = len(data.participants)
+        yield data
+
+class HackathonRegistrationData(RegistrationData):
+
+    def load_from_db(self):
+        for registration in HackathonRegistration.objects.all():
+            data = HackathonRegistrationData()
+            data.time = str(registration.time)
+            data.id = registration.id
+            data.referral_code = registration.referral_code
+            data.team_name = registration.team_name
+            data.contact = registration.contact
+            data.email = registration.email
+            data.abstract = registration.abstract
+            data.participants = []
+            for participant in registration.Hackathonparticipant_set.all():
                 participant_data = {}
                 participant_data['name'] = participant.name
                 data.participants.append(participant_data)

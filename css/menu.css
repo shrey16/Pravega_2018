@@ -180,6 +180,9 @@ span {
 .nav-highlight-item {
     border-left: solid 7px #DF9EF3 !important;
 }
+.nav-highlight-item .li-text {
+     left: 0;
+}
 
 .expand-menu {
     margin-left: -20px;
@@ -399,6 +402,9 @@ span {
 }
 
 @media only screen and (max-width: 900px) {
+    *:focus {
+        outline: none;
+    }
     #header-logo {
         padding: 10px 20px 10px 20px;
         width: 40px;

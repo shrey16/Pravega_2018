@@ -91,6 +91,21 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a href="http://pravega.org/hackathon.html">
+                        <div class="li-img">
+                            <img src="{% static 'img/Hackathon.png' %}" />
+                        </div>
+                        <div class="li-text">Hackathon</div>
+                    </a>
+                    <div class="dropdown">
+                        <img src="{% static 'img/downCaret.png' %}">
+                    </div>
+                    <div class="extra-info">
+                        <h3>Hackathon</h3>
+                        <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a href="http://pravega.org/workshops.html">
                         <div class="li-img"><img src="{% static 'img/Workshops.png' %}" /></div>
                         <div class="li-text">Workshops</div>
@@ -155,7 +170,7 @@
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
                     <div class="extra-info">
                         <h3>Engineering</h3>
-                        <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
+                        <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
                     </div>
                 </li>
                 <li class="nav-item mobile">
@@ -194,7 +209,7 @@
                 <li class="nav-item desktop nav-footer nav-highlight-item">
                     <a target="_blank" href="http://pravega.org/registrations/">
                         <div class="li-img"><img src="{% static 'img/register.png' %}"></div>
-                        <div class="li-text" style="left: 0;">Registrations</div>
+                        <div class="li-text">Registrations</div>
                     </a>
                     <div class="extra-info">
                         <h3>Registrations</h3>
@@ -264,7 +279,7 @@
                         <a href="http://pravega.org/engine.html">
                             <h4>Engineering</h4>
                         </a>
-                        <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, to break code and decrypt secured files, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
+                        <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
                     </div>
                 </div>
             </div>
@@ -304,11 +319,18 @@
                 <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
             </div>
             <div class="infobar-content">
-                <a href="#">
+                <a href="http://pravega.org/hackathon.html">
+                    <h2>Hackathon</h2>
+                </a>
+                <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
+            </div>
+            <div class="infobar-content">
+                <a href="http://pravega.org/workshops.html">
                     <h2>Workshops</h2>
                 </a>
-                <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the end
-                    of the day, you would have learned something new.
+                <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn
+                    something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
+                    end of the day, you would have learned something new.
                 </p>
             </div>
             <div class="infobar-content">
@@ -421,7 +443,9 @@
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>
                 <fieldset class="real" id="participants">
-                    {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
+                    {% if participant_formset.non_form_errors %}
+                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
                     <div class="participant-formset">
                         {% if participant_form.errors %}
                         <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
@@ -435,8 +459,7 @@
                         {% endif %} {{ participant_form.instrument.label_tag }} {{ participant_form.instrument }} {% if participant_form.instrument.errors %}
                         <div class="errors"> {% for error in participant_form.instrument.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
                     </div>
-                    {% endfor %} {% if participant_formset.non_form_errors %}
-                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    {% endfor %}
                     <br />
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
@@ -473,14 +496,6 @@
                     <h6>Twitter</h6>
                 </div>
                 <img src="{% static 'img/Twitter.svg' %}">
-            </div>
-        </a>
-        <a target="_blank" href="http://pravega.org/registrations/">
-            <div class="fab-icon">
-                <div class="fab-desc triangle-isosceles">
-                    <h6>Registrations</h6>
-                </div>
-                <img src="{% static 'img/register.png' %}">
             </div>
         </a>
     </div>

@@ -123,13 +123,25 @@ if (desktopMode) {
             }
         });
     };
+    $(".expand-menu-img").hover(function() {
+        const expandMenuTexts = $(this).parent().children(".expand-menu-text");
+        const linkImages = $(this).parent().children("img");
+        var rqdiv = expandMenuTexts.eq(linkImages.index(this));
+        var rqindex = linkImages.index(this);
+        expandMenuTexts.each(function(index) {
+            const linkImage = linkImages.eq(expandMenuTexts.index(this));
+            if (index !== rqindex) {
+                $(this).removeClass("active");
+                linkImage.removeClass("active");
+            } else {
+                $(this).addClass("active");
+                linkImage.addClass("active");
+            }
+        });
+    });
 } else {
     // Scrolling Toggle
     function setScrolling(scroll) {
-        if ($.fn !== undefined && $.fn.fullpage !== undefined) {
-            $.fn.fullpage.setAllowScrolling(scroll);
-            $.fn.fullpage.setKeyboardScrolling(scroll);
-        }
         $("body").css("overflow", scroll ? "auto" : "hidden");
     }
 
@@ -153,7 +165,7 @@ if (desktopMode) {
 
     $(document).ready(function() {
         $(".nav-item").not(".mobile").not(":hidden").eq(0).css("padding-top", 15);
-    })
+    });
     $("#tog-button-mobile .li-img").click(function(e) {
         $(this).find(".c-hamburger").toggleClass("is-active");
         if (infobarRemoved) {
@@ -228,18 +240,3 @@ if (desktopMode) {
         }
     });
 }
-$(".expand-menu-img").hover(function() {
-    const expandMenuTexts = $(this).parent().children(".expand-menu-text");
-    const linkImages = $(this).parent().children("img");
-    var rqdiv = expandMenuTexts.eq(linkImages.index(this));
-    var rqindex = linkImages.index(this);
-    expandMenuTexts.each(function(index) {
-        if (index !== rqindex) {
-            $(this).removeClass("active");
-            linkImages.eq(expandMenuTexts.index(this)).removeClass("active");
-        } else {
-            $(this).addClass("active");
-            linkImages.eq(expandMenuTexts.index(this)).addClass("active");
-        }
-    });
-});

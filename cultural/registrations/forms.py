@@ -13,7 +13,7 @@ class ProsceniumTheatreParticipantForm(forms.Form):
             'placeholder': 'Role: Performer / Accompanist',
         }))
     age = forms.IntegerField(
-        min_value=1, max_value=25,
+        min_value=1, max_value=125,
         label="Participant's Age",
         widget=forms.NumberInput(attrs={
             'placeholder': 'Age',
@@ -30,7 +30,7 @@ class ProsceniumTheatreParticipantForm(forms.Form):
         label="Photo",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Photo',
-        }))
+        }), required=False)
 
 
 class ProsceniumTheatreRegistrationForm(forms.Form):
@@ -70,14 +70,14 @@ class ProsceniumTheatreRegistrationForm(forms.Form):
         required=False)
     contact1 = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="1st Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': '1st Mobile No.',
         }))
     contact2 = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="2nd Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': '2nd Mobile No.',
@@ -120,7 +120,7 @@ class ProsceniumStreetPlayParticipantForm(forms.Form):
             'placeholder': 'Role: Performer / Accompanist',
         }))
     age = forms.IntegerField(
-        min_value=1, max_value=25,
+        min_value=1, max_value=125,
         label="Participant's Age",
         widget=forms.NumberInput(attrs={
             'placeholder': 'Age',
@@ -137,7 +137,7 @@ class ProsceniumStreetPlayParticipantForm(forms.Form):
         label="Photo",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Photo',
-        }))
+        }), required=False)
 
 
 class ProsceniumStreetPlayRegistrationForm(forms.Form):
@@ -163,14 +163,14 @@ class ProsceniumStreetPlayRegistrationForm(forms.Form):
         }))
     contact1 = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="1st Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': '1st Mobile No.',
         }))
     contact2 = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="2nd Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': '2nd Mobile No.',
@@ -182,9 +182,9 @@ class ProsceniumStreetPlayRegistrationForm(forms.Form):
             'placeholder': 'E-Mail ID',
         }))
 
-
 class BaseProsceniumParticipantFormSet(BaseFormSet):
-    MAX_PARTCIPANTS, MAX_ACCOMPANISTS = 10, 3
+    MAX_PERFORMERS, MAX_ACCOMPANISTS = 10, 3
+    MAX_PARTICIPANTS = MAX_PERFORMERS + MAX_ACCOMPANISTS
 
     def clean(self):
         if any(self.errors):
@@ -203,20 +203,60 @@ class BaseProsceniumParticipantFormSet(BaseFormSet):
                     data.add(form_data)
                 role = form.cleaned_data['role']
                 if role == ProsceniumParticipant.PERFORMER:
-                    performers = performers + 1
+                    performers += 1
                 elif role == ProsceniumParticipant.ACCOMPANIST:
-                    accompanists = accompanists + 1
-
-        if (performers + accompanists) > 10:
+                    accompanists += 1
+        MAX_PARTICIPANTS, MAX_PERFORMERS, MAX_ACCOMPANISTS = BaseProsceniumParticipantFormSet.MAX_PARTICIPANTS, BaseProsceniumParticipantFormSet.MAX_PERFORMERS, BaseProsceniumParticipantFormSet.MAX_ACCOMPANISTS
+        if len(data) > MAX_PARTICIPANTS or (performers + accompanists) > MAX_PARTICIPANTS:
             raise forms.ValidationError(
-                "You can have a maximum of 7 performers and 3 accompanists", code="over_max_performers_accompanists")
+                f"You can have a maximum of {MAX_PERFORMERS} performers and {MAX_ACCOMPANISTS} accompanists", code="over_max_performers_accompanists")
         elif performers == 0:
             raise forms.ValidationError(
-                "You must have at least 1 participant", code="no_performers")
-        elif accompanists > 3:
+                "You must have at least 1 performer", code="no_performers")
+        elif performers > MAX_PERFORMERS:
             raise forms.ValidationError(
-                "You can have a maximum of 3 accompanists", code="over_max_accompanists")
+                f"You can have a maximum of {MAX_PERFORMERS} performers", code="over_max_performers")
+        elif accompanists > MAX_ACCOMPANISTS:
+            raise forms.ValidationError(
+                f"You can have a maximum of {MAX_ACCOMPANISTS} accompanists", code="over_max_accompanists")
 
+class BaseProsceniumStreetPlayParticipantFormSet(BaseFormSet):
+    MAX_PERFORMERS, MAX_ACCOMPANISTS = 15, 5
+    MAX_PARTICIPANTS = MAX_PERFORMERS + MAX_ACCOMPANISTS
+
+    def clean(self):
+        if any(self.errors):
+            return
+        data = set()
+        performers, accompanists = 0, 0
+        if not forms:
+            raise forms.ValidationError("Empty Form", code='empty_form')
+        for form in self.forms:
+            if form.cleaned_data:
+                form_data = tuple(map(str, form.cleaned_data.items()))
+                if form_data in data:
+                    raise forms.ValidationError(
+                        "Possible Duplicate Entry", code='duplicate')
+                else:
+                    data.add(form_data)
+                role = form.cleaned_data['role']
+                if role == ProsceniumParticipant.PERFORMER:
+                    performers += 1
+                elif role == ProsceniumParticipant.ACCOMPANIST:
+                    accompanists += 1
+        MAX_PARTICIPANTS, MAX_PERFORMERS, MAX_ACCOMPANISTS = BaseProsceniumStreetPlayParticipantFormSet.MAX_PARTICIPANTS, BaseProsceniumStreetPlayParticipantFormSet.MAX_PERFORMERS, BaseProsceniumStreetPlayParticipantFormSet.MAX_ACCOMPANISTS
+        if len(data) > MAX_PARTICIPANTS or (performers + accompanists) > MAX_PARTICIPANTS:
+            raise forms.ValidationError(
+                f"You can have a maximum of {MAX_PERFORMERS} performers and {MAX_ACCOMPANISTS} accompanists", code="over_max_performers_accompanists")
+        elif performers == 0:
+            raise forms.ValidationError(
+                "You must have at least 1 performer", code="no_performers")
+        elif performers > MAX_PERFORMERS:
+            raise forms.ValidationError(
+                f"You can have a maximum of {MAX_PERFORMERS} performers", code="over_max_performers")
+        elif accompanists > MAX_ACCOMPANISTS:
+            raise forms.ValidationError(
+                f"You can have a maximum of {MAX_ACCOMPANISTS} accompanists", code="over_max_accompanists")
 
 class BoBParticipantForm(forms.Form):
     instrument = forms.CharField(max_length=200,
@@ -226,7 +266,7 @@ class BoBParticipantForm(forms.Form):
                                  }))
     contact = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': 'Mobile No.',
@@ -326,8 +366,8 @@ class BaseBoBParticipantFormSet(BaseFormSet):
                 else:
                     data.add(form_data)
                 if form.cleaned_data['name'] and form.cleaned_data['contact']:
-                    contacts = contacts + 1
-        if contacts < 3:
+                    contacts += 1
+        if len(data) < 3 or contacts < 3:
             raise forms.ValidationError(
                 "There must be at least 3 participants with a contact no.", code="below_min_contacts")
 
@@ -381,14 +421,14 @@ class LasyaRegistrationForm(forms.Form):
         }),
         required=False)
     prelims_video_link = forms.URLField(
-        label="Link to Facebook Page of the Band",
+        label="Link to Prelims Video",
         widget=forms.URLInput(attrs={
-            'placeholder': 'Facebook Page URL',
+            'placeholder': 'Prelims Video URL',
         }),
         required=False)
     contact = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="Team's Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': "Team's Mobile No.",
@@ -431,6 +471,13 @@ class BaseLasyaParticipantFormSet(BaseFormSet):
                         "Possible Duplicate Entry", code='duplicate')
                 else:
                     data.add(form_data)
+        participants = len(data)
+        if participants > 20:
+            raise forms.ValidationError(
+                "A maximum of 20 particpants are allowed", code='gt_max_particpants')
+        elif participants < 5:
+            raise forms.ValidationError(
+                "A minimum of 5 particpants are required", code='lt_min_particpants')
 
 
 class SInECParticipantForm(forms.Form):
@@ -513,7 +560,7 @@ class SInECRegistrationForm(forms.Form):
         }))
     contact = PhoneNumberField.get_field(
         as_regexField=True,
-        max_length=15,
+        max_length=13,
         label="Team's Contact No.",
         widget=forms.TextInput(attrs={
             'placeholder': "Team's Mobile No.",
@@ -568,9 +615,85 @@ class PisVideoSubmissionForm(forms.Form):
         label="Video for Project",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Project Video',
+        }), required=False)
+    project_video_link = forms.URLField(
+        label="Link to Video for Project",
+        widget=forms.URLInput(attrs={
+            'placeholder': 'Project Video Link',
+        }), required=False)
+
+    def clean_project_video_link(self):
+        data = self.cleaned_data['project_video_link']
+        if(any(self.errors)):
+            return data
+        if not any((data, self.cleaned_data['project_video'])):
+            raise forms.ValidationError(
+                "A project video must be uploaded or a link to the video must be provided (e.g. via Google Drive sharing)", code='no_video')
+        return data
+
+
+class DecoherenceParticipantForm(forms.Form):
+    email = forms.EmailField(
+        label="E-Mail ID",
+        widget=forms.TextInput(attrs={
+            'placeholder': "E-Mail ID",
+        }))
+    contact = PhoneNumberField.get_field(
+        as_regexField=True,
+        max_length=13,
+        label="Contact No.",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Mobile No.',
+        }))
+    name = forms.CharField(max_length=200,
+                           label="Participant's Name",
+                           widget=forms.TextInput(attrs={
+                               'placeholder': 'Name',
+                           }))
+    institution = forms.CharField(
+        max_length=200,
+        label="Name of the Particpant's School/College",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Name',
         }))
 
 
+class DecoherenceRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
+    team_name = forms.CharField(
+        max_length=200,
+        label="Your Team Name",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Team Name',
+        }))
+
+
+class BaseDecoherenceParticipantFormSet(BaseFormSet):
+
+    def clean(self):
+        if any(self.errors):
+            return
+        data = set()
+        if not forms:
+            raise forms.ValidationError("Empty Form", code='empty_form')
+        for form in self.forms:
+            if form.cleaned_data:
+                form_data = tuple(map(str, form.cleaned_data.items()))
+                if form_data in data:
+                    raise forms.ValidationError(
+                        "Possible Duplicate Entry", code='duplicate')
+                else:
+                    data.add(form_data)
+        if len(data) not in [1, 2]:
+            raise forms.ValidationError("A maximum of 2 particpants are allowed", code='gt_max_particpants')
+
+        
 class OpenMicParticipantForm(forms.Form):
     name = forms.CharField(max_length=200,
                            label="Participant's Name",
@@ -639,7 +762,6 @@ class OpenMicRegistrationForm(forms.Form):
         return data
 
 
-
 class BaseOpenMicParticipantFormSet(BaseFormSet):
 
     def clean(self):
@@ -656,3 +778,73 @@ class BaseOpenMicParticipantFormSet(BaseFormSet):
                         "Possible Duplicate Entry", code='duplicate')
                 else:
                     data.add(form_data)
+
+
+class HackathonParticipantForm(forms.Form):
+    name = forms.CharField(max_length=200,
+                           label="Participant's Name",
+                           widget=forms.TextInput(attrs={
+                               'placeholder': 'Name',
+                           }))
+
+
+class HackathonRegistrationForm(forms.Form):
+    understood = forms.BooleanField()
+    referral_code = forms.CharField(
+        max_length=50,
+        label="Referral Code",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Code',
+        }), required=False)
+    team_name = forms.CharField(
+        max_length=200,
+        label="Team Name",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Name',
+        }))
+    email = forms.EmailField(
+        label="Team E-Mail ID",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'E-Mail ID',
+        }))
+    contact = PhoneNumberField.get_field(
+        as_regexField=True,
+        max_length=13,
+        label="Team Contact No.",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Mobile No.',
+        }))
+    abstract = forms.CharField(
+        label="Abstract (<5000 words)",
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Abstract',
+        }))
+    
+    def clean_abstract(self):
+        data = self.cleaned_data['abstract']
+        words = len(data.split())
+        if words > 5000:
+            raise forms.ValidationError(
+                f"Abstract must be less than 5000 words, was {words} words")
+        return data
+
+
+class BaseHackathonParticipantFormSet(BaseFormSet):
+
+    def clean(self):
+        if any(self.errors):
+            return
+        data = set()
+        if not forms:
+            raise forms.ValidationError("Empty Form", code='empty_form')
+        for form in self.forms:
+            if form.cleaned_data:
+                form_data = tuple(map(str, form.cleaned_data.items()))
+                if form_data in data:
+                    raise forms.ValidationError(
+                        "Possible Duplicate Entry", code='duplicate')
+                else:
+                    data.add(form_data)
+        if len(data) > 4:
+            raise forms.ValidationError(
+                "A maximum of 4 particpants are allowed", code='gt_max_particpants')

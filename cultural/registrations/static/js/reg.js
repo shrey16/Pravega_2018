@@ -1,9 +1,9 @@
 "use strict";
-//jQuery time
-var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 var legends;
+var maxParticipants = 0,
+    minParticipants = 1;
 
 const field_error_element = "h2";
 const required_marker = "<span style=\"color:red; font-size:2.5em;\"> *</span>";
@@ -26,7 +26,7 @@ $(document).ready(function() {
             found_errors = true;
         }
     });
-    for (let i = 0; i < index; ++i) {
+    for (var i = 0; i < index; ++i) {
         goForward($("fieldset").get(i), 0);
     }
     $(".delete-row").hide();
@@ -39,16 +39,26 @@ $(document).ready(function() {
 //
 // It's not all bad as even though it runs a lot, it's short.
 window.setInterval(function() {
-    if ($(".participant-formset").length <= 1) {
-        $(".delete-row").hide();
+    const particpants = $(".participant-formset").length;
+    const deleteParticipantButtons = $(".delete-row");
+    const addParticipantButtons = $(".add-row");
+    if (minParticipants >= 0 && particpants <= minParticipants) {
+        deleteParticipantButtons.hide();
     } else {
-        $(".delete-row").show();
+        deleteParticipantButtons.show();
+    }
+    if (maxParticipants > 0 && particpants >= maxParticipants) {
+        addParticipantButtons.hide();
+    } else {
+        addParticipantButtons.show();
     }
 }, 20);
 
 function goForward(elem, duration) {
     var current_fs = $(elem).parent();
     var next_fs = $(elem).parent().next();
+    const currentWidth = current_fs.width();
+
     if ($(elem).is('fieldset')) {
         current_fs = $(elem);
         next_fs = $(elem).next();
@@ -83,6 +93,8 @@ function goForward(elem, duration) {
         duration: duration,
         complete: function() {
                 current_fs.hide();
+                $("#msform").height(next_fs.height() + 100);
+                next_fs.width(currentWidth);
                 animating = false;
             }
             //this comes from the custom easing plugin
@@ -90,8 +102,9 @@ function goForward(elem, duration) {
 }
 
 function goBackward(elem, duration) {
-    var current_fs = $(elem).parent();
-    var previous_fs = $(elem).parent().prev();
+    const current_fs = $(elem).parent();
+    const previous_fs = $(elem).parent().prev();
+    const currentWidth = current_fs.width();
     //de-activate current step on progressbar
     legends.eq($("fieldset").index(current_fs)).removeClass("active");
     //show the previous fieldset
@@ -119,6 +132,8 @@ function goBackward(elem, duration) {
         duration: duration,
         complete: function() {
                 current_fs.hide();
+                $("#msform").height(previous_fs.height() + 100);
+                previous_fs.width(currentWidth);
                 animating = false;
             }
             //this comes from the custom easing plugin
@@ -150,7 +165,7 @@ $(".next").click(function() {
         return false;
     }
     var allowNext = true;
-    current_fs = $(this).parent();
+    const current_fs = $(this).parent();
     current_fs.find("input").each(function(index) {
         const error_id = $(this).prop("id") + "-error";
         if ($(this).prop("required") && $(this).prop("value") === "") {

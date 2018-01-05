@@ -12,7 +12,7 @@ def index(request):
 
 def proscenium_theatre(request):
     ProsceniumTheatreParticipantFormSet = formset_factory(
-        ProsceniumTheatreParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=10, validate_max=True, extra=3)
+        ProsceniumTheatreParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=13, extra=3)
     registration = ProsceniumTheatreRegistration()
 
     context = {
@@ -59,7 +59,7 @@ def proscenium_theatre(request):
                 role = participant_form.cleaned_data.get('role')
                 photo = participant_form.cleaned_data.get('photo')
 
-                if name and age and role and photo:
+                if name and age and role:
                     participants.append(ProsceniumTheatreParticipant(
                         registration_entry=registration, name=name, age=age, role=role, photo=photo))
             try:
@@ -110,7 +110,7 @@ def proscenium_theatre_video(request):
 
 def proscenium_streetplay(request):
     ProsceniumStreetPlayParticipantFormSet = formset_factory(
-        ProsceniumStreetPlayParticipantForm, formset=BaseProsceniumParticipantFormSet, min_num=1, validate_min=True, max_num=10, validate_max=True, extra=3)
+        ProsceniumStreetPlayParticipantForm, formset=BaseProsceniumStreetPlayParticipantFormSet, min_num=1, validate_min=True, max_num=20, extra=3)
     registration = ProsceniumStreetPlayRegistration()
 
     context = {
@@ -151,7 +151,7 @@ def proscenium_streetplay(request):
                 age = participant_form.cleaned_data.get('age')
                 role = participant_form.cleaned_data.get('role')
                 photo = participant_form.cleaned_data.get('photo')
-                if name and age and role and photo:
+                if name and age and role:
                     participants.append(ProsceniumStreetPlayParticipant(
                         registration_entry=registration, name=name, age=age, role=role, photo=photo))
             try:
@@ -171,7 +171,7 @@ def proscenium_streetplay(request):
 
 def bob(request):
     BoBParticipantFormSet = formset_factory(
-        BoBParticipantForm, formset=BaseBoBParticipantFormSet, min_num=3, validate_min=True, extra=0)
+        BoBParticipantForm, formset=BaseBoBParticipantFormSet, min_num=3, extra=0)
     registration = BoBRegistration()
 
     context = {
@@ -238,7 +238,7 @@ def bob(request):
 
 def lasya(request):
     LasyaParticipantFormSet = formset_factory(
-        LasyaParticipantForm, formset=BaseLasyaParticipantFormSet, min_num=5, validate_min=True, max_num=20, validate_max=True, extra=0)
+        LasyaParticipantForm, formset=BaseLasyaParticipantFormSet, min_num=5, max_num=20, extra=0)
     registration = LasyaRegistration()
 
     context = {
@@ -419,6 +419,11 @@ def pis_video(request):
                 else:
                     registration.project_video = registration_form.cleaned_data.get(
                         'project_video')
+                if registration.project_video_link:
+                    return render(request, "pis_video.html", {**context, **{'error_message': "Link to Video has already been submitted. Re-submission is not allowed."}})
+                else:
+                    registration.project_video_link = registration_form.cleaned_data.get(
+                        'project_video_link')
             except ObjectDoesNotExist:
                 return render(request, "pis_video.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
             try:
@@ -492,3 +497,116 @@ def openmic(request):
             return render(request, "openmic.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
     else:
         return render(request, "openmic.html", context)
+
+
+def hackathon(request):
+    HackathonParticipantFormSet = formset_factory(
+        OpenMicParticipantForm, formset=BaseHackathonParticipantFormSet, min_num=1, validate_min=True, max_num=4, extra=1)
+    registration = HackathonRegistration()
+
+    context = {
+        'registration_form': HackathonRegistrationForm(),
+        'participant_formset': HackathonParticipantFormSet(),
+    }
+
+    if request.method == 'POST':
+        participant_formset = HackathonParticipantFormSet(
+            request.POST, request.FILES)
+        registration_form = HackathonRegistrationForm(
+            request.POST, request.FILES)
+
+        context = {
+            'registration_form': registration_form,
+            'participant_formset': participant_formset,
+        }
+
+        if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
+            registration.team_name = registration_form.cleaned_data.get(
+                'team_name')
+            registration.email = registration_form.cleaned_data.get('email')
+            registration.abstract = registration_form.cleaned_data.get(
+                'abstract')
+            registration.contact = registration_form.cleaned_data.get(
+                'contact')
+
+            try:
+                registration.save()
+            except IntegrityError:
+                return render(request, "hackathon.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+
+            participants = []
+            for participant_form in participant_formset:
+                name = participant_form.cleaned_data.get('name')
+                if name:
+                    participants.append(HackathonParticipant(
+                        registration_entry=registration, name=name))
+
+            try:
+                with transaction.atomic():
+                    HackathonParticipant.objects.filter(
+                        registration_entry=registration).delete()
+                    HackathonParticipant.objects.bulk_create(participants)
+                return render(request, "success.html", {'event_name': 'Hackathon', 'id': registration.id})
+            except IntegrityError:
+                return render(request, "hackathon.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
+        else:
+            return render(request, "hackathon.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+    else:
+        return render(request, "hackathon.html", context)
+
+
+def decoherence(request):
+    DecoherenceParticipantFormSet = formset_factory(
+        DecoherenceParticipantForm, formset=BaseDecoherenceParticipantFormSet, min_num=1, max_num=2, validate_min=True, extra=1)
+    registration = DecoherenceRegistration()
+
+    context = {
+        'registration_form': DecoherenceRegistrationForm(),
+        'participant_formset': DecoherenceParticipantFormSet(),
+    }
+
+    if request.method == 'POST':
+        participant_formset = DecoherenceParticipantFormSet(
+            request.POST, request.FILES)
+        registration_form = DecoherenceRegistrationForm(
+            request.POST, request.FILES)
+
+        context = {
+            'registration_form': registration_form,
+            'participant_formset': participant_formset,
+        }
+
+        if registration_form.is_valid() and participant_formset.is_valid():
+            registration.referral_code = registration_form.cleaned_data.get(
+                'referral_code')
+            registration.team_name = registration_form.cleaned_data.get(
+                'team_name')            
+            try:
+                registration.save()
+            except IntegrityError:
+                return render(request, "decoherence.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+
+            participants = []
+            for participant_form in participant_formset:
+                name = participant_form.cleaned_data.get('name')
+                contact = participant_form.cleaned_data.get('contact')
+                email = participant_form.cleaned_data.get('email')
+                institution = participant_form.cleaned_data.get('institution')
+                if name and contact and email and institution:
+                    participants.append(DecoherenceParticipant(
+                        registration_entry=registration, name=name, contact=contact, email=email, institution=institution))
+
+            try:
+                with transaction.atomic():
+                    DecoherenceParticipant.objects.filter(
+                        registration_entry=registration).delete()
+                    DecoherenceParticipant.objects.bulk_create(participants)
+                return render(request, "success.html", {'event_name': 'Decoherence', 'id': registration.id})
+            except IntegrityError:
+                return render(request, "decoherence.html", {**context, **{'error_message': "Error saving participant data. Please retry."}})
+        else:
+            return render(request, "decoherence.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+    else:
+        return render(request, "decoherence.html", context)
