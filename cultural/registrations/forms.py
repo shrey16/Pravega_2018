@@ -1,5 +1,6 @@
 from django import forms
 from django.forms.formsets import BaseFormSet
+from django.utils.safestring import mark_safe
 from .models import *
 from .customfields import PhoneNumberField
 
@@ -815,7 +816,7 @@ class HackathonRegistrationForm(forms.Form):
             'placeholder': 'Mobile No.',
         }))
     abstract = forms.CharField(
-        label="Abstract (<5000 words)",
+        label=mark_safe("Abstract - Your Idea About Solving the Problem (see <a href=\"http://pravega.org/docs/Hackathon_Details.pdf\">rules</a> for more info) (<5000 words)"),
         widget=forms.Textarea(attrs={
             'placeholder': 'Abstract',
         }))
