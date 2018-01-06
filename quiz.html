@@ -20,6 +20,28 @@
             background-repeat: no-repeat;
             background-position: center center;
         }
+        .content-text table {
+             padding-left: 15%;
+        }
+        @media only screen and (max-width: 900px),
+        (max-height: 500px) {
+            .content-text {
+                padding-left: 0;
+                padding-right: 0;
+                width: 90vw;
+            }
+            .section .content:nth-child(n+1) {
+                flex-direction: row!important;
+            }
+            .content-text table {
+                padding-left: 0;
+                width: 100%;
+            }
+            .content-text table td,
+            .content-text table tr {
+                padding: 3px;
+            }
+        }
     </style>
 </head>
 
@@ -378,7 +400,7 @@
                         <img src="img/Quiz_logo.png" class="content-img"/>
                         <div class="content-text right">
                             <h1>Inquizzitive (General open)</h1>
-                            <table  style="padding-left:15%">
+                            <table>
                                 <tbody>
                                     <tr>
                                         <td>Description</td>
@@ -422,7 +444,7 @@
                         <img src="img/Quiz_logo.png" class="content-img"/>
                         <div class="content-text right">
                             <h1>Inquizzitive (College Edition)</h1>
-                            <table  style="padding-left:15%">
+                            <table>
                                 <tbody>
                                     <tr>
                                         <td>Description</td>
@@ -466,7 +488,7 @@
                         <img src="img/Quiz_logo.png" class="content-img" />
                         <div class="content-text">
                             <h1>Mainstream (MELA, Open)</h1>
-                            <table style="padding-left:15%">
+                            <table>
                                 <tbody>
                                     <tr>
                                         <td>Description</td>
@@ -510,7 +532,7 @@
                         <img src="img/Quiz_logo.png" class="content-img" />
                         <div class="content-text right">
                             <h1>Science Quizzine</h1>
-                            <table style="padding-left:15%">
+                            <table>
                                 <tbody>
                                     <tr>
                                         <td>Description</td>
@@ -543,6 +565,7 @@
                                             <br/> Cross college teams allowed.</td>
                                     </tr>
                                 </tbody>
+                            </table>    
                         </div>
                     </div>
                 </div>
