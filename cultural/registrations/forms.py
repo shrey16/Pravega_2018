@@ -1,5 +1,6 @@
 from django import forms
 from django.forms.formsets import BaseFormSet
+from django.utils.safestring import mark_safe
 from .models import *
 from .customfields import PhoneNumberField
 
@@ -815,7 +816,7 @@ class HackathonRegistrationForm(forms.Form):
             'placeholder': 'Mobile No.',
         }))
     abstract = forms.CharField(
-        label="Abstract (<5000 words)",
+        label=mark_safe("Abstract - Your Idea For Solving the Problem (see <a style=\"color:green;\" href=\"http://pravega.org/docs/Hackathon_Details.pdf\">rules</a> for more info) (200 - 5000 words)"),
         widget=forms.Textarea(attrs={
             'placeholder': 'Abstract',
         }))
@@ -823,9 +824,9 @@ class HackathonRegistrationForm(forms.Form):
     def clean_abstract(self):
         data = self.cleaned_data['abstract']
         words = len(data.split())
-        if words > 5000:
+        if not (200 <= words <= 5000):
             raise forms.ValidationError(
-                f"Abstract must be less than 5000 words, was {words} words")
+                f"Abstract must be between 200 and 5000 words, was {words} words")
         return data
 
 

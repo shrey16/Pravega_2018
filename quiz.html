@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Engineering | Pravega 2018, IISc Bangalore | Festival of Science and Culture</title>
+    <title>Quizzes | Pravega 2018, IISc Bangalore | Festival of Science and Culture</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="In Pravega Engineering, play with tanks and robots in Tank Wars and ProRobo and lose yourself in a Laser tag rendition of Counter Strike." />
+    <meta name="description" content="" />
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="css/hamburger.css" rel="stylesheet" type="text/css" />
@@ -19,6 +19,28 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             background-position: center center;
+        }
+        .content-text table {
+             padding-left: 15%;
+        }
+        @media only screen and (max-width: 900px),
+        (max-height: 500px) {
+            .content-text {
+                padding-left: 0;
+                padding-right: 0;
+                width: 90vw;
+            }
+            .section .content:nth-child(n+1) {
+                flex-direction: row!important;
+            }
+            .content-text table {
+                padding-left: 0;
+                width: 100%;
+            }
+            .content-text table td,
+            .content-text table tr {
+                padding: 3px;
+            }
         }
     </style>
 </head>
@@ -63,7 +85,7 @@
                             <p>Lost? Tired of reading this? Get back to the main page!</p>
                         </div>
                     </li>
-                    <li class="nav-item desktop nav-highlight-item">
+                    <li class="nav-item desktop">
                         <a href="#">
                             <div class="li-img"><img src="img/Science.png" /></div>
                             <div class="li-text">Science</div>
@@ -119,10 +141,10 @@
                                 at the end of the day, you would have learned something new.</p>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item nav-highlight-item">
                         <a href="quiz.html">
                             <div class="li-img">
-                                <img src="img/Hackathon.png" />
+                                <img src="img/Quiz.png" />
                             </div>
                             <div class="li-text">Quizzes</div>
                         </a>
@@ -179,7 +201,7 @@
                                 you’re at it.</p>
                         </div>
                     </li>
-                    <li class="nav-item nav-highlight-item mobile">
+                    <li class="nav-item mobile">
                         <a href="engine.html">
                             <div class="li-img"><img src="img/Technical.png" /></div>
                             <div class="li-text">Engineering</div>
@@ -262,12 +284,12 @@
                         <h2>Science</h2>
                     </a>
                     <div class="expand-menu">
-                        <img class="expand-menu-img" onclick="window.location.href='biology.html'" src="img/Biology.png" />
+                        <img class="expand-menu-img active" onclick="window.location.href='biology.html'" src="img/Biology.png" />
                         <img class="expand-menu-img" onclick="window.location.href='maths.html'" src="img/math.png" />
                         <img class="expand-menu-img" onclick="window.location.href='physics.html'" src="img/Physics.png" />
                         <img class="expand-menu-img" onclick="window.location.href='chemistry.html'" src="img/Chemistry.png" />
-                        <img class="expand-menu-img active expand-img-highlight" onclick="window.location.href='engine.html'" src="img/Technical.png" />
-                        <div class="expand-menu-text">
+                        <img class="expand-menu-img" onclick="window.location.href='engine.html'" src="img/Technical.png" />
+                        <div class="expand-menu-text active">
                             <a href="biology.html">
                                 <h4>Biology</h4>
                             </a>
@@ -292,7 +314,7 @@
                             </a>
                             <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
                         </div>
-                        <div class="expand-menu-text active">
+                        <div class="expand-menu-text">
                             <a href="engine.html">
                                 <h4>Engineering</h4>
                             </a>
@@ -345,8 +367,7 @@
                     <a href="workshops.html">
                         <h2>Workshops</h2>
                     </a>
-                    <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn
-                        something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
+                    <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
                         end of the day, you would have learned something new.
                     </p>
                 </div>
@@ -376,32 +397,178 @@
             <div id="fullpage">
                 <div class="section">
                     <div class="content" style="vertical-align: middle;">
-                        <img src="img/gun.svg" class="content-img">
-                        <div class="content-text">
-                            <h1>Laser Tag</h1>
-                            <p>Get your guns locked-'n-loaded, and prepare yourself for a thrilling FPS combat game. Suit up with your teammates and feel the adrenaline rush as you try to execute the optimal strategies to maximize your score. Shoot down
-                                your opponents, without running out of ammo, while taking minimal damage. Be sure not to miss the most exhilarating event Pravega has to offer!</p>
+                        <img src="img/Quiz_logo.png" class="content-img"/>
+                        <div class="content-text right">
+                            <h1>Inquizzitive (General open)</h1>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>Open quiz on General Topics. No restrictions on entry.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quizmaster</td>
+                                        <td>Arul Mani</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>20<sup>th</sup> January 2018 (Saturday)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time</td>
+                                        <td>2PM onwards</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Venue</td>
+                                        <td>Satish Dhawan Auditorium (SDA)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prizes</td>
+                                        <td>Worth ₹16,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number of Members per Team</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registration</td>
+                                        <td>Spot Registration for ₹100 per team</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="section">
                     <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
-                        <img src="img/robotic-arm.svg" class="content-img">
-                        <div class="content-text">
-                            <h1>ProRobo </h1>
-                            <p>Get ready to exhibit your ingenuity and innovation by presenting the most robust, yet operable robot in this exciting contest. Prepare to navigate through laborious obstacle courses, balance on unstable platforms and much more!</p>
+                        <img src="img/Quiz_logo.png" class="content-img"/>
+                        <div class="content-text right">
+                            <h1>Inquizzitive (College Edition)</h1>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>General Quiz for college students.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quizmaster</td>
+                                        <td>Thejaswi Udupa</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>19<sup>th</sup> January 2018 (Friday)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time</td>
+                                        <td>10AM onwards</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Venue</td>
+                                        <td>Old Physics Building (OPB), Room G-21 (Ground Floor)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prizes</td>
+                                        <td>Worth ₹12,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number of Members per Team</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registration</td>
+                                        <td>Spot Registration for ₹100 per team;<br/> identity card must be presented at the time of registration.<br/> Cross college teams allowed.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="section" id="tank-wars">
-                    <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
-                        <img src="img/tank.svg" class="content-img">
+                <div class="section">
+                    <div class="content" style="vertical-align: middle;">
+                        <img src="img/Quiz_logo.png" class="content-img" />
                         <div class="content-text">
-                            <h1>Tank Wars </h1>
-                            <p>Take control of a RC Mini-Tank in a team based event to lay siege on the enemy fort. Build the sturdiest fort and balance your offence and defense to overpower your enemy.</p>
+                            <h1>Mainstream (MELA, Open)</h1>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>Open Quiz on MELA (Music, Entertainment, Literature, Art).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quizmaster</td>
+                                        <td>Thejaswi Udupa</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>20<sup>th</sup> January 2018 (Saturday)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time</td>
+                                        <td>10AM onwards</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Venue</td>
+                                        <td>Satish Dhawan Auditorium (SDA)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prizes</td>
+                                        <td>Worth ₹12,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number of Members per Team</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registration</td>
+                                        <td>Spot Registration for ₹100 per team.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div> -->
+                </div>
+                <div class="section">
+                    <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
+                        <img src="img/Quiz_logo.png" class="content-img" />
+                        <div class="content-text right">
+                            <h1>Science Quizzine</h1>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>General Quiz for college students.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>19<sup>th</sup> January 2018 (Friday)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time</td>
+                                        <td>2PM onwards</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Venue</td>
+                                        <td>Old Physics Building (OPB), Room G-21 (Ground Floor)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prizes</td>
+                                        <td>Worth ₹8,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number of Members per Team</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Registration</td>
+                                        <td>Spot Registration for ₹100 per team;
+                                            <br/> identity card must be presented at the time of registration.
+                                            <br/> Cross college teams allowed.</td>
+                                    </tr>
+                                </tbody>
+                            </table>    
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -436,14 +603,14 @@
     </div>
     <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="js/TweenLite.min.js" type="text/javascript"></script>
-    <script src="js/jquery.fullPage.min.js" type="text/javascript"></script>
     <script src="js/menu.js" type="text/javascript"></script>
-    <script type="text/javascript">
+    <script src="js/jquery.fullPage.min.js" type="text/javascript"></script>
+    <script type="text/javascript ">
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                anchors: ['laser-tag', 'pro-robo' /*, 'tank-wars'*/ ],
+                anchors: ['inquizzitive-open', 'inquizzitve-college', 'mainstream', 'science-quizzine'],
                 navigation: true,
-                navigationTooltips: ['Laser Tag', 'ProRobo' /*, 'Tank Wars'*/ ]
+                navigationTooltips: ['Inquizzitive (Open)', 'Inquizzitive (College)', 'Mainstream', 'Science Quizzine']
             });
         });
         (function(i, s, o, g, r, a, m) {
