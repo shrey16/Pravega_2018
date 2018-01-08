@@ -20,6 +20,17 @@
             background-repeat: no-repeat;
             background-position: center center;
         }
+        @media only screen and (min-width: 900px) {
+            .content-text ol {
+                padding-left: 40%;
+            }
+        }
+        @media only screen and (max-width: 900px) {
+            .content-text ol {
+                font-weight: normal;
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 
@@ -225,7 +236,7 @@
                     </li>
                     <li class="nav-item nav-highlight-item mobile">
                         <a href="openmic.html">
-                            <div class="li-img"><img src="img/openmic.png" style="border-radius: 50%; border: 1px solid white;"/></div>
+                            <div class="li-img"><img src="img/openmic.png" style="width:30px; height: 30px; border-radius: 50%; border: 1px solid white;"/></div>
                             <div class="li-text">Open Mic</div>
                         </a>
                         <div class="dropdown"><img src="img/downCaret.png"></div>
@@ -319,7 +330,7 @@
                         <img class="expand-menu-img" onclick="window.location.href='lasya.html'" src="img/Lasya.png" />
                         <img class="expand-menu-img" onclick="window.location.href='bob.html'" src="img/BoB.png" />
                         <img class="expand-menu-img" onclick="window.location.href='pros.html'" src="img/Proscenium.png" />
-                        <img class="expand-menu-img active expand-img-highlight" onclick="window.location.href='openmic.html'" src="img/openmic.png"  style="border-radius: 50%; border: 1px solid white;"/>
+                        <img class="expand-menu-img active expand-img-highlight" onclick="window.location.href='openmic.html'" src="img/openmic.png"  style="width:30px; height: 30px; border-radius: 50%; border: 1px solid white;"/>
                         <div class="expand-menu-text">
                             <a href="lasya.html">
                                 <h4>Lasya</h4>
@@ -408,7 +419,7 @@
                         <div class="content-text">
                             <h1>What happens?</h1>
                             <p style="text-align: center;">There are 3 Open Mic themes:</p>
-                            <ol style="text-align: center;">
+                            <ol class="center-list">
                                 <li>Music</li>
                                 <li>Comedy</li>
                                 <li>Spoken-word</li>
