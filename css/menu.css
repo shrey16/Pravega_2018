@@ -382,7 +382,7 @@ span {
     padding: 20px 60px 20px 20px;
     border-radius: 15px;
     text-align: left;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .notification a {
@@ -590,13 +590,15 @@ span {
         transform: translateX(0);
     }
     .notification {
-        bottom: 37px;
+        bottom: 20px;
         width: 100%;
         right: 0;
         top: auto;
         box-sizing: border-box;
+        padding: 20px;
         border-radius: 0;
         opacity: 0;
+        font-size: 0.8em;
     }
     .desktop {
         display: none!important;
