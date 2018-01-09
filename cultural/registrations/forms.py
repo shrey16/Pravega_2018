@@ -62,6 +62,11 @@ class ProsceniumTheatreRegistrationForm(forms.Form):
             'placeholder': 'Prelims Video',
         }),
         required=False)
+    prelims_video_link = forms.URLField(
+        label="Link to Video for Prelims",
+        widget=forms.URLInput(attrs={
+            'placeholder': 'Prelims Video Link',
+        }), required=False)
     prelims_script = forms.FileField(
         validators=[SCRIPT_FILE_VALIDATOR],
         label="Script for Prelims",
@@ -69,6 +74,11 @@ class ProsceniumTheatreRegistrationForm(forms.Form):
             'placeholder': 'Prelims Script',
         }),
         required=False)
+    prelims_script_link = forms.URLField(
+        label="Link to Script for Prelims",
+        widget=forms.URLInput(attrs={
+            'placeholder': 'Prelims Script Link',
+        }), required=False)
     contact1 = PhoneNumberField.get_field(
         as_regexField=True,
         max_length=13,
@@ -103,13 +113,42 @@ class ProsceniumTheatreVideoSubmissionForm(forms.Form):
         label="Video for Prelims",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Prelims Video',
-        }))
+        }), required=False)
+    prelims_video_link = forms.URLField(
+        label="Link to Video for Prelims",
+        widget=forms.URLInput(attrs={
+            'placeholder': 'Prelims Video Link',
+        }), required=False)
     prelims_script = forms.FileField(
         validators=[SCRIPT_FILE_VALIDATOR],
         label="Script for Prelims",
         widget=forms.ClearableFileInput(attrs={
             'placeholder': 'Prelims Script',
-        }))
+        }), required=False)
+    prelims_script_link = forms.URLField(
+        label="Link to Script for Prelims",
+        widget=forms.URLInput(attrs={
+            'placeholder': 'Prelims Script Link',
+        }), required=False)
+
+    def clean(self):
+        NO_VIDEO = "You must either upload a prelims video or provide a link to one"
+        NO_SCRIPT = "You must either upload a prelims script or provide a link to one"
+        if any(self.errors):
+            return
+        super(forms.Form, self).clean()
+        prelims_video_link = self.cleaned_data.get('prelims_video_link')
+        prelims_script_link = self.cleaned_data.get('prelims_script_link')
+        prelims_video = self.cleaned_data.get('prelims_video')
+        prelims_script = self.cleaned_data.get('prelims_script')
+        if not any((prelims_script, prelims_script_link, prelims_video, prelims_video_link)):
+            raise forms.ValidationError(
+                mark_safe(f"{NO_VIDEO}<br/>{NO_SCRIPT}"), code='no_video_or_script')
+        if not (prelims_script or prelims_script_link):
+            raise forms.ValidationError(f"{NO_SCRIPT}", code='no_script')
+        if not (prelims_video or prelims_video_link):
+            raise forms.ValidationError(f"{NO_VIDEO}", code='no_video')
+
 
 
 class ProsceniumStreetPlayParticipantForm(forms.Form):

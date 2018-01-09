@@ -462,8 +462,12 @@
                 <fieldset class="real">
                     {{ registration_form.prelims_video.label_tag }} {{ registration_form.prelims_video }} {% if registration_form.prelims_video.errors %}
                     <div class="errors">{% for error in registration_form.prelims_video.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.prelims_video_link.label_tag }} {{ registration_form.prelims_video_link }} {% if registration_form.prelims_video_link.errors %}
+                    <div class="errors">{% for error in registration_form.prelims_video_link.errors %} {{ error|escape }} {% endfor %} </div>
                     {% endif %} {{ registration_form.prelims_script.label_tag }} {{ registration_form.prelims_script }} {% if registration_form.prelims_script.errors %}
-                    <div class="errors">{% for error in registration_form.prelims_script.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <div class="errors">{% for error in registration_form.prelims_script.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.prelims_script_link.label_tag }} {{ registration_form.prelims_script_link }} {% if registration_form.prelims_script_link.errors %}
+                    <div class="errors">{% for error in registration_form.prelims_script_link.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
                     <input type="button" name="previous" class="previous action-button" value="Previous" />
                     <input type="button" name="next" class="next action-button" value="Next" />
                 </fieldset>

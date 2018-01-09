@@ -79,6 +79,9 @@ class ProsceniumTheatreRegistration(models.Model):
         upload_to=upload_video_path,
         blank=True)
     
+    prelims_video_link = models.URLField(blank=True)
+    prelims_script_link = models.URLField(blank=True)
+    
     def download_prelims_video(instance):
         return file_download_link(instance.prelims_video)
 

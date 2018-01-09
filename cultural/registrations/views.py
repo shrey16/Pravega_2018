@@ -45,8 +45,12 @@ def proscenium_theatre(request):
                 'language')
             registration.prelims_video = registration_form.cleaned_data.get(
                 'prelims_video')
+            registration.prelims_video_link = registration_form.cleaned_data.get(
+                'prelims_video_link')
             registration.prelims_script = registration_form.cleaned_data.get(
                 'prelims_script')
+            registration.prelims_script_link = registration_form.cleaned_data.get(
+                'prelims_script_link')
             try:
                 registration.save()
             except IntegrityError:
@@ -88,13 +92,17 @@ def proscenium_theatre_video(request):
             try:
                 registration = ProsceniumTheatreRegistration.objects.get(
                     pk=index)
-                if registration.prelims_video and registration.prelims_script:
+                if (registration.prelims_video or registration.prelims_video_link) and (registration.prelims_script or registration.prelims_script_link):
                     return render(request, "proscenium_video_submission.html", {**context, **{'error_message': "Video and Script have already been submitted. Re-submission is not allowed."}})
                 else:
                     registration.prelims_video = registration_form.cleaned_data.get(
                         'prelims_video')
+                    registration.prelims_video_link = registration_form.cleaned_data.get(
+                        'prelims_video_link')
                     registration.prelims_script = registration_form.cleaned_data.get(
                         'prelims_script')
+                    registration.prelims_script_link = registration_form.cleaned_data.get(
+                        'prelims_script_link')
             except ObjectDoesNotExist:
                 return render(request, "proscenium_video_submission.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
             try:

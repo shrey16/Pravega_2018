@@ -15,7 +15,7 @@ class ProsceniumTheatreRegistrationAdmin(admin.ModelAdmin):
                            'language', 'time', 'referral_code']}),
         ('Contact Information', {'fields': ['email', 'contact1', 'contact2']}),
         ('Prelims Information', {'fields': [
-         ('prelims_video', 'download_prelims_video'), ('prelims_script', 'download_prelims_script')]})
+         ('prelims_video_link', 'prelims_video', 'download_prelims_video'), ('prelims_script_link', 'prelims_script', 'download_prelims_script')]})
     ]
     inlines = [ProsceniumTheatreParticipantInline]
 
