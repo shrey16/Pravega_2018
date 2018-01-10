@@ -96,7 +96,9 @@ span {
 
 .li-img img {
     width: 34px;
-    height: auto;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid white;
     margin: 0 auto;
     display: block;
 }
@@ -191,9 +193,11 @@ span {
 }
 
 .expand-menu-img {
-    width: 50px;
-    height: auto;
+    width: 48px;
+    height: 48px;
     margin-right: 5px;
+    border-radius: 50%;
+    border: 1px solid white;
     cursor: pointer;
 }
 
@@ -220,12 +224,6 @@ span {
 
 .expand-img-highlight {
     border: solid thin #DF9EF3 !important;
-}
-
-.desktop .li-img img {
-    border-radius: 50%;
-    border: 1px solid white;
-    width: 34px;
 }
 
 #footer {
@@ -491,6 +489,8 @@ span {
         height: 35px;
         margin: 5px 15px;
         padding: 10px;
+        border: none;
+        border-radius: 0;
     }
     #tog-button-mobile .li-img {
         float: right;
