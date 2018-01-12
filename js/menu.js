@@ -112,8 +112,8 @@ if (desktopMode) {
             closeMenuBar();
         }
     });
-    const sidebarItems = [],
-        sidebarDescs = [];
+    const sidebarItems = new Array(navItems.length),
+        sidebarDescs = new Array(navDescs.length);
     for (let i = 0; i < navItems.length; ++i) {
         sidebarItems[i] = navItems.eq(i);
         sidebarDescs[i] = navDescs.eq(i);

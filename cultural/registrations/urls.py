@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^openmic$', views.openmic, name='openmic'),
     url(r'^decoherence$', views.decoherence, name='decoherence'),
     url(r'^hackathon$', views.hackathon, name='hackathon'),
+    url(r'^hackathon/abstract$', views.hackathon_abstract, name='hackathon_abstract'),
 ]

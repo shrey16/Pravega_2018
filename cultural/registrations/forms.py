@@ -868,6 +868,20 @@ class HackathonRegistrationForm(forms.Form):
                 f"Abstract must be between 200 and 5000 words, was {words} words")
         return data
 
+class HackathonAbstractUpdateForm(forms.Form):
+    understood = forms.BooleanField()
+    index = forms.IntegerField(
+        label="Registration ID",
+        widget=forms.NumberInput(attrs={
+            'placeholder': 'Registration ID'
+        }))
+    abstract = forms.CharField(
+        label=mark_safe("Abstract - Your Idea For Solving the Problem (see <a style=\"color:green;\" href=\"http://pravega.org/docs/Hackathon_Details.pdf\">rules</a> for more info) (200 - 5000 words)"),
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Abstract',
+        }))
+    
+    clean_abstract = HackathonRegistrationForm.clean_abstract
 
 class BaseHackathonParticipantFormSet(BaseFormSet):
 

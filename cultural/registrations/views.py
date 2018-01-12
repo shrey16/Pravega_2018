@@ -564,6 +564,30 @@ def hackathon(request):
     else:
         return render(request, "hackathon.html", context)
 
+def hackathon_abstract(request):
+    context = {'registration_form': HackathonAbstractUpdateForm()}
+    if request.method == 'POST':
+        registration_form = HackathonAbstractUpdateForm(
+            request.POST, request.FILES)
+        context = {'registration_form': registration_form}
+        if registration_form.is_valid():
+            index = registration_form.cleaned_data.get('index')
+            try:
+                registration = HackathonRegistration.objects.get(
+                    pk=index)
+                registration.abstract = registration_form.cleaned_data.get(
+                    'abstract')
+            except ObjectDoesNotExist:
+                return render(request, "hackathon_abstract.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
+            try:
+                registration.save()
+                return render(request, "success.html", {'event_name': 'Hackathon', 'id': registration.id})
+            except IntegrityError:
+                return render(request, "hackathon_abstract.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
+        else:
+            return render(request, "hackathon_abstract.html", {**context, **{'error_message': "Check your input, it might be incorrect."}})
+    else:
+        return render(request, "hackathon_abstract.html", context)
 
 def decoherence(request):
     DecoherenceParticipantFormSet = formset_factory(

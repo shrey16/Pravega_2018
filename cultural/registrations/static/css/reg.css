@@ -513,6 +513,7 @@ footer a {
     background: white;
     border-radius: 3px;
     margin: 0 auto 5px auto;
+    cursor: pointer;
 }
 
 .rules {
@@ -536,6 +537,7 @@ td {
     left: -50%;
     top: 9px;
     z-index: -1;
+    cursor: pointer;
     /*put it behind the numbers*/
 }
 

@@ -278,10 +278,10 @@ class SInECRegistration(models.Model):
     registered_company = models.BooleanField()
 
     PUBLIC = "Available for Public Awareness"
-    PRIVATE = "Unavailabable for Public Awareness, Closed Room Presentation and Evaluation"
+    PRIVATE = "Unavailable for Public Awareness, Closed Room Presentation and Evaluation"
     PRIVACY_PREFERENCES = (
-        (PUBLIC, "I would like my project to be presented and evaluated in a closed room and would not like to display it to the general public."),
-        (PRIVATE, "I would like to display my project to the general public to improve awareness about my project."),)
+        (PUBLIC, "I would like to display my project to the general public to improve awareness about my project."),
+        (PRIVATE, "I would like my project to be presented and evaluated in a closed room and would not like to display it to the general public."),)
     privacy_preference = models.CharField(max_length=max(map(lambda x: len(x[0]), PRIVACY_PREFERENCES)),
                                           choices=PRIVACY_PREFERENCES,
                                           default=PRIVATE)
