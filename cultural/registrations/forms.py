@@ -876,7 +876,7 @@ class HackathonAbstractUpdateForm(forms.Form):
             'placeholder': 'Registration ID'
         }))
     abstract = forms.CharField(
-        label=mark_safe("Abstract - Your Idea For Solving the Problem (see <a style=\"color:green;\" href=\"http://pravega.org/docs/Hackathon_Details.pdf\">rules</a> for more info) (200 - 5000 words)"),
+        label=mark_safe("Updated Abstract - Your Idea For Solving the Problem (see <a style=\"color:green;\" href=\"http://pravega.org/docs/Hackathon_Details.pdf\">rules</a> for more info) (200 - 5000 words)"),
         widget=forms.Textarea(attrs={
             'placeholder': 'Abstract',
         }))
