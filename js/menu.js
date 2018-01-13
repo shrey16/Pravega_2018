@@ -46,9 +46,9 @@ const openWidth = 300;
 const totalExpandedWidth = $("#iconbar").width() + openWidth;
 
 var infobarRemoved = true,
-    infobarOpener = undefined;
+    infobarOpener;
 
-function openMenuBar() {
+function openMenuBar(finished) {
     $(".li-text").addClass("vis");
     if (!animationRunning && infobarRemoved) {
         TweenLite.to($("#infobar"), 0.25, {
@@ -60,13 +60,18 @@ function openMenuBar() {
                 togImage.addClass("is-active");
                 $(".infobar-content").fadeOut(0);
                 infobarRemoved = false;
+            },
+            onComplete: function() {
+                if (finished !== undefined) {
+                    finished();
+                }
             }
         });
         descEnterAnimation(displayedInfoElement);
     }
 }
 
-function closeMenuBar() {
+function closeMenuBar(finished) {
     if (!(animationRunning || infobarRemoved)) {
         descExitAnimation(displayedInfoElement);
         TweenLite.to($("#infobar"), 0.25, {
@@ -84,6 +89,9 @@ function closeMenuBar() {
                     $(".li-text").removeClass("vis");
                 }
                 infobarRemoved = true;
+                if (finished !== undefined) {
+                    finished();
+                }
             }
         });
     }
@@ -171,6 +179,10 @@ if (desktopMode) {
         return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     }
 
+    function getNextNonDesktopNavItem(navItem) {
+        return $(navItem).nextAll(".nav-item").not(".desktop").eq(0);
+    }
+
     $(document).ready(function() {
         $(".nav-item").not(".mobile").not(":hidden").eq(0).css("padding-top", 15);
     });
@@ -187,7 +199,7 @@ if (desktopMode) {
                 if (dropdownImage.hasClass("inverted")) {
                     dropdownImage.removeClass("inverted")
                     const navItem = $(dropdowns[i]).parent();
-                    const nextNavItem = navItem.next(".nav-item");
+                    const nextNavItem = getNextNonDesktopNavItem(navItem);
                     const nextNavItemTop = parseInt(nextNavItem.css("margin-top"));
                     const extraInfo = navItem.find(".extra-info");
                     nextNavItem.css("margin-top", nextNavItemTop - extraInfo.height())
@@ -215,7 +227,7 @@ if (desktopMode) {
             const dropdownImage = dropdownContainer.find("img");
             dropdownImage.toggleClass("inverted")
             const navItem = dropdownContainer.parent();
-            const nextNavItem = navItem.next(".nav-item");
+            const nextNavItem = getNextNonDesktopNavItem(navItem);
             const extraInfo = navItem.find(".extra-info");
             const nextNavItemTop = parseInt(nextNavItem.css("margin-top"));
             const totalHeight = container.height();

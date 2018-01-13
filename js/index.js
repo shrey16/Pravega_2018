@@ -109,8 +109,8 @@ $(document).ready(function() {
                 if (!window.matchMedia("(max-width: 900px), (max-height: 500px)").matches) {
                     closeMenuBar(function() {
                         $(".li-text").removeClass("vis");
-                        scroll_up.reverse();
                     });
+                    scroll_up.reverse();
                 } else {
                     scroll_up.reverse();
                 }
