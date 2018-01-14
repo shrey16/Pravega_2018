@@ -369,8 +369,143 @@
             <h1>Proscenium</h1> {% if error_message %}
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
             <form action="{% url 'registrations:proscenium_theatre' %}" method="post" enctype="multipart/form-data" id="msform">
+                <ul id="progressbar">
+                    <li>Rules</li>
+                    <li>Identification</li>
+                    <li>Contact
+                        <br/>Details</li>
+                    <li>Prelims
+                        <br/>Information</li>
+                    <li>Participant
+                        <br/>Details</li>
+                </ul>
+                {% csrf_token %} {% if registration_form.errors %}
+                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
+                    <p> {{ errors }} </p>
+                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
+                    <p> {{ error }} </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <fieldset>
-                    <h2>Registrations have closed.</h2>
+                    <p style="font-weight: bold;">Click <a style="color: green;" href="http://pravega.org/registrations/proscenium/video">here</a> to submit prelim video. <br/> (You will need your registration ID)</p>
+                    <h2>Rules and Regulations</h2>
+                    <h2>General Rules</h2>
+                    <ol class="rules">
+                        <li>
+                            A debatable statement is to be presented a priori which should be duly argued for through the performance. If somebody wants to argue against the statement, then the statement should be presented in negative.
+                        </li>
+                        <li>
+                            For the performance, English, Hindi and Kannada shall be considered as intelligible language of communication.
+                        </li>
+                        <li>
+                            It’s not necessary that all the members of a participating team be from the same institution, but one person must not participate in two different teams. Also, no further inclusion of people in a team shall be allowed following the submission for video-prelims.
+                        </li>
+                        <li>
+                            Dramatic societies of different languages (mentioned above) but from same institution are allowed to participate in the event.
+                        </li>
+                        <li>
+                            There is no age restriction for participants.
+                        </li>
+                        <li>
+                            There can be a maximum of 10 performers and 3 accompanists, with at least 1 performer among the participants.
+                        </li>
+                        <li>
+                            Accomodation will <b>NOT</b> be provided by Pravega for participants.
+                        </li>
+                    </ol>
+                    <h2>Rules for Video Prelims Auditions</h2>
+                    <ol class="rules">
+                        <li>
+                            Maximum video length limit is 15 minutes; a maximum of 5 minutes extra time may be considered.
+                        </li>
+                        <li>
+                            Video and audio quality should be as clear as possible. Unintelligible audio may lead to disqualification. Video quality should not be below 720p. No zooming or editing of the video will be allowed. All movements and expressions should be clearly visible
+                            in the video.
+                        </li>
+                        <li>
+                            A discussion about the act/script of the act should be uploaded along with the video in writing. If the script is adapted, then the source of adaptation must be mentioned. The discussion should also make note of all elements (viz. poetry, songs etc.)
+                            that may have been used in the performance and are not original.
+                        </li>
+                        <li>
+                            Plagiarism in script is strictly prohibited and if detected, will lead to immediate disqualification. Judges’ discretion in such matters shall be final.
+                        </li>
+                    </ol>
+                    <br/>
+                    <p style="font-weight: bold;">Prelims Video and Script may not be re-submitted after they have already been submitted.</p>
+                    <p><strong>The "Referral Code" field is not required for submitting registrations.</strong></p>
+                    <br/>
+                    <p>Have you read and understood the above regulations?</p>
+                    <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label> {{ registration_form.understood }}
+                    <br/>
+                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
+                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.institution.label_tag }} {{ registration_form.institution }} {% if registration_form.institution.errors %}
+                    <div class="errors">{% for error in registration_form.institution.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.language.label_tag }} {{ registration_form.language }} {% if registration_form.language.errors %}
+                    <div class="errors">{% for error in registration_form.language.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.contact1.label_tag }} {{ registration_form.contact1 }} {% if registration_form.contact1.errors %}
+                    <div class="errors"> {% for error in registration_form.contact1.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.contact2.label_tag }} {{ registration_form.contact2 }} {% if registration_form.contact2.errors %}
+                    <div class="errors"> {% for error in registration_form.contact2.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.email.label_tag }} {{ registration_form.email }} {% if registration_form.email.errors %}
+                    <div class="errors">{% for error in registration_form.email.errors %} {{ error|escape }} {% endfor %} </div> {% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.prelims_video.label_tag }} {{ registration_form.prelims_video }} {% if registration_form.prelims_video.errors %}
+                    <div class="errors">{% for error in registration_form.prelims_video.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.prelims_video_link.label_tag }} {{ registration_form.prelims_video_link }} {% if registration_form.prelims_video_link.errors %}
+                    <div class="errors">{% for error in registration_form.prelims_video_link.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.prelims_script.label_tag }} {{ registration_form.prelims_script }} {% if registration_form.prelims_script.errors %}
+                    <div class="errors">{% for error in registration_form.prelims_script.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.prelims_script_link.label_tag }} {{ registration_form.prelims_script_link }} {% if registration_form.prelims_script_link.errors %}
+                    <div class="errors">{% for error in registration_form.prelims_script_link.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real" id="participants">
+                    {% if participant_formset.non_form_errors %}
+                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
+                    <div class="participant-formset">
+                        {% if participant_form.errors %}
+                        <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
+                            <p> {{ errors }} </p>
+                            {% endfor %} {% endfor %}
+                        </div>
+                        {% endif %} {{ participant_form.name.label_tag }} {{ participant_form.name }} {% if participant_form.name.errors %}
+                        <div class="errors">{% for error in participant_form.name.errors %} {{ error|escape }} {% endfor %} </div>
+                        {% endif %} {{ participant_form.age.label_tag }} {{ participant_form.age }} {% if participant_form.age.errors %}
+                        <div class="errors">{% for error in participant_form.age.errors %} {{ error|escape }} {% endfor %} </div>
+                        {% endif %} {{ participant_form.photo.label_tag }} {{ participant_form.photo }} {% if participant_form.photo.errors %}
+                        <div class="errors"> {% for error in participant_form.photo.errors %} {{ error|escape }} {% endfor %} </div>
+                        {% endif %} {{ participant_form.role.label_tag }} {{ participant_form.role }} {% if participant_form.role.errors %}
+                        <div class="errors">{% for error in participant_form.role.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    </div>
+                    {% endfor %}
+                    <br />
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
+                </fieldset>
+                <fieldset id="review">
+                    <h2>Please review before submitting</h2>
+                    <table>
+                        <colgroup>
+                            <col style="width: 50%" />
+                            <col style="width: 50%" />
+                        </colgroup>
+                    </table>
+                    <input type="button" name="previous" class="previous action-button" value="Edit" />
+                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
                 </fieldset>
             </form>
             <footer>
