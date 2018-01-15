@@ -1,9 +1,26 @@
-$(".notification-close").click(function() {
-    const main = $(this).parent();
-    main.toggleClass("notification-closed");
-    main.find(".c-hamburger").toggleClass("is-active");
-});
 const desktopMode = !window.matchMedia("(max-width: 900px), (max-height: 500px)").matches;
+
+$(document).ready(function() {
+    const notification = $(".notification").css("height", "auto");
+    const notificationHeight = desktopMode ? notification.height() : notification.outerHeight();
+    $(".notification-close").click(function() {
+        console.log(notificationHeight)
+        const main = $(this).parent();
+        const icon = main.find(".c-hamburger");
+        if (icon.hasClass("is-active")) {
+            main.animate({
+                height: 30
+            }, 200);
+        } else {
+            main.animate({
+                height: notificationHeight
+            }, 200);
+        }
+        main.toggleClass("notification-closed");
+        icon.toggleClass("is-active");
+    });
+});
+
 const footerClearance = $("#footer").height();
 var mobileMenuClearance = 60 + footerClearance;
 

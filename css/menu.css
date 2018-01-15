@@ -379,7 +379,7 @@ span {
     top: 50px;
     z-index: 10000000;
     width: 30%;
-    height: 22%;
+    height: auto;
     background-color: #000;
     color: #fff;
     padding: 20px 60px 20px 20px;
@@ -388,15 +388,12 @@ span {
     font-size: 1em;
     overflow: hidden;
     border: 2px solid #fcfcfc;
-    transition: width 200ms ease-out,
-                height 200ms ease-out;
+    transition: width 200ms ease-out;
 }
 .notification-closed {
     padding: 5px;
     width: 43px;
-    height: 30px;
-    transition: width 200ms ease-in, 
-                height 200ms ease-in;
+    transition: width 200ms ease-in;
 }
 .notification-closed>.notification-close {
     top: 5px;
@@ -613,7 +610,7 @@ span {
         transform: translateX(0);
     }
     .notification {
-        bottom: 20px;
+        bottom: 4vh;
         width: 100%;
         right: 0;
         top: auto;
