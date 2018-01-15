@@ -188,9 +188,13 @@ function goForward(elem, duration) {
             });
         },
         duration: duration,
+        start: function() {
+            $("#msform").animate({
+                height: next_fs.height() + 100
+            }, duration * 0.25);
+        },
         complete: function() {
                 current_fs.hide();
-                $("#msform").height(next_fs.height() + 100);
                 next_fs.width(currentWidth);
                 animating = false;
             }
@@ -227,9 +231,13 @@ function goBackward(elem, duration) {
             });
         },
         duration: duration,
+        start: function() {
+            $("#msform").animate({
+                height: previous_fs.height() + 100
+            }, duration * 0.25);
+        },
         complete: function() {
                 current_fs.hide();
-                $("#msform").height(previous_fs.height() + 100);
                 previous_fs.width(currentWidth);
                 animating = false;
             }
