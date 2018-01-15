@@ -1,7 +1,8 @@
 $(".notification-close").click(function() {
-    $(this).parent().fadeOut(200);
-})
-
+    const main = $(this).parent();
+    main.toggleClass("notification-closed");
+    main.find(".c-hamburger").toggleClass("is-active");
+});
 const desktopMode = !window.matchMedia("(max-width: 900px), (max-height: 500px)").matches;
 const footerClearance = $("#footer").height();
 var mobileMenuClearance = 60 + footerClearance;

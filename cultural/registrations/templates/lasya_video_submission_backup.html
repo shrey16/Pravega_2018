@@ -369,9 +369,119 @@
             <h1>Lasya Prelims Video</h1> {% if error_message %}
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
             <form action="{% url 'registrations:lasya_video' %}" method="post" enctype="multipart/form-data" id="msform">
+                <ul id="progressbar">
+                    <li>Rules</li>
+                    <li>Prelims
+                        <br/>Information</li>
+                </ul>
+                {% csrf_token %} {% if registration_form.errors %}
+                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
+                    <p> {{ errors }} </p>
+                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
+                    <p> {{ error }} </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <fieldset>
-                    <h2>Registrations have closed.</h2>
-                    <p style="font-weight: bold;">Click <a style="color: green;" href="http://pravega.org/registrations/pis/video">here</a> to submit project video. <br/> (You will need your registration ID)</p>
+                    <h2>Rules and Regulations</h2>
+                    <h2>For prelims:</h2>
+                    <p style="font-weight: bold;">Any failure to abide by these rules
+                        <br/>will lead to disqualification</p>
+                    <table class="rules">
+                        <tr>
+                            <td>1.</td>
+                            <td>Duration</td>
+                            <td>3 to 6 minutes</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Members</td>
+                            <td>5 to 20</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Costumes</td>
+                            <td>Not necessary (won’t get any extra points), but members should wear uniform clothing</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Props</td>
+                            <td>Very heavy props aren’t allowed</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>Video</td>
+                            <td>
+                                <ol style="padding: 0 0 0 1.25em; margin: 0; font-size: 0.85em;">
+                                    <li>Resolution of video file should be at least 720p</li>
+                                    <li>Should be a single frame, one shot without any discontinuity</li>
+                                    <li>All members and steps should be properly visible so as to be judged properly</li>
+                                </ol>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <h2>For finals:</h2>
+                    <table class="rules">
+                        <tr>
+                            <td>1.</td>
+                            <td>Duration</td>
+                            <td>5 to 10 minutes</td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Members</td>
+                            <td>5 to 20</td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Costumes</td>
+                            <td>Necessary (there will be points for costumes)</td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Props</td>
+                            <td>Very heavy props and anything that affects the stage (like powdered substances) aren’t allowed</td>
+                        </tr>
+                        <tr>
+                            <td>5.</td>
+                            <td>Audio</td>
+                            <td>Teams should come with their full audio file compiled properly in a CD or pendrive</td>
+                        </tr>
+                        <tr>
+                            <td>6.</td>
+                            <td>Participants</td>
+                            <td>The finals should have the same people performing from each team as in the prelims.</td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <p style="font-weight: bold;">Prelims Video may not be re-submitted after it has already been submitted.</p>
+                    <p>Accomodation for artists will <b>NOT</b> be provided by Pravega.</p>
+                    <p><strong>The "Referral Code" field is not required for submitting registrations.</strong></p>
+                    <br/>
+                    <p>Have you read and understood the above regulations?</p>
+                    <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label> {{ registration_form.understood }}
+                    <br/>
+                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.index.label_tag }} {{ registration_form.index }} {% if registration_form.index.errors %}
+                    <div class="errors">{% for error in registration_form.index.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.prelims_video.label_tag }} {{ registration_form.prelims_video }} {% if registration_form.prelims_video.errors %}
+                    <div class="errors">{% for error in registration_form.prelims_video.errors %} {{ error|escape }} {% endfor %} </div> {% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
+                </fieldset>
+                <fieldset id="review">
+                    <h2>Please review before submitting</h2>
+                    <table>
+                        <colgroup>
+                            <col style="width: 50%" />
+                            <col style="width: 50%" />
+                        </colgroup>
+                    </table>
+                    <input type="button" name="previous" class="previous action-button" value="Edit" />
+                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
                 </fieldset>
             </form>
             <footer>
