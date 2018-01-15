@@ -568,7 +568,9 @@ td {
     border-style: solid;
     text-align: center;
 }
-
+#main {
+    margin-left: 100px;
+}
 #review td {
     text-align: left;
     padding-left: 0.1em;
@@ -824,6 +826,7 @@ fieldset label {
         padding: 0;
     }
     #main {
+        margin-left: 0;
         padding: 60px 0;
     }
     .rules li {

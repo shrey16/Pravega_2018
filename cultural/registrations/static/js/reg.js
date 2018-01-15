@@ -51,7 +51,7 @@ $(document).ready(function() {
         const current_fs = $(this).parent();
         current_fs.find("input").each(function(index) {
             const error_id = $(this).prop("id") + "-error";
-            if ($(this).prop("required") && $(this).prop("value") === "") {
+            if ($(this).prop("required") && $(this).val().trim().length === 0) {
                 if (current_fs.find("#" + error_id).length == 0) {
                     current_fs.prepend("<" + field_error_element + " id=\"" + error_id + "\" class=\"field-error\">" + trimColon(getTextWithoutSpan($(this).prev())) + " is required</" + field_error_element + ">");
                 }
@@ -62,6 +62,8 @@ $(document).ready(function() {
         });
         if (allowNext) {
             goForward(this, transitionDuration_ms);
+        } else {
+            $("#msform").height(current_fs.height() + 100);
         }
     });
     
@@ -252,7 +254,13 @@ function getFileName(path) {
 }
 
 function escapeHTML(html) {
-    return html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#x27;").replace(/\//g, "&#x2F;");
+    return html
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#x27;")
+        .replace(/\//g, "&#x2F;");
 }
 
 function getFormReport(fieldset) {
