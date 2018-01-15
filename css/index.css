@@ -29,7 +29,10 @@
     display: none;
 }
 
-#pravega_logo {
+#pravega_logo,
+#year,
+#airbus_logo,
+#presents {
     font-size: 8.25em;
     color: #FFF;
     width: auto;
@@ -65,19 +68,22 @@
 #ega {
     display: inline;
     position: relative;
-    padding: 10px 50px 10px 0;
+    padding: 10px 0;
 }
 
-#year {
+#year,
+#airbus_logo,
+#presents {
     font-size: 1.5em;
     opacity: 0;
-    display: table;
-    margin: 0 auto;
     text-align: right;
-    width: auto;
-    color: #FFF;
 }
 
+#airbus_logo,
+#presents {
+    opacity: 1;
+    text-align: center;
+}
 #scroll_me_arrow {
     position: fixed;
     top: 85vh;
@@ -139,8 +145,7 @@
 
 #home {
     position: absolute;
-    top: 50vh;
-    margin-top: -99.2px;
+    top: 30vh;
     width: 100%;
     height: auto;
 }
@@ -187,6 +192,9 @@
     #year {
         font-size: 1.3em;
         width: 244px;
+    }
+    #home {
+        top: 10vh;
     }
     #main {
         top: -5%;

@@ -53,14 +53,13 @@
                             <h3>Some text toggle</h3>
                         </div>
                     </li>
-                    <li class="nav-item desktop nav-footer">
-                        <a href="index.html">
-                            <div class="li-img"><img src="img/home.svg"></div>
-                            <div class="li-text">Main Page</div>
+                    <li class="nav-item desktop">
+                        <a>
+                            <div class="li-img"><img src="img/QuickLinks.png" /></div>
+                            <div class="li-text">Quick Links</div>
                         </a>
+                        <div class="dropdown"><img src="img/downCaret.png"></div>
                         <div class="extra-info">
-                            <h3>Main Page</h3>
-                            <p>Lost? Tired of reading this? Get back to the main page!</p>
                         </div>
                     </li>
                     <li class="nav-item desktop">
@@ -88,6 +87,17 @@
                         </a>
                         <div class="dropdown"><img src="img/downCaret.png"></div>
                         <div class="extra-info">
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="updates.html">
+                            <div class="li-img"><img src="img/info.png"></div>
+                            <div class="li-text">Updates</div>
+                        </a>
+                        <div class="dropdown"><img src="img/downCaret.png"></div>
+                        <div class="extra-info">
+                            <h3>Updates</h3>
+                            <p>Want to know about the latest and greatest of Pravega? Here you go!</p>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -187,6 +197,20 @@
                             <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
                         </div>
                     </li>
+                    <li class="nav-item mobile" id="decoherence-mobile-menu">
+                        <a href="physics.html#decoherence">
+                            <div class="li-img"><img src="img/atomic.png" /></div>
+                            <div class="li-text">Decoherence</div>
+                        </a>
+                        <div class="dropdown"><img src="img/downCaret.png"></div>
+                        <div class="extra-info">
+                            <p>Be a part of the biggest physics competition at the Undergraduate level.
+                                Display your skills and battle it out against the best the country has to offer.
+                                Get a chance to apply your knowledge of physics to real research problems
+                                because nature is not as simple as our schooling might lead us to believe.
+                            </p>
+                        </div>
+                    </li>
                     <li class="nav-item mobile">
                         <a href="physics.html">
                             <div class="li-img"><img src="img/Physics.png" /></div>
@@ -265,17 +289,7 @@
                             <p>Not everyone is born with a gold spoon in their mouths; the world is filled with people who don't have many privileges which we consider routine in our lives. Pravega in conjunction with Airbus aims to help such students while sparking their interest in the field of aeromodelling in the Airbus Aeromodelling Initiative.</p>
                         </div>
                     </li>
-                    <li class="nav-item desktop nav-footer">
-                        <a target="_blank" href="http://pravega.org/registrations/">
-                            <div class="li-img"><img src="img/register.png"></div>
-                            <div class="li-text">Registrations</div>
-                        </a>
-                        <div class="extra-info">
-                            <h3>Registrations</h3>
-                            <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item">
+                    <li class="nav-item mobile">
                         <a href="sponsors.html">
                             <div class="li-img"><img src="img/sponsors.png"></div>
                             <div class="li-text">Sponsors</div>
@@ -284,16 +298,6 @@
                         <div class="extra-info">
                             <h3>Sponsors</h3>
                             <p>Millions of ideas perish due to the lack of adequate backing. Pravega thanks its wonderful sponsors for believing in our ideas, and supporting us.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item desktop nav-footer">
-                        <a target="_blank" href="contact.html">
-                            <div class="li-img"><img src="img/phone.svg"></div>
-                            <div class="li-text">Contact Us</div>
-                        </a>
-                        <div class="extra-info">
-                            <h3>Contact Us</h3>
-                            <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
                         </div>
                     </li>
                 </ul>
@@ -305,10 +309,49 @@
                     </p>
                 </div>
                 <div class="infobar-content">
-                    <a href="index.html">
-                        <h2>Main Page</h2>
+                    <a>
+                        <h2>Quick Links</h2>
                     </a>
-                    <p>Lost? Tired of reading this? Get back to the main page!</p>
+                    <div class="expand-menu">
+                        <img class="expand-menu-img active" onclick="window.location.href='index.html'" src="img/home.svg" />
+                        <img class="expand-menu-img" onclick="window.location.href='workshops.html'" src="img/Workshops.png" />
+                        <img class="expand-menu-img" onclick="window.location.href='contact.html'" src="img/phone.svg" />
+                        <img class="expand-menu-img" onclick="window.location.href='sponsors.html'" src="img/sponsors.png" />
+                        <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/registrations'" src="img/register.png" />
+                        <div class="expand-menu-text active">
+                            <a href="index.html">
+                                <h4>Main Page</h4>
+                            </a>
+                            <p>Lost? Tired of reading this? Get back to the main page!</p>
+                        </div>
+                        <div class="expand-menu-text">
+                            <a href="workshops.html">
+                                <h4>Workshops</h4>
+                            </a>
+                            <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn
+                                something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
+                                end of the day, you would have learned something new.
+                            </p>
+                        </div>
+                        <div class="expand-menu-text">
+                            <a target="_blank" href="contact.html">
+                                <h4>Contact Us</h4>
+                            </a>
+                            <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
+                        </div>
+                        <div class="expand-menu-text">
+                            <a target="_blank" href="sponsors.html">
+                                <h4>Sponsors</h4>
+                            </a>
+                            <p>Millions of ideas perish due to the lack of adequate backing. Pravega thanks its wonderful sponsors for believing in our ideas, and supporting us.</p>
+                        </div>
+                        <div class="expand-menu-text">
+                            <a target="_blank" href="http://pravega.org/registrations/">
+                                <h4>Registrations</h4>
+                            </a>
+                            <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="infobar-content">
                     <a>
@@ -317,7 +360,7 @@
                     <div class="expand-menu">
                         <img class="expand-menu-img active" onclick="window.location.href='pis.html'" src="img/PIS.png" />
                         <img class="expand-menu-img" onclick="window.location.href='hackathon.html'" src="img/Hackathon.png" />
-                        <img class="expand-menu-img" onclick="window.location.href='workshops.html'" src="img/Workshops.png" />
+                        <img class="expand-menu-img" id="decoherence-desktop-menu-image" onclick="window.location.href='physics.html#decoherence'" src="img/atomic.png" />
                         <img class="expand-menu-img" onclick="window.location.href='airbus.html'" src="img/airbus.png" />
                         <img class="expand-menu-img" onclick="window.location.href='quiz.html'" src="img/Quiz.png" />
                         <div class="expand-menu-text active">
@@ -332,13 +375,14 @@
                             </a>
                             <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
                         </div>
-                        <div class="expand-menu-text">
-                            <a href="workshops.html">
-                                <h4>Workshops</h4>
+                        <div class="expand-menu-text" id="decoherence-desktop-menu-desc">
+                            <a href="physics.html#decoherence">
+                                <h4>Decoherence</h4>
                             </a>
-                            <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn
-                                something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
-                                end of the day, you would have learned something new.
+                            <p>Be a part of the biggest physics competition at the Undergraduate level.
+                                Display your skills and battle it out against the best the country has to offer.
+                                Get a chance to apply your knowledge of physics to real research problems
+                                because nature is not as simple as our schooling might lead us to believe.
                             </p>
                         </div>
                         <div class="expand-menu-text">
@@ -436,28 +480,16 @@
                     </div>
                 </div>
                 <div class="infobar-content">
+                    <a href="updates.html">
+                        <h2>Updates</h2>
+                    </a>
+                    <p>Want to know about the latest and greatest of Pravega? Here you go!</p>
+                </div>
+                <div class="infobar-content">
                     <a href="pronites.html">
                         <h2>Pronites</h2>
                     </a>
                     <p>We present to you the best talents of the entertainment industry to leave an everlasting impact, and bring to a perfect end the amazing experience Pravega is.</p>
-                </div>
-                <div class="infobar-content">
-                    <a target="_blank" href="http://pravega.org/registrations/">
-                        <h2>Registrations</h2>
-                    </a>
-                    <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
-                </div>
-                <div class="infobar-content">
-                    <a target="_blank" href="sponsors.html">
-                        <h2>Sponsors</h2>
-                    </a>
-                    <p>Millions of ideas perish due to the lack of adequate backing. Pravega thanks its wonderful sponsors for believing in our ideas, and supporting us.</p>
-                </div>
-                <div class="infobar-content">
-                    <a target="_blank" href="contact.html">
-                        <h2>Contact Us</h2>
-                    </a>
-                    <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
                 </div>
             </div>
         </div>

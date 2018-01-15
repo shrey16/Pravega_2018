@@ -51,7 +51,9 @@ $(document).ready(function() {
 
     mobileMenuClearance = 60;
 
-    var pra = document.getElementById("pra"),
+    var airbus_logo = document.getElementById("airbus_logo"),
+        presents = document.getElementById("presents"),
+        pra = document.getElementById("pra"),
         v = document.getElementById("v-logo"),
         ega = document.getElementById("ega"),
         year = document.getElementById("year"),
@@ -65,7 +67,11 @@ $(document).ready(function() {
 
     var start = new TimelineLite();
 
-    start.from(v, 1.2, { opacity: 0 }).from(pra, 0.4, { opacity: 0 }, "pravega").from(ega, 0.4, { opacity: 0 }, "pravega")
+    start.from(airbus_logo, 0.8, {opacity: 0})
+        .from(presents, 0.8, {opacity: 0})
+        .from(v, 1.2, { opacity: 0 })
+        .from(pra, 0.4, { opacity: 0 }, "pravega")
+        .from(ega, 0.4, { opacity: 0 }, "pravega")
         .to(year, 0.4, {
             opacity: 1,
             onComplete: function() {

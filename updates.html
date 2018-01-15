@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Chemistry | Pravega 2018, IISc Bangalore | Festival of Science and Culture</title>
+    <title>Updates | Pravega 2018, IISc Bangalore | Festival of Science and Culture</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="In Pravega Chemistry, we challenge you to unveil the secrets of the “magician” in CheMystical and use chemical concoctions to whip up a masterpiece in Molecular Murals." />
+    <meta name="description" content="Coming Soon!"/>
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="css/hamburger.css" rel="stylesheet" type="text/css" />
-    <link href="css/tech.css" type="text/css" rel="stylesheet" />
+    <link href="css/hamburger.css" type="text/css" rel="stylesheet" />
     <link href="css/menu.css" type="text/css" rel="stylesheet" />
-    <link href="css/fullPage.css" type="text/css" rel="stylesheet" />
+    <link href="css/pis.css" type="text/css" rel="stylesheet" />
     <style>
         body {
             box-sizing: border-box;
-            background-image: url("img/chem_back.svg");
+            background-image: url("img/physics_back.svg");
             background-size: cover;
             background-attachment: fixed;
             background-repeat: no-repeat;
             background-position: center center;
+        }
+        .card ol {
+            text-align: left;
         }
     </style>
 </head>
@@ -71,7 +73,7 @@
                         <div class="extra-info">
                         </div>
                     </li>
-                    <li class="nav-item desktop nav-highlight-item">
+                    <li class="nav-item desktop">
                         <a>
                             <div class="li-img"><img src="img/Science.png" /></div>
                             <div class="li-text">Science</div>
@@ -89,7 +91,7 @@
                         <div class="extra-info">
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item nav-highlight-item">
                         <a href="updates.html">
                             <div class="li-img"><img src="img/info.png"></div>
                             <div class="li-text">Updates</div>
@@ -175,7 +177,7 @@
                             <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
                         </div>
                     </li>
-                    <li class="nav-item nav-highlight-item mobile">
+                    <li class="nav-item mobile">
                         <a href="chemistry.html">
                             <div class="li-img"><img src="img/Chemistry.png" /></div>
                             <div class="li-text">Chemistry</div>
@@ -219,8 +221,7 @@
                         <div class="dropdown"><img src="img/downCaret.png"></div>
                         <div class="extra-info">
                             <h3>Physics</h3>
-                            <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while
-                                you’re at it.</p>
+                            <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re at it.</p>
                         </div>
                     </li>
                     <li class="nav-item mobile">
@@ -278,7 +279,7 @@
                             <p>Great talents need a platform to express themselves. Pravega's Open Mic provides that platform. Step up to the mic and don't be afraid to say "This is my ability; this is who I am"!</p>
                         </div>
                     </li>
-                    <li class="nav-item mobile">
+                    <li class="nav-item nav-highlight-item mobile">
                         <a href="airbus.html">
                             <div class="li-img"><img src="img/airbus.png"/></div>
                             <div class="li-text">AAI</div>
@@ -405,12 +406,12 @@
                         <h2>Science</h2>
                     </a>
                     <div class="expand-menu">
-                        <img class="expand-menu-img" onclick="window.location.href='biology.html'" src="img/Biology.png" />
+                        <img class="expand-menu-img active" onclick="window.location.href='biology.html'" src="img/Biology.png" />
                         <img class="expand-menu-img" onclick="window.location.href='maths.html'" src="img/math.png" />
                         <img class="expand-menu-img" onclick="window.location.href='physics.html'" src="img/Physics.png" />
-                        <img class="expand-menu-img active expand-img-highlight" onclick="window.location.href='chemistry.html'" src="img/Chemistry.png" />
+                        <img class="expand-menu-img" onclick="window.location.href='chemistry.html'" src="img/Chemistry.png" />
                         <img class="expand-menu-img" onclick="window.location.href='engine.html'" src="img/Technical.png" />
-                        <div class="expand-menu-text">
+                        <div class="expand-menu-text active">
                             <a href="biology.html">
                                 <h4>Biology</h4>
                             </a>
@@ -429,7 +430,7 @@
                             <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while
                                 you’re at it.</p>
                         </div>
-                        <div class="expand-menu-text active">
+                        <div class="expand-menu-text">
                             <a href="chemistry.html">
                                 <h4>Chemistry</h4>
                             </a>
@@ -496,29 +497,9 @@
         <!-- SideBar gets over-->
         <div id="disabler"></div>
         <div id="main">
-            <div id="fullpage">
-                <div class="section">
-                    <div class="content" style="vertical-align: middle;">
-                        <img src="img/molecule.svg" class="content-img">
-                        <div class="content-text">
-                            <h1>Molecular Murals</h1>
-                            <p>Stuck in a catacomb of benzene rings? Does Chemistry conjure up catatonic thoughts of formulae and structures? Molecular Murals helps your break out of that monotony. Given inorganic salts, mix them to your heart’s content
-                                to obtain several different colors and then use these to give form to your artistic fantasies. Revisit the riot of color that is Chemistry, with the wonder of a child, at Molecular Murals.</p>
-                            <p style="text-align:center;"><a href="docs/Chemistry_Pravega18.pdf">Rulebook</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
-                        <img src="img/chemistry.svg" class="content-img">
-                        <div class="content-text">
-                            <h1>CheMystical</h1>
-                            <p>Chemistry, as a field of study, birthed from alchemy, but has it evolved from its heretical origins? At CheMystical, we have a self-declared sorcerer with mind-bending ‘magic’. It is up to you to prove him wrong, and add fire
-                                to the age-old battle of supremacy between Magic and Science. Delve into the CheMystery behind the Wizardry and decide: Enchantments or Erudition?</p>
-                            <p style="text-align:center;"><a href="docs/Chemistry_Pravega18.pdf">Rulebook</a></p>
-                        </div>
-                    </div>
-                </div>
+            <div id="introduction" class="card">
+                <h2>Updates</h2>
+                <p style="text-align: center;">Coming Soon!</p>
             </div>
         </div>
         <div id="floating-footer">
@@ -563,15 +544,7 @@
     <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="js/TweenLite.min.js" type="text/javascript"></script>
     <script src="js/menu.js" type="text/javascript"></script>
-    <script src="js/jquery.fullPage.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#fullpage').fullpage({
-                anchors: ['molecular-murals', 'chemystical'],
-                navigation: true,
-                navigationTooltips: ['Molecular Murals', 'CheMystical']
-            });
-        });
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function() {
