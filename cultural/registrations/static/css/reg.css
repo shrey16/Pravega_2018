@@ -117,7 +117,9 @@ span {
 
 .li-img img {
     width: 34px;
-    height: auto;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid white;
     margin: 0 auto;
     display: block;
 }
@@ -202,8 +204,9 @@ span {
     border-left: solid 7px #DF9EF3 !important;
 }
 .nav-highlight-item .li-text {
-    left: 0;
+     left: 0;
 }
+
 .expand-menu {
     margin-left: -20px;
     margin-right: -20px;
@@ -211,9 +214,11 @@ span {
 }
 
 .expand-menu-img {
-    width: 50px;
-    height: auto;
+    width: 48px;
+    height: 48px;
     margin-right: 5px;
+    border-radius: 50%;
+    border: 1px solid white;
     cursor: pointer;
 }
 
@@ -276,12 +281,6 @@ span {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    height: 100%;
-}
-
-#main {
-    padding-left: 100px;
-    height: 100%;
 }
 
 #links {
@@ -692,6 +691,8 @@ fieldset label {
         height: 35px;
         margin: 5px 15px;
         padding: 10px;
+        border: none;
+        border-radius: 0;
     }
     #tog-button-mobile .li-img {
         float: right;

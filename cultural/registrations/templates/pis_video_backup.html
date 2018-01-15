@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Registrations | Pravega 2018</title>
+    <title>Video Submission | Pravega Innovation Summit | Pravega 2018</title>
     {% load static %}
-    <meta name="description" content="Registrations for Pravega 2018">
+    <meta name="description" content="Project Video Submission for Pravega Innovation Summit">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
     <link href="{% static 'css/reg.css' %}" type="text/css" rel="stylesheet" />
@@ -17,24 +17,6 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-        }
-        
-        .nav-link a {
-            border-bottom: 2px white solid;
-        }
-        
-        @media only screen and (max-width: 900px),
-        (max-height: 500px) {
-            .content {
-                width: 100%;
-            }
-            .nav-link a {
-                display: block;
-                margin: 20px auto;
-            }
-            .nav-link span {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -398,7 +380,7 @@
                             <h4>Airbus Aeromodelling Initiative</h4>
                         </a>
                         <p>Not everyone is born with a gold spoon in their mouths; the world is filled with people who don't have many privileges which we consider routine in our lives.
-                             Pravega in conjunction with Airbus aims to help such students while sparking their interest in the field of aeromodelling in the Airbus Aeromodelling Initiative.</p>
+                                Pravega in conjunction with Airbus aims to help such students while sparking their interest in the field of aeromodelling in the Airbus Aeromodelling Initiative.</p>
                     </div>
                     <div class="expand-menu-text">
                         <a href="http://pravega.org/quiz.html">
@@ -505,42 +487,95 @@
     <div id="disabler"></div>
     <div id="main">
         <div class="content">
-            <a target="_blank" href="https://insider.in/pravega-pronites-ft-thaikkudam-bridge-jan-2018/event" class="nav-link" style="font-size: 1.3em;">Registrations for Pronites</a>
-            <a target="_blank" href="http://www.thecollegefever.com/events/pravega-accomodation" class="nav-link" style="font-size: 1.3em;">Accomodations</a>
-            <a target="_blank" href="https://www.thecollegefever.com/events/pravega-18" class="nav-link" style="font-size: 1.3em;">General Registrations and Workshops</a>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Pravega Innovation Summit (Closed)
-                <br/>
-                <br/>
-                <a href="http://pravega.org/registrations/pis">Registrations</a> <span>|</span> <a href="http://pravega.org/registrations/pis/video">Video Submission (Already registered)</a>
-            </div>
-            <a href="http://pravega.org/registrations/decoherence" class="nav-link" style="font-size: 1.3em;">Decoherence</a>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Hackathon
-                <br/>
-                <br/>
-                <a href="http://pravega.org/registrations/hackathon">Registration</a> <span>|</span> <a href="http://pravega.org/registrations/hackathon/abstract">Update Abstract (Already registered)</a>
-            </div>
-            <a href="http://pravega.org/registrations/openmic" class="nav-link" style="font-size: 1.3em;">Open Mic</a>
-            <a href="http://pravega.org/registrations/bob" class="nav-link" style="font-size: 1.3em;">Battle of Bands (Closed)</a>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Proscenium (Closed)
-                <br/>
-                <br/>
-                <a href="http://pravega.org/registrations/proscenium/theatre">Theatre Registration</a> <span>|</span> <a href="http://pravega.org/registrations/footprints">Footprints (Street Play) Registration</a> <span>|</span> <a href="http://pravega.org/registrations/proscenium/video">Video Submission (Already registered)</a>
-            </div>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Lasya (Closed)
-                <br/>
-                <br/>
-                <a href="http://pravega.org/registrations/lasya">Registration</a> <span>|</span> <a href="http://pravega.org/registrations/lasya/video">Video Submission (Already registered)</a>
-            </div>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Gaming
-                <br/>
-                <br/>
-                <a href="https://www.thecollegefever.com/events/pravega-18">Dota 2</a> <span>|</span> <a href="https://www.thecollegefever.com/events/pravega-18">FIFA 18</a>
-            </div>
+            <h1>Pravega Innovation Summit Video</h1> {% if error_message %}
+            <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
+            <form action="{% url 'registrations:pis_video' %}" method="post" enctype="multipart/form-data" id="msform">
+                <ul id="progressbar">
+                    <li>Rules</li>
+                    <li>Project
+                        <br/>Information</li>
+                </ul>
+                {% csrf_token %} {% if registration_form.errors %}
+                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
+                    <p> {{ errors }} </p>
+                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
+                    <p> {{ error }} </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <fieldset>
+                    <h2>Rules and Regulations</h2>
+                    <ol class="rules">
+                        <li>All team members must be students enrolled in an academic institution.</li>
+                        <li>Each team can have a maximum of 4 members.</li>
+                        <li>Ideas submitted must be original.</li>
+                        <li>Prelims:
+                            <ol class="deep" style="list-style-type: none; font-size: 0.8em;">
+                                <li>Round 1
+                                    <ol class="deep">
+                                        <li>Teams register online at our portal. There is no registration fee.</li>
+                                        <li>Teams must submit a description or abstract of their innovation by the first deadline. Additional files such as videos, presentations, websites URLs etc can be uploaded to support their description.</li>
+                                        <li>Ideas can be from any field or interdisciplinary including science, mathematics, engineering, economics, social sciences, etc</li>
+                                        <li><b>Deadline: 15th Dec (has been extended)</b></li>
+                                    </ol>
+                                </li>
+                                <li>Round 2
+                                    <ol class="deep">
+                                        <li>Teams need to submit a short video of the working prototype or some proof of concept which supports the feasibility of the idea/innovation.</li>
+                                        <li>The file(s) should be uploaded in Google Drive and the link with view access should be uploaded In the portal.</li>
+                                        <li>Deadline: 30th Dec</li>
+                                    </ol>
+                                </li>
+                                <li>Any workshop or online mentoring session organised by Pravega for this event is mandatory to attend by the Finalists.</li>
+                                <li>This workshop or mentoring will be conducted by skilled and experienced professor(s) of IISc or IIM, which will be free of cost for the finalists.</li>
+                            </ol>
+                        </li>
+                        <li>Finals
+                            <ol class="deep">
+                                <li>Eight teams will be selected for the final round, which will be conducted at IISc, Bangalore during Pravega 2018. Exact date and timings will be notified to the finalists.</li>
+                                <li>All the selected teams will be given 10-15min to pitch their idea, demonstrate prototype and present B-plan in front of all the invitees.</li>
+                                <li>Winning teams based on the assessment by judging panel will be announced the same day. Winning teams get cash prizes worth up to Rs. 1 lakh.</li>
+                            </ol>
+                        </li>
+                        <li>All finalists gets the opportunity to interact with corporates, investors and leading science professionals. Teams may also be offered internships in leading companies based on their interaction with the companies.</li>
+                        <li>Pravega will respect the privacy preferences chosen by the team.</li>
+                        <li>Any dispute arising due to any confusion regarding the contest shall be resolved at IISc by a Pravega committee. Pravega and the decision or resolution provided will be considered final. Pravega reserves the right to change specifics
+                            of the competition without prior notice. All decisions by Pravega shall be final and binding.</li>
+                        <li><strong>The "Referral Code" field is not required for submitting registrations.</strong></li>
+                    </ol>
+                    <br/>
+                    <p style="font-weight: bold;">Project video may not be re-submitted after it has already been submitted.</p>
+                    <br/>
+                    <p>Have you read and understood the above regulations?</p>
+                    <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label> {{ registration_form.understood }}
+                    <br/>
+                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.index.label_tag }} {{ registration_form.index }} {% if registration_form.index.errors %}
+                    <div class="errors">{% for error in registration_form.index.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.project_video.label_tag }} {{ registration_form.project_video }} {% if registration_form.project_video.errors %}
+                    <div class="errors">{% for error in registration_form.project_video.errors %} {{ error|escape }} {% endfor %} </div> 
+                    {% endif %} {{ registration_form.project_video_link.label_tag }} {{ registration_form.project_video_link }} {% if registration_form.project_video_link.errors %}
+                    <div class="errors">{% for error in registration_form.project_video_link.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
+                </fieldset>
+                <fieldset id="review">
+                    <h2>Please review before submitting</h2>
+                    <table>
+                        <colgroup>
+                            <col style="width: 50%" />
+                            <col style="width: 50%" />
+                        </colgroup>
+                    </table>
+                    <input type="button" name="previous" class="previous action-button" value="Edit" />
+                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
+                </fieldset>
+            </form>
+            <footer>
+                <p><a href="mailto:webmaster@pravega.org">Contact us</a> if you need any help!</p>
+            </footer>
         </div>
     </div>
     <div id="floating-footer">
@@ -581,9 +616,20 @@
             <li><a href="http://pravega.org/index.html">Home</a></li>
         </ul>
     </div>
+    <!-- Include formset plugin - including jQuery dependency -->
     <script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/TweenLite.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/menu.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script src="{% static 'js/reg.js' %}" type="text/javascript"></script>
+    <script>
+        $('.participant-formset').formset({
+            addText: 'Add participant',
+            deleteText: 'Remove Participant',
+            addAnimationDuration: 100,
+            removeAnimationDuration: 100
+        });
+    </script>
     <script type="text/javascript">
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;

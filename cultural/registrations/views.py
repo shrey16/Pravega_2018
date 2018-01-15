@@ -107,7 +107,7 @@ def proscenium_theatre_video(request):
                 return render(request, "proscenium_video_submission.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
             try:
                 registration.save()
-                return render(request, "success.html", {'event_name': 'Proscenium Video Prelims', 'id': registration.id})
+                return render(request, "success.html", {'event_name': 'Proscenium Prelims Video Submission', 'id': registration.id})
             except IntegrityError:
                 return render(request, "proscenium_video_submission.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
         else:
@@ -326,7 +326,7 @@ def lasya_video(request):
                 return render(request, "lasya_video_submission.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
             try:
                 registration.save()
-                return render(request, "success.html", {'event_name': 'Lasya Video Prelims', 'id': registration.id})
+                return render(request, "success.html", {'event_name': 'Lasya Prelims Video Submission', 'id': registration.id})
             except IntegrityError:
                 return render(request, "lasya_video_submission.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
         else:
@@ -581,7 +581,7 @@ def hackathon_abstract(request):
                 return render(request, "hackathon_abstract.html", {**context, **{'error_message': "Unrecognized Registration ID. Please retry."}})
             try:
                 registration.save()
-                return render(request, "success.html", {'event_name': 'Hackathon', 'id': registration.id})
+                return render(request, "success.html", {'event_name': 'Hackathon Abstract Update', 'id': registration.id})
             except IntegrityError:
                 return render(request, "hackathon_abstract.html", {**context, **{'error_message': "Possible Duplicate Registration. Please retry."}})
         else:

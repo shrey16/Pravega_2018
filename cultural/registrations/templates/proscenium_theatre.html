@@ -22,347 +22,468 @@
 </head>
 
 <body>
-        <!--SideBar-->
-        <div id="sidebar" class="clearfix">
-            <div id="tog-button-mobile">
-                <div class="li-img">
-                    <button class="c-hamburger c-hamburger--htx">
-                        <span>toggle menu</span>
-                    </button>
+    <!--SideBar-->
+    <div id="sidebar" class="clearfix">
+        <div id="tog-button-mobile">
+            <div class="li-img">
+                <button class="c-hamburger c-hamburger--htx">
+                    <span>toggle menu</span>
+                </button>
+            </div>
+            <a href="http://pravega.org/index.html">
+                <img id="header-logo" src="{% static 'img/logo.svg' %}" />
+                <div class="li-text nav-desc">
+                    <h3 id="title">Pravega</h3>
                 </div>
-                <a href="http://pravega.org/index.html">
-                    <img id="header-logo" src="{% static 'img/logo.svg' %}" />
+            </a>
+        </div>
+        <div id="iconbar">
+            <ul>
+                <li id="tog-button-desktop" class="nav-item desktop">
+                    <div class="li-img">
+                        <button class="c-hamburger c-hamburger--htx">
+                            <span>toggle menu</span>
+                        </button>
+                    </div>
                     <div class="li-text nav-desc">
-                        <h3 id="title">Pravega</h3>
+                        <h3>Some text toggle</h3>
                     </div>
-                </a>
-            </div>
-            <div id="iconbar">
-                <ul>
-                    <li id="tog-button-desktop" class="nav-item desktop">
-                        <div class="li-img">
-                            <button class="c-hamburger c-hamburger--htx">
-                                <span>toggle menu</span>
-                            </button>
-                        </div>
-                        <div class="li-text nav-desc">
-                            <h3>Some text toggle</h3>
-                        </div>
-                    </li>
-                    <li class="nav-item desktop nav-footer">
-                        <a href="http://pravega.org/index.html">
-                            <div class="li-img"><img src="{% static 'img/home.svg' %}"></div>
-                            <div class="li-text">Main Page</div>
-                        </a>
-                        <div class="extra-info">
-                            <h3>Main Page</h3>
-                            <p>Lost? Tired of reading this? Get back to the main page!</p>
-                        </div>
-                    </li>
-                    <li class="nav-item desktop">
-                        <a href="#">
-                            <div class="li-img"><img src="{% static 'img/Science.png' %}" /></div>
-                            <div class="li-text">Science</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                        </div>
-                    </li>
-                    <li class="nav-item desktop">
-                        <a href="#">
-                            <div class="li-img"><img src="{% static 'img/Cultural.png' %}" /></div>
-                            <div class="li-text">Cultural</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="http://pravega.org/pis.html">
-                            <div class="li-img"><img src="{% static 'img/PIS.png' %}" /></div>
-                            <div class="li-text">PIS</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Pravega Innovation Summit</h3>
-                            <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="http://pravega.org/hackathon.html">
-                            <div class="li-img">
-                                <img src="{% static 'img/Hackathon.png' %}" />
-                            </div>
-                            <div class="li-text">Hackathon</div>
-                        </a>
-                        <div class="dropdown">
-                            <img src="{% static 'img/downCaret.png' %}">
-                        </div>
-                        <div class="extra-info">
-                            <h3>Hackathon</h3>
-                            <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="http://pravega.org/workshops.html">
-                            <div class="li-img"><img src="{% static 'img/Workshops.png' %}" /></div>
-                            <div class="li-text">Workshops</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Workshops</h3>
-                            <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that
-                                at the end of the day, you would have learned something new.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="http://pravega.org/quiz.html">
-                            <div class="li-img"><img src="{% static 'img/Quiz.png' %}" /></div>
-                            <div class="li-text">Quizzes</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Quizzes</h3>
-                            <p>Delve into the world of quizzing in Pravega and pit your brains against others for glory and magnificent rewards!</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="http://pravega.org/biology.html">
-                            <div class="li-img"><img src="{% static 'img/Biology.png' %}" /></div>
-                            <div class="li-text">Biology</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Biology</h3>
-                            <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="http://pravega.org/chemistry.html">
-                            <div class="li-img"><img src="{% static 'img/Chemistry.png' %}" /></div>
-                            <div class="li-text">Chemistry</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Chemistry</h3>
-                            <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="http://pravega.org/maths.html">
-                            <div class="li-img"><img src="{% static 'img/math.png' %}" /></div>
-                            <div class="li-text">Mathematics</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Maths</h3>
-                            <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="http://pravega.org/physics.html">
-                            <div class="li-img"><img src="{% static 'img/Physics.png' %}" /></div>
-                            <div class="li-text">Physics</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Physics</h3>
-                            <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re
-                                at it.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="http://pravega.org/engine.html">
-                            <div class="li-img"><img src="{% static 'img/Technical.png' %}" /></div>
-                            <div class="li-text">Engineering</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Engineering</h3>
-                            <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="http://pravega.org/lasya.html">
-                            <div class="li-img"><img src="{% static 'img/Lasya.png' %}" /></div>
-                            <div class="li-text">Lasya</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Lasya</h3>
-                            <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="http://pravega.org/bob.html">
-                            <div class="li-img"><img src="{% static 'img/BoB.png' %}" /></div>
-                            <div class="li-text">BoB</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Battle of Bands</h3>
-                            <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
-                        </div>
-                    </li>
-                    <li class="nav-item mobile">
-                        <a href="http://pravega.org/pros.html">
-                            <div class="li-img"><img src="{% static 'img/Proscenium.png' %}" /></div>
-                            <div class="li-text">Proscenium</div>
-                        </a>
-                        <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
-                        <div class="extra-info">
-                            <h3>Proscenium</h3>
-                            <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
-                        </div>
-                    </li>
-                    <li class="nav-item desktop nav-footer nav-highlight-item">
-                        <a target="_blank" href="http://pravega.org/registrations/">
-                            <div class="li-img"><img src="{% static 'img/register.png' %}"></div>
-                            <div class="li-text">Registrations</div>
-                        </a>
-                        <div class="extra-info">
-                            <h3>Registrations</h3>
-                            <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
-                        </div>
-                    </li>
-                    <li class="nav-item desktop nav-footer">
-                        <a target="_blank" href="http://pravega.org/contact.html">
-                            <div class="li-img"><img src="{% static 'img/phone.svg' %}"></div>
-                            <div class="li-text">Contact Us</div>
-                        </a>
-                        <div class="extra-info">
-                            <h3>Contact Us</h3>
-                            <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="infobar">
-                <div class="infobar-content">
-                    <h2>Introduction</h2>
-                    <p>Go on, click on one of the buttons below, to discover a host of exciting events, which you might want to check out!
-                    </p>
-                </div>
-                <div class="infobar-content">
-                    <a href="http://pravega.org/index.html">
-                        <h2>Main Page</h2>
+                </li>
+                <li class="nav-item nav-highlight-item desktop">
+                    <a>
+                        <div class="li-img"><img src="{% static 'img/QuickLinks.png' %}" /></div>
+                        <div class="li-text">Quick Links</div>
                     </a>
-                    <p>Lost? Tired of reading this? Get back to the main page!</p>
-                </div>
-                <div class="infobar-content">
-                    <a href="#">
-                        <h2>Science</h2>
-                    </a>
-                    <div class="expand-menu">
-                        <img class="expand-menu-img active" onclick="window.location.href='http://pravega.org/biology.html'" src="{% static 'img/Biology.png' %}" />
-                        <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/maths.html'" src="{% static 'img/math.png' %}" />
-                        <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/physics.html'" src="{% static 'img/Physics.png' %}" />
-                        <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/chemistry.html'" src="{% static 'img/Chemistry.png' %}" />
-                        <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/engine.html'" src="{% static 'img/Technical.png' %}" />
-                        <div class="expand-menu-text active">
-                            <a href="http://pravega.org/biology.html">
-                                <h4>Biology</h4>
-                            </a>
-                            <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="http://pravega.org/maths.html">
-                                <h4>Mathematics</h4>
-                            </a>
-                            <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="http://pravega.org/physics.html">
-                                <h4>Physics</h4>
-                            </a>
-                            <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re
-                                at it.</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="http://pravega.org/chemistry.html">
-                                <h4>Chemistry</h4>
-                            </a>
-                            <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="http://pravega.org/engine.html">
-                                <h4>Engineering</h4>
-                            </a>
-                            <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
-                        </div>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
                     </div>
-                </div>
-                <div class="infobar-content">
-                    <a href="#">
-                        <h2>Cultural</h2>
+                </li>
+                <li class="nav-item desktop" id="highlights">
+                    <a>
+                        <div class="li-img"><img src="{% static 'img/Highlights.png' %}" /></div>
+                        <div class="li-text">Highlights</div>
                     </a>
-                    <div class="expand-menu">
-                        <img class="expand-menu-img active" onclick="window.location.href='http://pravega.org/lasya.html'" src="{% static 'img/Lasya.png' %}" />
-                        <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/bob.html'" src="{% static 'img/BoB.png' %}" />
-                        <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/pros.html'" src="{% static 'img/Proscenium.png' %}" />
-                        <div class="expand-menu-text active">
-                            <a href="http://pravega.org/lasya.html">
-                                <h4>Lasya</h4>
-                            </a>
-                            <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.
-                            </p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="http://pravega.org/bob.html">
-                                <h4>Battle of Bands</h4>
-                            </a>
-                            <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
-                        </div>
-                        <div class="expand-menu-text">
-                            <a href="http://pravega.org/pros.html">
-                                <h4>Proscenium</h4>
-                            </a>
-                            <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
-                        </div>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
                     </div>
-                </div>
-                <div class="infobar-content">
+                </li>
+                <li class="nav-item desktop">
+                    <a>
+                        <div class="li-img"><img src="{% static 'img/Science.png' %}" /></div>
+                        <div class="li-text">Science</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                    </div>
+                </li>
+                <li class="nav-item desktop">
+                    <a>
+                        <div class="li-img"><img src="{% static 'img/Cultural.png' %}" /></div>
+                        <div class="li-text">Cultural</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="http://pravega.org/updates.html">
+                        <div class="li-img"><img src="{% static 'img/info.png' %}"></div>
+                        <div class="li-text">Updates</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Updates</h3>
+                        <p>Want to know about the latest and greatest of Pravega? Here you go!</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="http://pravega.org/pronites.html">
+                        <div class="li-img"><img src="{% static 'img/pronites.png' %}"></div>
+                        <div class="li-text">Pronites</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Pronites</h3>
+                        <p>We present to you the best talents of the entertainment industry to leave an everlasting impact, and bring to a perfect end the amazing experience Pravega is.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
                     <a href="http://pravega.org/pis.html">
-                        <h2>Pravega Innovation Summit</h2>
+                        <div class="li-img"><img src="{% static 'img/PIS.png' %}" /></div>
+                        <div class="li-text">PIS</div>
                     </a>
-                    <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
-                </div>
-                <div class="infobar-content">
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Pravega Innovation Summit</h3>
+                        <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
                     <a href="http://pravega.org/hackathon.html">
-                        <h2>Hackathon</h2>
+                        <div class="li-img">
+                            <img src="{% static 'img/Hackathon.png' %}" />
+                        </div>
+                        <div class="li-text">Hackathon</div>
                     </a>
-                    <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
-                </div>
-                <div class="infobar-content">
+                    <div class="dropdown">
+                        <img src="{% static 'img/downCaret.png' %}">
+                    </div>
+                    <div class="extra-info">
+                        <h3>Hackathon</h3>
+                        <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
                     <a href="http://pravega.org/workshops.html">
-                        <h2>Workshops</h2>
+                        <div class="li-img"><img src="{% static 'img/Workshops.png' %}" /></div>
+                        <div class="li-text">Workshops</div>
                     </a>
-                    <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn
-                        something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
-                        end of the day, you would have learned something new.
-                    </p>
-                </div>
-                <div class="infobar-content">
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Workshops</h3>
+                        <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that
+                            at the end of the day, you would have learned something new.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
                     <a href="http://pravega.org/quiz.html">
-                        <h2>Quizzes</h2>
+                        <div class="li-img"><img src="{% static 'img/Quiz.png' %}" /></div>
+                        <div class="li-text">Quizzes</div>
                     </a>
-                    <p>Delve into the world of quizzing in Pravega and pit your brains against others for glory and magnificent rewards!</p>
-                </div>
-                <div class="infobar-content">
-                    <a target="_blank" href="http://pravega.org/registrations/">
-                        <h2>Registrations</h2>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Quizzes</h3>
+                        <p>Delve into the world of quizzing in Pravega and pit your brains against others for glory and magnificent rewards!</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/biology.html">
+                        <div class="li-img"><img src="{% static 'img/Biology.png' %}" /></div>
+                        <div class="li-text">Biology</div>
                     </a>
-                    <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
-                </div>
-                <div class="infobar-content">
-                    <a target="_blank" href="http://pravega.org/contact.html">
-                        <h2>Contact Us</h2>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Biology</h3>
+                        <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/chemistry.html">
+                        <div class="li-img"><img src="{% static 'img/Chemistry.png' %}" /></div>
+                        <div class="li-text">Chemistry</div>
                     </a>
-                    <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Chemistry</h3>
+                        <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/maths.html">
+                        <div class="li-img"><img src="{% static 'img/math.png' %}" /></div>
+                        <div class="li-text">Mathematics</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Maths</h3>
+                        <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile" id="decoherence-mobile-menu">
+                    <a href="http://pravega.org/physics.html#decoherence">
+                        <div class="li-img"><img src="{% static 'img/atomic.png' %}" /></div>
+                        <div class="li-text">Decoherence</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <p>Welcome to the biggest undergraduate physics competition, Decoherence, sponsored by Shell.
+                            Apply your theoretical knowledge of Physics to practical problems,
+                            because Nature's not as simple as our schooling would lead us to believe.
+                        </p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/physics.html">
+                        <div class="li-img"><img src="{% static 'img/Physics.png' %}" /></div>
+                        <div class="li-text">Physics</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Physics</h3>
+                        <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re
+                            at it.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/engine.html">
+                        <div class="li-img"><img src="{% static 'img/Technical.png' %}" /></div>
+                        <div class="li-text">Engineering</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Engineering</h3>
+                        <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/lasya.html">
+                        <div class="li-img"><img src="{% static 'img/Lasya.png' %}" /></div>
+                        <div class="li-text">Lasya</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Lasya</h3>
+                        <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/bob.html">
+                        <div class="li-img"><img src="{% static 'img/BoB.png' %}" /></div>
+                        <div class="li-text">BoB</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Battle of Bands</h3>
+                        <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/pros.html">
+                        <div class="li-img"><img src="{% static 'img/Proscenium.png' %}" /></div>
+                        <div class="li-text">Proscenium</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Proscenium</h3>
+                        <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/openmic.html">
+                        <div class="li-img"><img src="{% static 'img/openmic.png' %}"/></div>
+                        <div class="li-text">Open Mic</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Open Mic</h3>
+                        <p>Great talents need a platform to express themselves. Pravega's Open Mic provides that platform. Step up to the mic and don't be afraid to say "This is my ability; this is who I am"!</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/airbus.html">
+                        <div class="li-img"><img src="{% static 'img/airbus.png' %}"/></div>
+                        <div class="li-text">AAI</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Airbus Aeromodelling Initiative</h3>
+                        <p>Not everyone is born with a gold spoon in their mouths; the world is filled with people who don't have many privileges which we consider routine in our lives. Pravega in conjunction with Airbus aims to help such students while sparking their interest in the field of aeromodelling in the Airbus Aeromodelling Initiative.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/sponsors.html">
+                        <div class="li-img"><img src="{% static 'img/sponsors.png' %}"></div>
+                        <div class="li-text">Sponsors</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Sponsors</h3>
+                        <p>Millions of ideas perish due to the lack of adequate backing. Pravega thanks its wonderful sponsors for believing in our ideas, and supporting us.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="infobar">
+            <div class="infobar-content">
+                <h2>Introduction</h2>
+                <p>Go on, click on one of the buttons below, to discover a host of exciting events, which you might want to check out!
+                </p>
+            </div>
+            <div class="infobar-content">
+                <a>
+                    <h2>Quick Links</h2>
+                </a>
+                <div class="expand-menu">
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/index.html'" src="{% static 'img/home.svg' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/workshops.html'" src="{% static 'img/Workshops.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/contact.html'" src="{% static 'img/phone.svg' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/sponsors.html'" src="{% static 'img/sponsors.png' %}" />
+                    <img class="expand-menu-img expand-img-highlight active" onclick="window.location.href='http://pravega.org/registrations'" src="{% static 'img/register.png' %}" />
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/index.html">
+                            <h4>Main Page</h4>
+                        </a>
+                        <p>Lost? Tired of reading this? Get back to the main page!</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/workshops.html">
+                            <h4>Workshops</h4>
+                        </a>
+                        <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn
+                            something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
+                            end of the day, you would have learned something new.
+                        </p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a target="_blank" href="http://pravega.org/contact.html">
+                            <h4>Contact Us</h4>
+                        </a>
+                        <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a target="_blank" href="http://pravega.org/sponsors.html">
+                            <h4>Sponsors</h4>
+                        </a>
+                        <p>Millions of ideas perish due to the lack of adequate backing. Pravega thanks its wonderful sponsors for believing in our ideas, and supporting us.</p>
+                    </div>
+                    <div class="expand-menu-text active">
+                        <a target="_blank" href="http://pravega.org/registrations/">
+                            <h4>Registrations</h4>
+                        </a>
+                        <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
+                    </div>
                 </div>
+            </div>
+            <div class="infobar-content">
+                <a>
+                    <h2>Highlights</h2>
+                </a>
+                <div class="expand-menu">
+                    <img class="expand-menu-img active" onclick="window.location.href='http://pravega.org/pis.html'" src="{% static 'img/PIS.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/hackathon.html'" src="{% static 'img/Hackathon.png' %}" />
+                    <img class="expand-menu-img" id="decoherence-desktop-menu-image" onclick="window.location.href='http://pravega.org/physics.html#decoherence'" src="{% static 'img/atomic.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/airbus.html'" src="{% static 'img/airbus.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/quiz.html'" src="{% static 'img/Quiz.png' %}" />
+                    <div class="expand-menu-text active">
+                        <a href="http://pravega.org/pis.html">
+                            <h4>Pravega Innovation Summit</h4>
+                        </a>
+                        <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/hackathon.html">
+                            <h4>IBM Hackathon</h4>
+                        </a>
+                        <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
+                    </div>
+                    <div class="expand-menu-text" id="decoherence-desktop-menu-desc">
+                        <a href="http://pravega.org/physics.html#decoherence">
+                            <h4>Decoherence</h4>
+                        </a>
+                        <p>Welcome to the biggest undergraduate physics competition, Decoherence, sponsored by Shell.
+                            Apply your theoretical knowledge of Physics to practical problems,
+                            because Nature's not as simple as our schooling would lead us to believe.
+                        </p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/airbus.html">
+                            <h4>Airbus Aeromodelling Initiative</h4>
+                        </a>
+                        <p>Not everyone is born with a gold spoon in their mouths; the world is filled with people who don't have many privileges which we consider routine in our lives.
+                                Pravega in conjunction with Airbus aims to help such students while sparking their interest in the field of aeromodelling in the Airbus Aeromodelling Initiative.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/quiz.html">
+                            <h4>Quizzes</h4>
+                        </a>
+                        <p>Delve into the world of quizzing in Pravega and pit your brains against others for glory and magnificent rewards!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="infobar-content">
+                <a>
+                    <h2>Science</h2>
+                </a>
+                <div class="expand-menu">
+                    <img class="expand-menu-img active" onclick="window.location.href='http://pravega.org/biology.html'" src="{% static 'img/Biology.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/maths.html'" src="{% static 'img/math.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/physics.html'" src="{% static 'img/Physics.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/chemistry.html'" src="{% static 'img/Chemistry.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/engine.html'" src="{% static 'img/Technical.png' %}" />
+                    <div class="expand-menu-text active">
+                        <a href="http://pravega.org/biology.html">
+                            <h4>Biology</h4>
+                        </a>
+                        <p>Biology gives you a brain, life turns it into a mind. Exercise that mind to find the culprit of a murder in Whodunit, and to paint up a masterpiece in PECOSA.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/maths.html">
+                            <h4>Mathematics</h4>
+                        </a>
+                        <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/physics.html">
+                            <h4>Physics</h4>
+                        </a>
+                        <p>No one undertakes research in Physics with the intention of winning a prize. They do it for the joy of discovering something no one knew before. Explore this joy while experiencing Decoherence, and shoot a Vacuum Cannon while you’re
+                            at it.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/chemistry.html">
+                            <h4>Chemistry</h4>
+                        </a>
+                        <p>Never trust atoms, they make up everything. Make up your artwork using mysterious chemical concoctions, and then explain the CheMystery behind the masked magician's acts.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/engine.html">
+                            <h4>Engineering</h4>
+                        </a>
+                        <p>Engineering is the closest thing to magic existing in the world. Use that magic to create robots and tanks, and enjoy the same while shooting your enemies down in a game of laser tag.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="infobar-content">
+                <a>
+                    <h2>Cultural</h2>
+                </a>
+                <div class="expand-menu">
+                    <img class="expand-menu-img active" onclick="window.location.href='http://pravega.org/lasya.html'" src="{% static 'img/Lasya.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/bob.html'" src="{% static 'img/BoB.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/pros.html'" src="{% static 'img/Proscenium.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/openmic.html'" src="{% static 'img/openmic.png' %}"/>
+                    <div class="expand-menu-text active">
+                        <a href="http://pravega.org/lasya.html">
+                            <h4>Lasya</h4>
+                        </a>
+                        <p>Dance is magical, something that sets you free. It is dreaming with your feet, and exhibiting your passion. Display your own passion in this dance extravaganza, and leave the stage on fire.
+                        </p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/bob.html">
+                            <h4>Battle of Bands</h4>
+                        </a>
+                        <p>A band is not proud because it performs well, it performs well because it is proud. Put your pride and that of your band on the line, in the Battle of the Bands, and blow the roof off!</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/pros.html">
+                            <h4>Proscenium</h4>
+                        </a>
+                        <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/openmic.html">
+                            <h4>Open Mic</h4>
+                        </a>
+                        <p>Great talents need a platform to express themselves. Pravega's Open Mic provides that platform. Step up to the mic and don't be afraid to say "This is my ability; this is who I am"!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="infobar-content">
+                <a href="http://pravega.org/updates.html">
+                    <h2>Updates</h2>
+                </a>
+                <p>Want to know about the latest and greatest of Pravega? Here you go!</p>
+            </div>
+            <div class="infobar-content">
+                <a href="http://pravega.org/pronites.html">
+                    <h2>Pronites</h2>
+                </a>
+                <p>We present to you the best talents of the entertainment industry to leave an everlasting impact, and bring to a perfect end the amazing experience Pravega is.</p>
             </div>
         </div>
-        <!-- SideBar gets over-->
+    </div>
+    <!-- SideBar gets over-->
     <div id="disabler"></div>
     <div id="main">
         <div class="content">
@@ -395,16 +516,25 @@
                 <img src="{% static 'img/Twitter.svg' %}">
             </div>
         </a>
+        <a target="_blank" href="https://www.instagram.com/mypravega/">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
+                    <h6>Instagram</h6>
+                </div>
+                <img src="{% static 'img/instagram.svg' %}">
+            </div>
+        </a>
     </div>
     <div id="footer">
         <div id="social">
             <a target="_blank" href="https://www.facebook.com/PravegaIISc/"><img src="{% static 'img/fb.svg' %}"></a>
             <a target="_blank" href="https://twitter.com/PravegaIISc"><img src="{% static 'img/Twitter.svg' %}"></a>
+            <a target="_blank" href="https://www.instagram.com/mypravega/"><img src="{% static 'img/instagram.svg' %}"></a>
         </div>
         <ul id="links">
             <li><a target="_blank" href="http://pravega.org/registrations/">Registrations</a></li>
-            <li><a href="http://pravega.org/index.html">Home</a></li>
             <li><a href="http://pravega.org/contact.html">Contact</a></li>
+            <li><a href="http://pravega.org/index.html">Home</a></li>
         </ul>
     </div>
     <!-- Include formset plugin - including jQuery dependency -->

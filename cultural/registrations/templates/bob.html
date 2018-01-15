@@ -49,18 +49,26 @@
                         <h3>Some text toggle</h3>
                     </div>
                 </li>
-                <li class="nav-item desktop nav-footer">
-                    <a href="http://pravega.org/index.html">
-                        <div class="li-img"><img src="{% static 'img/home.svg' %}"></div>
-                        <div class="li-text">Main Page</div>
+                <li class="nav-item nav-highlight-item desktop">
+                    <a>
+                        <div class="li-img"><img src="{% static 'img/QuickLinks.png' %}" /></div>
+                        <div class="li-text">Quick Links</div>
                     </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
                     <div class="extra-info">
-                        <h3>Main Page</h3>
-                        <p>Lost? Tired of reading this? Get back to the main page!</p>
+                    </div>
+                </li>
+                <li class="nav-item desktop" id="highlights">
+                    <a>
+                        <div class="li-img"><img src="{% static 'img/Highlights.png' %}" /></div>
+                        <div class="li-text">Highlights</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
                     </div>
                 </li>
                 <li class="nav-item desktop">
-                    <a href="#">
+                    <a>
                         <div class="li-img"><img src="{% static 'img/Science.png' %}" /></div>
                         <div class="li-text">Science</div>
                     </a>
@@ -69,7 +77,7 @@
                     </div>
                 </li>
                 <li class="nav-item desktop">
-                    <a href="#">
+                    <a>
                         <div class="li-img"><img src="{% static 'img/Cultural.png' %}" /></div>
                         <div class="li-text">Cultural</div>
                     </a>
@@ -78,6 +86,28 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a href="http://pravega.org/updates.html">
+                        <div class="li-img"><img src="{% static 'img/info.png' %}"></div>
+                        <div class="li-text">Updates</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Updates</h3>
+                        <p>Want to know about the latest and greatest of Pravega? Here you go!</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="http://pravega.org/pronites.html">
+                        <div class="li-img"><img src="{% static 'img/pronites.png' %}"></div>
+                        <div class="li-text">Pronites</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Pronites</h3>
+                        <p>We present to you the best talents of the entertainment industry to leave an everlasting impact, and bring to a perfect end the amazing experience Pravega is.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
                     <a href="http://pravega.org/pis.html">
                         <div class="li-img"><img src="{% static 'img/PIS.png' %}" /></div>
                         <div class="li-text">PIS</div>
@@ -88,7 +118,7 @@
                         <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mobile">
                     <a href="http://pravega.org/hackathon.html">
                         <div class="li-img">
                             <img src="{% static 'img/Hackathon.png' %}" />
@@ -103,7 +133,7 @@
                         <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mobile">
                     <a href="http://pravega.org/workshops.html">
                         <div class="li-img"><img src="{% static 'img/Workshops.png' %}" /></div>
                         <div class="li-text">Workshops</div>
@@ -115,7 +145,7 @@
                             at the end of the day, you would have learned something new.</p>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mobile">
                     <a href="http://pravega.org/quiz.html">
                         <div class="li-img"><img src="{% static 'img/Quiz.png' %}" /></div>
                         <div class="li-text">Quizzes</div>
@@ -157,6 +187,19 @@
                     <div class="extra-info">
                         <h3>Maths</h3>
                         <p>Mathematics is a place where you can do things, which you cannot do in the real world. Explore this idea, as you strategize for the Daedalian auction and learn the Tricks of Trade.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile" id="decoherence-mobile-menu">
+                    <a href="http://pravega.org/physics.html#decoherence">
+                        <div class="li-img"><img src="{% static 'img/atomic.png' %}" /></div>
+                        <div class="li-text">Decoherence</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <p>Welcome to the biggest undergraduate physics competition, Decoherence, sponsored by Shell.
+                            Apply your theoretical knowledge of Physics to practical problems,
+                            because Nature's not as simple as our schooling would lead us to believe.
+                        </p>
                     </div>
                 </li>
                 <li class="nav-item mobile">
@@ -215,24 +258,37 @@
                         <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
                     </div>
                 </li>
-                <li class="nav-item desktop nav-footer nav-highlight-item">
-                    <a target="_blank" href="http://pravega.org/registrations/">
-                        <div class="li-img"><img src="{% static 'img/register.png' %}"></div>
-                        <div class="li-text">Registrations</div>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/openmic.html">
+                        <div class="li-img"><img src="{% static 'img/openmic.png' %}"/></div>
+                        <div class="li-text">Open Mic</div>
                     </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
                     <div class="extra-info">
-                        <h3>Registrations</h3>
-                        <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
+                        <h3>Open Mic</h3>
+                        <p>Great talents need a platform to express themselves. Pravega's Open Mic provides that platform. Step up to the mic and don't be afraid to say "This is my ability; this is who I am"!</p>
                     </div>
                 </li>
-                <li class="nav-item desktop nav-footer">
-                    <a target="_blank" href="http://pravega.org/contact.html">
-                        <div class="li-img"><img src="{% static 'img/phone.svg' %}"></div>
-                        <div class="li-text">Contact Us</div>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/airbus.html">
+                        <div class="li-img"><img src="{% static 'img/airbus.png' %}"/></div>
+                        <div class="li-text">AAI</div>
                     </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
                     <div class="extra-info">
-                        <h3>Contact Us</h3>
-                        <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
+                        <h3>Airbus Aeromodelling Initiative</h3>
+                        <p>Not everyone is born with a gold spoon in their mouths; the world is filled with people who don't have many privileges which we consider routine in our lives. Pravega in conjunction with Airbus aims to help such students while sparking their interest in the field of aeromodelling in the Airbus Aeromodelling Initiative.</p>
+                    </div>
+                </li>
+                <li class="nav-item mobile">
+                    <a href="http://pravega.org/sponsors.html">
+                        <div class="li-img"><img src="{% static 'img/sponsors.png' %}"></div>
+                        <div class="li-text">Sponsors</div>
+                    </a>
+                    <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
+                    <div class="extra-info">
+                        <h3>Sponsors</h3>
+                        <p>Millions of ideas perish due to the lack of adequate backing. Pravega thanks its wonderful sponsors for believing in our ideas, and supporting us.</p>
                     </div>
                 </li>
             </ul>
@@ -244,13 +300,98 @@
                 </p>
             </div>
             <div class="infobar-content">
-                <a href="http://pravega.org/index.html">
-                    <h2>Main Page</h2>
+                <a>
+                    <h2>Quick Links</h2>
                 </a>
-                <p>Lost? Tired of reading this? Get back to the main page!</p>
+                <div class="expand-menu">
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/index.html'" src="{% static 'img/home.svg' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/workshops.html'" src="{% static 'img/Workshops.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/contact.html'" src="{% static 'img/phone.svg' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/sponsors.html'" src="{% static 'img/sponsors.png' %}" />
+                    <img class="expand-menu-img expand-img-highlight active" onclick="window.location.href='http://pravega.org/registrations'" src="{% static 'img/register.png' %}" />
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/index.html">
+                            <h4>Main Page</h4>
+                        </a>
+                        <p>Lost? Tired of reading this? Get back to the main page!</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/workshops.html">
+                            <h4>Workshops</h4>
+                        </a>
+                        <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn
+                            something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
+                            end of the day, you would have learned something new.
+                        </p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a target="_blank" href="http://pravega.org/contact.html">
+                            <h4>Contact Us</h4>
+                        </a>
+                        <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a target="_blank" href="http://pravega.org/sponsors.html">
+                            <h4>Sponsors</h4>
+                        </a>
+                        <p>Millions of ideas perish due to the lack of adequate backing. Pravega thanks its wonderful sponsors for believing in our ideas, and supporting us.</p>
+                    </div>
+                    <div class="expand-menu-text active">
+                        <a target="_blank" href="http://pravega.org/registrations/">
+                            <h4>Registrations</h4>
+                        </a>
+                        <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
+                    </div>
+                </div>
             </div>
             <div class="infobar-content">
-                <a href="#">
+                <a>
+                    <h2>Highlights</h2>
+                </a>
+                <div class="expand-menu">
+                    <img class="expand-menu-img active" onclick="window.location.href='http://pravega.org/pis.html'" src="{% static 'img/PIS.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/hackathon.html'" src="{% static 'img/Hackathon.png' %}" />
+                    <img class="expand-menu-img" id="decoherence-desktop-menu-image" onclick="window.location.href='http://pravega.org/physics.html#decoherence'" src="{% static 'img/atomic.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/airbus.html'" src="{% static 'img/airbus.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/quiz.html'" src="{% static 'img/Quiz.png' %}" />
+                    <div class="expand-menu-text active">
+                        <a href="http://pravega.org/pis.html">
+                            <h4>Pravega Innovation Summit</h4>
+                        </a>
+                        <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/hackathon.html">
+                            <h4>IBM Hackathon</h4>
+                        </a>
+                        <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
+                    </div>
+                    <div class="expand-menu-text" id="decoherence-desktop-menu-desc">
+                        <a href="http://pravega.org/physics.html#decoherence">
+                            <h4>Decoherence</h4>
+                        </a>
+                        <p>Welcome to the biggest undergraduate physics competition, Decoherence, sponsored by Shell.
+                            Apply your theoretical knowledge of Physics to practical problems,
+                            because Nature's not as simple as our schooling would lead us to believe.
+                        </p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/airbus.html">
+                            <h4>Airbus Aeromodelling Initiative</h4>
+                        </a>
+                        <p>Not everyone is born with a gold spoon in their mouths; the world is filled with people who don't have many privileges which we consider routine in our lives.
+                                Pravega in conjunction with Airbus aims to help such students while sparking their interest in the field of aeromodelling in the Airbus Aeromodelling Initiative.</p>
+                    </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/quiz.html">
+                            <h4>Quizzes</h4>
+                        </a>
+                        <p>Delve into the world of quizzing in Pravega and pit your brains against others for glory and magnificent rewards!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="infobar-content">
+                <a>
                     <h2>Science</h2>
                 </a>
                 <div class="expand-menu">
@@ -293,13 +434,14 @@
                 </div>
             </div>
             <div class="infobar-content">
-                <a href="#">
+                <a>
                     <h2>Cultural</h2>
                 </a>
                 <div class="expand-menu">
                     <img class="expand-menu-img active" onclick="window.location.href='http://pravega.org/lasya.html'" src="{% static 'img/Lasya.png' %}" />
                     <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/bob.html'" src="{% static 'img/BoB.png' %}" />
                     <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/pros.html'" src="{% static 'img/Proscenium.png' %}" />
+                    <img class="expand-menu-img" onclick="window.location.href='http://pravega.org/openmic.html'" src="{% static 'img/openmic.png' %}"/>
                     <div class="expand-menu-text active">
                         <a href="http://pravega.org/lasya.html">
                             <h4>Lasya</h4>
@@ -319,46 +461,25 @@
                         </a>
                         <p>Acting is everyone’s favorite second-job. Change your look and your attitude, and you can be anyone. In Proscenium, we believe an ounce of action is worth a pound of words. So stop explaining yourself, Act!</p>
                     </div>
+                    <div class="expand-menu-text">
+                        <a href="http://pravega.org/openmic.html">
+                            <h4>Open Mic</h4>
+                        </a>
+                        <p>Great talents need a platform to express themselves. Pravega's Open Mic provides that platform. Step up to the mic and don't be afraid to say "This is my ability; this is who I am"!</p>
+                    </div>
                 </div>
             </div>
             <div class="infobar-content">
-                <a href="http://pravega.org/pis.html">
-                    <h2>Pravega Innovation Summit</h2>
+                <a href="http://pravega.org/updates.html">
+                    <h2>Updates</h2>
                 </a>
-                <p>Pravega Innovation Summit is the flagship event of Pravega 2018, IISc, which is an initiative to bring researchers, students and investors, together, providing a platform for networking and exchange of ideas to foster collaboration.</p>
+                <p>Want to know about the latest and greatest of Pravega? Here you go!</p>
             </div>
             <div class="infobar-content">
-                <a href="http://pravega.org/hackathon.html">
-                    <h2>Hackathon</h2>
+                <a href="http://pravega.org/pronites.html">
+                    <h2>Pronites</h2>
                 </a>
-                <p>Utilize the latest and greatest in machine learning to help computers understand emotions in our Hackathon!</p>
-            </div>
-            <div class="infobar-content">
-                <a href="http://pravega.org/workshops.html">
-                    <h2>Workshops</h2>
-                </a>
-                <p>Ever wanted to learn something of great value, which would help your career in the future? Or maybe you wanted to learn
-                    something fun. Either way, take your pick from the wide variety of workshops in Pravega. We guarantee that at the
-                    end of the day, you would have learned something new.
-                </p>
-            </div>
-            <div class="infobar-content">
-                <a href="http://pravega.org/quiz.html">
-                    <h2>Quizzes</h2>
-                </a>
-                <p>Delve into the world of quizzing in Pravega and pit your brains against others for glory and magnificent rewards!</p>
-            </div>
-            <div class="infobar-content">
-                <a target="_blank" href="http://pravega.org/registrations/">
-                    <h2>Registrations</h2>
-                </a>
-                <p>Registrations Portal for Pravega Innovation Summit, Battle of Bands, Lasya, Proscenium and Workshops.</p>
-            </div>
-            <div class="infobar-content">
-                <a target="_blank" href="http://pravega.org/contact.html">
-                    <h2>Contact Us</h2>
-                </a>
-                <p>Contact our co-ordinators for any help you may require or queries you might have.</p>
+                <p>We present to you the best talents of the entertainment industry to leave an everlasting impact, and bring to a perfect end the amazing experience Pravega is.</p>
             </div>
         </div>
     </div>
@@ -369,127 +490,9 @@
             <h1 id="registration-title">Battle of Bands</h1> {% if error_message %}
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
             <form action="{% url 'registrations:bob' %}" method="post" enctype="multipart/form-data" id="msform">
-                <ul id="progressbar">
-                    <li>Rules</li>
-                    <li>Identification</li>
-                    <li>Contact
-                        <br/>Details</li>
-                    <li>Prelims
-                        <br/>Information</li>
-                    <li>Participant
-                        <br/>Details</li>
-                </ul>
-                {% csrf_token %} {% if registration_form.errors %}
-                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
-                    <p> {{ errors }} </p>
-                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
-                    <p> {{ error }} </p>
-                    {% endfor %}
-                </div>
-                {% endif %}
                 <fieldset>
-                    <h2>Rules and Regulations</h2>
-                    <ol class="rules">
-                        <li>All bands are allowed to participate, regardless of age.</li>
-                        <li>There are no language or genre restrictions on the entries.</li>
-                        <li>The contest comprises of 3 stages. The rules for the different stages are:
-                            <ol class="deep" style="font-size:0.8em;">
-                                <li>Registration:
-                                    <ol class="deep" style="font-size:0.85em;">
-                                        <li>Bands can register online at our portal. There will be no registration fee.</li>
-                                        <li>The band will be considered only if they upload or link to (on SoundCloud, ReverbNation, or, failing all else, Youtube) one of their tracks as a sample during registration.</li>
-                                    </ol>
-                                </li>
-                                <li>Prelims:
-                                    <ol class="deep" style="font-size:0.85em;">
-                                        <li>We shall select anything between 5 to 8 bands from each city for the city prelims at the specified venue depending on the number of registrations.</li>
-                                        <li>Each band will get 20+5 minutes for their performance in the prelims, which includes sound check. However, bands will be given a total of half an hour before the prelims begin to have a preliminary master sound
-                                            balancing. The bands can perform as many tracks as they want to in that time limit.</li>
-                                    </ol>
-                                </li>
-                                <li>Finals:
-                                    <ol class="deep" style="font-size:0.85em;">
-                                        <li>The finals will be conducted at IISc, Bangalore during the course of Pravega 2018.</li>
-                                        <li>The bands will perform for 20+10 minutes. This includes the set up time.</li>
-                                    </ol>
-                                </li>
-                            </ol>
-                        </li>
-                        <li>Pravega will have the right to use any of the music tracks for future promotional purposes, with due credit given to the band.</li>
-                        <li>Any dispute arising due to any confusion regarding the contest shall be resolved at IISc by Battle of Bands, Pravega and the decision or resolution provided will be considered final.</li>
-                        <li>Participants will <b>NOT</b> be provided accomodation by Pravega.</li>
-                        <li><strong>The "Referral Code" field is not required for submitting registrations.</strong></li>
-                        <li>Pravega reserves the right to change specifics of the competition including rules and regulations, bands selected, prize amounts, etc., if necessary.
-                            <br/>All decisions by Pravega shall be final and binding.</li>
-                    </ol>
-                    <br/>
-                    <p>Have you read and understood the above regulations?</p>
-                    <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label> {{ registration_form.understood }}
-                    <br/>
-                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
-                </fieldset>
-                <fieldset class="real">
-                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
-                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.band_name.label_tag }} {{ registration_form.band_name }} {% if registration_form.band_name.errors %}
-                    <div class="errors"> {% for error in registration_form.band_name.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.city.label_tag }} {{ registration_form.city }} {% if registration_form.city.errors %}
-                    <div class="errors"> {% for error in registration_form.city.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.genre.label_tag }} {{ registration_form.genre }} {% if registration_form.genre.errors %}
-                    <div class="errors"> {% for error in registration_form.genre.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real">
-                    {{ registration_form.facebook_link.label_tag }} {{ registration_form.facebook_link }} {% if registration_form.facebook_link.errors %}
-                    <div class="errors"> {% for error in registration_form.facebook_link.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.email.label_tag }} {{ registration_form.email }} {% if registration_form.email.errors %}
-                    <div class="errors"> {% for error in registration_form.email.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real">
-                    {{ registration_form.prelims_venue.label_tag }} {{ registration_form.prelims_venue }} {% if registration_form.prelims_venue.errors %}
-                    <div class="errors"> {% for error in registration_form.prelims_venue.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.audio_sample_file.label_tag }} {{ registration_form.audio_sample_file }} {% if registration_form.audio_sample_file.errors %}
-                    <div class="errors"> {% for error in registration_form.audio_sample_file.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.audio_sample_link.label_tag }} {{ registration_form.audio_sample_link }} {% if registration_form.audio_sample_link.errors %}
-                    <div class="errors"> {% for error in registration_form.audio_sample_link.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real" id="participants">
-                    {% if participant_formset.non_form_errors %}
-                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
-                    <div class="participant-formset">
-                        {% if participant_form.errors %}
-                        <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
-                            <p> {{ errors }} </p>
-                            {% endfor %} {% endfor %}
-                        </div>
-                        {% endif %} {{ participant_form.name.label_tag }} {{ participant_form.name }} {% if participant_form.name.errors %}
-                        <div class="errors"> {% for error in participant_form.name.errors %} {{ error|escape }} {% endfor %} </div>
-                        {% endif %} {{ participant_form.contact.label_tag }} {{ participant_form.contact }} {% if participant_form.contact.errors %}
-                        <div class="errors"> {% for error in participant_form.contact.errors %} {{ error|escape }} {% endfor %} </div>
-                        {% endif %} {{ participant_form.instrument.label_tag }} {{ participant_form.instrument }} {% if participant_form.instrument.errors %}
-                        <div class="errors"> {% for error in participant_form.instrument.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    </div>
-                    {% endfor %}
-                    <br />
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
-                </fieldset>
-                <fieldset id="review">
-                    <h2>Please review before submitting</h2>
-                    <table>
-                        <colgroup>
-                            <col style="width: 50%" />
-                            <col style="width: 50%" />
-                        </colgroup>
-                    </table>
-                    <input type="button" name="previous" class="previous action-button" value="Edit" />
-                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
+                    <h2>Registrations have closed.</h2>
+                    <p style="font-weight: bold;">Click <a style="color: green;" href="http://pravega.org/registrations/pis/video">here</a> to submit project video. <br/> (You will need your registration ID)</p>
                 </fieldset>
             </form>
             <footer>
@@ -514,16 +517,25 @@
                 <img src="{% static 'img/Twitter.svg' %}">
             </div>
         </a>
+        <a target="_blank" href="https://www.instagram.com/mypravega/">
+            <div class="fab-icon">
+                <div class="fab-desc triangle-isosceles">
+                    <h6>Instagram</h6>
+                </div>
+                <img src="{% static 'img/instagram.svg' %}">
+            </div>
+        </a>
     </div>
     <div id="footer">
         <div id="social">
             <a target="_blank" href="https://www.facebook.com/PravegaIISc/"><img src="{% static 'img/fb.svg' %}"></a>
             <a target="_blank" href="https://twitter.com/PravegaIISc"><img src="{% static 'img/Twitter.svg' %}"></a>
+            <a target="_blank" href="https://www.instagram.com/mypravega/"><img src="{% static 'img/instagram.svg' %}"></a>
         </div>
         <ul id="links">
             <li><a target="_blank" href="http://pravega.org/registrations/">Registrations</a></li>
-            <li><a href="http://pravega.org/index.html">Home</a></li>
             <li><a href="http://pravega.org/contact.html">Contact</a></li>
+            <li><a href="http://pravega.org/index.html">Home</a></li>
         </ul>
     </div>
     <!-- Include formset plugin - including jQuery dependency -->
