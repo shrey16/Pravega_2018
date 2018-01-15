@@ -76,13 +76,12 @@
 #presents {
     font-size: 1.5em;
     opacity: 0;
-    text-align: right;
+    text-align: center;
 }
 
 #airbus_logo,
 #presents {
     opacity: 1;
-    text-align: center;
 }
 #scroll_me_arrow {
     position: fixed;
@@ -171,7 +170,6 @@
 }
 
 #intro p {
-    text-align: center;
     margin: 5px 0px 5px 0px;
 }
 
@@ -184,6 +182,9 @@
     }
     #pravega_logo {
         font-size: 4em;
+    }
+    #pra {
+        padding: 10px 0;
     }
     #v-logo {
         height: 70px;
