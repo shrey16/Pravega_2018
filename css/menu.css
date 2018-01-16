@@ -574,7 +574,7 @@ span {
         left: 0px;
         top: calc(30px - 1.2em);
         font-size: 1.2em;
-        width: calc(100% - 80px - 82px);
+        width: calc(100% - 162px);
     }
     .nav-desc {
         margin: 0;

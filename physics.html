@@ -24,13 +24,10 @@ Decoherence." />
         }
         @media only screen and (max-width: 900px),
         (max-height: 500px) {
-            .content, 
-            .content-text {
-                height: 100%;
-            }
+            
             .content-text p, h4 {
                 margin: 0;
-                premoveing: 5px;
+                padding: 5px;
             }
         }
     </style>
@@ -523,7 +520,7 @@ Decoherence." />
                     </div>
                 </div>
                 <div class="section">
-                    <div class="content" style="vertical-align: middle;flex-direction: row-reverse;height: auto;">
+                    <div class="content" style="vertical-align: middle;flex-direction: row-reverse;">
                         <img src="img/vacuum.svg" class="content-img">
                         <div class="content-text" style="height:auto;">
                             <h1>Vacuum Cannon</h1>
@@ -606,6 +603,9 @@ Decoherence." />
             }
             $(window).bind('hashchange', toggleDecoherenceMenuHighlight);
             toggleDecoherenceMenuHighlight();
+            const decoherenceSection = $(".section").eq(0);
+            decoherenceSection.css("height", "calc(96vh - 60px)");
+            decoherenceSection.find(".fp-tableCell").css("height", "calc(96vh - 60px)");
         });
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;

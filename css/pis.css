@@ -71,4 +71,7 @@ th, td {
     .card h3, h4 {
         font-weight: 400;
     }
+    .card:last-of-type {
+        margin-bottom: 55px;
+    }
 }
