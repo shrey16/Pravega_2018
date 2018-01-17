@@ -99,11 +99,11 @@
                 <li class="nav-item">
                     <a href="http://pravega.org/pronites.html">
                         <div class="li-img"><img src="{% static 'img/pronites.png' %}"></div>
-                        <div class="li-text">Pronites</div>
+                        <div class="li-text">Pro Nites</div>
                     </a>
                     <div class="dropdown"><img src="{% static 'img/downCaret.png' %}"></div>
                     <div class="extra-info">
-                        <h3>Pronites</h3>
+                        <h3>Pro Nites</h3>
                         <p>We present to you the best talents of the entertainment industry to leave an everlasting impact, and bring to a perfect end the amazing experience Pravega is.</p>
                     </div>
                 </li>
@@ -477,7 +477,7 @@
             </div>
             <div class="infobar-content">
                 <a href="http://pravega.org/pronites.html">
-                    <h2>Pronites</h2>
+                    <h2>Pro Nites</h2>
                 </a>
                 <p>We present to you the best talents of the entertainment industry to leave an everlasting impact, and bring to a perfect end the amazing experience Pravega is.</p>
             </div>
@@ -490,117 +490,8 @@
             <h1 id="registration-title">Hackathon</h1> {% if error_message %}
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
             <form action="{% url 'registrations:hackathon' %}" method="post" enctype="multipart/form-data" id="msform">
-                <ul id="progressbar">
-                    <li>Rules</li>
-                    <li>Identification</li>
-                    <li>Contact
-                        <br/>Information</li>
-                    <li>Abstract</li>
-                    <li>Participant
-                        <br/>Details</li>
-                </ul>
-                {% csrf_token %} {% if registration_form.errors %}
-                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
-                    <p> {{ errors }} </p>
-                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
-                    <p> {{ error }} </p>
-                    {% endfor %}
-                </div>
-                {% endif %}
                 <fieldset>
-                    <p style="font-weight: bold;">Click <a style="color: green;" href="http://pravega.org/registrations/hackathon/abstract">here</a> to update your abstract. <br/> (You will need your registration ID)</p>
-                    <h2>Rules and Regulations</h2>
-                    <h2>General Rules</h2>
-                    <ol class="rules">
-                        <li>
-                            <h3>Prizes</h3>
-                            <ul class="deep">
-                                <li>1<sup>st</sup> place: ₹70,000</li>
-                                <li>2<sup>nd</sup> place: ₹30,000</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h3>Theme</h3>
-                            <ul class="deep">
-                                <li>Cognitive-based Sentiment Analysis leveraging IBM Watson Toolkit.</li>
-                                <li>Using Watson Cognitive APIs perform Sentiment Analysis on available customer feedback and suggest improvements to the overall services.</li>
-                            </ul>
-                            <br/>
-                        </li>
-                        <li>
-                            <h3>Prompt for the Abstract</h3>
-                            <ul class="deep">
-                                <li>How would you leverage the IBM Watson Toolkit in Cognitive-based Sentiment Analysis?</li>
-                                <li>How would you utilize Sentiment Analysis of available customer feedback leveraging the IBM Watson Toolkit and suggest improvements to the overall services?</li>
-                            </ul>
-                            <br/>
-                        </li>
-                        <li>Further details, <em>e.g.</em>, the problem statement and other rules, are available <a style="color: green;" href="http://pravega.org/docs/Hackathon_Details.pdf">here</a>.</li>
-                    </ol>
-                    <h2>Registration and Team</h2>
-                    <ol class="rules">
-                        <li>Maximum of 4 participants per team.</li>
-                        <li>A proper presentation of the team's idea for the Hackathon must be provided for the in the abstract. Inappropriate abstracts may invalidate your registration.</li>
-                        <li>Idea Abstract must be entered in the relevant field of the form; it must be between 200 to 5000 words in total.</li>
-                        <li><strong>The "Referral Code" field is not required for submitting registrations.</strong></li>
-                        <li>For any clarifications, contact us via <a style="color: green;" href"mailto:webmaster@pravega.org">e-mail</a> or WhatsApp at +918017545009 or call us at +919980575725.</li>
-                    </ol>
-                    <br/>
-                    <p>Have you read and understood the above regulations?</p>
-                    <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label> {{ registration_form.understood }}
-                    <br/>
-                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
-                </fieldset>
-                <fieldset class="real">
-                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
-                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.team_name.label_tag }} {{ registration_form.team_name }} {% if registration_form.team_name.errors %}
-                    <div class="errors"> {% for error in registration_form.team_name.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real">
-                    {{ registration_form.email.label_tag }} {{ registration_form.email }} {% if registration_form.email.errors %}
-                    <div class="errors"> {% for error in registration_form.email.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.contact.label_tag }} {{ registration_form.contact }} {% if registration_form.contact.errors %}
-                    <div class="errors"> {% for error in registration_form.contact.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real">
-                    {{ registration_form.abstract.label_tag }} {{ registration_form.abstract }} {% if registration_form.abstract.errors %}
-                    <div class="errors"> {% for error in registration_form.abstract.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real" id="participants">
-                    {% if participant_formset.non_form_errors %}
-                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
-                    <div class="participant-formset">
-                        {% if participant_form.errors %}
-                        <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
-                            <p> {{ errors }} </p>
-                            {% endfor %} {% endfor %}
-                        </div>
-                        {% endif %} {{ participant_form.name.label_tag }} {{ participant_form.name }} {% if participant_form.name.errors %}
-                        <div class="errors"> {% for error in participant_form.name.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    </div>
-                    {% endfor %}
-                    <br />
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
-                </fieldset>
-                <fieldset id="review">
-                    <h2>Please review before submitting</h2>
-                    <table>
-                        <colgroup>
-                            <col style="width: 50%" />
-                            <col style="width: 50%" />
-                        </colgroup>
-                    </table>
-                    <input type="button" name="previous" class="previous action-button" value="Edit" />
-                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
+                    <h2>Registrations have closed.</h2>
                 </fieldset>
             </form>
             <footer>

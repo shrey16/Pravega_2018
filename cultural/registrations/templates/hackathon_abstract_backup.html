@@ -490,8 +490,71 @@
             <h1 id="registration-title">Hackathon Abstract Update</h1> {% if error_message %}
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
             <form action="{% url 'registrations:hackathon_abstract' %}" method="post" enctype="multipart/form-data" id="msform">
+                <ul id="progressbar">
+                    <li>Rules</li>
+                    <li>Abstract</li>
+                </ul>
+                {% csrf_token %} {% if registration_form.errors %}
+                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
+                    <p> {{ errors }} </p>
+                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
+                    <p> {{ error }} </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <fieldset>
-                    <h2>Registrations have closed.</h2>
+                    <h2>Rules and Regulations</h2>
+                    <h2>General Rules</h2>
+                    <ol class="rules">
+                        <li>
+                            <h3>Prizes</h3>
+                            <ul class="deep">
+                                <li>1<sup>st</sup> place: ₹70,000</li>
+                                <li>2<sup>nd</sup> place: ₹30,000</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>Theme</h3>
+                            <ul class="deep">
+                                <li>Cognitive-based Sentiment Analysis leveraging IBM Watson Toolkit.</li>
+                                <li>Using Watson Cognitive APIs perform Sentiment Analysis on available customer feedback and suggest improvements to the overall services.</li>
+                            </ul>
+                            <br/>
+                        </li>
+                        <li>Further details, <em>e.g.</em>, the problem statement and other rules, are available <a style="color: green;" href="http://pravega.org/docs/Hackathon_Details.pdf">here</a>.</li>
+                        <li><strong>The "Referral Code" field is not required for submitting registrations.</strong></li>
+                    </ol>
+                    <h2>Registration and Team</h2>
+                    <ol class="rules">
+                        <li>Maximum of 4 participants per team.</li>
+                        <li>A proper presentation of the team's idea for the Hackathon must be provided for the in the abstract. Inappropriate abstracts may invalidate your registration.</li>
+                        <li>Idea Abstract must be entered in the relevant field of the form; it must be between 200 to 5000 words in total.</li>
+                        <li>For any clarifications, contact us via <a style="color: green;" href"mailto:webmaster@pravega.org">e-mail</a> or WhatsApp at +918017545009 or call us at +919980575725.</li>
+                    </ol>
+                    <br/>
+                    <p>Have you read and understood the above regulations?</p>
+                    <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label> {{ registration_form.understood }}
+                    <br/>
+                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.index.label_tag }} {{ registration_form.index }} {% if registration_form.index.errors %}
+                    <div class="errors">{% for error in registration_form.index.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.abstract.label_tag }} {{ registration_form.abstract }} {% if registration_form.abstract.errors %}
+                    <div class="errors">{% for error in registration_form.abstract.errors %} {{ error|escape }} {% endfor %} </div> {% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
+                </fieldset>
+                <fieldset id="review">
+                    <h2>Please review before submitting</h2>
+                    <table>
+                        <colgroup>
+                            <col style="width: 50%" />
+                            <col style="width: 50%" />
+                        </colgroup>
+                    </table>
+                    <input type="button" name="previous" class="previous action-button" value="Edit" />
+                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
                 </fieldset>
             </form>
             <footer>
