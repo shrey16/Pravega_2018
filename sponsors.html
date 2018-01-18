@@ -24,6 +24,24 @@
         a:hover {
             text-decoration: none;
         }
+
+        #content-header, .contact>.details {
+            background-color: white;
+            color: black;
+            border-color: white;
+        }
+        #content-header img {
+            width: 100%;
+        }
+        .details img {
+            border-radius: 0;
+            border: none;
+            height: auto;
+            display: inline-block;
+        }
+        .details {
+            height: 290px;
+        }
     </style>
 </head>
 
@@ -498,145 +516,138 @@
         <!-- Main Content-->
         <div id="main">
             <div id="content-header">
-                <h1>Our Sponsors</h1>
-                <h2>Millions of ideas perish due to the lack of adequate backing. Pravega thanks its wonderful sponsors for believing in our ideas, and supporting us.</h2>
-                <h2>Coming soon!</h2>
+                <table class="desktop" style="width: 100%;">
+                    <colgroup>
+                        <col style="width: 25%" />
+                        <col style="width: 50%" />
+                        <col style="width: 25%" />
+                    </colgroup>
+                    <tbody><tr>
+                        <td><img src="img/sponsor-logos/pravega-18.png" style="transform: scale(0.65);"/></td>
+                        <td><h1>Our Sponsors and Partners</h1></td>
+                        <td><img src="img/sponsor-logos/iisc.png" style="transform: scale(0.65);"/></td>
+                    </tr></tbody>
+                </table>
+                <table class="mobile-display" style="width: 100%;">
+                    <colgroup>
+                        <col style="width: 50%" />
+                        <col style="width: 50%" />
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td><img src="img/sponsor-logos/pravega-18.png" style="transform: scale(0.65);"/></td>
+                            <td><img src="img/sponsor-logos/iisc.png" style="transform: scale(0.65);"/></td>
+                        </tr>
+                        <tr><td colspan="2"><h1>Our Sponsors and Partners</h1></td></tr>
+                    </tbody>
+                </table>
             </div>
             <div id="fullpage">
-                <!-- <h1 class="header center">Headed By</h1>
+                <h1 class="header center">Our Sponsors</h1>
                 <div class="contact center">
                     <div class="details">
-                        <h2>Chief Co-ordinator</h2>
-                        <img src="img/contact-photos/sannibha.jpg" alt="Sannibha Das">
-                        <h3>Sannibha Das</h3>
-                        <a href="mailto:sannibha.iisc@pravega.org">
-                            <h3>sannibha.iisc@pravega.org</h3>
-                        </a>
-                    </div>
-                </div>
-                <h1 class="header center">Support Team</h1>
-                <div class="contact left">
-                    <div class="details">
-                        <h2>Marketing</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/pragati.jpg" alt="Pragati Gupta">
-                        <h3>Pragati Gupta</h3>
-                        <a href="mailto:pragati.iisc@pravega.org">
-                            <h3>pragati.iisc@pravega.org</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact right">
-                    <div class="details">
-                        <h2>Hospitality and Web</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/shrey.jpg" alt="Shrey Gupta" style="margin-top: -30px;">
-                        <h3>Shrey Gupta</h3>
-                        <a href="mailto:shrey@pravega.org">
-                            <h3>shrey@pravega.org</h3>
-                        </a>
-                        <h3>+91-8296019876</h3>
-                    </div>
-                </div>
-                <div class="contact left">
-                    <div class="details">
-                        <h2>Food Stalls</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/adarsh.jpg" alt="Adarsh S">
-                        <h3>Adarsh S</h3>
-                        <a href="mailto:adarsh@pravega.org">
-                            <h3>adarsh@pravega.org</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact right">
-                    <div class="details">
-                        <h2>Science</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/agnish.jpg" alt="Agnish Kumar Behera">
-                        <h3>Agnish Kumar Behera</h3>
-                        <a href="mailto:agnish@pravega.org">
-                            <h3>agnish@pravega.org</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact left">
-                    <div class="details">
-                        <h2>Cultural Events</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/rohith.jpg" alt="Rohith KMS">
-                        <h3>Rohith KMS</h3>
-                        <a href="mailto:rohith@pravega.org">
-                            <h3>rohith@pravega.org</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact right">
-                    <div class="details">
-                        <h2>Cultural Events</h2>
-                        <h2 style="margin-top: -20px;">(Pro Nites)</h2>
-                        <img src="img/contact-photos/vinayak.jpg" alt="Vinayak">
-                        <h3>Vinayak</h3>
-                        <a href="mailto:vinayak@pravega.org">
-                            <h3>vinayak@pravega.org</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact left">
-                    <div class="details">
-                        <h2>Workshops and Gaming</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/kartik.jpg" alt="Karthik Sharma" style="margin-top: -30px;">
-                        <h3>Karthik Sharma</h3>
-                        <a href="mailto:kartik@pravega.org">
-                            <h3>kartik@pravega.org</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact right">
-                    <div class="details">
-                        <h2>Workshops</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/vatsal.jpg" alt="Vatsal Gehlot">
-                        <h3>Vatsal Gehlot</h3>
-                        <a href="mailto:vatsal@pravega.org">
-                            <h3>vatsal@pravega.org</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact left">
-                    <div class="details">
-                        <h2>Publicity</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/shashank.jpg" alt="Shashank Dattathri">
-                        <h3>Shashank Dattathri</h3>
-                        <a href="mailto:shashank@pravega.org">
-                            <h3>shashank@pravega.org</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact right">
-                    <div class="details">
-                        <h2>Publicity</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/preetham.jpg" alt="Preetham Venkatesh">
-                        <h3>Preetham Venkatesh</h3>
-                        <a href="mailto:preetham@pravega.org">
-                            <h3>preetham@pravega.org</h3>
-                        </a>
+                        <h2>Title Sponsor</h2>
+                        <a href="http://www.airbus.com/"><img src="img/sponsor-logos/airbus.png" alt="Airbus" style="transform: translateY(200%)"></a>
                     </div>
                 </div>
                 <div class="contact center">
                     <div class="details">
-                        <h2>Logistics</h2>
-                        <h2 style="margin-top: -20px;">&nbsp;</h2>
-                        <img src="img/contact-photos/sankalpa.jpg" alt="Sankalpa Hazra">
-                        <h3>Sankalpa Hazra</h3>
-                        <a href="mailto:sankalpa@pravega.org">
-                            <h3>sankalpa@pravega.org</h3>
-                        </a>
+                        <h2>Gold Sponsor</h2>
+                        <a href="https://www.shell.com/"><img src="img/sponsor-logos/shell.png" alt="Shell"></a>
                     </div>
-                </div> -->
+                </div>
+                <div class="contact left">
+                    <div class="details">
+                        <h2>Technical Partner</h2>
+                        <a href="https://www.ibm.com/in-en/"><img src="img/sponsor-logos/ibm.png" alt="IBM" style="transform: translateY(50%)"></a>
+                    </div>
+                </div>
+                <div class="contact right">
+                    <div class="details">
+                        <h2>Associate Sponsor</h2>
+                        <a href="http://www.ael-india.com/overview.html"><img src="img/sponsor-logos/koremec.png" alt="Autosys Koremec" style="transform: translateY(25%)"></a>
+                    </div>
+                </div>
+                <h2 class="header center" style="text-transform: none;">Special Thanks to Dr. Arkal Shenoy (Alumnus of IISc) and Dr. Vasanthi Shenoy</h2>
+                <h1 class="header center">Our Associate Partners</h1>
+                <div class="contact left">
+                    <div class="details">
+                        <h2>Online Ticketing</h2>
+                        <a href="https://www.thecollegefever.com/"><img src="img/sponsor-logos/the-college-fever.png" alt="The College Fever" style="transform: translateY(50%)"></a>
+                    </div>
+                </div>
+                <div class="contact right">
+                    <div class="details">
+                        <h2>Online Ticketing</h2>
+                        <a href="https://insider.in/"><img src="img/sponsor-logos/insider.png" alt="insider.in" style="transform: translateY(150%)"></a>
+                    </div>
+                </div>
+                <div class="contact center">
+                    <div class="details">
+                        <h2>BoB Prize Sponsor</h2>
+                        <a href="http://nathanielschool.com/"><img src="img/sponsor-logos/nathaniel-school-of-music.png" alt="Nathaniel School of Music" style="transform: translateY(100%)"></a>
+                    </div>
+                </div>
+                <div class="contact left">
+                    <div class="details">
+                        <h2>Artist Management</h2>
+                        <a href="http://7entertainment.in/"><img src="img/sponsor-logos/7entertainment.png" alt="7 Entertainment"></a>
+                    </div>
+                </div>
+                <div class="contact right">
+                    <div class="details">
+                        <h2>Artist Management</h2>
+                        <a href="https://www.facebook.com/thebrokenroadsgroup/"><img src="img/sponsor-logos/the-broken-roads-group.png" alt="The Broken Roads Group"></a>
+                    </div>
+                </div>
+                <div class="contact left">
+                    <div class="details">
+                        <h2>Content</h2>
+                        <a href="http://atkt.in/"><img src="img/sponsor-logos/atkt.png" alt="ATKT.in" style="transform: scale(0.6) translateY(-25%)"></a>
+                    </div>
+                </div>
+                <div class="contact right">
+                    <div class="details">
+                        <h2>Creative</h2>
+                        <a href="http://lahe-lahe.com/"><img src="img/sponsor-logos/lahelahe.png" alt="Lahe Lahe"></a>
+                    </div>
+                </div>
+                <div class="contact left">
+                    <div class="details">
+                        <h2>Gaming</h2>
+                        <a href="https://neongamingstudio.com/"><img src="img/sponsor-logos/neon-gaming-studio.png" alt="Neon Gaming Studio" style="transform: translateY(25%)"></a>
+                    </div>
+                </div>
+                <div class="contact right">
+                    <div class="details">
+                        <h2>Gaming</h2>
+                        <a href="https://www.luduspro.com/"><img src="img/sponsor-logos/luduspro-gaming.png" alt="Ludus Pro" style="transform: translateY(12.5%)"></a>
+                    </div>
+                </div>
+                <div class="contact left">
+                    <div class="details">
+                        <h2>Gaming</h2>
+                        <a href="http://www.gogamexchange.com/"><img src="img/sponsor-logos/gxc.png" alt="Game Exchange" style="transform: translateY(50%)"></a>
+                    </div>
+                </div>
+                <div class="contact right">
+                    <div class="details">
+                        <h2>Gaming</h2>
+                        <a href="https://www.facebook.com/gamers4life/"><img src="img/sponsor-logos/g4l.png" alt="Gamers 4 Life"></a>
+                    </div>
+                </div>
+                <div class="contact left">
+                    <div class="details">
+                        <h2>Prizes - Workshops</h2>
+                        <a href="https://internshala.com/"><img src="img/sponsor-logos/internshala.png" alt="Internshala" style="transform: translateY(25%)"></a>
+                    </div>
+                </div>
+                <div class="contact right">
+                    <div class="details">
+                        <h2>Proscenium Prizes</h2>
+                        <a href="http://indianensemble.in/"><img src="img/sponsor-logos/indian-ensemble.png" alt="Indian Ensemble" style="transform: translateY(200%)"></a>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="floating-footer">

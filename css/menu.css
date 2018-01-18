@@ -418,7 +418,9 @@ span {
     transform: scale(0.5);
     transform-origin: 100% 0;
 }
-
+.mobile-display {
+    display: none;
+}
 @media only screen and (max-width: 900px) {
     *:focus {
         outline: none;
@@ -630,6 +632,9 @@ span {
         display: none!important;
     }
     #iconbar ul li.mobile {
+        display: block;
+    }
+    .mobile-display {
         display: block;
     }
 }
