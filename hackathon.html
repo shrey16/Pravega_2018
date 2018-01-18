@@ -20,6 +20,12 @@
             background-repeat: no-repeat;
             background-position: center center;
         }
+        @media only screen and (max-width: 900px),
+        (max-height: 500px) {
+            .content:nth-of-type(n+1) {
+                flex-direction: row!important;
+            }
+        }
     </style>
 </head>
 
