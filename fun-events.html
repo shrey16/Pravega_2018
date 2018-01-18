@@ -20,7 +20,24 @@
             background-position: center center;
         }
         .card table {
-             margin: 0 auto;
+            margin: 0 auto;
+        }
+        .content-text h2 {
+            text-align: center;
+        }
+        .content-text ul,
+        .content-text ol {
+            text-align: left;
+            font-size: 1.1em;
+        }
+        tr>td:first-of-type {
+            text-align: right;
+        }
+        tr>td:last-of-type {
+            text-align: left;
+        }
+        .table-center {
+            padding-left: 10%;
         }
         @media only screen and (max-width: 900px),
         (max-height: 500px) {
@@ -28,6 +45,9 @@
                 padding-left: 0;
                 padding-right: 0;
                 width: 90vw;
+            }
+            .table-center {
+                padding-left: 0;
             }
         }
     </style>
@@ -529,8 +549,8 @@
                 <div class="content" style="vertical-align: middle;">
                     <div class="content-text">
                         <h1>Sandhi</h1>
-                        <h1>(Linguistics Quiz)</h1>
-                        <table style="padding-left: 15%;">
+                        <h2>(Linguistics Quiz)</h2>
+                        <table class="table-center">
                             <tbody>
                                 <tr>
                                     <td>Description</td>
@@ -568,38 +588,149 @@
                 </div>
             </div>
             <div class="card" id="linguistics-quiz">
-                    <div class="content" style="vertical-align: middle;">
-                        <div class="content-text">
-                            <h1>In Other Words</h1>
-                            <h1>(Linguistics Puzzle)</h1>
-                            <p>Colourless green ideas sleep furiously. What makes symbolism, syntax, and sound come together to form a language?</p>
-                            <ul style="text-align:left">
-                                <li>Flex your logic skills and linguistic intuition with <strong>&ldquo;In Other Words&rdquo;</strong> - Microsoft and Pravega’s ongoing linguistic puzzle solving contest.</li>
-                                <li>Solve and submit levels from Friday 9:00 am to Sunday 12 noon to climb up the leaderboard!</li>
-                                <li>Use of all electronic sources and books is allowed.</li>
-                                <li>Plagiarism and collusion outside of the team is not permitted.</li>
-                                <li><strong>Spot Registration</strong> only: <strong>Visit the IOW desks at OPB, Main gate and JN Tata Auditorium</strong> to get registered. Registrations stay open from 9:00 am, 19th January through 12 noon, 21st January.</li>
-                                <li>Exciting prizes await!</li>
-                            </ul>
-                            <h3 style="text-align: center;">Check the leaderboard <a href=": https://docs.google.com/spreadsheets/d/1-aGEtQnZnvb8Asxpil-NhKHT1-eV1ijkkXyIh0h2Sy4/edit?usp=sharing">here</a>.</h3>
-                            <h2>Instructions</h2>
-                            <ol style="text-align:left">
-                                <li>Visit the registration desks at Main Gate, OPB or JN Tata Auditorium to get your name onto the leader-board. The JN Tata desk opens only from 9:00 am on Saturday.</li>
-                                <li>Submit your team’s correspondence email ID and receive the question for level 1 via email.</li>
-                                <li>Scan/Type and submit your solutions to us at our <a href="mailto:linguistics.iisc@gmail.com">email</a>.</li>
-                                <li>
-                                    <ol style="list-style-type:lower-roman;">
-                                        <li>Teams scoring more than the threshold score for a particular level will receive the next level’s question via email.</li>
-                                        <li>The score hence achieved will get added to their net score.</li>
-                                        <li>Solutions will be revealed after the culmination of the fest.</li>
-                                    </ol>
-                                </li>
-                                <li>Solutions will be accepted from 9:00 am to 10:00 pm on Friday, 8:00 am to 6:00 pm on Saturday and 8:00 am to 1:30 pm on Sunday.</li>
-                                <li>The leader-board will update periodically to let teams monitor their progress.</li>
-                            </ol>
-                        </div>
+                <div class="content" style="vertical-align: middle;">
+                    <div class="content-text">
+                        <h1>In Other Words</h1>
+                        <h2>(Linguistics Puzzle)</h2>
+                        <p>Colourless green ideas sleep furiously. What makes symbolism, syntax, and sound come together to form a language?</p>
+                        <ul>
+                            <li>Flex your logic skills and linguistic intuition with <strong>&ldquo;In Other Words&rdquo;</strong> - Microsoft and Pravega’s ongoing linguistic puzzle solving contest.</li>
+                            <li>Solve and submit levels from Friday 9:00 am to Sunday 12 noon to climb up the leaderboard!</li>
+                            <li>Use of all electronic sources and books is allowed.</li>
+                            <li>Plagiarism and collusion outside of the team is not permitted.</li>
+                            <li><strong>Spot Registration</strong> only: <strong>Visit the IOW desks at OPB, Main gate and JN Tata Auditorium</strong> to get registered. Registrations stay open from 9:00 am, 19th January through 12 noon, 21st January.</li>
+                            <li>Exciting prizes await!</li>
+                        </ul>
+                        <h3 style="text-align: center;">Check the leaderboard <a href=": https://docs.google.com/spreadsheets/d/1-aGEtQnZnvb8Asxpil-NhKHT1-eV1ijkkXyIh0h2Sy4/edit?usp=sharing">here</a>.</h3>
+                        <h2>Instructions</h2>
+                        <ol>
+                            <li>Visit the registration desks at Main Gate, OPB or JN Tata Auditorium to get your name onto the leader-board. The JN Tata desk opens only from 9:00 am on Saturday.</li>
+                            <li>Submit your team’s correspondence email ID and receive the question for level 1 via email.</li>
+                            <li>Scan/Type and submit your solutions to us at our <a href="mailto:linguistics.iisc@gmail.com">email</a>.</li>
+                            <li>
+                                <ol style="list-style-type:lower-roman;">
+                                    <li>Teams scoring more than the threshold score for a particular level will receive the next level’s question via email.</li>
+                                    <li>The score hence achieved will get added to their net score.</li>
+                                    <li>Solutions will be revealed after the culmination of the fest.</li>
+                                </ol>
+                            </li>
+                            <li>Solutions will be accepted from 9:00 am to 10:00 pm on Friday, 8:00 am to 6:00 pm on Saturday and 8:00 am to 1:30 pm on Sunday.</li>
+                            <li>The leader-board will update periodically to let teams monitor their progress.</li>
+                        </ol>
                     </div>
                 </div>
+            </div>
+            <div class="card" id="fun-events">
+                <h1>Fun Quiz and Workshops</h1>
+                <h4 style="text-align:center;">Courtesy of</h4>
+                <table><tbody><tr><td style="border: none; padding: 0;"><img src="img/sponsor-logos/lahelahe.png" style="width:200px; height: 150px; display: inline-block!important;"/></td></tr></tbody></table>
+            </div>
+            <div class="card" id="hp-quiz">
+                <div class="content" style="vertical-align: middle;">
+                    <div class="content-text">
+                        <h1>The Quizzitch Match</h1>
+                        <h2>(Harry Potter Quiz)</h2>
+                        <p>J.K. Rowling’s Harry Potter franchise took the world by storm when first published,
+                             and continues to create a buzz due to the numerous fanfictions, spinoffs, and side stories created in the magical world.
+                             The franchise has quite a fan following, and is one of the most loved booked series worldwide.
+                        </p>
+                        <p>If you think you are a true Harry Potter fan, and you know more about it than most, then come to test your knowledge of charms and enchantments,
+                             and other Harry Potter Trivia, in The Quizzitch Match, which will test your skills to the utmost.
+                              Do you have what it takes to secure an O.W.L. and come out at the top?
+                        </p>
+                        <table style="padding-left: 10%;">
+                            <tbody>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>20<sup>th</sup> January 2018 (Saturday)</td>
+                                </tr>
+                                <tr>
+                                    <td>Time</td>
+                                    <td>10:30AM to 1PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Venue</td>
+                                    <td>Fun Zone</td>
+                                </tr>
+                                <tr>
+                                    <td>Registration</td>
+                                    <td>Spot Registration for ₹50 per team;
+                                        <br/> identity card must be presented at the time of registration.
+                                        <br/> Cross college teams allowed.</td>
+                                </tr>                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="paper-marbling">
+                <div class="content" style="vertical-align: middle;">
+                    <div class="content-text">
+                        <h1>Paper Marbling</h1>
+                        <h2>(Artistic Workshop)</h2>
+                        <p>Paper Marbling is an ancient Japanese artform which involves capturing impressions of ink and color by the floating ink technique.
+                             It is a method of aqueous surface design, which can produce patterns similar to smooth marble or other kinds of stone.
+                        </p>
+                        <p>If you’ve ever wanted to try an expressive art form with a mind of its own, paper marbling,
+                             or Suminagashi (墨 流 し), as it was called by the ancient Japanese when they invented it in the 12th Century, might just be the artform for you.
+                             The vibrant and colorful artforms represent every personality; Spontaneous, abstract, random, detail-oriented, improvisational or super-patient.
+                        </p>
+                        <p>Everybody is welcome to come and try out this super-fun workshop,
+                             where every participant will be taught the technique and then given two attempts to marble a sheet, which they can then take home!</p>
+                        <p>Don’t miss out on this spectacular opportunity to learn something new for absolutely free!</p>
+                        <table class="table-center">
+                            <tbody>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>20<sup>th</sup> &amp; 21<sup>st</sup> January 2018 (Saturday &amp; Sunday)</td>
+                                </tr>
+                                <tr>
+                                    <td>Time</td>
+                                    <td>10AM to 5PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Venue</td>
+                                    <td>Fun Zone</td>
+                                </tr>
+                                <tr>
+                                    <td>Facilitators</td>
+                                    <td>Priya Choudhary &amp; Kiran Johar</td>
+                                </tr>                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="music-jam">
+                <div class="content" style="vertical-align: middle;">
+                    <div class="content-text">
+                        <h1>Music Jam</h1>
+                        <h2>(Improv Music Session)</h2>
+                        <p>Music strings together people throughout the world, and rarely, if ever, would you find someone who didn’t like any form of music.
+                            In the Music Jam, music aficionados would play and jam together in an improv acoustic session,
+                            with the dynamics of the jam changing with the people and the songs. People are welcome to join, admire, sing, play or dance
+                            in the warm and welcome atmosphere created by the live music on the go. 
+                        </p>
+                        <p>Be sure to visit the Music Jam and join in for free!</p>
+                        <table class="table-center">
+                            <tbody>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>20<sup>th</sup> &amp; 21<sup>st</sup> January 2018 (Saturday &amp; Sunday)</td>
+                                </tr>
+                                <tr>
+                                    <td>Time</td>
+                                    <td>10AM to 5PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Venue</td>
+                                    <td>Fun Zone</td>
+                                </tr>                             
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="floating-footer">
             <a target="_blank" href="https://www.facebook.com/PravegaIISc/">
