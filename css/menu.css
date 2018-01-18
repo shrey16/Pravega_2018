@@ -421,6 +421,23 @@ span {
 .mobile-display {
     display: none;
 }
+
+.content-image-section {
+    min-height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.content-text-section {
+    height: auto;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px 220px 5px 300px;
+}
+
 @media only screen and (max-width: 900px) {
     *:focus {
         outline: none;

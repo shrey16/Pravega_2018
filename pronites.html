@@ -4,7 +4,7 @@
     <title>Pro Nites | Pravega 2018, IISc Bangalore | Festival of Science and Culture</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Coming Soon!"/>
+    <meta name="description" content="We present to you the best talents of the entertainment industry to leave an everlasting impact, and bring to a perfect end the amazing experience Pravega is."/>
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="css/hamburger.css" type="text/css" rel="stylesheet" />
@@ -19,8 +19,23 @@
             background-repeat: no-repeat;
             background-position: center center;
         }
-        .card ol {
-            text-align: left;
+        .content-image-section {
+            background-size: cover;
+            background-position: 50px top;
+        }
+        @media only screen and (max-width: 900px),
+        (max-height: 500px) {
+            .content-text-section {
+                width: 100%;
+                padding: 5px 0;
+            }
+            .content-image-section {
+                background-position: center bottom;
+            }
+            .content-image-section:last-of-type {
+                background-position-y: center;
+                background-position-x: -200px;
+            }
         }
     </style>
 </head>
@@ -100,6 +115,17 @@
                         <div class="extra-info">
                             <h3>Updates</h3>
                             <p>Want to know about the latest and greatest of Pravega? Here you go!</p>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="fun-events.html">
+                            <div class="li-img"><img src="img/fun.png"></div>
+                            <div class="li-text">Fun Events</div>
+                        </a>
+                        <div class="dropdown"><img src="img/downCaret.png"></div>
+                        <div class="extra-info">
+                            <h3>Fun Events</h3>
+                            <p>Too much work and too little play? We've got the perfect medicine for dullness, courtesy of Lahe Lahe and Microsoft!</p>
                         </div>
                     </li>
                     <li class="nav-item nav-highlight-item">
@@ -485,6 +511,12 @@
                     <p>Want to know about the latest and greatest of Pravega? Here you go!</p>
                 </div>
                 <div class="infobar-content">
+                    <a href="fun-events.html">
+                        <h2>Fun Events</h2>
+                    </a>
+                    <p>Too much work and too little play? We've got the perfect medicine for dullness, courtesy of Lahe Lahe and Microsoft!</p>
+                </div>
+                <div class="infobar-content">
                     <a href="pronites.html">
                         <h2>Pro Nites</h2>
                     </a>
@@ -494,14 +526,30 @@
         </div>
         <!-- SideBar gets over-->
         <div id="disabler"></div>
-        <div id="main">
-            <div id="introduction" class="card">
-                <h2>Pro Nites</h2>
-                <p style="text-align: center;">Coming Soon!</p>
-            </div>
-            <div id="registrations" class="card">
+        <div id="main">            
+            <div id="registrations" class="content-text-section">
                 <h2>Registrations</h2>
                 <p style="text-align: center;">Register for free <a href="https://insider.in/pravega-pronites-ft-thaikkudam-bridge-jan-2018/event">here</a>!</p>
+            </div>
+            <div class="content-image-section" style="background-image: url('img/pronites/rahul-subramaniam.png');">
+            </div>
+            <div class="content-text-section">
+                <h1>Rahul Subramaniam</h1>
+                <h3>6PM to 9PM, Friday, 19<sup>th</sup> January 2018, at JN Tata Auditorium</h3>
+            </div>
+            <div class="content-image-section" style="background-image: url('img/pronites/pineapple-express.jpg');">
+            </div>
+            <div class="content-text-section">
+                <h1>Pineapple Express (headlining Battle of Bands)</h1>
+                <h3>6PM to 10PM, Saturday, 20<sup>th</sup> January 2018, at Gymkhana Grounds</h3>
+            </div>
+            <div class="content-image-section" style="background-image: url('img/pronites/thaikkudam-bridge.png'); background-position-y: 10%;">
+            </div>
+            <div class="content-text-section">
+                <h1>Thaikkudam Bridge (supported by Rave &amp; Crave)</h1>
+                <h3>6PM to 10PM, Sunday, 21<sup>st</sup> January 2018, at Gymkhana Grounds</h3>
+            </div>
+            <div class="content-image-section" style="background-image: url('img/pronites/rave-n-crave.png'); background-position-y: center;">
             </div>
         </div>
         <div id="floating-footer">
