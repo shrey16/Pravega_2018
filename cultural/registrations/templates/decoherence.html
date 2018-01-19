@@ -507,77 +507,8 @@
             <h1 id="registration-title">Decoherence</h1> {% if error_message %}
             <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
             <form action="{% url 'registrations:decoherence' %}" method="post" enctype="multipart/form-data" id="msform">
-                <ul id="progressbar">
-                    <li>Rules</li>
-                    <li>Identification</li>
-                    <li>Participant
-                        <br/>Details</li>
-                </ul>
-                {% csrf_token %} {% if registration_form.errors %}
-                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
-                    <p> {{ errors }} </p>
-                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
-                    <p> {{ error }} </p>
-                    {% endfor %}
-                </div>
-                {% endif %}
                 <fieldset>
-                    <h2>Rules and Regulations</h2>
-                    <ol class="rules">
-                        <li>Maximum of 2 participants per team.</li>
-                        <li>Your school or college ID card needs to be brought when you come for the prelims.</li>
-                        <li>All decisions made by the Decoherence team and Pravega will be taken as final.</li>
-                        <li>All other rules are available <a style="color: green;" href="http://pravega.org/docs/Decoherence_Pravega18.pdf">here</a>.</li>
-                        <li><strong>The "Referral Code" field is not required for submitting registrations.</strong></li>
-                    </ol>
-                    <br/>
-                    <p>Have you read and understood the above regulations?</p>
-                    <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label> {{ registration_form.understood }}
-                    <br/>
-                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
-                </fieldset>
-                <fieldset class="real">
-                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
-                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ registration_form.team_name.label_tag }} {{ registration_form.team_name }} {% if registration_form.team_name.errors %}
-                    <div class="errors"> {% for error in registration_form.team_name.errors %} {{ error|escape }} {% endfor %} </div> {% endif %}
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset class="real" id="participants">
-                    {% if participant_formset.non_form_errors %}
-                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>
-                    {% endif %} {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
-                    <div class="participant-formset">
-                        {% if participant_form.errors %}
-                        <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
-                            <p> {{ errors }} </p>
-                            {% endfor %} {% endfor %}
-                        </div>
-                        {% endif %} {{ participant_form.name.label_tag }} {{ participant_form.name }} {% if participant_form.name.errors %}
-                        <div class="errors"> {% for error in participant_form.name.errors %} {{ error|escape }} {% endfor %} </div>
-                        {% endif %} {{ participant_form.contact.label_tag }} {{ participant_form.contact }} {% if participant_form.contact.errors %}
-                        <div class="errors">{% for error in participant_form.contact.errors %} {{ error|escape }} {% endfor %} </div>
-                        {% endif %} {{ participant_form.email.label_tag }} {{ participant_form.email }} {% if participant_form.email.errors %}
-                        <div class="errors">{% for error in participant_form.email.errors %} {{ error|escape }} {% endfor %} </div>
-                        {% endif %} {{ participant_form.institution.label_tag }} {{ participant_form.institution }} {% if participant_form.institution.errors %}
-                        <div class="errors"> {% for error in participant_form.institution.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
-                    </div>
-                    {% endfor %}
-                    <br />
-                    <input type="button" name="previous" class="previous action-button" value="Previous" />
-                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
-                </fieldset>
-                <fieldset id="review">
-                    <h2>Please review before submitting</h2>
-                    <table>
-                        <colgroup>
-                            <col style="width: 50%" />
-                            <col style="width: 50%" />
-                        </colgroup>
-                    </table>
-                    <input type="button" name="previous" class="previous action-button" value="Edit" />
-                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
+                    <h2>Registrations have closed.</h2>
                 </fieldset>
             </form>
             <footer>

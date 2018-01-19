@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Registrations | Pravega 2018</title>
+    <title>Registration | Open Mic | Pravega 2018</title>
     {% load static %}
-    <meta name="description" content="Registrations for Pravega 2018">
+    <meta name="description" content="Registration for Open Mic">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
     <link href="{% static 'css/reg.css' %}" type="text/css" rel="stylesheet" />
@@ -17,24 +17,6 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-        }
-        
-        .nav-link a {
-            border-bottom: 2px white solid;
-        }
-        
-        @media only screen and (max-width: 900px),
-        (max-height: 500px) {
-            .content {
-                width: 100%;
-            }
-            .nav-link a {
-                display: block;
-                margin: 20px auto;
-            }
-            .nav-link span {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -522,42 +504,100 @@
     <div id="disabler"></div>
     <div id="main">
         <div class="content">
-            <a target="_blank" href="https://insider.in/pravega-pronites-ft-thaikkudam-bridge-jan-2018/event" class="nav-link" style="font-size: 1.3em;">Registrations for Pro Nites</a>
-            <a target="_blank" href="http://www.thecollegefever.com/events/pravega-accomodation" class="nav-link" style="font-size: 1.3em;">Accomodations</a>
-            <a target="_blank" href="https://www.thecollegefever.com/events/pravega-18" class="nav-link" style="font-size: 1.3em;">General Registrations and Workshops</a>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Pravega Innovation Summit (Closed)
-                <br/>
-                <br/>
-                <a href="http://pravega.org/registrations/pis">Registrations</a> <span>|</span> <a href="http://pravega.org/registrations/pis/video">Video Submission (Already registered)</a>
-            </div>
-            <a href="http://pravega.org/registrations/decoherence" class="nav-link" style="font-size: 1.3em;">Decoherence (Closed)</a>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Hackathon (Closed)
-                <br/>
-                <br/>
-                <a href="http://pravega.org/registrations/hackathon">Registration</a> <span>|</span> <a href="http://pravega.org/registrations/hackathon/abstract">Update Abstract (Already registered)</a>
-            </div>
-            <a href="http://pravega.org/registrations/openmic" class="nav-link" style="font-size: 1.3em;">Open Mic (Closed)</a>
-            <a href="http://pravega.org/registrations/bob" class="nav-link" style="font-size: 1.3em;">Battle of Bands (Closed)</a>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Proscenium (Closed)
-                <br/>
-                <br/>
-                <a href="http://pravega.org/registrations/proscenium/theatre">Theatre Registration</a> <span>|</span> <a href="http://pravega.org/registrations/footprints">Footprints (Street Play) Registration</a> <span>|</span> <a href="http://pravega.org/registrations/proscenium/video">Video Submission (Already registered)</a>
-            </div>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Lasya (Closed)
-                <br/>
-                <br/>
-                <a href="http://pravega.org/registrations/lasya">Registration</a> <span>|</span> <a href="http://pravega.org/registrations/lasya/video">Video Submission (Already registered)</a>
-            </div>
-            <div class="nav-link" style="font-size: 1.3em;">
-                Gaming
-                <br/>
-                <br/>
-                <a href="https://www.thecollegefever.com/events/pravega-18">Dota 2</a> <span>|</span> <a href="https://www.thecollegefever.com/events/pravega-18">FIFA 18</a>
-            </div>
+            <h1 id="registration-title">Open Mic</h1> {% if error_message %}
+            <div class="form-error"><strong>{{ error_message }}</strong></div>{% endif %}
+            <form action="{% url 'registrations:openmic' %}" method="post" enctype="multipart/form-data" id="msform">
+                <ul id="progressbar">
+                    <li>Rules</li>
+                    <li>Identification</li>
+                    <li>Addtional
+                        <br/>Information</li>
+                    <li>Participant
+                        <br/>Details</li>
+                </ul>
+                {% csrf_token %} {% if registration_form.errors %}
+                <div class="errors"> {% for field in registration_form %} {% for error in field.errors %}
+                    <p> {{ errors }} </p>
+                    {% endfor %} {% endfor %} {% for error in registration_form.non_field_errors %}
+                    <p> {{ error }} </p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <fieldset>
+                    <h2>Rules and Regulations</h2>
+                    <ol class="rules">
+                        <li>Maximum of 4 participants per team.</li>
+                        <li>Performances should broadly belong to the three categories. Namely: comedy, music, spoken word.</li>
+                        <li>The maximum time allotted for each performance is 5 minutes. Additional time of 1 minute will be provided preceded by a warning.</li>
+                        <li>You should bring your own instruments. They must be acoustic.</li>
+                        <li>Ensure that your instrument is tuned before coming up on stage. If you’re having trouble, don’t be afraid to approach us. We want you to sound as good as you can. Help us help you.</li>
+                        <li>Performances can be in any language. </li>
+                        <li>Be courteous towards fellow performers. We’re all here to support each other and the art form.</li>
+                        <li>You’re free to express yourself as long as it is tastefully done. The event coordinators have final discretion should any dispute arise. Basically, be cool.</li>
+                        <li>All decisions made by the Open Mic team and Pravega will be taken as final.</li>
+                        <li><strong>The "Referral Code" field is not required for submitting registrations.</strong></li>
+                    </ol>
+                    <br/>
+                    <p>Have you read and understood the above regulations?</p>
+                    <label for="{{ registration_form.understood.id_for_label }}" style="padding-left:2%;">Yes</label> {{ registration_form.understood }}
+                    <br/>
+                    <input type="button" name="next" id="continue" class="action-button" value="Continue" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.referral_code.label_tag }} {{ registration_form.referral_code }} {% if registration_form.referral_code.errors %}
+                    <div class="errors"> {% for error in registration_form.referral_code.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.name.label_tag }} {{ registration_form.name }} {% if registration_form.name.errors %}
+                    <div class="errors"> {% for error in registration_form.name.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.email.label_tag }} {{ registration_form.email }} {% if registration_form.email.errors %}
+                    <div class="errors"> {% for error in registration_form.email.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.event.label_tag }} {{ registration_form.event }} {% if registration_form.event.errors %}
+                    <div class="errors"> {% for error in registration_form.event.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real">
+                    {{ registration_form.expected_performance_duration_mins.label_tag }} {{ registration_form.expected_performance_duration_mins }} {% if registration_form.expected_performance_duration_mins.errors %}
+                    <div class="errors"> {% for error in registration_form.expected_performance_duration_mins.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.instrument_requirement.label_tag }} {{ registration_form.instrument_requirement }} {% if registration_form.instrument_requirement.errors %}
+                    <div class="errors"> {% for error in registration_form.instrument_requirement.errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ registration_form.reason_for_gt_3_members.label_tag }} {{ registration_form.reason_for_gt_3_members }} {% if registration_form.reason_for_gt_3_members.errors %}
+                    <div class="errors"> {% for error in registration_form.reason_for_gt_3_members.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset class="real" id="participants">
+                    {% if participant_formset.non_form_errors %}
+                    <div class="errors">{% for error in participant_formset.non_form_errors %} {{ error|escape }} {% endfor %} </div>
+                    {% endif %} {{ participant_formset.management_form }} {% for participant_form in participant_formset %}
+                    <div class="participant-formset">
+                        {% if participant_form.errors %}
+                        <div class="errors"> {% for field in participant_form %} {% for error in field.errors %}
+                            <p> {{ errors }} </p>
+                            {% endfor %} {% endfor %}
+                        </div>
+                        {% endif %} {{ participant_form.name.label_tag }} {{ participant_form.name }} {% if participant_form.name.errors %}
+                        <div class="errors"> {% for error in participant_form.name.errors %} {{ error|escape }} {% endfor %} </div>{% endif %}
+                    </div>
+                    {% endfor %}
+                    <br />
+                    <input type="button" name="previous" class="previous action-button" value="Previous" />
+                    <input type="button" name="next" id="review-button" class="next action-button" value="Review" />
+                </fieldset>
+                <fieldset id="review">
+                    <h2>Please review before submitting</h2>
+                    <table>
+                        <colgroup>
+                            <col style="width: 50%" />
+                            <col style="width: 50%" />
+                        </colgroup>
+                    </table>
+                    <input type="button" name="previous" class="previous action-button" value="Edit" />
+                    <input type="submit" name="submit" class="submit action-button button" value="Submit" />
+                </fieldset>
+            </form>
+            <footer>
+                <p><a href="mailto:webmaster@pravega.org">Contact us</a> if you need any help!</p>
+            </footer>
         </div>
     </div>
     <div id="floating-footer">
@@ -598,9 +638,20 @@
             <li><a href="http://pravega.org/index.html">Home</a></li>
         </ul>
     </div>
+    <!-- Include formset plugin - including jQuery dependency -->
     <script src="{% static 'js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/TweenLite.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/menu.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script src="{% static 'js/reg.js' %}" type="text/javascript"></script>
+    <script>
+        $('.participant-formset').formset({
+            addText: 'Add participant',
+            deleteText: 'Remove Participant',
+            addAnimationDuration: 100,
+            removeAnimationDuration: 100
+        });
+    </script>
     <script type="text/javascript">
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
