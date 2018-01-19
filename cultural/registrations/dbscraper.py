@@ -278,8 +278,8 @@ class OpenMicRegistrationData(RegistrationData):
                 participant_data = {}
                 participant_data['name'] = participant.name
                 data.participants.append(participant_data)
-        data.participant_count = len(data.participants)
-        yield data
+            data.participant_count = len(data.participants)
+            yield data
 
 
 class DecoherenceRegistrationData(RegistrationData):
@@ -299,8 +299,8 @@ class DecoherenceRegistrationData(RegistrationData):
                 participant_data['contact'] = participant.contact
                 participant_data['email'] = participant.email
                 data.participants.append(participant_data)
-        data.participant_count = len(data.participants)
-        yield data
+            data.participant_count = len(data.participants)
+            yield data
 
 class HackathonRegistrationData(RegistrationData):
 
@@ -319,5 +319,5 @@ class HackathonRegistrationData(RegistrationData):
                 participant_data = {}
                 participant_data['name'] = participant.name
                 data.participants.append(participant_data)
-        data.participant_count = len(data.participants)
-        yield data
+            data.participant_count = len(data.participants)
+            yield data
