@@ -315,7 +315,7 @@ class HackathonRegistrationData(RegistrationData):
             data.email = registration.email
             data.abstract = registration.abstract
             data.participants = []
-            for participant in registration.Hackathonparticipant_set.all():
+            for participant in registration.hackathonparticipant_set.all():
                 participant_data = {}
                 participant_data['name'] = participant.name
                 data.participants.append(participant_data)
