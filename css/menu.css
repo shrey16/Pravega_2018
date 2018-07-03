@@ -426,6 +426,8 @@ span {
     min-height: 100vh;
     background-size: cover;
     background-attachment: fixed;
+	transform: translate3d(0,0,0);
+ 	-webkit-transform: translate3d(0,0,0);
     background-repeat: no-repeat;
     background-position: center center;
 }
